@@ -1,0 +1,9 @@
+D:\mulworkstation\mulworkstation\bin\Debug\mulworkstation.exe
+D:\mulworkstation\mulworkstation\bin\Debug\mulworkstation.pdb
+D:\mulworkstation\mulworkstation\obj\Debug\ResolveAssemblyReference.cache
+D:\mulworkstation\mulworkstation\obj\Debug\mulworkstation.login.resources
+D:\mulworkstation\mulworkstation\obj\Debug\mulworkstation.Properties.Resources.resources
+D:\mulworkstation\mulworkstation\obj\Debug\GenerateResource-ResGen.read.1.tlog
+D:\mulworkstation\mulworkstation\obj\Debug\GenerateResource-ResGen.write.1.tlog
+D:\mulworkstation\mulworkstation\obj\Debug\mulworkstation.exe
+D:\mulworkstation\mulworkstation\obj\Debug\mulworkstation.pdb
