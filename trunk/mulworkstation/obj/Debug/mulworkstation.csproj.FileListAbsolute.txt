@@ -7,3 +7,8 @@ D:\mulworkstation\mulworkstation\obj\Debug\GenerateResource-ResGen.read.1.tlog
 D:\mulworkstation\mulworkstation\obj\Debug\GenerateResource-ResGen.write.1.tlog
 D:\mulworkstation\mulworkstation\obj\Debug\mulworkstation.exe
 D:\mulworkstation\mulworkstation\obj\Debug\mulworkstation.pdb
+D:\mulworkstation\mulworkstation\bin\Debug\ClientMain.exe
+D:\mulworkstation\mulworkstation\bin\Debug\DevExpress.XtraNavBar.v7.1.dll
+D:\mulworkstation\mulworkstation\bin\Debug\DevExpress.Utils.v7.1.dll
+D:\mulworkstation\mulworkstation\bin\Debug\DevExpress.Data.v7.1.dll
+D:\mulworkstation\mulworkstation\bin\Debug\ClientMain.pdb

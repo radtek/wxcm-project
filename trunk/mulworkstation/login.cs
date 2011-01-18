@@ -12,6 +12,7 @@ using System.Windows.Forms;
 //using System.Runtime.InteropServices;
 //using Oracle.DataAccess.Client;
 //using Oracle.DataAccess.Types;
+using ClientMain;
 
 namespace mulworkstation
 {
@@ -54,6 +55,13 @@ namespace mulworkstation
         private void loginuser_TextChanged(object sender, EventArgs e)
         {
             this.loginpassword.Enabled = true; 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FrmClientMain frmClient = new FrmClientMain();
+            frmClient.Show();
+            this.Hide();
         }
     }
 }
