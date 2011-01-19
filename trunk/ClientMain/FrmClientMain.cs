@@ -38,6 +38,7 @@ namespace ClientMain
 
         private void FrmClientMain_Load(object sender, EventArgs e)
         {
+            //login frmlogin = new login();
             //            CreateToolBar();//创建outlookbar
             lb_zt.Text = "   帐套："+"安徽新华发行集团";
             lb_user.Text = "   用户："+"超级用户";

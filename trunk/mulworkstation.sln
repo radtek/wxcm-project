@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mulworkstation", "mulworkstation\mulworkstation.csproj", "{67F69FA3-FBB0-44CE-B0C3-C97CB7D81DD5}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientMain", "ClientMain\ClientMain.csproj", "{F2230003-DBEE-4670-8CE5-7ED89A49EB50}"
 EndProject
 Global
@@ -11,10 +9,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{67F69FA3-FBB0-44CE-B0C3-C97CB7D81DD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{67F69FA3-FBB0-44CE-B0C3-C97CB7D81DD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{67F69FA3-FBB0-44CE-B0C3-C97CB7D81DD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{67F69FA3-FBB0-44CE-B0C3-C97CB7D81DD5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F2230003-DBEE-4670-8CE5-7ED89A49EB50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F2230003-DBEE-4670-8CE5-7ED89A49EB50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2230003-DBEE-4670-8CE5-7ED89A49EB50}.Release|Any CPU.ActiveCfg = Release|Any CPU
