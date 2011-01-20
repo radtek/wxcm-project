@@ -40,6 +40,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.alarm = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button3
@@ -99,12 +100,11 @@
             this.loginpassword.Name = "loginpassword";
             this.loginpassword.Size = new System.Drawing.Size(251, 21);
             this.loginpassword.TabIndex = 18;
-            this.loginpassword.TextChanged += new System.EventHandler(this.loginpassword_TextChanged);
             // 
             // loginuser
             // 
             this.loginuser.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.loginuser.Location = new System.Drawing.Point(132, 79);
+            this.loginuser.Location = new System.Drawing.Point(132, 77);
             this.loginuser.Name = "loginuser";
             this.loginuser.Size = new System.Drawing.Size(251, 21);
             this.loginuser.TabIndex = 17;
@@ -160,11 +160,19 @@
             this.label1.Text = "综合平台登陆 ";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // alarm
+            // 
+            this.alarm.Location = new System.Drawing.Point(132, 101);
+            this.alarm.Name = "alarm";
+            this.alarm.Size = new System.Drawing.Size(251, 22);
+            this.alarm.TabIndex = 24;
+            // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(511, 306);
+            this.Controls.Add(this.alarm);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -179,6 +187,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FrmLogin";
             this.Text = "登陆界面";
+            this.Load += new System.EventHandler(this.FrmLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -198,5 +207,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label alarm;
     }
 }
