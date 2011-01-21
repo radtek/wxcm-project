@@ -40,7 +40,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.alarm = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button3
@@ -82,6 +81,7 @@
             this.comboBox2.Size = new System.Drawing.Size(251, 20);
             this.comboBox2.Sorted = true;
             this.comboBox2.TabIndex = 20;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // comboBox1
             // 
@@ -92,27 +92,30 @@
             this.comboBox1.Size = new System.Drawing.Size(251, 20);
             this.comboBox1.Sorted = true;
             this.comboBox1.TabIndex = 19;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // loginpassword
             // 
             this.loginpassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.loginpassword.Location = new System.Drawing.Point(132, 126);
             this.loginpassword.Name = "loginpassword";
+            this.loginpassword.PasswordChar = '*';
             this.loginpassword.Size = new System.Drawing.Size(251, 21);
             this.loginpassword.TabIndex = 18;
+            this.loginpassword.Enter += new System.EventHandler(this.loginpassword_Enter);
             // 
             // loginuser
             // 
             this.loginuser.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.loginuser.Location = new System.Drawing.Point(132, 77);
+            this.loginuser.Location = new System.Drawing.Point(132, 79);
             this.loginuser.Name = "loginuser";
             this.loginuser.Size = new System.Drawing.Size(251, 21);
             this.loginuser.TabIndex = 17;
-            this.loginuser.TextChanged += new System.EventHandler(this.loginuser_TextChanged_1);
+            this.loginuser.TextChanged += new System.EventHandler(this.loginuser_TextChanged);
             // 
             // label5
             // 
-            this.label5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label5.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label5.Location = new System.Drawing.Point(13, 213);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(100, 23);
@@ -122,7 +125,7 @@
             // 
             // label4
             // 
-            this.label4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label4.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label4.Location = new System.Drawing.Point(13, 168);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(100, 23);
@@ -132,7 +135,7 @@
             // 
             // label3
             // 
-            this.label3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label3.Location = new System.Drawing.Point(13, 124);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(100, 23);
@@ -142,7 +145,7 @@
             // 
             // label2
             // 
-            this.label2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label2.Location = new System.Drawing.Point(13, 77);
             this.label2.Name = "label2";
             this.label2.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -160,19 +163,11 @@
             this.label1.Text = "综合平台登陆 ";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // alarm
-            // 
-            this.alarm.Location = new System.Drawing.Point(132, 101);
-            this.alarm.Name = "alarm";
-            this.alarm.Size = new System.Drawing.Size(251, 22);
-            this.alarm.TabIndex = 24;
-            // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(511, 306);
-            this.Controls.Add(this.alarm);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -207,6 +202,5 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label alarm;
     }
 }

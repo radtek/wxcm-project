@@ -16,8 +16,6 @@ D:\mulworkstation\ClientMain\obj\Debug\ClientMain.FrmClientMain.resources
 D:\mulworkstation\ClientMain\obj\Debug\ClientMain.Properties.Resources.resources
 D:\mulworkstation\ClientMain\obj\Debug\ClientMain.exe
 D:\mulworkstation\ClientMain\obj\Debug\ClientMain.pdb
-D:\mulworkstation\ClientMain\obj\Debug\GenerateResource.read.1.tlog
-D:\mulworkstation\ClientMain\obj\Debug\GenerateResource.write.1.tlog
 D:\mulworkstation\ClientMain\bin\Debug\ClientMain.exe.config
 D:\mulworkstation\ClientMain\obj\Debug\ClientMain.FrmLogin.resources
 D:\test\ClientMain\bin\Debug\ClientMain.exe.config
@@ -34,3 +32,5 @@ D:\test\ClientMain\obj\Debug\GenerateResource-ResGen.read.4.tlog
 D:\test\ClientMain\obj\Debug\GenerateResource.read.1.tlog
 D:\test\ClientMain\obj\Debug\GenerateResource-ResGen.write.1.tlog
 D:\test\ClientMain\obj\Debug\GenerateResource.write.1.tlog
+D:\mulworkstation\ClientMain\obj\Debug\GenerateResource-ResGen.read.1.tlog
+D:\mulworkstation\ClientMain\obj\Debug\GenerateResource-ResGen.write.1.tlog

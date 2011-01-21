@@ -28,7 +28,7 @@ namespace ClientMain
         //private IUpdateServer updateServer;
         private TcpClientChannel tcpChanner = null;
 
-        private DataSet ds; 
+        private DataSet ds = null; 
 
 
         public FrmClientMain()
@@ -36,14 +36,17 @@ namespace ClientMain
             InitializeComponent();
         }
 
+        public FrmClientMain(string strAccount, string strUser, string strDepart)
+        {
+            InitializeComponent();
+            lb_zt.Text = "   帐套：" + strAccount;
+            lb_user.Text = "   用户：" + strUser;
+            lb_dept.Text = "   部门：" + strDepart;
+
+        }
         private void FrmClientMain_Load(object sender, EventArgs e)
         {
-            //login frmlogin = new login();
             //            CreateToolBar();//创建outlookbar
-            lb_zt.Text = "   帐套："+"安徽新华发行集团";
-            lb_user.Text = "   用户："+"超级用户";
-            lb_dept.Text = "   部门："+"信息中心";
-
             CreateOutlookBar();
         }
 
@@ -216,7 +219,7 @@ namespace ClientMain
 
 //            MessageBox.Show(string.Format("The {0} link has been clicked", GetMd5Str("hcz2322679")));
 
-            string url = @"tcp://192.168.8.158:8086/UpdateServer";
+            //string url = @"tcp://192.168.8.158:8086/UpdateServer";
  
             this.tcpChanner = new TcpClientChannel();
             ChannelServices.RegisterChannel(this.tcpChanner, false);

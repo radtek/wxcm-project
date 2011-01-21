@@ -3,12 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.Data.OleDb;
-using System.Data.Odbc;
-//using System.Data;
 using System.Data.OracleClient;
 
 
@@ -17,6 +13,8 @@ namespace ClientMain
 {
     public partial class FrmLogin : Form
     {
+        OracleConnection m_cnn = null;
+
         public FrmLogin()
         {
             InitializeComponent();
@@ -25,43 +23,96 @@ namespace ClientMain
                 this.loginpassword.Enabled = false;
             else
                 this.loginpassword.Enabled = true; 
-            this.loginpassword.GotFocus+=new EventHandler(loginpassword_GotFocus);
-            
         }
-        //传递的三个权限值
-        public string username;
-        public string userdepartment;
-        public string useraccount;
+
+        public string getAccount()
+        {
+            return this.comboBox1.Text.Trim();
+        }
+
+        public string getUser()
+        {
+            return this.loginuser.Text.Trim();
+        }
+
+        public string getDepartment()
+        {
+            return this.comboBox2.Text.Trim();
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            FrmClientMain frmClient = new FrmClientMain();
-            frmClient.Show();
-            this.Hide();
+            if (string.IsNullOrEmpty(loginuser.Text.Trim()))
+            {
+                MessageBox.Show("请您输入用户！！", "警告", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                this.loginuser.Text = "";
+                this.loginuser.Focus();
+                return;
+            }
+            else if (string.IsNullOrEmpty(loginpassword.Text.Trim()))
+            {
+                MessageBox.Show("请您输入登陆密码！！", "警告", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                this.loginpassword.Text = "";
+                this.loginpassword.Focus();
+                return;
+            }
+            if (true)
+            {
+                FrmClientMain frmClient = new FrmClientMain(this.getAccount(), this.getUser(), this.getDepartment());
+                frmClient.Show();
+                this.Hide();
+            }
+            else
+            {
+                if(MessageBox.Show("用户名密码不一致，登陆失败！！", "警告", MessageBoxButtons.OK, MessageBoxIcon.Stop) == DialogResult.OK)
+                {
+                    this.loginuser.Text = "";
+                    this.loginpassword.Text = "";
+                    this.loginpassword.Enabled = false;
+                    this.comboBox1.Text = "";
+                    this.comboBox2.Text = "";
+                    this.loginuser.Focus(); 
+                }
+                return;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            this.Dispose();
+            GC.Collect();
             Application.Exit();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            loginuser.Text = "";
-            
-
-            
+            this.loginuser.Text = "";
+            this.loginpassword.Text = "";
             this.loginpassword.Enabled = false;
+            this.comboBox1.Text = "";
+            this.comboBox2.Text = "";
         }
 
-        private void login_Load(object sender, EventArgs e)
+        private void FrmLogin_Load(object sender, EventArgs e)
         {
-           
-            
-
-   
-
-
+            string strCon = "Data Source=XINHUA;User Id=xxb;Password=pass;Integrated Security=no;";
+            m_cnn = new OracleConnection();
+            m_cnn.ConnectionString = strCon;
+            try
+            {
+                m_cnn.Open();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                //if (cnn.State != ConnectionState.Closed)
+                //{
+                //    cnn.Close();
+                //}
+            }
         }
 
         private void loginuser_TextChanged(object sender, EventArgs e)
@@ -69,80 +120,37 @@ namespace ClientMain
             this.loginpassword.Enabled = true;
         }
 
-
-
-        private void loginpassword_GotFocus(object sender, EventArgs e)
+        private void loginpassword_Enter(object sender, EventArgs e)
         {
-            //将用户输出
-            username = this.loginuser.Text.ToString();
+            string strSQLAccount = "select e.ztid,e.ztmc from sys_user  a " +
+            "left join  sys_employees b  on b.employeeid=a.empid " +
+            "left join  sys_empee_department c on c.employeeid=b.employeeid " +
+            "left join  sys_department  d on d.departmentid=c.departmentid " +
+            "left join  sys_ztbm  e on e.ztid=d.ztid " +
+            "where a.username='" + this.loginuser.Text + "'";
 
-            //查询数据库，排除空用户
-            System.Data.OleDb.OleDbConnection loginconnect1;
-            loginconnect1 = new System.Data.OleDb.OleDbConnection();
-            loginconnect1.ConnectionString = "Provider=OraOLEDB.Oracle.10g;" + "User ID=xxb;" + "Password=pass;" + "Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.8.222)(PORT = 1521))(CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = XINHUA) ) )";
-            string queryusername = "SELECT * FROM SYS_USER WHERE USERID=" + username;
-            OleDbCommand logincommand1 = new OleDbCommand(queryusername, loginconnect1);
-            loginconnect1.Open();
-            OleDbDataReader loginread = logincommand1.ExecuteReader();
+            string strSQLDepart = "SELECT departmentid, " +
+           "departmentname " +
+           "FROM sys_department " +
+           " WHERE departmentid IN (SELECT departmentid " +
+           " FROM sys_empee_department " +
+           " WHERE employeeid=(select empid from sys_user where username='" + this.loginuser.Text + "')) and ztid='" + this.comboBox1.Text + "'";
 
-
-
-
-
-
-            try
-            {
-                if (loginread.Read() == false)
-                {
-                   //如果用户名为非法用户则提示用户并清空用户名
-                    
-                   // if (MessageBox.Show(this, "请您输入正确的用户名", "本系统不存在该用户", MessageBoxButtons.OK) == DialogResult.OK)
-                   //MessageBox.Show(this,"请您输入正确的用户名", "本系统不存在该用户");
-                    this.alarm.Text = "系统里没有您输入的用户请重新输入";
-                        loginread.Close();
-                        loginconnect1.Close();
-                        this.loginuser.Text = "";
-                        //this.loginpassword.Text = "";
-                       
-                        this.loginpassword.Enabled = false;
-                    
-
-                }
-                else
-                {
-                    this.alarm.Text = "";
-
-
-
-
-                }
-
-                ;
-
-
-            }
-            finally
-            {
-                loginread.Close();
-                loginconnect1.Close();
-            }
-
-        }
-       // private void loginpassword_TextChanged(object sender, EventArgs e)
-       // {
-       //    
-       // }
-
-        private void loginuser_TextChanged_1(object sender, EventArgs e)
-        {
-            this.loginpassword.Enabled = true;
+            OracleDataAdapter myDa = new OracleDataAdapter();
+            myDa.SelectCommand = new OracleCommand(strSQLAccount, m_cnn); 
+            DataSet myDs = new DataSet();
+            myDa.Fill(myDs);
         }
 
-        private void FrmLogin_Load(object sender, EventArgs e)
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            
         }
 
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+        }
 
     }
 }
