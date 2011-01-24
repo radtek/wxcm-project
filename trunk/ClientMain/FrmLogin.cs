@@ -14,6 +14,7 @@ namespace ClientMain
     public partial class FrmLogin : Form
     {
         OracleConnection m_cnn = null;
+        private string m_PassWord = null;
 
         public FrmLogin()
         {
@@ -44,6 +45,8 @@ namespace ClientMain
             {
                 MessageBox.Show("请您输入用户！！", "警告", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 this.loginuser.Focus();
+                this.comboBox1.Items.Clear();
+                this.comboBox2.Items.Clear();
             }
             else if (string.IsNullOrEmpty(loginpassword.Text.Trim()))
             {
@@ -52,7 +55,7 @@ namespace ClientMain
             }
             else
             {
-                if (true)
+                if (m_PassWord == this.loginpassword.Text)
                 {
                     this.Close();
                     this.DialogResult = DialogResult.OK;
@@ -63,8 +66,8 @@ namespace ClientMain
                     {
                         this.loginuser.Text = "";
                         this.loginpassword.Text = "";
-                        this.comboBox1.Text = "";
-                        this.comboBox2.Text = "";
+                        this.comboBox1.Items.Clear();
+                        this.comboBox2.Items.Clear();
                         this.loginuser.Focus();
 
                     }
@@ -84,8 +87,8 @@ namespace ClientMain
         {
             this.loginuser.Text = "";
             this.loginpassword.Text = "";
-            this.comboBox1.Text = "";
-            this.comboBox2.Text = "";
+            this.comboBox1.Items.Clear();
+            this.comboBox2.Items.Clear();
             this.errorProvider1.Clear();
             this.errorProvider2.Clear();
             this.loginuser.Focus();
@@ -104,13 +107,7 @@ namespace ClientMain
             {
                 MessageBox.Show(ex.Message);
             }
-            finally
-            {
-                //if (cnn.State != ConnectionState.Closed)
-                //{
-                //    cnn.Close();
-                //}
-            }
+            
         }
 
         private void loginuser_Validating(object sender, EventArgs e)
@@ -120,15 +117,85 @@ namespace ClientMain
             {
                 error = "请您输入用户！！";
                 this.loginuser.Focus();
+                this.comboBox1.Items.Clear();
+                this.comboBox2.Items.Clear();
             }
-            errorProvider1.SetError((Control)sender, error);
-
-
-            string sql = "select username from SYS_USER";
-            if (this.loginuser.Text == "admin")
+            else
             {
-                this.comboBox1.Text = "合肥";
+                string strUser = "select * from SYS_USER where username = '" + this.loginuser.Text + "'";
+
+                string strAccount = "select e.ztid,e.ztmc from sys_user  a " +
+                "left join  sys_employees b  on b.employeeid=a.empid " +
+                "left join  sys_empee_department c on c.employeeid=b.employeeid " +
+                "left join  sys_department  d on d.departmentid=c.departmentid " +
+                "left join  sys_ztbm  e on e.ztid=d.ztid " +
+                "where a.username='" + this.loginuser.Text + "'";
+
+
+
+                try
+                {
+                    OracleCommand cmdUser = new OracleCommand(strUser, m_cnn);
+                    OracleCommand cmdAccount = new OracleCommand(strAccount, m_cnn);
+
+                    OracleDataReader rdrUser = cmdUser.ExecuteReader();
+                    // Always call Read before accessing data.
+                    if (rdrUser.Read())
+                    {
+                        OracleDataReader rdrAccount = cmdAccount.ExecuteReader();
+                        while (rdrAccount.Read())
+                        {
+                            if (!this.comboBox1.Items.Contains(rdrAccount.GetString(1)))
+                            {
+                                this.comboBox1.Items.Add(rdrAccount.GetString(1));
+                            }
+
+                            string strDepart = "SELECT departmentid, " +
+                           "departmentname " +
+                           "FROM sys_department " +
+                           " WHERE departmentid IN (SELECT departmentid " +
+                           " FROM sys_empee_department " +
+                           " WHERE employeeid=(select empid from sys_user where username='" + this.loginuser.Text + "')) and ztid='" +
+                           rdrAccount.GetString(0) + "'";
+
+                            OracleCommand cmdDepart = new OracleCommand(strDepart, m_cnn);
+                            OracleDataReader rdrDept = cmdDepart.ExecuteReader();
+                            while (rdrDept.Read())
+                            {
+                                if (!this.comboBox2.Items.Contains(rdrDept.GetString(1)))
+                                {
+                                    this.comboBox2.Items.Add(rdrDept.GetString(1));
+                                }
+                            }
+                            rdrDept.Close();
+
+
+                        }
+                        this.comboBox1.SelectedIndex = 0;
+                        this.comboBox2.SelectedIndex = 0;
+                        // always call Close when done reading.
+                        rdrAccount.Close();
+                    }
+                    else
+                    {
+                        error = "数据库中无此用户！！";
+                        this.loginuser.Focus();
+                        this.comboBox1.Items.Clear();
+                        this.comboBox2.Items.Clear();                        
+                    }
+                    rdrUser.Close();
+
+
+                    
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                } 
             }
+
+            errorProvider1.SetError((Control)sender, error);
 
         }
 
@@ -139,26 +206,34 @@ namespace ClientMain
             {
                 error = "请您输入登陆密码！！";
             }
+            else
+            {
+                string strPass = "select password from SYS_USER where username = '" + this.loginuser.Text + "'";
+
+                try
+                {
+                    OracleCommand command = new OracleCommand(strPass, m_cnn);
+                    OracleDataReader reader;
+                    reader = command.ExecuteReader();
+                    reader.Read();
+                    m_PassWord = reader.GetString(0);
+                    // Always call Read before accessing data.
+                    if (m_PassWord != this.loginpassword.Text)
+                    {
+                        error = "密码错误！！";
+                    }
+                    // always call Close when done reading.
+                    reader.Close();
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.Message);
+                } 
+            }
+
             errorProvider2.SetError((Control)sender, error);
 
-            string strSQLAccount = "select e.ztid,e.ztmc from sys_user  a " +
-            "left join  sys_employees b  on b.employeeid=a.empid " +
-            "left join  sys_empee_department c on c.employeeid=b.employeeid " +
-            "left join  sys_department  d on d.departmentid=c.departmentid " +
-            "left join  sys_ztbm  e on e.ztid=d.ztid " +
-            "where a.username='" + this.loginuser.Text + "'";
-
-            string strSQLDepart = "SELECT departmentid, " +
-           "departmentname " +
-           "FROM sys_department " +
-           " WHERE departmentid IN (SELECT departmentid " +
-           " FROM sys_empee_department " +
-           " WHERE employeeid=(select empid from sys_user where username='" + this.loginuser.Text + "')) and ztid='" + this.comboBox1.Text + "'";
-
-            OracleDataAdapter myDa = new OracleDataAdapter();
-            myDa.SelectCommand = new OracleCommand(strSQLAccount, m_cnn);
-            DataSet myDs = new DataSet();
-            myDa.Fill(myDs);
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
