@@ -14,7 +14,13 @@ namespace ClientMain
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmLogin());
+
+            FrmLogin fLogin = new FrmLogin();
+            if (fLogin.ShowDialog() == DialogResult.OK)
+            {
+                Application.Run(new FrmClientMain(fLogin.getAccount(), fLogin.getUser(), fLogin.getDepartment()));
+            }
+
         }
     }
 }

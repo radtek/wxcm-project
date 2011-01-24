@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -40,6 +41,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             this.SuspendLayout();
             // 
             // button3
@@ -102,7 +107,7 @@
             this.loginpassword.PasswordChar = '*';
             this.loginpassword.Size = new System.Drawing.Size(251, 21);
             this.loginpassword.TabIndex = 18;
-            this.loginpassword.Enter += new System.EventHandler(this.loginpassword_Enter);
+            this.loginpassword.Validating += new System.ComponentModel.CancelEventHandler(this.loginpassword_Validating);
             // 
             // loginuser
             // 
@@ -111,7 +116,7 @@
             this.loginuser.Name = "loginuser";
             this.loginuser.Size = new System.Drawing.Size(251, 21);
             this.loginuser.TabIndex = 17;
-            this.loginuser.TextChanged += new System.EventHandler(this.loginuser_TextChanged);
+            this.loginuser.Validating += new System.ComponentModel.CancelEventHandler(this.loginuser_Validating);
             // 
             // label5
             // 
@@ -163,6 +168,14 @@
             this.label1.Text = "综合平台登陆 ";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // errorProvider2
+            // 
+            this.errorProvider2.ContainerControl = this;
+            // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -183,6 +196,8 @@
             this.Name = "FrmLogin";
             this.Text = "登陆界面";
             this.Load += new System.EventHandler(this.FrmLogin_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -202,5 +217,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ErrorProvider errorProvider2;
     }
 }

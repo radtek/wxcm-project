@@ -19,10 +19,7 @@ namespace ClientMain
         {
             InitializeComponent();
 
-            if (this.loginuser.Text == "")
-                this.loginpassword.Enabled = false;
-            else
-                this.loginpassword.Enabled = true; 
+            this.loginuser.Focus(); 
         }
 
         public string getAccount()
@@ -40,47 +37,46 @@ namespace ClientMain
             return this.comboBox2.Text.Trim();
         }
 
+
         private void button1_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(loginuser.Text.Trim()))
             {
                 MessageBox.Show("请您输入用户！！", "警告", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                this.loginuser.Text = "";
                 this.loginuser.Focus();
-                return;
             }
             else if (string.IsNullOrEmpty(loginpassword.Text.Trim()))
             {
                 MessageBox.Show("请您输入登陆密码！！", "警告", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                this.loginpassword.Text = "";
                 this.loginpassword.Focus();
-                return;
-            }
-            if (true)
-            {
-                FrmClientMain frmClient = new FrmClientMain(this.getAccount(), this.getUser(), this.getDepartment());
-                frmClient.Show();
-                this.Hide();
             }
             else
             {
-                if(MessageBox.Show("用户名密码不一致，登陆失败！！", "警告", MessageBoxButtons.OK, MessageBoxIcon.Stop) == DialogResult.OK)
+                if (true)
                 {
-                    this.loginuser.Text = "";
-                    this.loginpassword.Text = "";
-                    this.loginpassword.Enabled = false;
-                    this.comboBox1.Text = "";
-                    this.comboBox2.Text = "";
-                    this.loginuser.Focus(); 
+                    this.Close();
+                    this.DialogResult = DialogResult.OK;
                 }
-                return;
+                else
+                {
+                    if (MessageBox.Show("用户名密码不一致，登陆失败！！", "警告", MessageBoxButtons.OK, MessageBoxIcon.Stop) == DialogResult.OK)
+                    {
+                        this.loginuser.Text = "";
+                        this.loginpassword.Text = "";
+                        this.comboBox1.Text = "";
+                        this.comboBox2.Text = "";
+                        this.loginuser.Focus();
+
+                    }
+
+                }
             }
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             this.Dispose();
-            GC.Collect();
             Application.Exit();
         }
 
@@ -88,9 +84,11 @@ namespace ClientMain
         {
             this.loginuser.Text = "";
             this.loginpassword.Text = "";
-            this.loginpassword.Enabled = false;
             this.comboBox1.Text = "";
             this.comboBox2.Text = "";
+            this.errorProvider1.Clear();
+            this.errorProvider2.Clear();
+            this.loginuser.Focus();
         }
 
         private void FrmLogin_Load(object sender, EventArgs e)
@@ -100,7 +98,7 @@ namespace ClientMain
             m_cnn.ConnectionString = strCon;
             try
             {
-                m_cnn.Open();
+               m_cnn.Open();
             }
             catch (Exception ex)
             {
@@ -115,13 +113,34 @@ namespace ClientMain
             }
         }
 
-        private void loginuser_TextChanged(object sender, EventArgs e)
+        private void loginuser_Validating(object sender, EventArgs e)
         {
-            this.loginpassword.Enabled = true;
+            string error = null;
+            if (string.IsNullOrEmpty(loginuser.Text.Trim()))
+            {
+                error = "请您输入用户！！";
+                this.loginuser.Focus();
+            }
+            errorProvider1.SetError((Control)sender, error);
+
+
+            string sql = "select username from SYS_USER";
+            if (this.loginuser.Text == "admin")
+            {
+                this.comboBox1.Text = "合肥";
+            }
+
         }
 
-        private void loginpassword_Enter(object sender, EventArgs e)
+        private void loginpassword_Validating(object sender, EventArgs e)
         {
+            string error = null;
+            if (string.IsNullOrEmpty(loginpassword.Text.Trim()))
+            {
+                error = "请您输入登陆密码！！";
+            }
+            errorProvider2.SetError((Control)sender, error);
+
             string strSQLAccount = "select e.ztid,e.ztmc from sys_user  a " +
             "left join  sys_employees b  on b.employeeid=a.empid " +
             "left join  sys_empee_department c on c.employeeid=b.employeeid " +
@@ -137,7 +156,7 @@ namespace ClientMain
            " WHERE employeeid=(select empid from sys_user where username='" + this.loginuser.Text + "')) and ztid='" + this.comboBox1.Text + "'";
 
             OracleDataAdapter myDa = new OracleDataAdapter();
-            myDa.SelectCommand = new OracleCommand(strSQLAccount, m_cnn); 
+            myDa.SelectCommand = new OracleCommand(strSQLAccount, m_cnn);
             DataSet myDs = new DataSet();
             myDa.Fill(myDs);
         }
