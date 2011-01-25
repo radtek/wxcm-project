@@ -15,6 +15,8 @@ namespace ClientMain
     {
         OracleConnection m_cnn = null;
         private string m_PassWord = null;
+        Dictionary<string, string> m_Dict = new Dictionary<string, string>();
+
 
         public FrmLogin()
         {
@@ -148,31 +150,13 @@ namespace ClientMain
                             if (!this.comboBox1.Items.Contains(rdrAccount.GetString(1)))
                             {
                                 this.comboBox1.Items.Add(rdrAccount.GetString(1));
+                                m_Dict.Add(rdrAccount.GetString(1), rdrAccount.GetString(0));
                             }
-
-                            string strDepart = "SELECT departmentid, " +
-                           "departmentname " +
-                           "FROM sys_department " +
-                           " WHERE departmentid IN (SELECT departmentid " +
-                           " FROM sys_empee_department " +
-                           " WHERE employeeid=(select empid from sys_user where username='" + this.loginuser.Text + "')) and ztid='" +
-                           rdrAccount.GetString(0) + "'";
-
-                            OracleCommand cmdDepart = new OracleCommand(strDepart, m_cnn);
-                            OracleDataReader rdrDept = cmdDepart.ExecuteReader();
-                            while (rdrDept.Read())
-                            {
-                                if (!this.comboBox2.Items.Contains(rdrDept.GetString(1)))
-                                {
-                                    this.comboBox2.Items.Add(rdrDept.GetString(1));
-                                }
-                            }
-                            rdrDept.Close();
-
-
                         }
-                        this.comboBox1.SelectedIndex = 0;
-                        this.comboBox2.SelectedIndex = 0;
+                        if (this.comboBox1.Items.Count != 0)
+                        {
+                            this.comboBox1.SelectedIndex = 0; 
+                        }
                         // always call Close when done reading.
                         rdrAccount.Close();
                     }
@@ -238,6 +222,38 @@ namespace ClientMain
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string strDepart = "SELECT departmentid, " +
+                           "departmentname " +
+                           "FROM sys_department " +
+                           " WHERE departmentid IN (SELECT departmentid " +
+                           " FROM sys_empee_department " +
+                           " WHERE employeeid=(select empid from sys_user where username='" + this.loginuser.Text + "')) and ztid='" +
+                           m_Dict[this.comboBox1.Text] + "'";
+
+            this.comboBox2.Items.Clear();
+            try
+            {
+                OracleCommand cmdDepart = new OracleCommand(strDepart, m_cnn);
+                OracleDataReader rdrDept = cmdDepart.ExecuteReader();
+                while (rdrDept.Read())
+                {
+                    if (!this.comboBox2.Items.Contains(rdrDept.GetString(1)))
+                    {
+                        this.comboBox2.Items.Add(rdrDept.GetString(1));
+                    }
+                }
+
+                if (this.comboBox2.Items.Count != 0)
+                {
+                    this.comboBox2.SelectedIndex = 0;
+                }
+                rdrDept.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
             
         }
 
