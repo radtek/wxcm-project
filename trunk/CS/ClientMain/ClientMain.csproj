@@ -94,11 +94,47 @@
     <Compile Include="FrmClientMain.Designer.cs">
       <DependentUpon>FrmClientMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="DepartManagement\FrmDeptMt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DepartManagement\FrmDeptMt.Designer.cs">
+      <DependentUpon>FrmDeptMt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DepartManagement\FrmDeptMtChild.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DepartManagement\FrmDeptMtChild.Designer.cs">
+      <DependentUpon>FrmDeptMtChild.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DepartManagement\FrmDeptQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DepartManagement\FrmDeptQuery.Designer.cs">
+      <DependentUpon>FrmDeptQuery.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StaffManagement\FrmStaffMt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StaffManagement\FrmStaffMt.Designer.cs">
+      <DependentUpon>FrmStaffMt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StaffManagement\FrmStaffMtChild.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StaffManagement\FrmStaffMtChild.Designer.cs">
+      <DependentUpon>FrmStaffMtChild.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StaffManagement\FrmStaffQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StaffManagement\FrmStaffQuery.Designer.cs">
+      <DependentUpon>FrmStaffQuery.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -117,8 +153,20 @@
     <EmbeddedResource Include="FrmClientMain.resx">
       <DependentUpon>FrmClientMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DepartManagement\FrmDeptMt.resx">
+      <DependentUpon>FrmDeptMt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DepartManagement\FrmDeptMtChild.resx">
+      <DependentUpon>FrmDeptMtChild.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DepartManagement\FrmDeptQuery.resx">
+      <DependentUpon>FrmDeptQuery.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StaffManagement\FrmStaffMt.resx">
+      <DependentUpon>FrmStaffMt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -130,13 +178,18 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="StaffManagement\FrmStaffMtChild.resx">
+      <DependentUpon>FrmStaffMtChild.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StaffManagement\FrmStaffQuery.resx">
+      <DependentUpon>FrmStaffQuery.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="rolemanger.resx">
       <DependentUpon>rolemanger.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserManger.resx">
       <DependentUpon>UserManger.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

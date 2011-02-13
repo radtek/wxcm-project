@@ -9,6 +9,7 @@ using DevExpress.XtraNavBar;
 using DevExpress.Utils;
 using DevExpress.Utils.Serializers;
 using System.Security.Cryptography;
+using System.Data.OracleClient;
 
 using System.Runtime.Remoting;
 using System.Runtime.Remoting.Channels;
@@ -22,14 +23,20 @@ namespace ClientMain
     public partial class FrmClientMain : Form 
     {
         private DevExpress.XtraNavBar.NavBarControl outlookBar1;
-        private ListView listView1;
-        private int unit = 36;
+        private ListView listView1 = null;
+        //private int unit = 36;
 
         //private IUpdateServer updateServer;
         private TcpClientChannel tcpChanner = null;
 
-        private DataSet ds = null; 
+        //private DataSet ds = null;
 
+        OracleConnection Con;
+        OracleDataAdapter Adapter;
+        DataSet ds;
+        //OracleCommandBuilder cb;
+        DataTable dt;
+        //OracleCommand cmd;
 
         public FrmClientMain()
         {
@@ -47,7 +54,45 @@ namespace ClientMain
         private void FrmClientMain_Load(object sender, EventArgs e)
         {
             //            CreateToolBar();//创建outlookbar
+            string strCon = "Data Source=XINHUA;User Id=xxb;Password=pass;Integrated Security=no;";
+            Con = new OracleConnection(strCon);
+
+            string strSQL = "select * from SYS_MODEL";
+            Adapter = new OracleDataAdapter(strSQL, Con);
+            //cb = new OracleCommandBuilder(Adapter);
+
+            ds = new DataSet();
+            Adapter.Fill(ds, "SYS_MODEL");
+
+            dt = ds.Tables["SYS_MODEL"];
+
             CreateOutlookBar();
+        }
+
+        private void CreateNavGroup(DataView dvRoot)
+        {
+
+            foreach (DataRowView theRow in dvRoot)
+            {
+                NavBarGroup group = new NavBarGroup(theRow.Row["MODELNAME"].ToString());
+                group.GroupStyle = NavBarGroupStyle.SmallIconsList;
+                group.Name = theRow.Row["ID"].ToString();
+                this.outlookBar1.Groups.Add(group);                       
+            }
+
+            
+        }
+
+        private void CreateNavChild(DataView dvChild, NavBarGroup group)
+        {
+            dvChild.RowFilter = "PARENTMODEL = '" + group.Name.Trim() + "'";
+            foreach (DataRowView theRow in dvChild)
+            {
+                NavBarItem item = new NavBarItem(theRow.Row["MODELNAME"].ToString());
+                item.Name = theRow.Row["MODELNAME"].ToString();
+                group.ItemLinks.Add(item);
+                this.outlookBar1.Items.Add(item);
+            }
         }
 
 
@@ -75,111 +120,148 @@ namespace ClientMain
             this.outlookBar1.NavigationPaneGroupClientHeight = 200;
             this.outlookBar1.Appearance.NavigationPaneHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
 
-            System.Drawing.Image image = null;
+            //System.Drawing.Image image = null;
 
-            for (int j = 1; j < 10; j++)
-            {
+            dt.DefaultView.RowFilter = "PARENTMODEL = '0'";
+            DataView dvRoot = dt.DefaultView;
+            CreateNavGroup(dvRoot);
 
-                string text = "功能组"+j.ToString();
-                
-                NavBarGroup group = new NavBarGroup(text);
+            dt.DefaultView.RowFilter = null;
+            dt.DefaultView.RowFilter = "PARENTMODEL <> '0' ";
+            DataView dvChild = dt.DefaultView;
 
-                group.GroupStyle = NavBarGroupStyle.SmallIconsList;
+            
 
-                /*构造outlookbar左边工具栏列表*/
-
-                for (int jj = 1; jj < 8; jj++)
-                {
-
-                    string detailID = "aa" + jj.ToString();
-
-
-                    string childText = "功能" + jj.ToString();
-
-                    NavBarItem item = new NavBarItem(childText);
-
-                    string img = "config";
-                    //if (img == "" || img == null)
-                    //    img = "1";
-                    image = GetOutLookImage(img);
-
-                    //NavBarItem item = new NavBarItem(childText);
-                    item.SmallImage = image.GetThumbnailImage(20, 20, null, IntPtr.Zero);
-
-                    item.Tag = detailID;
-
-
-                    group.ItemLinks.Add(item);
-                    this.outlookBar1.Items.Add(item);
-                }
-
-                this.outlookBar1.Groups.Add(group);
-
-
+            for (int i = 0; i < this.outlookBar1.Groups.Count; i++)
+            {                
+                CreateNavChild(dvChild, this.outlookBar1.Groups[i]);
             }
+            //for (int j = 1; j < 10; j++)
+            //{
+
+            //    string text = "功能组"+j.ToString();
+                
+            //    NavBarGroup group = new NavBarGroup(text);
+
+            //    group.GroupStyle = NavBarGroupStyle.SmallIconsList;
+
+            //    /*构造outlookbar左边工具栏列表*/
+
+            //    for (int jj = 1; jj < 8; jj++)
+            //    {
+
+            //        string detailID = "aa" + jj.ToString();
+
+
+            //        string childText = "功能" + jj.ToString();
+
+            //        NavBarItem item = new NavBarItem(childText);
+
+            //        string img = "config";
+            //        //if (img == "" || img == null)
+            //        //    img = "1";
+            //        image = GetOutLookImage(img);
+
+            //        //NavBarItem item = new NavBarItem(childText);
+            //        item.SmallImage = image.GetThumbnailImage(20, 20, null, IntPtr.Zero);
+
+            //        item.Tag = detailID;
+
+
+            //        group.ItemLinks.Add(item);
+            //        this.outlookBar1.Items.Add(item);
+            //    }
+
+            //    this.outlookBar1.Groups.Add(group);
+
+
+            //}
             this.outlookBar1.ResumeLayout(false);
 
         }
 
         void outlookBar1_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
+           
             //            MessageBox.Show(string.Format("The {0} link has been clicked", e.Link.Caption));
 
             NavBarItem item = e.Link.Item;
-
-            if (item.Name == "主界面")
+            if (item.Name == "部门管理")
             {
-                listView1.Hide();
+                FrmDeptMt DeptMt = new FrmDeptMt();
+                DeptMt.ShowDialog();
             }
-            else
+
+            if (item.Name == "员工管理")
             {
-                if (listView1 == null || !panelRight.Controls.Contains(listView1))
-                {
-                                       InitImageList();
-
-                    listView1 = new ListView();
-                    listView1.DoubleClick += new EventHandler(listView1_DoubleClick);
-                    listView1.KeyDown += new KeyEventHandler(listView1_KeyDown);
-                    listView1.View = View.LargeIcon;
-                    listView1.Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom;
-                    listView1.BorderStyle = BorderStyle.None;
-                    listView1.LargeImageList = imageList1;
-                    listView1.SmallImageList = imageList2;
-                    listView1.HeaderStyle = ColumnHeaderStyle.Clickable;
-                    listView1.Scrollable = true;
-
-                    listView1.Columns.Add("名称", 300, HorizontalAlignment.Left);
-                    listView1.Columns.Add("说明", 500, HorizontalAlignment.Left);
-
-                    listView1.Left = 10;
-                    listView1.Top = this.unit;
-                    listView1.Height = this.panelRight.Height;
-                    listView1.Width = this.panelRight.Width;
-                    this.panelRight.Controls.Add(listView1);
-                    listView1.BringToFront();
-                    string itemtext = "功能1";
-                    ListViewItem item1 = new ListViewItem("功能1");
-                    item1.ImageIndex = 1;
-                    item1.Tag = "1";
-                    listView1.Items.Add(item1);
-
-                    itemtext = "功能2";
-                    ListViewItem item2 = new ListViewItem("功能2");
-                    item2.ImageIndex = 2;
-                    item2.Tag = "2";
-                    listView1.Items.Add(item2);
-
-                    //                    BuildListView(item.Tag.ToString());
-                    //                    this.listView1.ContextMenu = null;
-                }
-                else
-                {
-                    //                    listView1.Items.Clear();
-                    listView1.BringToFront();
-                    listView1.Show();
-                    //                    BuildListView(item.Tag.ToString());
-                }
+                FrmStaffMt StaffMt = new FrmStaffMt();
+                StaffMt.ShowDialog();
             }
+
+            if (item.Name == "角色管理")
+            {
+                rolemanger RoleMt = new rolemanger();
+                RoleMt.ShowDialog();
+            }
+
+            if (item.Name == "用户管理")
+            {
+                UserManger UserMt = new UserManger();
+                UserMt.ShowDialog();
+            }
+            //if (item.Name == "主界面")
+            //{
+            //    listView1.Hide();
+            //}
+            //else
+            //{
+            //    if (listView1 == null || !panelRight.Controls.Contains(listView1))
+            //    {
+            //                           InitImageList();
+
+            //        listView1 = new ListView();
+            //        listView1.DoubleClick += new EventHandler(listView1_DoubleClick);
+            //        listView1.KeyDown += new KeyEventHandler(listView1_KeyDown);
+            //        listView1.View = View.LargeIcon;
+            //        listView1.Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom;
+            //        listView1.BorderStyle = BorderStyle.None;
+            //        listView1.LargeImageList = imageList1;
+            //        listView1.SmallImageList = imageList2;
+            //        listView1.HeaderStyle = ColumnHeaderStyle.Clickable;
+            //        listView1.Scrollable = true;
+
+            //        listView1.Columns.Add("名称", 300, HorizontalAlignment.Left);
+            //        listView1.Columns.Add("说明", 500, HorizontalAlignment.Left);
+
+            //        listView1.Left = 10;
+            //        listView1.Top = this.unit;
+            //        listView1.Height = this.panelRight.Height;
+            //        listView1.Width = this.panelRight.Width;
+            //        this.panelRight.Controls.Add(listView1);
+            //        listView1.BringToFront();
+            //        string itemtext = "功能1";
+            //        ListViewItem item1 = new ListViewItem("功能1");
+            //        item1.ImageIndex = 1;
+            //        item1.Tag = "1";
+            //        listView1.Items.Add(item1);
+
+            //        itemtext = "功能2";
+            //        ListViewItem item2 = new ListViewItem("功能2");
+            //        item2.ImageIndex = 2;
+            //        item2.Tag = "2";
+            //        listView1.Items.Add(item2);
+
+            //        //                    BuildListView(item.Tag.ToString());
+            //        //                    this.listView1.ContextMenu = null;
+            //    }
+            //    else
+            //    {
+            //        //                    listView1.Items.Clear();
+            //        listView1.BringToFront();
+            //        listView1.Show();
+            //        //                    BuildListView(item.Tag.ToString());
+            //    }
+            //}
 
         }
 
@@ -222,10 +304,10 @@ namespace ClientMain
             //string url = @"tcp://192.168.8.158:8086/UpdateServer";
  
             this.tcpChanner = new TcpClientChannel();
-            ChannelServices.RegisterChannel(this.tcpChanner, false);
+            //ChannelServices.RegisterChannel(this.tcpChanner, false);
             //this.updateServer = (IUpdateServer)Activator.GetObject(typeof(IUpdateServer), url);
 
-            string commandText = "select * from jt_j_fxfl";
+            //string commandText = "select * from jt_j_fxfl";
             //this.ds = this.updateServer.ExecuteDataset(commandText);
 
             //string bb = updateServer.ExecuteDataset1(commandText);
@@ -233,7 +315,7 @@ namespace ClientMain
 
             //MessageBox.Show(string.Format("The {0} link has been clicked", bb));
 
-            MessageBox.Show(string.Format("The {0} link has been clicked", this.ds.DataSetName));
+            //essageBox.Show(string.Format("The {0} link has been clicked", this.ds.DataSetName));
         }
 
         private void listView1_KeyDown(object sender, KeyEventArgs e)

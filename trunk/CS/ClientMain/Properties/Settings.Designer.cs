@@ -22,5 +22,16 @@ namespace ClientMain.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=XINHUA;Persist Security Info=True;User ID=xxb;Password=pass;Unicode=T" +
+            "rue")]
+        public string strConOracle {
+            get {
+                return ((string)(this["strConOracle"]));
+            }
+        }
     }
 }

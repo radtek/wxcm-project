@@ -54,3 +54,31 @@ D:\WXCM-Project\CS\ClientMain\obj\Debug\ClientMain.FrmLogin.resources
 D:\WXCM-Project\CS\ClientMain\obj\Debug\ClientMain.Properties.Resources.resources
 D:\WXCM-Project\CS\ClientMain\obj\Debug\GenerateResource-ResGen.read.1.tlog
 D:\WXCM-Project\CS\ClientMain\obj\Debug\GenerateResource-ResGen.write.1.tlog
+D:\WXCM-Project - 副本\CS\ClientMain\obj\Debug\ClientMain.exe
+D:\WXCM-Project - 副本\CS\ClientMain\obj\Debug\ClientMain.pdb
+D:\WXCM-Project - 副本\CS\ClientMain\bin\Debug\ClientMain.exe
+D:\WXCM-Project - 副本\CS\ClientMain\bin\Debug\ClientMain.pdb
+D:\WXCM-Project - 副本\CS\ClientMain\obj\Debug\ResolveAssemblyReference.cache
+D:\WXCM-Project - 副本\CS\ClientMain\obj\Debug\ClientMain.FrmClientMain.resources
+D:\WXCM-Project - 副本\CS\ClientMain\obj\Debug\ClientMain.FrmLogin.resources
+D:\WXCM-Project - 副本\CS\ClientMain\obj\Debug\ClientMain.Properties.Resources.resources
+D:\WXCM-Project - 副本\CS\ClientMain\obj\Debug\GenerateResource-ResGen.read.1.tlog
+D:\WXCM-Project - 副本\CS\ClientMain\obj\Debug\GenerateResource-ResGen.write.1.tlog
+D:\WXCM-Project - 副本\CS\ClientMain\obj\Debug\ClientMain.FrmDeptMt.resources
+D:\WXCM-Project - 副本\CS\ClientMain\obj\Debug\ClientMain.FrmDeptMtChild.resources
+D:\WXCM-Project - 副本\CS\ClientMain\obj\Debug\ClientMain.FrmDeptQuery.resources
+D:\WXCM-Project - 副本\CS\ClientMain\obj\Debug\ClientMain.FrmStaffMt.resources
+D:\WXCM-Project - 副本\CS\ClientMain\obj\Debug\ClientMain.FrmStaffQuery.resources
+D:\WXCM-Project - 副本\CS\ClientMain\obj\Debug\ClientMain.FrmStaffMtChild.resources
+D:\WXCM-Project - 副本\CS\ClientMain\obj\Debug\GenerateResource.read.1.tlog
+D:\WXCM-Project\CS\ClientMain\obj\Debug\ClientMain.RoleEdit.resources
+D:\WXCM-Project\CS\ClientMain\obj\Debug\ClientMain.RoleAdd.resources
+D:\WXCM-Project\CS\ClientMain\obj\Debug\ClientMain.FrmDeptMt.resources
+D:\WXCM-Project\CS\ClientMain\obj\Debug\ClientMain.FrmDeptMtChild.resources
+D:\WXCM-Project\CS\ClientMain\obj\Debug\ClientMain.FrmDeptQuery.resources
+D:\WXCM-Project\CS\ClientMain\obj\Debug\ClientMain.FrmStaffMt.resources
+D:\WXCM-Project\CS\ClientMain\obj\Debug\ClientMain.FrmStaffMtChild.resources
+D:\WXCM-Project\CS\ClientMain\obj\Debug\ClientMain.FrmStaffQuery.resources
+D:\WXCM-Project\CS\ClientMain\obj\Debug\ClientMain.rolemanger.resources
+D:\WXCM-Project\CS\ClientMain\obj\Debug\ClientMain.UserManger.resources
+D:\WXCM-Project\CS\ClientMain\obj\Debug\GenerateResource.read.1.tlog

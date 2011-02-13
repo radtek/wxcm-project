@@ -11,12 +11,78 @@ using System.Data.OracleClient;
 
 namespace ClientMain
 {
+
     public partial class FrmLogin : Form
     {
+        private static string strAcct = "";
+        private static string strDept = "";
+        private static string strUser = "";
+        private static Dictionary<string, string> m_dictName2ID = new Dictionary<string, string>();
+        private static Dictionary<string, string> m_dictID2Name = new Dictionary<string, string>();
+
         OracleConnection m_cnn = null;
         private string m_PassWord = null;
-        Dictionary<string, string> m_Dict = new Dictionary<string, string>();
+       
 
+        public static string getAccount
+        {
+            get
+            {
+                return strAcct;
+            }
+            set
+            {
+                strAcct = value;
+            }
+        }
+
+        public static string getUser
+        {
+            get
+            {
+                return strUser;
+            }
+            set
+            {
+                strUser = value;
+            }
+        }
+
+        public static string getDepartment
+        {
+            get
+            {
+                return strDept;
+            }
+            set
+            {
+                strDept = value;
+            }
+        }
+
+        public static  Dictionary<string, string> getDictID2Name
+        {
+            get
+            {
+                return m_dictID2Name;
+            }
+            set
+            {
+                m_dictID2Name = value;
+            }
+        }
+
+        public static Dictionary<string, string> getDictName2ID
+        {
+            get
+            {
+                return m_dictName2ID;
+            }
+            set
+            {
+                m_dictName2ID = value;
+            }
+        }
 
         public FrmLogin()
         {
@@ -25,21 +91,9 @@ namespace ClientMain
             this.loginuser.Focus(); 
         }
 
-        public string getAccount()
-        {
-            return this.comboBox1.Text.Trim();
-        }
+       
 
-        public string getUser()
-        {
-            return this.loginuser.Text.Trim();
-        }
-
-        public string getDepartment()
-        {
-            return this.comboBox2.Text.Trim();
-        }
-
+        
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -59,6 +113,9 @@ namespace ClientMain
             {
                 if (m_PassWord == this.loginpassword.Text)
                 {
+                    FrmLogin.strUser = this.loginuser.Text.Trim();
+                    FrmLogin.strAcct = this.comboBox1.Text.Trim();
+                    FrmLogin.strDept = this.comboBox2.Text.Trim();
                     this.Close();
                     this.DialogResult = DialogResult.OK;
                 }
@@ -81,7 +138,7 @@ namespace ClientMain
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            this.Close();
             Application.Exit();
         }
 
@@ -98,12 +155,23 @@ namespace ClientMain
 
         private void FrmLogin_Load(object sender, EventArgs e)
         {
+            m_dictID2Name.Clear();
+            m_dictName2ID.Clear();
+
             string strCon = "Data Source=XINHUA;User Id=xxb;Password=pass;Integrated Security=no;";
             m_cnn = new OracleConnection();
             m_cnn.ConnectionString = strCon;
             try
             {
                m_cnn.Open();
+               string strZTBM = "select ZTID, ZTMC from SYS_ZTBM";
+               OracleCommand cmd = new OracleCommand(strZTBM, m_cnn);
+               OracleDataReader rdr = cmd.ExecuteReader();
+               while (rdr.Read())
+               {
+                   m_dictName2ID.Add(rdr.GetString(1), rdr.GetString(0));
+                   m_dictID2Name.Add(rdr.GetString(0), rdr.GetString(1));
+               }
             }
             catch (Exception ex)
             {
@@ -115,6 +183,8 @@ namespace ClientMain
         private void loginuser_Validating(object sender, EventArgs e)
         {
             string error = null;
+            
+
             if (string.IsNullOrEmpty(loginuser.Text.Trim()))
             {
                 error = "请您输入用户！！";
@@ -149,8 +219,7 @@ namespace ClientMain
                         {
                             if (!this.comboBox1.Items.Contains(rdrAccount.GetString(1)))
                             {
-                                this.comboBox1.Items.Add(rdrAccount.GetString(1));
-                                m_Dict.Add(rdrAccount.GetString(1), rdrAccount.GetString(0));
+                                this.comboBox1.Items.Add(rdrAccount.GetString(1));                                
                             }
                         }
                         if (this.comboBox1.Items.Count != 0)
@@ -228,7 +297,7 @@ namespace ClientMain
                            " WHERE departmentid IN (SELECT departmentid " +
                            " FROM sys_empee_department " +
                            " WHERE employeeid=(select empid from sys_user where username='" + this.loginuser.Text + "')) and ztid='" +
-                           m_Dict[this.comboBox1.Text] + "'";
+                           m_dictName2ID[this.comboBox1.Text] + "'";
 
             this.comboBox2.Items.Clear();
             try
