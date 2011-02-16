@@ -37,6 +37,8 @@ namespace ClientMain
         //OracleCommandBuilder cb;
         DataTable dt;
         //OracleCommand cmd;
+        string m_strName;
+        string m_strDept;
 
         public FrmClientMain()
         {
@@ -49,6 +51,9 @@ namespace ClientMain
             lb_zt.Text = "   帐套：" + strAccount;
             lb_user.Text = "   用户：" + strUser;
             lb_dept.Text = "   部门：" + strDepart;
+
+            m_strDept = strDepart;
+            m_strName = strUser;
 
         }
         private void FrmClientMain_Load(object sender, EventArgs e)
@@ -88,10 +93,14 @@ namespace ClientMain
             dvChild.RowFilter = "PARENTMODEL = '" + group.Name.Trim() + "'";
             foreach (DataRowView theRow in dvChild)
             {
-                NavBarItem item = new NavBarItem(theRow.Row["MODELNAME"].ToString());
-                item.Name = theRow.Row["MODELNAME"].ToString();
-                group.ItemLinks.Add(item);
-                this.outlookBar1.Items.Add(item);
+                //a trick
+                if (theRow.Row["MODELNAME"].ToString() != "菜单管理")
+                {
+                    NavBarItem item = new NavBarItem(theRow.Row["MODELNAME"].ToString());
+                    item.Name = theRow.Row["MODELNAME"].ToString();
+                    group.ItemLinks.Add(item);
+                    this.outlookBar1.Items.Add(item);
+                }
             }
         }
 
@@ -198,17 +207,17 @@ namespace ClientMain
                 StaffMt.ShowDialog();
             }
 
-            if (item.Name == "角色管理")
-            {
-                rolemanger RoleMt = new rolemanger();
-                RoleMt.ShowDialog();
-            }
+            //if (item.Name == "角色管理")
+            //{
+            //    rolemanger RoleMt = new rolemanger();
+            //    RoleMt.ShowDialog();
+            //}
 
-            if (item.Name == "用户管理")
-            {
-                UserManger UserMt = new UserManger();
-                UserMt.ShowDialog();
-            }
+            //if (item.Name == "用户管理")
+            //{
+            //    UserManger UserMt = new UserManger();
+            //    UserMt.ShowDialog();
+            //}
             //if (item.Name == "主界面")
             //{
             //    listView1.Hide();
@@ -356,6 +365,33 @@ namespace ClientMain
             }
             catch { }
             return null;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            const string message = "确定关闭吗?";
+            const string caption = "关闭?";
+            var result = MessageBox.Show(message, caption,
+                                         MessageBoxButtons.YesNo,
+                                         MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            const string message = "确定切换吗?";
+            const string caption = "切换?";
+            var result = MessageBox.Show(message, caption,
+                                         MessageBoxButtons.YesNo,
+                                         MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                Application.ExitThread();
+                System.Diagnostics.Process.Start(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            }
         }
 
 

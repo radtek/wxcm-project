@@ -59,5 +59,19 @@ namespace ClientMain.Properties {
                 resourceCulture = value;
             }
         }
+        
+        internal static System.Drawing.Bitmap shutdown {
+            get {
+                object obj = ResourceManager.GetObject("shutdown", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap userchange {
+            get {
+                object obj = ResourceManager.GetObject("userchange", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

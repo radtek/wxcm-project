@@ -1,4 +1,6 @@
-Ôªøusing System;
+
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -31,6 +33,8 @@ namespace ClientMain
 
         private void FrmDeptMt_Load(object sender, EventArgs e)
         {
+            dataGridView1.DataSource = bindingSource1;
+            
             string strCon = "Data Source=XINHUA;User Id=xxb;Password=pass;Integrated Security=no;";
             Con = new OracleConnection(strCon);
 
@@ -47,21 +51,23 @@ namespace ClientMain
             {
                 theRow["ZTID"] = FrmLogin.getDictID2Name[theRow["ZTID"].ToString()];
             }
-
-            dataGridView1.DataSource = bindingSource1;
             
             bindingSource1.DataSource = ds;
             bindingSource1.DataMember = "SYS_DEPARTMENT";
 
-            dataGridView1.AutoGenerateColumns = true;
-            
+            this.dataGridView1.Columns["DEPARTMENTID"].HeaderText = "≤ø√≈ID";
+            this.dataGridView1.Columns["DEPARTMENTNAME"].HeaderText = "≤ø√≈√˚≥∆";
+            this.dataGridView1.Columns["DESCRIPTION"].HeaderText = "≤ø√≈√Ë ˆ";
+            this.dataGridView1.Columns["ZTID"].HeaderText = "’ÀÃ◊ID";
+            this.dataGridView1.Columns["DEPARTMENTNO"].HeaderText = "≤ø√≈±‡∫≈";
+            this.dataGridView1.Columns["SFZT"].HeaderText = " «∑Ò’ÀÃ◊";
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             FrmDeptMtChild frmAdd = new FrmDeptMtChild();
-            frmAdd.Text = "Â¢ûÂä†ÈÉ®Èó®";
+            frmAdd.Text = "‘ˆº”≤ø√≈";
             
             if (frmAdd.ShowDialog() == DialogResult.OK)
             {
@@ -77,8 +83,6 @@ namespace ClientMain
                 
 
                 DataRow newRow = dt.NewRow();
-
-                dt.Columns["DEPARTMENTID"].Unique = true;
                 newRow["DEPARTMENTNAME"] = frmAdd.getDeptName();
                 newRow["DESCRIPTION"] = frmAdd.getDeptDesc();
                 newRow["ZTID"] = frmAdd.getZTID();
@@ -108,10 +112,9 @@ namespace ClientMain
             string strSFZT = dataGridView1.CurrentRow.Cells["SFZT"].Value.ToString();
 
             FrmDeptMtChild frmUpdate = new FrmDeptMtChild(strDeptName, strDeptDesc, strZTID, strDeptNum, strSFZT);
-            frmUpdate.Text = "‰øÆÊîπÈÉ®Èó®";
+            frmUpdate.Text = "–ﬁ∏ƒ≤ø√≈";
             if (frmUpdate.ShowDialog() == DialogResult.OK)
             {
-                dt.Columns["DEPARTMENTID"].Unique = true;
                 dt.Rows[dataGridView1.CurrentRow.Index]["DEPARTMENTNAME"] = frmUpdate.getDeptName();
                 dt.Rows[dataGridView1.CurrentRow.Index]["DESCRIPTION"] = frmUpdate.getDeptDesc();
                 dt.Rows[dataGridView1.CurrentRow.Index]["ZTID"] = frmUpdate.getZTID();
@@ -133,8 +136,8 @@ namespace ClientMain
 
         private void button2_Click(object sender, EventArgs e)
         {
-            const string message = "Á°ÆÂÆöÂà†Èô§Âêó?";       
-            const string caption = "Âà†Èô§?";
+            const string message = "»∑∂®…æ≥˝¬?";       
+            const string caption = "…æ≥˝?";
             var result = MessageBox.Show(message, caption,
                                          MessageBoxButtons.YesNo,
                                          MessageBoxIcon.Question);
@@ -146,7 +149,7 @@ namespace ClientMain
                 }
 
                 dt.Rows[dataGridView1.CurrentRow.Index].Delete();
-
+               
                 Adapter.Update(ds, "SYS_DEPARTMENT");
 
                 this.FrmDeptMt_Load(sender, e);
@@ -160,7 +163,7 @@ namespace ClientMain
             if (frmQuery.ShowDialog() == DialogResult.OK)
             {
                 dt.DefaultView.RowFilter = "DEPARTMENTNAME like '%" + frmQuery.getDeptName() + "%'";
-                dataGridView1.DataSource = dt.DefaultView;
+                bindingSource1.DataSource = dt.DefaultView;
             }
         }
 

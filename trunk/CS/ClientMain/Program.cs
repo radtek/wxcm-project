@@ -15,7 +15,7 @@ namespace ClientMain
            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
+            
             FrmLogin fLogin = new FrmLogin();
             if (fLogin.ShowDialog() == DialogResult.OK)
             {

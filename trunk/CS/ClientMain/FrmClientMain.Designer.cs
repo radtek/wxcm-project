@@ -41,6 +41,8 @@
             this.panelLeft = new System.Windows.Forms.Panel();
             this.panelTop = new System.Windows.Forms.Panel();
             this.picToolBar = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.pswIsOverDate = new System.Windows.Forms.Label();
             this.lb_dept = new System.Windows.Forms.Label();
             this.lb_user = new System.Windows.Forms.Label();
@@ -153,12 +155,40 @@
             // picToolBar
             // 
             this.picToolBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(226)))), ((int)(((byte)(251)))));
+            this.picToolBar.Controls.Add(this.button2);
+            this.picToolBar.Controls.Add(this.button1);
             this.picToolBar.Controls.Add(this.pswIsOverDate);
             this.picToolBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.picToolBar.Location = new System.Drawing.Point(0, 48);
             this.picToolBar.Name = "picToolBar";
             this.picToolBar.Size = new System.Drawing.Size(748, 44);
             this.picToolBar.TabIndex = 21;
+            // 
+            // button2
+            // 
+            this.button2.Image = global::ClientMain.Properties.Resources.shutdown;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(3, 12);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(50, 20);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "关闭";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Image = global::ClientMain.Properties.Resources.userchange;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(59, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(50, 20);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "切换";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // pswIsOverDate
             // 
@@ -224,10 +254,10 @@
             // 
             this.imageList2.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList2.ImageStream")));
             this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList2.Images.SetKeyName(0, "");
-            this.imageList2.Images.SetKeyName(1, "");
-            this.imageList2.Images.SetKeyName(2, "");
-            this.imageList2.Images.SetKeyName(3, "");
+            //this.imageList2.Images.SetKeyName(0, "");
+            //this.imageList2.Images.SetKeyName(1, "");
+            //this.imageList2.Images.SetKeyName(2, "");
+            //this.imageList2.Images.SetKeyName(3, "");
             // 
             // FrmClientMain
             // 
@@ -274,6 +304,8 @@
         private System.Windows.Forms.MainMenu mainMenu1;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.ImageList imageList2;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
 
 
 

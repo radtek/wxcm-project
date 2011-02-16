@@ -70,24 +70,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="RoleEdit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RoleEdit.Designer.cs">
-      <DependentUpon>RoleEdit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="RoleAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RoleAdd.Designer.cs">
-      <DependentUpon>RoleAdd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="rolemanger.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="rolemanger.Designer.cs">
-      <DependentUpon>rolemanger.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmClientMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +100,12 @@
     <Compile Include="FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="StaffManagement\FrmDeptSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StaffManagement\FrmDeptSelect.Designer.cs">
+      <DependentUpon>FrmDeptSelect.cs</DependentUpon>
+    </Compile>
     <Compile Include="StaffManagement\FrmStaffMt.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,20 +126,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserManger.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UserManger.Designer.cs">
-      <DependentUpon>UserManger.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="RoleEdit.resx">
-      <DependentUpon>RoleEdit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RoleAdd.resx">
-      <DependentUpon>RoleAdd.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrmClientMain.resx">
       <DependentUpon>FrmClientMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="DepartManagement\FrmDeptMt.resx">
       <DependentUpon>FrmDeptMt.cs</DependentUpon>
@@ -165,8 +142,12 @@
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="StaffManagement\FrmDeptSelect.resx">
+      <DependentUpon>FrmDeptSelect.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StaffManagement\FrmStaffMt.resx">
       <DependentUpon>FrmStaffMt.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -183,12 +164,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StaffManagement\FrmStaffQuery.resx">
       <DependentUpon>FrmStaffQuery.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="rolemanger.resx">
-      <DependentUpon>rolemanger.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserManger.resx">
-      <DependentUpon>UserManger.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -216,6 +191,12 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shutdown1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\userchange1.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

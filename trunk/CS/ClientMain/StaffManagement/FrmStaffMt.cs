@@ -1,4 +1,4 @@
-Ôªøusing System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,11 +13,16 @@ namespace ClientMain
     {
         OracleConnection Con;
         OracleDataAdapter Adapter;
-        DataSet ds;
-        OracleCommandBuilder cb;
+        OracleDataAdapter AdapterEmpDept;
+        OracleDataAdapter AdaSysEmpDept;
+        
+        DataSet ds;        
         DataTable dt;
+        
+        OracleCommandBuilder cb;
         OracleCommand cmd;
-
+        OracleCommandBuilder cbDeptEmp;
+        
         Dictionary<string, string> m_dictIC = new Dictionary<string, string>();
         Dictionary<string, string> m_dictCI = new Dictionary<string, string>();
 
@@ -25,45 +30,79 @@ namespace ClientMain
         {
             InitializeComponent();
             
-            m_dictIC.Add("0", "Â•≥");
-            m_dictIC.Add("1", "Áî∑");
+            m_dictIC.Add("0", "≈Æ");
+            m_dictIC.Add("1", "ƒ–");
             m_dictIC.Add("", "");
 
-            m_dictCI.Add("Â•≥", "0");
-            m_dictCI.Add("Áî∑", "1");
+            m_dictCI.Add("≈Æ", "0");
+            m_dictCI.Add("ƒ–", "1");
             m_dictCI.Add("", "");
         }
 
         private void FrmStaffMt_Load(object sender, EventArgs e)
         {
+            dataGridView1.DataSource = bindingSource1;
+            dataGridView2.DataSource = bindingSource2;
+
             string strCon = "Data Source=XINHUA;User Id=xxb;Password=pass;Integrated Security=no;";
             Con = new OracleConnection(strCon);
 
-            string strSQL = "select * from SYS_EMPLOYEES";
-            Adapter = new OracleDataAdapter(strSQL, Con);
-            cb = new OracleCommandBuilder(Adapter);
+            string strSQLEmp = "select * from SYS_EMPLOYEES";
+            Adapter = new OracleDataAdapter(strSQLEmp, Con);
+
+            string strSqlEmpDept = "select * From SYS_EMPEE_DEPARTMENT";
+            AdaSysEmpDept = new OracleDataAdapter(strSqlEmpDept, Con);
+
+            string strSQLEmpDept = "select t.EMPLOYEEID, a.DEPARTMENTID, a.DEPARTMENTNAME, a.DEPARTMENTNO, c.ZTMC from SYS_EMPEE_DEPARTMENT t left join sys_department a on t.departmentid = a.departmentid left join sys_ztbm c on a.ztid = c.ztid  ";
+            AdapterEmpDept = new OracleDataAdapter(strSQLEmpDept, Con);
 
             ds = new DataSet();
-            Adapter.Fill(ds, "SYS_EMPLOYEES");
+            Adapter.Fill(ds, "SYS_EMPLOYEES");           
+            AdapterEmpDept.Fill(ds, "EMPDEPT");
+            AdaSysEmpDept.Fill(ds, "SYS_EMPEE_DEPARTMENT");
+
+            cb = new OracleCommandBuilder(Adapter);
+            cbDeptEmp = new OracleCommandBuilder(AdaSysEmpDept);
+
+            DataRelation drFirstStep = new DataRelation("FirstStep", ds.Tables["SYS_EMPLOYEES"].Columns["EMPLOYEEID"], ds.Tables["EMPDEPT"].Columns["EMPLOYEEID"]);
+            ds.Relations.Add(drFirstStep);
 
             dt = ds.Tables["SYS_EMPLOYEES"];
             foreach (DataRow theRow in dt.Rows)
             {
                 theRow["SEX"] = m_dictIC[theRow["SEX"].ToString()];
             }
-            dataGridView1.DataSource = bindingSource1;
+            
             bindingSource1.DataSource = ds;
             bindingSource1.DataMember = "SYS_EMPLOYEES";
-
-            dataGridView1.AutoGenerateColumns = true;
             
+
+            bindingSource2.DataSource = bindingSource1;
+            bindingSource2.DataMember = "FirstStep";
+
+            this.dataGridView1.Columns["EMPLOYEEID"].HeaderText = "‘±π§ID";
+            this.dataGridView1.Columns["NAME"].HeaderText = "‘±π§–’√˚";
+            this.dataGridView1.Columns["EMPLOYEENO"].HeaderText = "‘±π§±‡∫≈";
+            this.dataGridView1.Columns["FASTCODE"].HeaderText = "÷˙º«¬Î";
+            this.dataGridView1.Columns["SEX"].HeaderText = "–‘±";
+            this.dataGridView1.Columns["BIRTHDAY"].HeaderText = "≥ˆ…˙ƒÍ‘¬";
+            this.dataGridView1.Columns["EMAIL"].HeaderText = "µÁ◊”” œ‰";
+            this.dataGridView1.Columns["TXDZ"].HeaderText = "Õ®—∂µÿ÷∑";
+            this.dataGridView1.Columns["TELEPHONE"].HeaderText = "µÁª∞";
+            this.dataGridView1.Columns["MOBILETELEPHONE"].HeaderText = "“∆∂ØµÁª∞";
+
+            this.dataGridView2.Columns["EMPLOYEEID"].HeaderText = "‘±π§ID";
+            this.dataGridView2.Columns["DEPARTMENTID"].HeaderText = "≤ø√≈ID";
+            this.dataGridView2.Columns["DEPARTMENTNO"].HeaderText = "≤ø√≈±‡∫≈";
+            this.dataGridView2.Columns["DEPARTMENTNAME"].HeaderText = "≤ø√≈√˚≥∆";
+            this.dataGridView2.Columns["ZTMC"].HeaderText = "’ÀÃ◊√˚≥∆";
 
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             FrmStaffMtChild frmAdd = new FrmStaffMtChild();
-            frmAdd.Text = "Â¢ûÂä†ÂëòÂ∑•";
+            frmAdd.Text = "‘ˆº”‘±π§";
 
             if (frmAdd.ShowDialog() == DialogResult.OK)
             {
@@ -83,7 +122,6 @@ namespace ClientMain
 
                 DataRow newRow = dt.NewRow();
 
-                dt.Columns["EMPLOYEEID"].Unique = true;
                 newRow["NAME"] = frmAdd.getName();
                 newRow["EMPLOYEENO"] = frmAdd.getNum();
                 newRow["FASTCODE"] = frmAdd.getFastCode();
@@ -109,8 +147,8 @@ namespace ClientMain
 
         private void btnDel_Click(object sender, EventArgs e)
         {
-            const string message = "Á°ÆÂÆöÂà†Èô§Âêó?";
-            const string caption = "Âà†Èô§?";
+            const string message = "»∑∂®…æ≥˝¬?";
+            const string caption = "…æ≥˝?";
             var result = MessageBox.Show(message, caption,
                                          MessageBoxButtons.YesNo,
                                          MessageBoxIcon.Question);
@@ -121,8 +159,21 @@ namespace ClientMain
                     theRow["SEX"] = m_dictCI[theRow["SEX"].ToString()];
                 }
 
-                dt.Rows[dataGridView1.CurrentRow.Index].Delete();
+                foreach (DataGridViewRow dr in this.dataGridView2.Rows)
+                {
+                    string strExp = "EMPLOYEEID = '" + dr.Cells["EMPLOYEEID"].Value.ToString() +  "'";
+                    DataRow[] dtrow = ds.Tables["SYS_EMPEE_DEPARTMENT"].Select(strExp);
+                    foreach (DataRow drow in dtrow)
+                    {
+                        drow.Delete();
+                    }
+                    this.dataGridView2.Rows.Remove(dr);
 
+                }
+                AdaSysEmpDept.Update(ds, "SYS_EMPEE_DEPARTMENT");
+
+                dt.Rows[dataGridView1.CurrentRow.Index].Delete();
+                
                 Adapter.Update(ds, "SYS_EMPLOYEES");
 
                 this.FrmStaffMt_Load(sender, e);
@@ -143,10 +194,9 @@ namespace ClientMain
 
             FrmStaffMtChild frmUpdate = new FrmStaffMtChild(strStaffNum, strStaffName, strFastCode, strGender, strBirth, 
                                                             strEmail, strAddress, strTel, strMobile);
-            frmUpdate.Text = "‰øÆÊîπÂëòÂ∑•";
+            frmUpdate.Text = "–ﬁ∏ƒ‘±π§";
             if (frmUpdate.ShowDialog() == DialogResult.OK)
             {
-                dt.Columns["EMPLOYEEID"].Unique = true;
                 dt.Rows[dataGridView1.CurrentRow.Index]["NAME"] = frmUpdate.getName();
                 dt.Rows[dataGridView1.CurrentRow.Index]["EMPLOYEENO"] = frmUpdate.getNum();
                 dt.Rows[dataGridView1.CurrentRow.Index]["FASTCODE"] = frmUpdate.getFastCode();
@@ -175,7 +225,7 @@ namespace ClientMain
             if (frmQuery.ShowDialog() == DialogResult.OK)
             {
                 dt.DefaultView.RowFilter = "NAME like '%" + frmQuery.getName() + "%'";
-                dataGridView1.DataSource = dt.DefaultView;
+                bindingSource1.DataSource = dt.DefaultView;                
             }
         }
 
@@ -187,6 +237,55 @@ namespace ClientMain
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnEnroll_Click(object sender, EventArgs e)
+        {
+            string strEmpID = dt.Rows[dataGridView1.CurrentRow.Index]["EMPLOYEEID"].ToString();
+            FrmDeptSelect DeptSelect = new FrmDeptSelect(strEmpID);
+            if (DeptSelect.ShowDialog() == DialogResult.OK)
+            {
+                this.FrmStaffMt_Load(sender, e);
+            }
+        }
+
+        private void btnLeave_Click(object sender, EventArgs e)
+        {
+            const string message = "»∑∂®¿Îø™≤ø√≈¬?";
+            const string caption = "¿Îø™?";
+            var result = MessageBox.Show(message, caption,
+                                         MessageBoxButtons.YesNo,
+                                         MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                foreach (DataGridViewRow dr in this.dataGridView2.Rows)
+                {
+                    DataGridViewCheckBoxCell checkCell = (DataGridViewCheckBoxCell)dr.Cells["CheckBoxes"];
+                    if (Convert.ToBoolean(checkCell.EditedFormattedValue))
+                    {
+                        string strExp = "EMPLOYEEID = '" + dr.Cells["EMPLOYEEID"].Value.ToString() + "' and DEPARTMENTID = '" + dr.Cells["DEPARTMENTID"].Value.ToString() + "'";
+                        DataRow[] dtrow = ds.Tables["SYS_EMPEE_DEPARTMENT"].Select(strExp);
+                        foreach (DataRow drow in dtrow)
+                        {
+                            drow.Delete();
+                        }
+                        this.dataGridView2.Rows.Remove(dr); 
+                    }
+                    
+                }
+                AdaSysEmpDept.Update(ds, "SYS_EMPEE_DEPARTMENT");
+
+            }
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0 && e.RowIndex != -1)//µ„ª˜µƒ «µ⁄1¡– ±≤≈÷¥––
+            {
+                DataGridViewCheckBoxCell checkCell = (DataGridViewCheckBoxCell)this.dataGridView2.Rows[e.RowIndex].Cells[0];
+                checkCell.Value = (Convert.ToBoolean(checkCell.EditedFormattedValue)) ? false : true;
+            }
+ 
         }
 
 
