@@ -6,8 +6,10 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraNavBar;
-using DevExpress.Utils;
-using DevExpress.Utils.Serializers;
+using DevExpress.XtraTreeList;
+using DevExpress.XtraTreeList.Nodes;
+//using DevExpress.Utils;
+//using DevExpress.Utils.Serializers;
 using System.Security.Cryptography;
 using System.Data.OracleClient;
 
@@ -22,7 +24,7 @@ namespace ClientMain
 {
     public partial class FrmClientMain : Form 
     {
-        private DevExpress.XtraNavBar.NavBarControl outlookBar1;
+        //private DevExpress.XtraNavBar.NavBarControl outlookBar1;
         private ListView listView1 = null;
         //private int unit = 36;
 
@@ -37,22 +39,24 @@ namespace ClientMain
         //OracleCommandBuilder cb;
         DataTable dt;
         //OracleCommand cmd;
-        string m_strName;
-        string m_strDept;
+        readonly string m_strName;
+        readonly string m_strDeptID;
+        readonly string m_strDeptName;
 
         public FrmClientMain()
         {
             InitializeComponent();
         }
 
-        public FrmClientMain(string strAccount, string strUser, string strDepart)
+        public FrmClientMain(string strAccount, string strUser, string strDeptName, string strDeptID)
         {
             InitializeComponent();
             lb_zt.Text = "   帐套：" + strAccount;
             lb_user.Text = "   用户：" + strUser;
-            lb_dept.Text = "   部门：" + strDepart;
+            lb_dept.Text = "   部门：" + strDeptName;
 
-            m_strDept = strDepart;
+            m_strDeptID = strDeptID;
+            m_strDeptName = strDeptName;
             m_strName = strUser;
 
         }
@@ -62,7 +66,7 @@ namespace ClientMain
             string strCon = "Data Source=XINHUA;User Id=xxb;Password=pass;Integrated Security=no;";
             Con = new OracleConnection(strCon);
 
-            string strSQL = "select * from SYS_MODEL";
+            string strSQL = "select a.id, a.modelname, a.PARENTMODEL from sys_model a where a.id in (select b.module_id from sys_role_module b where b.role_id in (select c.roleid from sys_user_role c  where c.username = '" + m_strName + "' and c.deptid = '"+ m_strDeptID + "'))";
             Adapter = new OracleDataAdapter(strSQL, Con);
             //cb = new OracleCommandBuilder(Adapter);
 
@@ -70,6 +74,8 @@ namespace ClientMain
             Adapter.Fill(ds, "SYS_MODEL");
 
             dt = ds.Tables["SYS_MODEL"];
+
+       
 
             CreateOutlookBar();
         }
@@ -82,7 +88,8 @@ namespace ClientMain
                 NavBarGroup group = new NavBarGroup(theRow.Row["MODELNAME"].ToString());
                 group.GroupStyle = NavBarGroupStyle.SmallIconsList;
                 group.Name = theRow.Row["ID"].ToString();
-                this.outlookBar1.Groups.Add(group);                       
+                //this.outlookBar1.Groups.Add(group);  
+                navBarControl1.Groups.Add(group);     
             }
 
             
@@ -99,7 +106,8 @@ namespace ClientMain
                     NavBarItem item = new NavBarItem(theRow.Row["MODELNAME"].ToString());
                     item.Name = theRow.Row["MODELNAME"].ToString();
                     group.ItemLinks.Add(item);
-                    this.outlookBar1.Items.Add(item);
+                    //this.outlookBar1.Items.Add(item);
+                    navBarControl1.Items.Add(item);
                 }
             }
         }
@@ -110,26 +118,32 @@ namespace ClientMain
         /// </summary>
         private void CreateOutlookBar()
         {
-            panelLeft.Controls.Clear();
-            this.outlookBar1 = new NavBarControl();
-            this.outlookBar1.LinkClicked += new NavBarLinkEventHandler(outlookBar1_LinkClicked);
-            this.outlookBar1.Dock = DockStyle.Fill;
-            this.outlookBar1.Location = new System.Drawing.Point(10, 0);
-            this.outlookBar1.Name = "outlookBar1";
-            this.outlookBar1.Size = new System.Drawing.Size(200, 350);
-            this.outlookBar1.TabIndex = 10;
-            this.outlookBar1.Text = "outlookBar1";
-            this.panelLeft.Controls.Add(outlookBar1);
+            //panelLeft.Controls.Clear();
+            //this.outlookBar1 = new NavBarControl();
+            //this.outlookBar1.LinkClicked += new NavBarLinkEventHandler(outlookBar1_LinkClicked);
+            //this.outlookBar1.Dock = DockStyle.Fill;
+            //this.outlookBar1.Location = new System.Drawing.Point(10, 0);
+            //this.outlookBar1.Name = "outlookBar1";
+            //this.outlookBar1.Size = new System.Drawing.Size(200, 350);
+            //this.outlookBar1.TabIndex = 10;
+            //this.outlookBar1.Text = "outlookBar1";
+            //this.panelLeft.Controls.Add(outlookBar1);
 
-            this.outlookBar1.SuspendLayout();
-            this.outlookBar1.AllowSelectedLink = true;
+            //this.outlookBar1.SuspendLayout();
+           // this.outlookBar1.AllowSelectedLink = true;
 
-            this.outlookBar1.View = new DevExpress.XtraNavBar.ViewInfo.StandardSkinNavigationPaneViewInfoRegistrator("Blue");
-            this.outlookBar1.Appearance.GroupHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.outlookBar1.NavigationPaneGroupClientHeight = 200;
-            this.outlookBar1.Appearance.NavigationPaneHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            //this.outlookBar1.View = new DevExpress.XtraNavBar.ViewInfo.StandardSkinNavigationPaneViewInfoRegistrator("Blue");
+            //this.outlookBar1.Appearance.GroupHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            //this.outlookBar1.NavigationPaneGroupClientHeight = 200;
+            //this.outlookBar1.Appearance.NavigationPaneHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
 
             //System.Drawing.Image image = null;
+
+            navBarControl1.View = new DevExpress.XtraNavBar.ViewInfo.StandardSkinNavigationPaneViewInfoRegistrator("Blue");
+            navBarControl1.Appearance.GroupHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            navBarControl1.NavigationPaneGroupClientHeight = 200;
+            navBarControl1.Appearance.NavigationPaneHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+
 
             dt.DefaultView.RowFilter = "PARENTMODEL = '0'";
             DataView dvRoot = dt.DefaultView;
@@ -139,11 +153,11 @@ namespace ClientMain
             dt.DefaultView.RowFilter = "PARENTMODEL <> '0' ";
             DataView dvChild = dt.DefaultView;
 
-            
 
-            for (int i = 0; i < this.outlookBar1.Groups.Count; i++)
-            {                
-                CreateNavChild(dvChild, this.outlookBar1.Groups[i]);
+
+            for (int i = 0; i < navBarControl1.Groups.Count; i++)
+            {
+                CreateNavChild(dvChild, navBarControl1.Groups[i]);
             }
             //for (int j = 1; j < 10; j++)
             //{
@@ -185,7 +199,7 @@ namespace ClientMain
 
 
             //}
-            this.outlookBar1.ResumeLayout(false);
+            //this.outlookBar1.ResumeLayout(false);
 
         }
 
@@ -194,30 +208,7 @@ namespace ClientMain
            
             //            MessageBox.Show(string.Format("The {0} link has been clicked", e.Link.Caption));
 
-            NavBarItem item = e.Link.Item;
-            if (item.Name == "部门管理")
-            {
-                FrmDeptMt DeptMt = new FrmDeptMt();
-                DeptMt.ShowDialog();
-            }
-
-            if (item.Name == "员工管理")
-            {
-                FrmStaffMt StaffMt = new FrmStaffMt();
-                StaffMt.ShowDialog();
-            }
-
-            //if (item.Name == "角色管理")
-            //{
-            //    rolemanger RoleMt = new rolemanger();
-            //    RoleMt.ShowDialog();
-            //}
-
-            //if (item.Name == "用户管理")
-            //{
-            //    UserManger UserMt = new UserManger();
-            //    UserMt.ShowDialog();
-            //}
+            
             //if (item.Name == "主界面")
             //{
             //    listView1.Hide();
@@ -393,6 +384,36 @@ namespace ClientMain
                 System.Diagnostics.Process.Start(System.Reflection.Assembly.GetExecutingAssembly().Location);
             }
         }
+
+        private void navBarControl1_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+            NavBarItem item = e.Link.Item;
+            if (item.Name == "部门管理")
+            {
+                FrmDeptMt DeptMt = new FrmDeptMt();
+                DeptMt.ShowDialog();
+            }
+
+            if (item.Name == "员工管理")
+            {
+                FrmStaffMt StaffMt = new FrmStaffMt();
+                StaffMt.ShowDialog();
+            }
+
+            //if (item.Name == "角色管理")
+            //{
+            //    rolemanger RoleMt = new rolemanger();
+            //    RoleMt.ShowDialog();
+            //}
+
+            //if (item.Name == "用户管理")
+            //{
+            //    UserManger UserMt = new UserManger();
+            //    UserMt.ShowDialog();
+            //}
+        }
+
+        
 
 
         /// <summary>

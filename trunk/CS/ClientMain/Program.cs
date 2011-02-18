@@ -19,7 +19,7 @@ namespace ClientMain
             FrmLogin fLogin = new FrmLogin();
             if (fLogin.ShowDialog() == DialogResult.OK)
             {
-                Application.Run(new FrmClientMain(FrmLogin.getAccount, FrmLogin.getUser, FrmLogin.getDepartment));
+                Application.Run(new FrmClientMain(FrmLogin.getAccount, FrmLogin.getUser, FrmLogin.getDeptName, FrmLogin.getDeptID));
             }
             
         }

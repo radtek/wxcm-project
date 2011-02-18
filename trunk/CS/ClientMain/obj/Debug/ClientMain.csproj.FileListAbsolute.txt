@@ -99,3 +99,4 @@ D:\新建文件夹\CS\ClientMain\obj\Debug\ClientMain.FrmStaffMtChild.resources
 D:\新建文件夹\CS\ClientMain\obj\Debug\ClientMain.FrmStaffQuery.resources
 D:\新建文件夹\CS\ClientMain\obj\Debug\ClientMain.exe
 D:\新建文件夹\CS\ClientMain\obj\Debug\ClientMain.pdb
+D:\新建文件夹\CS\ClientMain\obj\Debug\ClientMain.exe.licenses

@@ -15,11 +15,16 @@ namespace ClientMain
     public partial class FrmLogin : Form
     {
         private static string strAcct = "";
-        private static string strDept = "";
+        private static string strDeptName = "";
         private static string strUser = "";
+        private static string strDeptID = "";
         private static Dictionary<string, string> m_dictName2ID = new Dictionary<string, string>();
         private static Dictionary<string, string> m_dictID2Name = new Dictionary<string, string>();
+        //private static Dictionary<string, string> m_dictDeptID2Name = new Dictionary<string, string>();
 
+        OracleDataAdapter Adapter;
+        DataSet ds;
+        DataTable dt;
         OracleConnection m_cnn = null;
         private string m_PassWord = null;
        
@@ -36,6 +41,18 @@ namespace ClientMain
             }
         }
 
+        public static string getDeptID
+        {
+            get
+            {
+                return strDeptID;
+            }
+            set
+            {
+                strDeptID = value;
+            }
+        }
+
         public static string getUser
         {
             get
@@ -48,15 +65,15 @@ namespace ClientMain
             }
         }
 
-        public static string getDepartment
+        public static string getDeptName
         {
             get
             {
-                return strDept;
+                return strDeptName;
             }
             set
             {
-                strDept = value;
+                strDeptName = value;
             }
         }
 
@@ -91,9 +108,6 @@ namespace ClientMain
             this.loginuser.Focus(); 
         }
 
-       
-
-        
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -102,6 +116,7 @@ namespace ClientMain
                 MessageBox.Show("请您输入用户！！", "警告", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 this.loginuser.Focus();
                 this.comboBox1.Items.Clear();
+                this.comboBox2.DataSource = null;
                 this.comboBox2.Items.Clear();
             }
             else if (string.IsNullOrEmpty(loginpassword.Text.Trim()))
@@ -115,7 +130,8 @@ namespace ClientMain
                 {
                     FrmLogin.strUser = this.loginuser.Text.Trim();
                     FrmLogin.strAcct = this.comboBox1.Text.Trim();
-                    FrmLogin.strDept = this.comboBox2.Text.Trim();
+                    FrmLogin.strDeptName = this.comboBox2.Text.Trim();
+                    FrmLogin.strDeptID = ((DataRowView)comboBox2.SelectedItem).Row["departmentid"].ToString();
                     this.Close();
                     this.DialogResult = DialogResult.OK;
                 }
@@ -126,6 +142,7 @@ namespace ClientMain
                         this.loginuser.Text = "";
                         this.loginpassword.Text = "";
                         this.comboBox1.Items.Clear();
+                        this.comboBox2.DataSource = null;
                         this.comboBox2.Items.Clear();
                         this.loginuser.Focus();
 
@@ -147,6 +164,7 @@ namespace ClientMain
             this.loginuser.Text = "";
             this.loginpassword.Text = "";
             this.comboBox1.Items.Clear();
+            this.comboBox2.DataSource = null;
             this.comboBox2.Items.Clear();
             this.errorProvider1.Clear();
             this.errorProvider2.Clear();
@@ -183,13 +201,14 @@ namespace ClientMain
         private void loginuser_Validating(object sender, EventArgs e)
         {
             string error = null;
-            
+            this.comboBox1.Items.Clear();
 
             if (string.IsNullOrEmpty(loginuser.Text.Trim()))
             {
                 error = "请您输入用户！！";
                 this.loginuser.Focus();
                 this.comboBox1.Items.Clear();
+                this.comboBox2.DataSource = null;
                 this.comboBox2.Items.Clear();
             }
             else
@@ -234,6 +253,7 @@ namespace ClientMain
                         error = "数据库中无此用户！！";
                         this.loginuser.Focus();
                         this.comboBox1.Items.Clear();
+                        this.comboBox2.DataSource = null;
                         this.comboBox2.Items.Clear();                        
                     }
                     rdrUser.Close();
@@ -298,25 +318,37 @@ namespace ClientMain
                            " FROM sys_empee_department " +
                            " WHERE employeeid=(select empid from sys_user where username='" + this.loginuser.Text + "')) and ztid='" +
                            m_dictName2ID[this.comboBox1.Text] + "'";
-
+            
+            this.comboBox2.DataSource = null;
             this.comboBox2.Items.Clear();
+            
+            //m_dictDeptID2Name.Clear();
             try
             {
-                OracleCommand cmdDepart = new OracleCommand(strDepart, m_cnn);
-                OracleDataReader rdrDept = cmdDepart.ExecuteReader();
-                while (rdrDept.Read())
-                {
-                    if (!this.comboBox2.Items.Contains(rdrDept.GetString(1)))
-                    {
-                        this.comboBox2.Items.Add(rdrDept.GetString(1));
-                    }
-                }
+                Adapter = new OracleDataAdapter(strDepart, m_cnn);
+                ds = new DataSet();
+                Adapter.Fill(ds, "CUSTOMDEPT");
 
-                if (this.comboBox2.Items.Count != 0)
-                {
-                    this.comboBox2.SelectedIndex = 0;
-                }
-                rdrDept.Close();
+                dt = ds.Tables["CUSTOMDEPT"];
+                this.comboBox2.DataSource = dt;
+                this.comboBox2.DisplayMember = "departmentname";
+                this.comboBox2.ValueMember = "departmentid";
+                //OracleCommand cmdDepart = new OracleCommand(strDepart, m_cnn);
+                //OracleDataReader rdrDept = cmdDepart.ExecuteReader();
+                //while (rdrDept.Read())
+                //{
+                //    m_dictDeptID2Name.Add(rdrDept.GetString(0), rdrDept.GetString(1));
+                //}
+
+                //this.comboBox2.DataSource = new BindingSource(m_dictDeptID2Name, null);
+                //this.comboBox2.DisplayMember = "Value";
+                //this.comboBox2.ValueMember = "Key";
+
+                //if (this.comboBox2.Items.Count != 0)
+                //{
+                //    this.comboBox2.SelectedIndex = 0;
+                //}
+                //rdrDept.Close();
             }
             catch (Exception ex)
             {
@@ -328,7 +360,7 @@ namespace ClientMain
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+         
         }
 
     }

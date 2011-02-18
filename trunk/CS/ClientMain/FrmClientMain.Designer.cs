@@ -38,7 +38,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelControl = new System.Windows.Forms.Panel();
             this.panelRight = new System.Windows.Forms.Panel();
-            this.panelLeft = new System.Windows.Forms.Panel();
+            this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
             this.panelTop = new System.Windows.Forms.Panel();
             this.picToolBar = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
@@ -53,6 +53,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.picTitle)).BeginInit();
             this.panel1.SuspendLayout();
             this.panelControl.SuspendLayout();
+            this.panelRight.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             this.panelTop.SuspendLayout();
             this.picToolBar.SuspendLayout();
             this.frmStatus.SuspendLayout();
@@ -64,7 +66,7 @@
             // 
             // splitter1
             // 
-            this.splitter1.Location = new System.Drawing.Point(150, 0);
+            this.splitter1.Location = new System.Drawing.Point(0, 0);
             this.splitter1.Name = "splitter1";
             this.splitter1.Size = new System.Drawing.Size(3, 261);
             this.splitter1.TabIndex = 1;
@@ -118,7 +120,6 @@
             this.panelControl.BackColor = System.Drawing.Color.Transparent;
             this.panelControl.Controls.Add(this.panelRight);
             this.panelControl.Controls.Add(this.splitter1);
-            this.panelControl.Controls.Add(this.panelLeft);
             this.panelControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl.Location = new System.Drawing.Point(0, 95);
             this.panelControl.Name = "panelControl";
@@ -128,19 +129,24 @@
             // panelRight
             // 
             this.panelRight.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelRight.Controls.Add(this.navBarControl1);
             this.panelRight.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelRight.Location = new System.Drawing.Point(153, 0);
+            this.panelRight.Location = new System.Drawing.Point(3, 0);
             this.panelRight.Name = "panelRight";
-            this.panelRight.Size = new System.Drawing.Size(595, 261);
+            this.panelRight.Size = new System.Drawing.Size(745, 261);
             this.panelRight.TabIndex = 2;
             // 
-            // panelLeft
+            // navBarControl1
             // 
-            this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelLeft.Location = new System.Drawing.Point(0, 0);
-            this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Size = new System.Drawing.Size(150, 261);
-            this.panelLeft.TabIndex = 0;
+            this.navBarControl1.ActiveGroup = null;
+            this.navBarControl1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.navBarControl1.Location = new System.Drawing.Point(0, 0);
+            this.navBarControl1.Name = "navBarControl1";
+            this.navBarControl1.OptionsNavPane.ExpandedWidth = 140;
+            this.navBarControl1.Size = new System.Drawing.Size(140, 259);
+            this.navBarControl1.TabIndex = 0;
+            this.navBarControl1.Text = "navBarControl1";
+            this.navBarControl1.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarControl1_LinkClicked);
             // 
             // panelTop
             // 
@@ -252,12 +258,9 @@
             // 
             // imageList2
             // 
-            this.imageList2.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList2.ImageStream")));
+            this.imageList2.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList2.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
-            //this.imageList2.Images.SetKeyName(0, "");
-            //this.imageList2.Images.SetKeyName(1, "");
-            //this.imageList2.Images.SetKeyName(2, "");
-            //this.imageList2.Images.SetKeyName(3, "");
             // 
             // FrmClientMain
             // 
@@ -275,6 +278,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.picTitle)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panelControl.ResumeLayout(false);
+            this.panelRight.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
             this.panelTop.ResumeLayout(false);
             this.picToolBar.ResumeLayout(false);
             this.picToolBar.PerformLayout();
@@ -294,7 +299,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panelControl;
         private System.Windows.Forms.Panel panelRight;
-        private System.Windows.Forms.Panel panelLeft;
         private System.Windows.Forms.Panel panelTop;
         private System.Windows.Forms.Panel picToolBar;
         private System.Windows.Forms.Label pswIsOverDate;
@@ -306,6 +310,7 @@
         private System.Windows.Forms.ImageList imageList2;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private DevExpress.XtraNavBar.NavBarControl navBarControl1;
 
 
 
