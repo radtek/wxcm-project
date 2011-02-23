@@ -29,7 +29,7 @@ namespace ClientMain
         //private int unit = 36;
 
         //private IUpdateServer updateServer;
-        private TcpClientChannel tcpChanner = null;
+        //private TcpClientChannel tcpChanner = null;
 
         //private DataSet ds = null;
 
@@ -85,11 +85,67 @@ namespace ClientMain
 
             foreach (DataRowView theRow in dvRoot)
             {
+                //TreeList tlDept = new TreeList();
+                //tlDept.Dock = System.Windows.Forms.DockStyle.Fill;
                 NavBarGroup group = new NavBarGroup(theRow.Row["MODELNAME"].ToString());
-                group.GroupStyle = NavBarGroupStyle.SmallIconsList;
+                //group.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.ControlContainer;
+                //NavBarGroupControlContainer taskContainer = new NavBarGroupControlContainer();
+                //taskContainer.Controls.Add(tlDept);
+                //group.ControlContainer = taskContainer;
+                group.GroupStyle = NavBarGroupStyle.SmallIconsText;
                 group.Name = theRow.Row["ID"].ToString();
                 //this.outlookBar1.Groups.Add(group);  
+               
                 navBarControl1.Groups.Add(group);     
+            }
+
+            
+        }
+
+        private void CreateRightArea(DataView dvChild, NavBarItem Item)
+        {
+            dvChild.RowFilter = "PARENTMODEL = '" + Item.Tag.ToString() + "'";
+
+            if (listView1 == null || !panelRight.Controls.Contains(listView1))
+            {
+                InitImageList();
+
+                listView1 = new ListView();
+                listView1.DoubleClick += new EventHandler(listView1_DoubleClick);
+                listView1.KeyDown += new KeyEventHandler(listView1_KeyDown);
+                listView1.View = View.LargeIcon;
+                listView1.Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom;
+                listView1.BorderStyle = BorderStyle.None;
+                listView1.LargeImageList = imageList1;
+                listView1.SmallImageList = imageList2;
+                listView1.HeaderStyle = ColumnHeaderStyle.Clickable;
+                listView1.Scrollable = true;
+
+                listView1.Columns.Add("名称", 300, HorizontalAlignment.Left);
+                listView1.Columns.Add("说明", 500, HorizontalAlignment.Left);
+                listView1.Dock = System.Windows.Forms.DockStyle.Top;
+                //listView1.Left = 10;
+                //listView1.Top = this.unit;
+                //listView1.Height = this.panelRight.Height;
+                //listView1.Width = this.panelRight.Width;
+                this.panelRight.Controls.Add(listView1);
+                listView1.BringToFront();
+
+                foreach (DataRowView theRow in dvChild)
+                {
+                    ListViewItem listitem = new ListViewItem(theRow.Row["MODELNAME"].ToString());
+                    listitem.ImageIndex = 1;
+                    listitem.Tag = theRow.Row["MODELNAME"].ToString();
+                    listView1.Items.Add(listitem);
+                }
+                
+            }
+            else
+            {
+                
+                listView1.BringToFront();
+                listView1.Show();
+               
             }
 
             
@@ -104,6 +160,7 @@ namespace ClientMain
                 if (theRow.Row["MODELNAME"].ToString() != "菜单管理")
                 {
                     NavBarItem item = new NavBarItem(theRow.Row["MODELNAME"].ToString());
+                    item.Tag = theRow.Row["ID"].ToString();
                     item.Name = theRow.Row["MODELNAME"].ToString();
                     group.ItemLinks.Add(item);
                     //this.outlookBar1.Items.Add(item);
@@ -138,7 +195,8 @@ namespace ClientMain
             //this.outlookBar1.Appearance.NavigationPaneHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
 
             //System.Drawing.Image image = null;
-
+            navBarControl1.SuspendLayout();
+            navBarControl1.AllowSelectedLink = true;
             navBarControl1.View = new DevExpress.XtraNavBar.ViewInfo.StandardSkinNavigationPaneViewInfoRegistrator("Blue");
             navBarControl1.Appearance.GroupHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             navBarControl1.NavigationPaneGroupClientHeight = 200;
@@ -297,13 +355,23 @@ namespace ClientMain
 
         private void listView1_DoubleClick(object sender, EventArgs e)
         {
+            switch (listView1.FocusedItem.Tag.ToString())
+            { 
+                case"单位信息":
+                    FrmDeptMt DeptMt = new FrmDeptMt();
+                    DeptMt.ShowDialog();
+                    break;
+                default:
+                    break;
+
+            }
 //            MessageBox.Show(string.Format("The {0} link has been clicked", listView1.FocusedItem.Tag));
 
 //            MessageBox.Show(string.Format("The {0} link has been clicked", GetMd5Str("hcz2322679")));
 
             //string url = @"tcp://192.168.8.158:8086/UpdateServer";
  
-            this.tcpChanner = new TcpClientChannel();
+            //this.tcpChanner = new TcpClientChannel();
             //ChannelServices.RegisterChannel(this.tcpChanner, false);
             //this.updateServer = (IUpdateServer)Activator.GetObject(typeof(IUpdateServer), url);
 
@@ -388,13 +456,14 @@ namespace ClientMain
         private void navBarControl1_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
             NavBarItem item = e.Link.Item;
-            if (item.Name == "部门管理")
+            
+            if (item.Name == "单位管理")
             {
-                FrmDeptMt DeptMt = new FrmDeptMt();
-                DeptMt.ShowDialog();
+                //FrmDeptMt DeptMt = new FrmDeptMt();
+                //DeptMt.ShowDialog();
+                CreateRightArea(dt.DefaultView, item);
             }
-
-            if (item.Name == "员工管理")
+            else if(item.Name == "员工管理")
             {
                 FrmStaffMt StaffMt = new FrmStaffMt();
                 StaffMt.ShowDialog();

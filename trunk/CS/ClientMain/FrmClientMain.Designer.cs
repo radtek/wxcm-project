@@ -50,6 +50,7 @@
             this.mainMenu1 = new System.Windows.Forms.MainMenu(this.components);
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
+            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.picTitle)).BeginInit();
             this.panel1.SuspendLayout();
             this.panelControl.SuspendLayout();
@@ -58,6 +59,7 @@
             this.panelTop.SuspendLayout();
             this.picToolBar.SuspendLayout();
             this.frmStatus.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // timeStatus
@@ -129,7 +131,7 @@
             // panelRight
             // 
             this.panelRight.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelRight.Controls.Add(this.navBarControl1);
+            this.panelRight.Controls.Add(this.panel2);
             this.panelRight.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelRight.Location = new System.Drawing.Point(3, 0);
             this.panelRight.Name = "panelRight";
@@ -139,11 +141,11 @@
             // navBarControl1
             // 
             this.navBarControl1.ActiveGroup = null;
-            this.navBarControl1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.navBarControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.navBarControl1.Location = new System.Drawing.Point(0, 0);
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 140;
-            this.navBarControl1.Size = new System.Drawing.Size(140, 259);
+            this.navBarControl1.Size = new System.Drawing.Size(146, 259);
             this.navBarControl1.TabIndex = 0;
             this.navBarControl1.Text = "navBarControl1";
             this.navBarControl1.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarControl1_LinkClicked);
@@ -262,6 +264,15 @@
             this.imageList2.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.navBarControl1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(146, 259);
+            this.panel2.TabIndex = 1;
+            // 
             // FrmClientMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -285,6 +296,7 @@
             this.picToolBar.PerformLayout();
             this.frmStatus.ResumeLayout(false);
             this.frmStatus.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -311,6 +323,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private DevExpress.XtraNavBar.NavBarControl navBarControl1;
+        private System.Windows.Forms.Panel panel2;
 
 
 

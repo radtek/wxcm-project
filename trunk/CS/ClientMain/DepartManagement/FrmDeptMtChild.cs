@@ -105,6 +105,7 @@ namespace ClientMain
             if (this.cbISAcct.Text == "是")
             {                
                 this.cbAcctChose.Visible = false;
+                this.cbAcctChose.Text = "";
                 this.label4.Visible = false;
             }
             else
