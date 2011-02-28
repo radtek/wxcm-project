@@ -59,7 +59,10 @@
   <ItemGroup>
     <Reference Include="DevExpress.Data.v10.2, Version=10.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v10.2, Version=10.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v10.2, Version=10.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v10.2, Version=10.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v10.2, Version=10.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v10.2, Version=10.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraNavBar.v10.2, Version=10.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraTreeList.v10.2, Version=10.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="System" />
@@ -78,22 +81,40 @@
     <Compile Include="FrmClientMain.Designer.cs">
       <DependentUpon>FrmClientMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="DepartManagement\FrmDeptMt.cs">
+    <Compile Include="FrmDeptTypeMtChild.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DepartManagement\FrmDeptMt.Designer.cs">
+    <Compile Include="FrmDeptTypeMtChild.Designer.cs">
+      <DependentUpon>FrmDeptTypeMtChild.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeptType\FrmDeptTypeMt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeptType\FrmDeptTypeMt.Designer.cs">
+      <DependentUpon>FrmDeptTypeMt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClientType\FrmClientTypeMt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientType\FrmClientTypeMt.Designer.cs">
+      <DependentUpon>FrmClientTypeMt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnitManagement\FrmDeptMt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UnitManagement\FrmDeptMt.Designer.cs">
       <DependentUpon>FrmDeptMt.cs</DependentUpon>
     </Compile>
-    <Compile Include="DepartManagement\FrmDeptMtChild.cs">
+    <Compile Include="UnitManagement\FrmDeptMtChild.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DepartManagement\FrmDeptMtChild.Designer.cs">
+    <Compile Include="UnitManagement\FrmDeptMtChild.Designer.cs">
       <DependentUpon>FrmDeptMtChild.cs</DependentUpon>
     </Compile>
-    <Compile Include="DepartManagement\FrmDeptQuery.cs">
+    <Compile Include="UnitManagement\FrmDeptQuery.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DepartManagement\FrmDeptQuery.Designer.cs">
+    <Compile Include="UnitManagement\FrmDeptQuery.Designer.cs">
       <DependentUpon>FrmDeptQuery.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmLogin.cs">
@@ -128,17 +149,26 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ClientType\FrmClientTypeMt.resx">
+      <DependentUpon>FrmClientTypeMt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmClientMain.resx">
       <DependentUpon>FrmClientMain.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="DepartManagement\FrmDeptMt.resx">
+    <EmbeddedResource Include="FrmDeptTypeMtChild.resx">
+      <DependentUpon>FrmDeptTypeMtChild.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeptType\FrmDeptTypeMt.resx">
+      <DependentUpon>FrmDeptTypeMt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitManagement\FrmDeptMt.resx">
       <DependentUpon>FrmDeptMt.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DepartManagement\FrmDeptMtChild.resx">
+    <EmbeddedResource Include="UnitManagement\FrmDeptMtChild.resx">
       <DependentUpon>FrmDeptMtChild.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DepartManagement\FrmDeptQuery.resx">
+    <EmbeddedResource Include="UnitManagement\FrmDeptQuery.resx">
       <DependentUpon>FrmDeptQuery.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
@@ -201,6 +231,7 @@
   <ItemGroup>
     <None Include="Resources\userchange1.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

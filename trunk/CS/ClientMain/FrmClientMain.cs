@@ -361,6 +361,14 @@ namespace ClientMain
                     FrmDeptMt DeptMt = new FrmDeptMt();
                     DeptMt.ShowDialog();
                     break;
+                case "部门类型":
+                    FrmDeptTypeMt DeptType = new FrmDeptTypeMt();
+                    DeptType.ShowDialog();
+                    break;
+                case "客户类型":
+                    FrmClientTypeMt ClientType = new FrmClientTypeMt();
+                    ClientType.ShowDialog();
+                    break;
                 default:
                     break;
 

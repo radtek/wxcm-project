@@ -215,9 +215,8 @@ namespace ClientMain
             {
                 string strUser = "select * from SYS_USER where username = '" + this.loginuser.Text + "'";
 
-                string strAccount = "select e.ztid,e.ztmc from sys_user  a " +
-                "left join  sys_employees b  on b.employeeid=a.empid " +
-                "left join  sys_empee_department c on c.employeeid=b.employeeid " +
+                string strAccount = "select e.ztid,e.ztmc from sys_user  a " +                
+                "left join  sys_user_department c on c.username=a.username " +
                 "left join  sys_department  d on d.departmentid=c.departmentid " +
                 "left join  sys_ztbm  e on e.ztid=d.ztid " +
                 "where a.username='" + this.loginuser.Text + "'";
@@ -315,8 +314,8 @@ namespace ClientMain
                            "departmentname " +
                            "FROM sys_department " +
                            " WHERE departmentid IN (SELECT departmentid " +
-                           " FROM sys_empee_department " +
-                           " WHERE employeeid=(select empid from sys_user where username='" + this.loginuser.Text + "')) and ztid='" +
+                           " FROM sys_user_department " +
+                           " WHERE  username='" + this.loginuser.Text + "') and ztid='" +
                            m_dictName2ID[this.comboBox1.Text] + "'";
             
             this.comboBox2.DataSource = null;
