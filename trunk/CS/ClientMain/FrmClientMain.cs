@@ -369,6 +369,10 @@ namespace ClientMain
                     FrmClientTypeMt ClientType = new FrmClientTypeMt();
                     ClientType.ShowDialog();
                     break;
+                case "出版社类型":
+                    FrmPressTypeMt PressType = new FrmPressTypeMt();
+                    PressType.ShowDialog();
+                    break;
                 default:
                     break;
 

@@ -103,3 +103,6 @@ D:\新建文件夹\CS\ClientMain\obj\Debug\ClientMain.exe.licenses
 D:\新建文件夹\CS\ClientMain\obj\Debug\ClientMain.FrmDeptTypeMtChild.resources
 D:\新建文件夹\CS\ClientMain\obj\Debug\ClientMain.FrmDeptTypeMt.resources
 D:\新建文件夹\CS\ClientMain\obj\Debug\ClientMain.FrmClientTypeMt.resources
+D:\新建文件夹\CS\ClientMain\obj\Debug\ClientMain.FrmPressTypeMt.resources
+D:\laohe\CS\ClientMain\obj\Debug\ClientMain.exe
+D:\laohe\CS\ClientMain\obj\Debug\ClientMain.pdb

@@ -155,7 +155,7 @@
 
         #endregion
 
-        public System.Windows.Forms.Label lbNum;
+        private System.Windows.Forms.Label lbNum;
         public System.Windows.Forms.Label lbName;
         private System.Windows.Forms.Label lbStatus;
         private System.Windows.Forms.Label label4;

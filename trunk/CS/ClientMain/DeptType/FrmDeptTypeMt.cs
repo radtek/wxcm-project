@@ -91,7 +91,7 @@ namespace ClientMain
             FrmDeptTypeMtChild frmUpdate = new FrmDeptTypeMtChild(strDeptName, strDeptNo, strZT);
             frmUpdate.Text = "修改部门类型";
             frmUpdate.lbName.Text = "部门类型";
-            frmUpdate.lbNum.Text = "类型编号";
+            
             if (frmUpdate.ShowDialog() == DialogResult.OK)
             {
                 dt.Rows[dataGridView1.CurrentRow.Index]["DEPARTTYPENAME"] = frmUpdate.getName();
@@ -136,7 +136,7 @@ namespace ClientMain
             FrmDeptTypeMtChild frmAdd = new FrmDeptTypeMtChild();
             frmAdd.Text = "增加部门类型";
             frmAdd.lbName.Text = "部门类型";
-            frmAdd.lbNum.Text = "类型编号";
+            
             if (frmAdd.ShowDialog() == DialogResult.OK)
             {
                 string strIns = @"INSERT INTO BASE_DEPARTTYPE (DEPARTTYPEID, DEPARTTYPENAME, DEPARTTYPENO, ZT) VALUES (BASE_DEPARTMENTTYPE_SEQ.nextval, :DEPARTTYPENAME, :DEPARTTYPENO, :ZT)";
