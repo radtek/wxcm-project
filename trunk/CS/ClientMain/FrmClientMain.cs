@@ -25,7 +25,6 @@ namespace ClientMain
     public partial class FrmClientMain : Form 
     {
         //private DevExpress.XtraNavBar.NavBarControl outlookBar1;
-        private ListView listView1 = null;
         //private int unit = 36;
 
         //private IUpdateServer updateServer;
@@ -35,7 +34,9 @@ namespace ClientMain
 
         OracleConnection Con;
         OracleDataAdapter Adapter;
+        OracleDataAdapter adaRight;
         DataSet ds;
+        DataSet dsRight;
         //OracleCommandBuilder cb;
         DataTable dt;
         //OracleCommand cmd;
@@ -80,6 +81,42 @@ namespace ClientMain
             CreateOutlookBar();
         }
 
+        private void hasRight(string ModelID, out bool fgAdd, out bool fgDel, out bool fgUpdate, out bool fgQuery)
+        {
+            fgAdd = false;
+            fgDel = false;
+            fgUpdate = false;
+            fgQuery = false;
+
+            string sqlRight = "select ACTIONCODE from sys_role_module_action c where c.roleid || c.modeleid in "
+                            + "(select b.role_id || b.module_id from sys_role_module b where b.role_id in "
+                            + "(select a.roleid from sys_user_role a where a.username = '" 
+                            + m_strName + "' and a.deptid = '"+ m_strDeptID + "')) and c.modeleid = '" + ModelID + "'";
+            adaRight = new OracleDataAdapter(sqlRight, Con);
+            dsRight = new DataSet();
+            adaRight.Fill(dsRight, "ACT_RIGHT");
+            foreach (DataRowView theRow in dsRight.Tables["ACT_RIGHT"].DefaultView)
+            {
+                switch (theRow.Row["ACTIONCODE"].ToString().ToLower())
+                { 
+                    case "add":
+                        fgAdd = true;
+                        break;
+                    case"delete":
+                        fgDel = true;
+                        break;
+                    case "update":
+                        fgUpdate = true;
+                        break;
+                    case "query":
+                        fgQuery = true;
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
         private void CreateNavGroup(DataView dvRoot)
         {
 
@@ -109,8 +146,6 @@ namespace ClientMain
             if (listView1 == null || !panelRight.Controls.Contains(listView1))
             {
                 InitImageList();
-
-                listView1 = new ListView();
                 listView1.DoubleClick += new EventHandler(listView1_DoubleClick);
                 listView1.KeyDown += new KeyEventHandler(listView1_KeyDown);
                 listView1.View = View.LargeIcon;
@@ -135,7 +170,8 @@ namespace ClientMain
                 {
                     ListViewItem listitem = new ListViewItem(theRow.Row["MODELNAME"].ToString());
                     listitem.ImageIndex = 1;
-                    listitem.Tag = theRow.Row["MODELNAME"].ToString();
+                    listitem.Name = theRow.Row["MODELNAME"].ToString();
+                    listitem.Tag = theRow.Row["ID"].ToString();
                     listView1.Items.Add(listitem);
                 }
                 
@@ -156,16 +192,13 @@ namespace ClientMain
             dvChild.RowFilter = "PARENTMODEL = '" + group.Name.Trim() + "'";
             foreach (DataRowView theRow in dvChild)
             {
-                //a trick
-                if (theRow.Row["MODELNAME"].ToString() != "菜单管理")
-                {
-                    NavBarItem item = new NavBarItem(theRow.Row["MODELNAME"].ToString());
-                    item.Tag = theRow.Row["ID"].ToString();
-                    item.Name = theRow.Row["MODELNAME"].ToString();
-                    group.ItemLinks.Add(item);
-                    //this.outlookBar1.Items.Add(item);
-                    navBarControl1.Items.Add(item);
-                }
+                NavBarItem item = new NavBarItem(theRow.Row["MODELNAME"].ToString());
+                item.Tag = theRow.Row["ID"].ToString();
+                item.Name = theRow.Row["MODELNAME"].ToString();
+                group.ItemLinks.Add(item);
+                //this.outlookBar1.Items.Add(item);
+                navBarControl1.Items.Add(item);
+                
             }
         }
 
@@ -216,6 +249,21 @@ namespace ClientMain
             for (int i = 0; i < navBarControl1.Groups.Count; i++)
             {
                 CreateNavChild(dvChild, navBarControl1.Groups[i]);
+            }
+
+            if(navBarControl1.Groups.Count == 0)
+            {
+                const string message = "该用户没有管理权限，请联系管理员";
+                const string caption = "警告！";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                             MessageBoxIcon.Information);
+
+                if (result == DialogResult.OK)
+                {
+                    Application.ExitThread();
+                    System.Diagnostics.Process.Start(System.Reflection.Assembly.GetExecutingAssembly().Location);
+                }
             }
             //for (int j = 1; j < 10; j++)
             //{
@@ -353,25 +401,52 @@ namespace ClientMain
         }
 
 
+
         private void listView1_DoubleClick(object sender, EventArgs e)
         {
-            switch (listView1.FocusedItem.Tag.ToString())
+            bool fgAdd;
+            bool fgDel;
+            bool fgUpdate;
+            bool fgQuery;
+
+            hasRight(listView1.FocusedItem.Tag.ToString(), out fgAdd, out fgDel, out fgUpdate, out fgQuery);
+            switch (listView1.FocusedItem.Name.Trim())
             { 
-                case"单位信息":
-                    FrmDeptMt DeptMt = new FrmDeptMt();
+                case "单位信息":
+                    FrmDeptMt DeptMt = new FrmDeptMt(fgAdd, fgDel, fgUpdate, fgQuery);
                     DeptMt.ShowDialog();
                     break;
                 case "部门类型":
-                    FrmDeptTypeMt DeptType = new FrmDeptTypeMt();
+                    FrmDeptTypeMt DeptType = new FrmDeptTypeMt(fgAdd, fgDel, fgUpdate, fgQuery);
                     DeptType.ShowDialog();
                     break;
                 case "客户类型":
-                    FrmClientTypeMt ClientType = new FrmClientTypeMt();
+                    FrmClientTypeMt ClientType = new FrmClientTypeMt(fgAdd, fgDel, fgUpdate, fgQuery);
                     ClientType.ShowDialog();
                     break;
                 case "出版社类型":
-                    FrmPressTypeMt PressType = new FrmPressTypeMt();
+                    FrmPressTypeMt PressType = new FrmPressTypeMt(fgAdd, fgDel, fgUpdate, fgQuery);
                     PressType.ShowDialog();
+                    break;
+                case "供应商类型":
+                    FrmSupplierTypeMt SupplierType = new FrmSupplierTypeMt(fgAdd, fgDel, fgUpdate, fgQuery);
+                    SupplierType.ShowDialog();
+                    break;
+                case "库房类型":
+                    FrmWareTypeMt WareType = new FrmWareTypeMt(fgAdd, fgDel, fgUpdate, fgQuery);
+                    WareType.ShowDialog();
+                    break;
+                case "印刷厂类型":
+                    FrmPrintTypeMt PrintingType = new FrmPrintTypeMt(fgAdd, fgDel, fgUpdate, fgQuery);
+                    PrintingType.ShowDialog();
+                    break;
+                case "运输单位类型":
+                    FrmTransTypeMt TransType = new FrmTransTypeMt(fgAdd, fgDel, fgUpdate, fgQuery);
+                    TransType.ShowDialog();
+                    break;
+                case "单位属性":
+                    FrmUnitPropMt UnitProp = new FrmUnitPropMt(fgAdd, fgDel, fgUpdate, fgQuery);
+                    UnitProp.ShowDialog();
                     break;
                 default:
                     break;
@@ -468,7 +543,13 @@ namespace ClientMain
         private void navBarControl1_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
             NavBarItem item = e.Link.Item;
-            
+            bool fgAdd;
+            bool fgDel;
+            bool fgUpdate;
+            bool fgQuery;
+
+            listView1.Hide();
+                        
             if (item.Name == "单位管理")
             {
                 //FrmDeptMt DeptMt = new FrmDeptMt();
@@ -477,21 +558,38 @@ namespace ClientMain
             }
             else if(item.Name == "员工管理")
             {
-                FrmStaffMt StaffMt = new FrmStaffMt();
+                hasRight(item.Tag.ToString(), out fgAdd, out fgDel, out fgUpdate, out fgQuery);
+                FrmStaffMt StaffMt = new FrmStaffMt(fgAdd, fgDel, fgUpdate, fgQuery);
                 StaffMt.ShowDialog();
             }
-
-            //if (item.Name == "角色管理")
-            //{
-            //    rolemanger RoleMt = new rolemanger();
-            //    RoleMt.ShowDialog();
-            //}
-
-            //if (item.Name == "用户管理")
-            //{
-            //    UserManger UserMt = new UserManger();
-            //    UserMt.ShowDialog();
-            //}
+            else if (item.Name == "数据库管理")
+            {
+                hasRight(item.Tag.ToString(), out fgAdd, out fgDel, out fgUpdate, out fgQuery);
+                FrmDBMt DBMt = new FrmDBMt(fgAdd, fgDel, fgUpdate, fgQuery);
+                DBMt.ShowDialog();
+            }
+            else if (item.Name == "连锁客户端部门信息")
+            {
+                FrmChainDeptInfo FrmCDI = new FrmChainDeptInfo();
+                FrmCDI.ShowDialog();
+            }
+            else if (item.Name == "角色管理")
+            {
+                hasRight(item.Tag.ToString(), out fgAdd, out fgDel, out fgUpdate, out fgQuery);
+                Form1 RoleMt = new Form1(fgAdd, fgDel, fgUpdate, fgQuery);
+                RoleMt.ShowDialog();
+            }else if (item.Name == "用户管理")
+            {
+                hasRight(item.Tag.ToString(), out fgAdd, out fgDel, out fgUpdate, out fgQuery);
+                UserManger UserMt = new UserManger(fgAdd, fgDel, fgUpdate, fgQuery);
+                UserMt.ShowDialog();
+            }
+            else if (item.Name == "菜单管理")
+            {
+                hasRight(item.Tag.ToString(), out fgAdd, out fgDel, out fgUpdate, out fgQuery);
+                MeunMang MenuMt = new MeunMang();
+                MenuMt.ShowDialog();
+            }
         }
 
         

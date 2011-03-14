@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.OracleClient;
 
 namespace ClientMain
 {
@@ -19,6 +20,11 @@ namespace ClientMain
         string m_Address;
         string m_Tel;
         string m_Mobile;
+        string m_SuperUnit;
+
+        OracleConnection Con;
+        OracleDataAdapter AdaSuperUnit;
+        DataSet ds;     
 
         public FrmStaffMtChild()
         {
@@ -27,7 +33,7 @@ namespace ClientMain
 
         public FrmStaffMtChild(string strStaffNum, string strStaffName, string strFastCode, 
                                string strGender, string strBirth, string strEmail,
-                               string strAddress, string strTel, string strMobile)
+                               string strAddress, string strTel, string strMobile, string strSuperUnit)
         { 
             InitializeComponent();
 
@@ -40,14 +46,27 @@ namespace ClientMain
             m_Address = strAddress;
             m_Tel = strTel;
             m_Mobile = strMobile;
+            m_SuperUnit = strSuperUnit;
         }
         
 
         private void FrmStaffMtChild_Load(object sender, EventArgs e)
         {
+            string strCon = "Data Source=XINHUA;User Id=xxb;Password=pass;Integrated Security=no;";
+            Con = new OracleConnection(strCon);
+
+            string sqlSuperUnit = "select DEPARTMENTID, DEPARTMENTNAME from SYS_DEPARTMENT";
+            AdaSuperUnit = new OracleDataAdapter(sqlSuperUnit, Con);
+            ds = new DataSet();
+            AdaSuperUnit.Fill(ds, "SYS_DEPARTMENT");
+
+            cbSuperUnit.DataSource = ds.Tables["SYS_DEPARTMENT"];
+            cbSuperUnit.ValueMember = "DEPARTMENTID";
+            cbSuperUnit.DisplayMember = "DEPARTMENTNAME";
+            cbSuperUnit.SelectedItem = m_SuperUnit;
+
             this.comboBox1.Items.Add("女");
-            this.comboBox1.Items.Add("男");
-            
+            this.comboBox1.Items.Add("男");            
             this.comboBox1.SelectedItem = m_Gender;
 
             this.tbAddress.Text = m_Address;
@@ -64,7 +83,7 @@ namespace ClientMain
         {
             if (tbName.Text == "" || tbStaffNum.Text == "")
             {
-                if (MessageBox.Show("员工姓名不能为空！", "警告", MessageBoxButtons.OK, MessageBoxIcon.Stop) == DialogResult.OK)
+                if (MessageBox.Show("员工姓名和编号不能为空！", "警告", MessageBoxButtons.OK, MessageBoxIcon.Stop) == DialogResult.OK)
                 {
                     this.tbName.Focus();
                 }
@@ -124,6 +143,11 @@ namespace ClientMain
         public string getAddress()
         {
             return this.tbAddress.Text.Trim();
+        }
+
+        public string getSuperUnit()
+        {
+            return ((DataRowView)cbSuperUnit.SelectedItem).Row["DEPARTMENTID"].ToString();
         }
     }
 }

@@ -38,6 +38,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelControl = new System.Windows.Forms.Panel();
             this.panelRight = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
             this.panelTop = new System.Windows.Forms.Panel();
             this.picToolBar = new System.Windows.Forms.Panel();
@@ -47,19 +48,19 @@
             this.lb_dept = new System.Windows.Forms.Label();
             this.lb_user = new System.Windows.Forms.Label();
             this.frmStatus = new System.Windows.Forms.Panel();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.mainMenu1 = new System.Windows.Forms.MainMenu(this.components);
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
-            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.picTitle)).BeginInit();
             this.panel1.SuspendLayout();
             this.panelControl.SuspendLayout();
             this.panelRight.SuspendLayout();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             this.panelTop.SuspendLayout();
             this.picToolBar.SuspendLayout();
             this.frmStatus.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // timeStatus
@@ -137,6 +138,15 @@
             this.panelRight.Name = "panelRight";
             this.panelRight.Size = new System.Drawing.Size(745, 261);
             this.panelRight.TabIndex = 2;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.navBarControl1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(146, 259);
+            this.panel2.TabIndex = 1;
             // 
             // navBarControl1
             // 
@@ -264,15 +274,6 @@
             this.imageList2.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.navBarControl1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(146, 259);
-            this.panel2.TabIndex = 1;
-            // 
             // FrmClientMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -290,13 +291,13 @@
             this.panel1.ResumeLayout(false);
             this.panelControl.ResumeLayout(false);
             this.panelRight.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
             this.panelTop.ResumeLayout(false);
             this.picToolBar.ResumeLayout(false);
             this.picToolBar.PerformLayout();
             this.frmStatus.ResumeLayout(false);
             this.frmStatus.PerformLayout();
-            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -324,7 +325,7 @@
         private System.Windows.Forms.Button button1;
         private DevExpress.XtraNavBar.NavBarControl navBarControl1;
         private System.Windows.Forms.Panel panel2;
-
+        private System.Windows.Forms.ListView listView1;
 
 
 

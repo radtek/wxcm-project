@@ -25,9 +25,10 @@ namespace ClientMain
         OracleDataAdapter Adapter;
         DataSet ds;
         DataTable dt;
-        OracleConnection m_cnn = null;
-        private string m_PassWord = null;
        
+
+        private string m_PassWord = null;
+        const string strCon = "Data Source=XINHUA;User Id=xxb;Password=pass;Integrated Security=no;";
 
         public static string getAccount
         {
@@ -176,24 +177,28 @@ namespace ClientMain
             m_dictID2Name.Clear();
             m_dictName2ID.Clear();
 
-            string strCon = "Data Source=XINHUA;User Id=xxb;Password=pass;Integrated Security=no;";
-            m_cnn = new OracleConnection();
-            m_cnn.ConnectionString = strCon;
+
+            OracleConnection Con = new OracleConnection();
+            Con.ConnectionString = strCon;
             try
             {
-               m_cnn.Open();
-               string strZTBM = "select ZTID, ZTMC from SYS_ZTBM";
-               OracleCommand cmd = new OracleCommand(strZTBM, m_cnn);
-               OracleDataReader rdr = cmd.ExecuteReader();
-               while (rdr.Read())
-               {
-                   m_dictName2ID.Add(rdr.GetString(1), rdr.GetString(0));
-                   m_dictID2Name.Add(rdr.GetString(0), rdr.GetString(1));
-               }
+                Con.Open();
+                string strZTBM = "select ZTID, ZTMC from SYS_ZTBM";
+                OracleCommand cmd = new OracleCommand(strZTBM, Con);
+                OracleDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    m_dictName2ID.Add(rdr.GetString(1), rdr.GetString(0));
+                    m_dictID2Name.Add(rdr.GetString(0), rdr.GetString(1));
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                Con.Close();
             }
             
         }
@@ -222,11 +227,13 @@ namespace ClientMain
                 "where a.username='" + this.loginuser.Text + "'";
 
 
-
+                OracleConnection Con = new OracleConnection();
+                Con.ConnectionString = strCon;
                 try
                 {
-                    OracleCommand cmdUser = new OracleCommand(strUser, m_cnn);
-                    OracleCommand cmdAccount = new OracleCommand(strAccount, m_cnn);
+                    Con.Open();
+                    OracleCommand cmdUser = new OracleCommand(strUser, Con);
+                    OracleCommand cmdAccount = new OracleCommand(strAccount, Con);
 
                     OracleDataReader rdrUser = cmdUser.ExecuteReader();
                     // Always call Read before accessing data.
@@ -237,12 +244,12 @@ namespace ClientMain
                         {
                             if (!this.comboBox1.Items.Contains(rdrAccount.GetString(1)))
                             {
-                                this.comboBox1.Items.Add(rdrAccount.GetString(1));                                
+                                this.comboBox1.Items.Add(rdrAccount.GetString(1));
                             }
                         }
                         if (this.comboBox1.Items.Count != 0)
                         {
-                            this.comboBox1.SelectedIndex = 0; 
+                            this.comboBox1.SelectedIndex = 0;
                         }
                         // always call Close when done reading.
                         rdrAccount.Close();
@@ -253,18 +260,19 @@ namespace ClientMain
                         this.loginuser.Focus();
                         this.comboBox1.Items.Clear();
                         this.comboBox2.DataSource = null;
-                        this.comboBox2.Items.Clear();                        
+                        this.comboBox2.Items.Clear();
                     }
                     rdrUser.Close();
-
-
-                    
 
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
-                } 
+                }
+                finally
+                {
+                    Con.Close();
+                }
             }
 
             errorProvider1.SetError((Control)sender, error);
@@ -282,9 +290,12 @@ namespace ClientMain
             {
                 string strPass = "select password from SYS_USER where username = '" + this.loginuser.Text + "'";
 
+                OracleConnection Con = new OracleConnection();
+                Con.ConnectionString = strCon;
                 try
                 {
-                    OracleCommand command = new OracleCommand(strPass, m_cnn);
+                    Con.Open();
+                    OracleCommand command = new OracleCommand(strPass, Con);
                     OracleDataReader reader;
                     reader = command.ExecuteReader();
                     reader.Read();
@@ -301,7 +312,11 @@ namespace ClientMain
                 {
 
                     MessageBox.Show(ex.Message);
-                } 
+                }
+                finally
+                {
+                    Con.Close();
+                }
             }
 
             errorProvider2.SetError((Control)sender, error);
@@ -324,7 +339,8 @@ namespace ClientMain
             //m_dictDeptID2Name.Clear();
             try
             {
-                Adapter = new OracleDataAdapter(strDepart, m_cnn);
+                OracleConnection Con = new OracleConnection(strCon);
+                Adapter = new OracleDataAdapter(strDepart, Con);
                 ds = new DataSet();
                 Adapter.Fill(ds, "CUSTOMDEPT");
 

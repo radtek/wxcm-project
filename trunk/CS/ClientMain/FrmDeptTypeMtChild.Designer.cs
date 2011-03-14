@@ -43,35 +43,35 @@
             // lbNum
             // 
             this.lbNum.AutoSize = true;
-            this.lbNum.Location = new System.Drawing.Point(127, 40);
+            this.lbNum.Location = new System.Drawing.Point(103, 40);
             this.lbNum.Name = "lbNum";
-            this.lbNum.Size = new System.Drawing.Size(55, 14);
+            this.lbNum.Size = new System.Drawing.Size(71, 14);
             this.lbNum.TabIndex = 0;
-            this.lbNum.Text = "类型编号";
+            this.lbNum.Text = "类 型 编 号 ";
             // 
             // lbName
             // 
             this.lbName.AutoSize = true;
-            this.lbName.Location = new System.Drawing.Point(127, 89);
+            this.lbName.Location = new System.Drawing.Point(103, 84);
             this.lbName.Name = "lbName";
-            this.lbName.Size = new System.Drawing.Size(55, 14);
+            this.lbName.Size = new System.Drawing.Size(71, 14);
             this.lbName.TabIndex = 1;
-            this.lbName.Text = "部门类型";
+            this.lbName.Text = "部 门 类 型 ";
             // 
             // lbStatus
             // 
             this.lbStatus.AutoSize = true;
-            this.lbStatus.Location = new System.Drawing.Point(127, 138);
+            this.lbStatus.Location = new System.Drawing.Point(103, 133);
             this.lbStatus.Name = "lbStatus";
-            this.lbStatus.Size = new System.Drawing.Size(47, 14);
+            this.lbStatus.Size = new System.Drawing.Size(63, 14);
             this.lbStatus.TabIndex = 2;
-            this.lbStatus.Text = "状    态";
+            this.lbStatus.Text = "状        态";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(179, 40);
+            this.label4.Location = new System.Drawing.Point(178, 40);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(14, 14);
             this.label4.TabIndex = 3;
@@ -81,7 +81,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Location = new System.Drawing.Point(179, 89);
+            this.label5.Location = new System.Drawing.Point(178, 89);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(14, 14);
             this.label5.TabIndex = 4;

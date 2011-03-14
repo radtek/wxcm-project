@@ -19,11 +19,21 @@ namespace ClientMain
         DataTable dt;
         OracleCommand cmd;
 
+        bool m_fgAdd;
+        bool m_fgDel;
+        bool m_fgUpdate;
+        bool m_fgQuery;
+
         Dictionary<string, string> m_dtStatus = new Dictionary<string, string>();
 
-        public FrmClientTypeMt()
+        public FrmClientTypeMt(bool fgAdd, bool fgDel, bool fgUpdate, bool fgQuery)
         {
             InitializeComponent();
+
+            m_fgAdd = fgAdd;
+            m_fgDel = fgDel;
+            m_fgQuery = fgQuery;
+            m_fgUpdate = fgUpdate;
 
             m_dtStatus.Add("0", "录入");
             m_dtStatus.Add("1", "启用");
@@ -68,6 +78,41 @@ namespace ClientMain
                 dataGridView1.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
             }
 
+            if (m_fgAdd)
+            {
+                barbtnAdd.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+            }
+            else
+            {
+                barbtnAdd.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            }
+
+            if (m_fgDel)
+            {
+                barbtnDel.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+            }
+            else
+            {
+                barbtnDel.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            }
+
+            if (m_fgUpdate)
+            {
+                barbtnUpdate.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+            }
+            else
+            {
+                barbtnUpdate.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            }
+
+            //if (m_fgQuery)
+            //{
+            //    barbtnQuery.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+            //}
+            //else
+            //{
+            //    barbtnQuery.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            //}
         }
 
         private void barbtnAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

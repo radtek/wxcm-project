@@ -13,76 +13,67 @@ namespace ClientMain
     {
         OracleConnection Con;
         OracleDataAdapter Adapter;
-        OracleDataAdapter AdapterEmpDept;
-        OracleDataAdapter AdaSysEmpDept;
-        
         DataSet ds;        
         DataTable dt;
-        
         OracleCommandBuilder cb;
         OracleCommand cmd;
-        OracleCommandBuilder cbDeptEmp;
-        
-        Dictionary<string, string> m_dictIC = new Dictionary<string, string>();
-        Dictionary<string, string> m_dictCI = new Dictionary<string, string>();
 
-        public FrmStaffMt()
+        bool m_fgAdd;
+        bool m_fgDel;
+        bool m_fgUpdate;
+        bool m_fgQuery;
+
+        Dictionary<string, string> m_dictGender = new Dictionary<string, string>();        
+
+        public FrmStaffMt(bool fgAdd, bool fgDel, bool fgUpdate, bool fgQuery)
         {
             InitializeComponent();
-            
-            m_dictIC.Add("0", "女");
-            m_dictIC.Add("1", "男");
-            m_dictIC.Add("", "");
 
-            m_dictCI.Add("女", "0");
-            m_dictCI.Add("男", "1");
-            m_dictCI.Add("", "");
+            m_dictGender.Add("0", "女");
+            m_dictGender.Add("1", "男");
+            m_dictGender.Add("", "");
+            m_dictGender.Add("女", "0");
+            m_dictGender.Add("男", "1");
+
+            m_fgAdd = fgAdd;
+            m_fgDel = fgDel;
+            m_fgQuery = fgQuery;
+            m_fgUpdate = fgUpdate;
+         
         }
 
         private void FrmStaffMt_Load(object sender, EventArgs e)
         {
             dataGridView1.DataSource = bindingSource1;
-            dataGridView2.DataSource = bindingSource2;
-
+            
             string strCon = "Data Source=XINHUA;User Id=xxb;Password=pass;Integrated Security=no;";
             Con = new OracleConnection(strCon);
 
-            string strSQLEmp = "select * from SYS_EMPLOYEES";
+            string strSQLEmp = "select EMPLOYEEID, SJDWID, NAME, EMPLOYEENO, FASTCODE, SEX, BIRTHDAY, EMAIL, TXDZ, TELEPHONE, MOBILETELEPHONE from SYS_EMPLOYEES";
             Adapter = new OracleDataAdapter(strSQLEmp, Con);
-
-            string strSqlEmpDept = "select * From SYS_EMPEE_DEPARTMENT";
-            AdaSysEmpDept = new OracleDataAdapter(strSqlEmpDept, Con);
-
-            string strSQLEmpDept = "select t.EMPLOYEEID, a.DEPARTMENTID, a.DEPARTMENTNAME, a.DEPARTMENTNO, c.ZTMC from SYS_EMPEE_DEPARTMENT t left join sys_department a on t.departmentid = a.departmentid left join sys_ztbm c on a.ztid = c.ztid  ";
-            AdapterEmpDept = new OracleDataAdapter(strSQLEmpDept, Con);
 
             ds = new DataSet();
             Adapter.Fill(ds, "SYS_EMPLOYEES");           
-            AdapterEmpDept.Fill(ds, "EMPDEPT");
-            AdaSysEmpDept.Fill(ds, "SYS_EMPEE_DEPARTMENT");
-
+            
             cb = new OracleCommandBuilder(Adapter);
-            cbDeptEmp = new OracleCommandBuilder(AdaSysEmpDept);
-
-            DataRelation drFirstStep = new DataRelation("FirstStep", ds.Tables["SYS_EMPLOYEES"].Columns["EMPLOYEEID"], ds.Tables["EMPDEPT"].Columns["EMPLOYEEID"]);
-            ds.Relations.Add(drFirstStep);
-
+            
+            
             dt = ds.Tables["SYS_EMPLOYEES"];
             foreach (DataRow theRow in dt.Rows)
             {
-                theRow["SEX"] = m_dictIC[theRow["SEX"].ToString()];
+                theRow["SEX"] = m_dictGender[theRow["SEX"].ToString()];
             }
             
             bindingSource1.DataSource = ds;
             bindingSource1.DataMember = "SYS_EMPLOYEES";
-            
 
-            bindingSource2.DataSource = bindingSource1;
-            bindingSource2.DataMember = "FirstStep";
-
+            this.dataGridView1.Columns["EMPLOYEEID"].Visible = false;            
             this.dataGridView1.Columns["EMPLOYEEID"].HeaderText = "员工ID";
+            this.dataGridView1.Columns["SJDWID"].Visible = false;
+            this.dataGridView1.Columns["SJDWID"].HeaderText = "上级单位ID";
             this.dataGridView1.Columns["NAME"].HeaderText = "员工姓名";
             this.dataGridView1.Columns["EMPLOYEENO"].HeaderText = "员工编号";
+            this.dataGridView1.Columns["FASTCODE"].Visible = false;
             this.dataGridView1.Columns["FASTCODE"].HeaderText = "助记码";
             this.dataGridView1.Columns["SEX"].HeaderText = "性别";
             this.dataGridView1.Columns["BIRTHDAY"].HeaderText = "出生年月";
@@ -91,22 +82,60 @@ namespace ClientMain
             this.dataGridView1.Columns["TELEPHONE"].HeaderText = "电话";
             this.dataGridView1.Columns["MOBILETELEPHONE"].HeaderText = "移动电话";
 
-            this.dataGridView2.Columns["EMPLOYEEID"].HeaderText = "员工ID";
-            this.dataGridView2.Columns["DEPARTMENTID"].HeaderText = "部门ID";
-            this.dataGridView2.Columns["DEPARTMENTNO"].HeaderText = "部门编号";
-            this.dataGridView2.Columns["DEPARTMENTNAME"].HeaderText = "部门名称";
-            this.dataGridView2.Columns["ZTMC"].HeaderText = "账套名称";
+            for (int i = 0; i < dataGridView1.Columns.Count; i++)
+            {
+                dataGridView1.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
 
+            if (m_fgAdd)
+            {
+                btnAdd.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+            }
+            else
+            {
+                btnAdd.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            }
+
+            if (m_fgDel)
+            {
+                btnDel.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+            }
+            else
+            {
+                btnDel.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            }
+
+            if (m_fgUpdate)
+            {
+                btnUpdate.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+            }
+            else
+            {
+                btnUpdate.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            }
+
+            if (m_fgQuery)
+            {
+                btnQuery.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+            }
+            else
+            {
+                btnQuery.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            }
+            
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+
+        private void btnAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             FrmStaffMtChild frmAdd = new FrmStaffMtChild();
             frmAdd.Text = "增加员工";
 
             if (frmAdd.ShowDialog() == DialogResult.OK)
             {
-                string strIns = @"INSERT INTO SYS_EMPLOYEES (EMPLOYEEID, NAME, EMPLOYEENO, FASTCODE, SEX, BIRTHDAY, EMAIL, TXDZ, TELEPHONE, MOBILETELEPHONE) VALUES (seq_sys_employees_employeeid.nextval, :NAME, :EMPLOYEENO, :FASTCODE, :SEX, :BIRTHDAY, :EMAIL, :TXDZ, :TELEPHONE, :MOBILETELEPHONE)";
+                string strIns = "INSERT INTO SYS_EMPLOYEES (EMPLOYEEID, NAME, EMPLOYEENO, FASTCODE, SEX, BIRTHDAY, EMAIL, TXDZ, TELEPHONE, "
+                              + "MOBILETELEPHONE, SJDWID) VALUES (seq_sys_employees_employeeid.nextval, :NAME, :EMPLOYEENO, :FASTCODE, :SEX, "
+                              + ":BIRTHDAY, :EMAIL, :TXDZ, :TELEPHONE, :MOBILETELEPHONE, :SJDWID)";
 
                 cmd = new OracleCommand(strIns, Con);
                 Adapter.InsertCommand = cmd;
@@ -119,6 +148,7 @@ namespace ClientMain
                 Adapter.InsertCommand.Parameters.Add(new OracleParameter("TXDZ", OracleType.VarChar, 100, "TXDZ"));
                 Adapter.InsertCommand.Parameters.Add(new OracleParameter("TELEPHONE", OracleType.VarChar, 15, "TELEPHONE"));
                 Adapter.InsertCommand.Parameters.Add(new OracleParameter("MOBILETELEPHONE", OracleType.VarChar, 15, "MOBILETELEPHONE"));
+                Adapter.InsertCommand.Parameters.Add(new OracleParameter("SJDWID", OracleType.VarChar, 16, "SJDWID"));
 
                 DataRow newRow = dt.NewRow();
 
@@ -131,11 +161,12 @@ namespace ClientMain
                 newRow["TXDZ"] = frmAdd.getAddress();
                 newRow["TELEPHONE"] = frmAdd.getTel();
                 newRow["MOBILETELEPHONE"] = frmAdd.getMobile();
+                newRow["SJDWID"] = frmAdd.getSuperUnit();
                 dt.Rows.Add(newRow);
 
                 foreach (DataRow theRow in dt.Rows)
                 {
-                    theRow["SEX"] = m_dictCI[theRow["SEX"].ToString()];
+                    theRow["SEX"] = m_dictGender[theRow["SEX"].ToString()];
                 }
 
                 Adapter.Update(ds, "SYS_EMPLOYEES");
@@ -145,7 +176,7 @@ namespace ClientMain
             
         }
 
-        private void btnDel_Click(object sender, EventArgs e)
+        private void btnDel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             const string message = "确定删除吗?";
             const string caption = "删除?";
@@ -156,31 +187,18 @@ namespace ClientMain
             {
                 foreach (DataRow theRow in dt.Rows)
                 {
-                    theRow["SEX"] = m_dictCI[theRow["SEX"].ToString()];
+                    theRow["SEX"] = m_dictGender[theRow["SEX"].ToString()];
                 }
-
-                foreach (DataGridViewRow dr in this.dataGridView2.Rows)
-                {
-                    string strExp = "EMPLOYEEID = '" + dr.Cells["EMPLOYEEID"].Value.ToString() +  "'";
-                    DataRow[] dtrow = ds.Tables["SYS_EMPEE_DEPARTMENT"].Select(strExp);
-                    foreach (DataRow drow in dtrow)
-                    {
-                        drow.Delete();
-                    }
-                    this.dataGridView2.Rows.Remove(dr);
-
-                }
-                AdaSysEmpDept.Update(ds, "SYS_EMPEE_DEPARTMENT");
 
                 dt.Rows[dataGridView1.CurrentRow.Index].Delete();
-                
+
                 Adapter.Update(ds, "SYS_EMPLOYEES");
 
                 this.FrmStaffMt_Load(sender, e);
             }
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
+        private void btnUpdate_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             string strStaffName = dataGridView1.CurrentRow.Cells["NAME"].Value.ToString();
             string strStaffNum = dataGridView1.CurrentRow.Cells["EMPLOYEENO"].Value.ToString();
@@ -191,9 +209,10 @@ namespace ClientMain
             string strAddress = dataGridView1.CurrentRow.Cells["TXDZ"].Value.ToString();
             string strTel = dataGridView1.CurrentRow.Cells["TELEPHONE"].Value.ToString();
             string strMobile = dataGridView1.CurrentRow.Cells["MOBILETELEPHONE"].Value.ToString();
+            string strSuperUnit = dataGridView1.CurrentRow.Cells["SJDWID"].Value.ToString();
 
-            FrmStaffMtChild frmUpdate = new FrmStaffMtChild(strStaffNum, strStaffName, strFastCode, strGender, strBirth, 
-                                                            strEmail, strAddress, strTel, strMobile);
+            FrmStaffMtChild frmUpdate = new FrmStaffMtChild(strStaffNum, strStaffName, strFastCode, strGender, strBirth,
+                                                            strEmail, strAddress, strTel, strMobile, strSuperUnit);
             frmUpdate.Text = "修改员工";
             if (frmUpdate.ShowDialog() == DialogResult.OK)
             {
@@ -206,88 +225,38 @@ namespace ClientMain
                 dt.Rows[dataGridView1.CurrentRow.Index]["TXDZ"] = frmUpdate.getAddress();
                 dt.Rows[dataGridView1.CurrentRow.Index]["TELEPHONE"] = frmUpdate.getTel();
                 dt.Rows[dataGridView1.CurrentRow.Index]["MOBILETELEPHONE"] = frmUpdate.getMobile();
+                dt.Rows[dataGridView1.CurrentRow.Index]["SJDWID"] = frmUpdate.getSuperUnit();
 
                 foreach (DataRow theRow in dt.Rows)
                 {
-                    theRow["SEX"] = m_dictCI[theRow["SEX"].ToString()];
+                    theRow["SEX"] = m_dictGender[theRow["SEX"].ToString()];
                 }
 
                 Adapter.Update(ds, "SYS_EMPLOYEES");
 
                 this.FrmStaffMt_Load(sender, e);
             }
-            
         }
 
-        private void btnQuery_Click(object sender, EventArgs e)
+        private void btnQuery_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             FrmStaffQuery frmQuery = new FrmStaffQuery();
             if (frmQuery.ShowDialog() == DialogResult.OK)
             {
                 dt.DefaultView.RowFilter = "NAME like '%" + frmQuery.getName() + "%'";
-                bindingSource1.DataSource = dt.DefaultView;                
+                bindingSource1.DataSource = dt.DefaultView;
             }
         }
 
-        private void btnRefresh_Click(object sender, EventArgs e)
+        private void btnRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.FrmStaffMt_Load(sender, e);
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void btnQuit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.Close();
         }
-
-        private void btnEnroll_Click(object sender, EventArgs e)
-        {
-            string strEmpID = dt.Rows[dataGridView1.CurrentRow.Index]["EMPLOYEEID"].ToString();
-            FrmDeptSelect DeptSelect = new FrmDeptSelect(strEmpID);
-            if (DeptSelect.ShowDialog() == DialogResult.OK)
-            {
-                this.FrmStaffMt_Load(sender, e);
-            }
-        }
-
-        private void btnLeave_Click(object sender, EventArgs e)
-        {
-            const string message = "确定离开部门吗?";
-            const string caption = "离开?";
-            var result = MessageBox.Show(message, caption,
-                                         MessageBoxButtons.YesNo,
-                                         MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                foreach (DataGridViewRow dr in this.dataGridView2.Rows)
-                {
-                    DataGridViewCheckBoxCell checkCell = (DataGridViewCheckBoxCell)dr.Cells["CheckBoxes"];
-                    if (Convert.ToBoolean(checkCell.EditedFormattedValue))
-                    {
-                        string strExp = "EMPLOYEEID = '" + dr.Cells["EMPLOYEEID"].Value.ToString() + "' and DEPARTMENTID = '" + dr.Cells["DEPARTMENTID"].Value.ToString() + "'";
-                        DataRow[] dtrow = ds.Tables["SYS_EMPEE_DEPARTMENT"].Select(strExp);
-                        foreach (DataRow drow in dtrow)
-                        {
-                            drow.Delete();
-                        }
-                        this.dataGridView2.Rows.Remove(dr); 
-                    }
-                    
-                }
-                AdaSysEmpDept.Update(ds, "SYS_EMPEE_DEPARTMENT");
-
-            }
-        }
-
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == 0 && e.RowIndex != -1)//点击的是第1列时才执行
-            {
-                DataGridViewCheckBoxCell checkCell = (DataGridViewCheckBoxCell)this.dataGridView2.Rows[e.RowIndex].Cells[0];
-                checkCell.Value = (Convert.ToBoolean(checkCell.EditedFormattedValue)) ? false : true;
-            }
- 
-        }
-
 
     }
 }

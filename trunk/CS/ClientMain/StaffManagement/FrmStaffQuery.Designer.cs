@@ -32,6 +32,7 @@
             this.btnQuery = new System.Windows.Forms.Button();
             this.tbName = new System.Windows.Forms.TextBox();
             this.员工查询 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -70,11 +71,22 @@
             this.员工查询.TabIndex = 4;
             this.员工查询.Text = "员工姓名";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(181, 55);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(11, 12);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "*";
+            // 
             // FrmStaffQuery
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(538, 262);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnQuery);
             this.Controls.Add(this.tbName);
@@ -92,5 +104,6 @@
         private System.Windows.Forms.Button btnQuery;
         private System.Windows.Forms.TextBox tbName;
         private System.Windows.Forms.Label 员工查询;
+        private System.Windows.Forms.Label label1;
     }
 }
