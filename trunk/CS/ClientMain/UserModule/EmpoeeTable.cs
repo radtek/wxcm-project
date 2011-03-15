@@ -16,8 +16,8 @@ namespace ClientMain
             InitializeComponent();
         }
         private OracleConnection MyConn = null;
-        private OracleCommand MyComm;
-        private DataSet ds;
+      //  private OracleCommand MyComm;
+     //   private DataSet ds;
         public static string userwatch;
         public static bool i=false;
         
@@ -32,8 +32,8 @@ namespace ClientMain
         //定义数据库关闭
         private void sClose()
         {
-            if (ds != null)
-            { ds.Dispose(); }
+            //if (ds != null)
+           // { ds.Dispose(); }
             if (MyConn != null & MyConn.State.ToString() != "Closed")
             { MyConn.Close(); }
         }
@@ -80,6 +80,7 @@ namespace ClientMain
         {
             lastname = null;
             lastcode = null;
+            this.sClose();
             this.Close();
         }
 

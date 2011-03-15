@@ -21,12 +21,12 @@ namespace ClientMain
         //定义窗体公用的数据库连接参数
         private OracleConnection MyConn = null;
         private OracleCommand MyComm;
-        private OracleDataAdapter myAdapter;
-        private OracleDataReader myReader;
+   //     private OracleDataAdapter myAdapter;
+   //     private OracleDataReader myReader;
        // private OracleCommandBuilder myCommandBuilder;
-        private DataSet ds;
-        private DataTable dt;
-        private DataRow dr;
+    //    private DataSet ds;
+    //    private DataTable dt;
+   //     private DataRow dr;
         
         //需要修改的角色的ID传值
         string a = Form1.rolemangerroid.ToString();
@@ -40,8 +40,8 @@ namespace ClientMain
         //定义数据库关闭
         private void sClose()
         {
-            if (ds != null)
-            { ds.Dispose(); }
+           // if (ds != null)
+          //  { ds.Dispose(); }
             if (MyConn != null & MyConn.State.ToString() != "Closed")
             { MyConn.Close(); }
         }
@@ -63,6 +63,7 @@ namespace ClientMain
         //窗体关闭事件处理
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
+            this.sClose();
             this.Close();
         }
        

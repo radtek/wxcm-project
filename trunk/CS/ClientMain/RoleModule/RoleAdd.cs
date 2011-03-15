@@ -24,11 +24,11 @@ namespace ClientMain
         private OracleConnection MyConn = null;
         private OracleCommand MyComm;
         //private OracleDataAdapter myAdapter;
-        private OracleDataReader myReader;
-        private OracleCommandBuilder myCommandBuilder;
-        private DataSet ds;
-        private DataTable dt;
-        private DataRow dr; 
+   //     private OracleDataReader myReader;
+    //    private OracleCommandBuilder myCommandBuilder;
+   //     private DataSet ds;
+    //    private DataTable dt;
+     //   private DataRow dr; 
         //定义数据库连接
         public string lastid;
         private void Open()
@@ -39,8 +39,8 @@ namespace ClientMain
         }
         private void sClose() 
         { 
-            if (ds != null)
-              { ds.Dispose(); } 
+           // if (ds != null)
+           //   { ds.Dispose(); } 
             if (MyConn != null & MyConn.State.ToString() != "Closed") 
             { MyConn.Close(); } 
         }
@@ -120,6 +120,7 @@ namespace ClientMain
         }
         private void roleaddtoolStripBtn3_Click(object sender, EventArgs e)
         {
+            this.sClose();
             this.Close();
         }
         // //以下3个函数实现动态加载无限联级的树控件

@@ -27,8 +27,8 @@ namespace ClientMain
         }
         
         private OracleConnection MyConn = null;
-        private OracleCommand MyComm;
-        private DataSet ds;
+    //    private OracleCommand MyComm;
+    //    private DataSet ds;
         public static string userwatch;//传递到其他模块的当前用户的ID
         public static string user_watch_name;//传递到其他模块的当前用户的名称
         public static string user_watch_emplyid;//传递到其他模块的当前用户所帮定的员工的姓名ID
@@ -50,6 +50,7 @@ namespace ClientMain
         }
         private void toolStripButton5_Click(object sender, EventArgs e)
         {
+            this.sClose();
             this.Close();
         }
         //数据绑定

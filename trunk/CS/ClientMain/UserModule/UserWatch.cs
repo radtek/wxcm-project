@@ -16,12 +16,12 @@ namespace ClientMain
             InitializeComponent();
         }
         private OracleConnection MyConn = null;
-        private OracleCommand MyComm;
+     //   private OracleCommand MyComm;
    
         // private OracleCommandBuilder myCommandBuilder;
-        private DataSet ds;
+   //     private DataSet ds;
   
-        private DataRow dr;
+    //    private DataRow dr;
         private string current_emploee;//当前雇员的姓名
         private void Open()
         {
@@ -31,8 +31,8 @@ namespace ClientMain
         }
         private void sClose()
         {
-            if (ds != null)
-            { ds.Dispose(); }
+          //  if (ds != null)
+          //  { ds.Dispose(); }
             if (MyConn != null & MyConn.State.ToString() != "Closed")
             { MyConn.Close(); }
         }
@@ -137,6 +137,7 @@ namespace ClientMain
         }
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
+            this.sClose();
             this.Close();
         }
 

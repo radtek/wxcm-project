@@ -21,10 +21,10 @@ namespace ClientMain
        // Dictionary<string, string> m_Dict = new Dictionary<string, string>();
         private OracleConnection MyConn = null;
       //  private OracleCommand MyComm;
-        private DataSet ds;
+     //   private DataSet ds;
         private string sums;//判断用户是否唯一时候使用
-        string BackName = null;//EmpoeeTable.lastname.ToString();
-      string BackCode =null; //EmpoeeTable.lastcode.ToString();
+     //   string BackName ;//EmpoeeTable.lastname.ToString();
+     // string BackCode ; //EmpoeeTable.lastcode.ToString();
         private string[] str_group;//role_listview 's selectde id stringgoup
         private int j;
         private void Open()
@@ -36,8 +36,8 @@ namespace ClientMain
         //定义数据库关闭
         private void sClose()
         {
-            if (ds != null)
-            { ds.Dispose(); }
+           // if (ds != null)
+          //  { ds.Dispose(); }
             if (MyConn != null & MyConn.State.ToString() != "Closed")
             { MyConn.Close(); }
         }
@@ -267,6 +267,7 @@ namespace ClientMain
 
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
+            this.sClose();
             this.Close();
         }
         private void ClearAllContent()
@@ -299,14 +300,15 @@ namespace ClientMain
         }
         private void SelectDepar()
     {
-        string error = null;
+      
         if (EmpoeeTable.lastname == null)
         { this.textBox3.Text = null; }
         else
         { this.textBox3.Text = EmpoeeTable.lastname.ToString(); }
         if (string.IsNullOrEmpty(textBox3.Text.Trim()))
         {
-            error = "请您选择员工！！";
+           // string error;
+           // error = "请您选择员工！！";
             //this.textBox3.Focus();
             this.comboBox1.Items.Clear();
           //  this.comboBox2.Items.Clear();

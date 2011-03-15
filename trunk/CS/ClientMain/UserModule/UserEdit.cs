@@ -18,8 +18,8 @@ namespace ClientMain
             this.sourname = sourname;
         }
         private OracleConnection MyConn = null;
-        private OracleCommand MyComm;
-        private DataSet ds;
+   //     private OracleCommand MyComm;
+   //     private DataSet ds;
         private string sums;//查询用户是否可用时用到
         private string current_userepid;//当前用于对应得员工ID
         private string[] str_group;//role_listview 's selectde id stringgoup
@@ -34,8 +34,8 @@ namespace ClientMain
         }
         private void sClose()
         {
-            if (ds != null)
-            { ds.Dispose(); }
+          //  if (ds != null)
+          //  { ds.Dispose(); }
             if (MyConn != null & MyConn.State.ToString() != "Closed")
             { MyConn.Close(); }
         }
@@ -498,6 +498,7 @@ namespace ClientMain
 
         private void toolStripButton4_Click(object sender, EventArgs e)
         {
+            this.sClose();
             this.Close();
         }
         private void ClearAllContent()

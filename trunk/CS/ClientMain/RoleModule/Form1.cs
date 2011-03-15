@@ -26,10 +26,10 @@ namespace ClientMain
             m_fgUpdate = fgUpdate;
         }
         private OracleConnection MyConn = null;
-        private OracleCommand MyComm;
-        private DataSet ds;
+    //    private OracleCommand MyComm;
+     //   private DataSet ds;
         public static string userwatch;
-        string sourname;
+        //string sourname;
         public static string rolemangerroid;
         //定义数据库连接
         private void Open()
@@ -129,6 +129,7 @@ namespace ClientMain
 
         private void toolStripButton4_Click(object sender, EventArgs e)
         {
+            this.sClose();
             this.Close();
         }
 
@@ -178,7 +179,7 @@ namespace ClientMain
                     adp3.SelectCommand = comm3;
                     // DataSet ds1 = new DataSet();
                     adp3.Fill(ds1, "SYS_ROLE_MODULE_ACTION");
-                    string rolemoudleaction = "delete  from SYS_ROLE_MODULE_ACTION where role_id='" + code + "'";
+                    string rolemoudleaction = "delete  from SYS_ROLE_MODULE_ACTION where roleid='" + code + "'";
                     adp3.DeleteCommand = new OracleCommand(rolemoudleaction, MyConn);
                     adp3.DeleteCommand.ExecuteNonQuery();
                     adp3.Update(ds1, "SYS_ROLE_MODULE_ACTION");

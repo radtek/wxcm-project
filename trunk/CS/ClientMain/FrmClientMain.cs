@@ -576,12 +576,12 @@ namespace ClientMain
             else if (item.Name == "角色管理")
             {
                 hasRight(item.Tag.ToString(), out fgAdd, out fgDel, out fgUpdate, out fgQuery);
-                Form1 RoleMt = new Form1(fgAdd, fgDel, fgUpdate, fgQuery);
+                Form1 RoleMt = new Form1(true, true, true, true);//(fgAdd, fgDel, fgUpdate, fgQuery);
                 RoleMt.ShowDialog();
             }else if (item.Name == "用户管理")
             {
                 hasRight(item.Tag.ToString(), out fgAdd, out fgDel, out fgUpdate, out fgQuery);
-                UserManger UserMt = new UserManger(fgAdd, fgDel, fgUpdate, fgQuery);
+                UserManger UserMt = new UserManger(true, true, true, true);//(fgAdd, fgDel, fgUpdate, fgQuery);
                 UserMt.ShowDialog();
             }
             else if (item.Name == "菜单管理")
