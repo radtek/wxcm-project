@@ -12,14 +12,14 @@ namespace ClientMain
         [STAThread]
         static void Main()
         {
-           
+            DevExpress.Utils.AppearanceObject.DefaultFont = new System.Drawing.Font("宋体", 9);  
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             
             FrmLogin fLogin = new FrmLogin();
             if (fLogin.ShowDialog() == DialogResult.OK)
             {
-                Application.Run(new FrmClientMain(FrmLogin.getAccount, FrmLogin.getUser, FrmLogin.getDeptName, FrmLogin.getDeptID));
+                Application.Run(new FrmClientMain(FrmLogin.getAccount, FrmLogin.getUser, FrmLogin.getDeptName, FrmLogin.getDeptID, FrmLogin.getZTID));
             }
             
         }

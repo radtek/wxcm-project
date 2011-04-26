@@ -24,7 +24,6 @@ D:\新建文件夹\CS\ClientMain\obj\Release\ClientMain.FrmStaffMtChild.resource
 D:\新建文件夹\CS\ClientMain\obj\Release\ClientMain.FrmStaffQuery.resources
 D:\新建文件夹\CS\ClientMain\obj\Release\GenerateResource-ResGen.read.1.tlog
 D:\新建文件夹\CS\ClientMain\obj\Release\GenerateResource-ResGen.write.1.tlog
-D:\新建文件夹\CS\ClientMain\obj\Release\ClientMain.exe.licenses
 D:\新建文件夹\CS\ClientMain\obj\Release\ClientMain.exe
 D:\新建文件夹\CS\ClientMain\obj\Release\ClientMain.pdb
 D:\新建文件夹\CS\ClientMain\bin\Release\ClientMain.exe.manifest
@@ -32,14 +31,4 @@ D:\新建文件夹\CS\ClientMain\bin\Release\ClientMain.application
 D:\新建文件夹\CS\ClientMain\obj\Release\ClientMain.exe.manifest
 D:\新建文件夹\CS\ClientMain\obj\Release\ClientMain.application
 D:\新建文件夹\CS\ClientMain\bin\Release\Sybase.Data.AseClient.dll
-D:\新建文件夹\CS\ClientMain\obj\Release\ClientMain.MeunMang.resources
-D:\新建文件夹\CS\ClientMain\obj\Release\ClientMain.XtraForm1.resources
-D:\新建文件夹\CS\ClientMain\obj\Release\ClientMain.Form1.resources
-D:\新建文件夹\CS\ClientMain\obj\Release\ClientMain.RoleAdd.resources
-D:\新建文件夹\CS\ClientMain\obj\Release\ClientMain.RoleEdit.resources
-D:\新建文件夹\CS\ClientMain\obj\Release\ClientMain.rolemanger.resources
-D:\新建文件夹\CS\ClientMain\obj\Release\ClientMain.EmpoeeTable.resources
-D:\新建文件夹\CS\ClientMain\obj\Release\ClientMain.UserAdd.resources
-D:\新建文件夹\CS\ClientMain\obj\Release\ClientMain.UserEdit.resources
-D:\新建文件夹\CS\ClientMain\obj\Release\ClientMain.UserManger.resources
-D:\新建文件夹\CS\ClientMain\obj\Release\ClientMain.UserWatch.resources
+D:\新建文件夹\CS\ClientMain\obj\Release\ClientMain.exe.licenses

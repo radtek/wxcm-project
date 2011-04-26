@@ -39,6 +39,7 @@ namespace ClientMain
         OracleDataAdapter AdaWareType;
         OracleDataAdapter AdaTransType;
         OracleDataAdapter AdaSuperUnit;
+        OracleDataAdapter AdaZTBM;
         DataSet ds;       
         
         
@@ -75,7 +76,7 @@ namespace ClientMain
 
         public string getZTID()
         {
-            return this.cbAcctChose.Text.Trim();
+            return cbAcctChose.Text.Trim();
         }
 
         public string getISZT()
@@ -85,47 +86,100 @@ namespace ClientMain
 
         public string getUnitProp()
         {
-            return ((DataRowView)cbUnitProp.SelectedItem).Row["DWSXID"].ToString();
+            string str = null;
+            if (cbUnitProp.Text != "")
+            { 
+                str = ((DataRowView)cbUnitProp.SelectedItem).Row["DWSXID"].ToString();
+            }
+            return str;
         }
 
         public string getPressType()
         {
-            return ((DataRowView)cbPressType.SelectedItem).Row["CBSLXID"].ToString();
+            
+            string str = null;
+            if (cbPressType.Text != "")
+            {
+                str = ((DataRowView)cbPressType.SelectedItem).Row["CBSLXID"].ToString();
+            }
+            return str;
         }
 
         public string getFacType()
         {
-            return ((DataRowView)cbFacType.SelectedItem).Row["YSCLXID"].ToString();
+            
+            string str = null;
+            if (cbFacType.Text != "")
+            {
+                str = ((DataRowView)cbFacType.SelectedItem).Row["YSCLXID"].ToString();
+            }
+            return str;
         }
 
         public string getWareType()
         {
-            return ((DataRowView)cbWareType.SelectedItem).Row["KFLXID"].ToString();
+            
+            string str = null;
+            if (cbWareType.Text != "")
+            {
+                str = ((DataRowView)cbWareType.SelectedItem).Row["KFLXID"].ToString();
+            }
+            return str;
         }
 
         public string getTransType()
         {
-            return ((DataRowView)cbTransType.SelectedItem).Row["YSDWLXID"].ToString();
+            
+            string str = null;
+            if (cbTransType.Text != "")
+            {
+                str = ((DataRowView)cbTransType.SelectedItem).Row["YSDWLXID"].ToString();
+            }
+            return str;
         }
 
         public string getDeptType()
         {
-            return ((DataRowView)cbDeptType.SelectedItem).Row["DEPARTTYPEID"].ToString();
+            
+            string str = null;
+            if (cbDeptType.Text != "")
+            {
+                str = ((DataRowView)cbDeptType.SelectedItem).Row["DEPARTTYPEID"].ToString();
+            }
+            return str;
         }
 
         public string getClientType()
         {
-            return ((DataRowView)cbClientType.SelectedItem).Row["KHLXID"].ToString();
+            
+            string str = null;
+            if (cbClientType.Text != "")
+            {
+                str = ((DataRowView)cbClientType.SelectedItem).Row["KHLXID"].ToString();
+            }
+            return str;
         }
 
         public string getSuperUnit()
         {
-            return ((DataRowView)cbSuperUnit.SelectedItem).Row["DEPARTMENTID"].ToString();
+           
+            string str = null;
+            if (cbSuperUnit.Text != "")
+            {
+                str = ((DataRowView)cbSuperUnit.SelectedItem).Row["DEPARTMENTID"].ToString();
+            }
+            return str;
         }
 
         public string getSupType()
         {
-            return ((DataRowView)cbSupType.SelectedItem).Row["GYSLXID"].ToString(); 
+            
+            string str = null;
+            if (cbSupType.Text != "")
+            {
+                str = ((DataRowView)cbSupType.SelectedItem).Row["GYSLXID"].ToString();
+            }
+            return str;
         }
 
         public FrmDeptMtChild()
@@ -183,7 +237,7 @@ namespace ClientMain
 
         private void FrmDeptMtChild_Load(object sender, EventArgs e)
         {
-            string strCon = "Data Source=XINHUA;User Id=xxb;Password=pass;Integrated Security=no;";
+            string strCon = "Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.8.222)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=XINHUA)));User Id=xxb;Password=pass;Integrated Security=no;";
             Con = new OracleConnection(strCon);
 
             string sqlTransType = "select YSDWLXID, YSDWLX from JT_J_YSDWLX where ZT = '1'";
@@ -212,6 +266,9 @@ namespace ClientMain
 
             string sqlSuperUnit = "select DEPARTMENTID, DEPARTMENTNAME from SYS_DEPARTMENT";
             AdaSuperUnit = new OracleDataAdapter(sqlSuperUnit, Con);
+
+            string sqlZTBM = "select ZTID, ZTMC from SYS_ZTBM";
+            AdaZTBM = new OracleDataAdapter(sqlZTBM, Con);
        
             ds = new DataSet();
             AdaTransType.Fill(ds, "JT_J_YSDWLX");
@@ -223,6 +280,7 @@ namespace ClientMain
             AdaUnitProp.Fill(ds, "JT_J_DWSX");
             AdaWareType.Fill(ds, "JT_J_KFLX");
             AdaSuperUnit.Fill(ds, "SYS_DEPARTMENT");
+            AdaZTBM.Fill(ds, "SYS_ZTBM");
 
             cbClientType.DataSource = ds.Tables["JT_J_KHLX"];
             cbClientType.ValueMember = "KHLXID";
@@ -269,18 +327,16 @@ namespace ClientMain
             cbSuperUnit.DisplayMember = "DEPARTMENTNAME";
             cbSuperUnit.SelectedItem = m_strSuperUnit;
 
+            cbAcctChose.DataSource = ds.Tables["SYS_ZTBM"];
+            cbAcctChose.ValueMember = "ZTID";
+            cbAcctChose.DisplayMember = "ZTMC";
+            cbAcctChose.SelectedItem = m_strZTID;
+
             int iAcct = 0;
             int.TryParse(m_strSFZT, out iAcct);
             this.cbISAcct.Items.Add("否");
             this.cbISAcct.Items.Add("是");
             this.cbISAcct.SelectedIndex = iAcct;
-
-            Dictionary<string, string> dict = FrmLogin.getDictID2Name;
-            foreach (var item in dict.Values)
-            {
-                this.cbAcctChose.Items.Add(item);
-            }
-            this.cbAcctChose.SelectedItem = m_strZTID;
 
             this.txtDeptDsc.Text = m_strDeptDesc;
             this.txtDeptNum.Text = m_strDeptNum;

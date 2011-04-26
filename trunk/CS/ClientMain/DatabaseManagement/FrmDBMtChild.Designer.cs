@@ -49,7 +49,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(50, 150);
+            this.label1.Location = new System.Drawing.Point(50, 201);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(31, 14);
             this.label1.TabIndex = 0;
@@ -59,9 +59,9 @@
             // 
             this.cbAccount.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAccount.FormattingEnabled = true;
-            this.cbAccount.Location = new System.Drawing.Point(141, 150);
+            this.cbAccount.Location = new System.Drawing.Point(141, 201);
             this.cbAccount.Name = "cbAccount";
-            this.cbAccount.Size = new System.Drawing.Size(150, 22);
+            this.cbAccount.Size = new System.Drawing.Size(451, 22);
             this.cbAccount.TabIndex = 1;
             // 
             // label2
@@ -76,7 +76,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(50, 200);
+            this.label3.Location = new System.Drawing.Point(50, 150);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 14);
             this.label3.TabIndex = 3;
@@ -95,7 +95,7 @@
             // 
             this.cbDBType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbDBType.FormattingEnabled = true;
-            this.cbDBType.Location = new System.Drawing.Point(141, 200);
+            this.cbDBType.Location = new System.Drawing.Point(141, 150);
             this.cbDBType.Name = "cbDBType";
             this.cbDBType.Size = new System.Drawing.Size(150, 22);
             this.cbDBType.TabIndex = 5;

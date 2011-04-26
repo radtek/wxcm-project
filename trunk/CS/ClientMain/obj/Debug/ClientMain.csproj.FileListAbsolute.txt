@@ -98,7 +98,6 @@ D:\新建文件夹\CS\ClientMain\obj\Debug\ClientMain.FrmStaffMtChild.resources
 D:\新建文件夹\CS\ClientMain\obj\Debug\ClientMain.FrmStaffQuery.resources
 D:\新建文件夹\CS\ClientMain\obj\Debug\ClientMain.exe
 D:\新建文件夹\CS\ClientMain\obj\Debug\ClientMain.pdb
-D:\新建文件夹\CS\ClientMain\obj\Debug\ClientMain.exe.licenses
 D:\新建文件夹\CS\ClientMain\obj\Debug\ClientMain.FrmDeptTypeMtChild.resources
 D:\新建文件夹\CS\ClientMain\obj\Debug\ClientMain.FrmDeptTypeMt.resources
 D:\新建文件夹\CS\ClientMain\obj\Debug\ClientMain.FrmClientTypeMt.resources
@@ -116,14 +115,6 @@ D:\新建文件夹\CS\ClientMain\bin\Debug\ClientMain.exe.manifest
 D:\新建文件夹\CS\ClientMain\bin\Debug\ClientMain.application
 D:\新建文件夹\CS\ClientMain\obj\Debug\ClientMain.exe.manifest
 D:\新建文件夹\CS\ClientMain\obj\Debug\ClientMain.application
-D:\新建文件夹\CS\ClientMain\obj\Debug\ClientMain.Form1.resources
-D:\新建文件夹\CS\ClientMain\obj\Debug\ClientMain.RoleAdd.resources
-D:\新建文件夹\CS\ClientMain\obj\Debug\ClientMain.RoleEdit.resources
-D:\新建文件夹\CS\ClientMain\obj\Debug\ClientMain.rolemanger.resources
-D:\新建文件夹\CS\ClientMain\obj\Debug\ClientMain.EmpoeeTable.resources
-D:\新建文件夹\CS\ClientMain\obj\Debug\ClientMain.UserAdd.resources
-D:\新建文件夹\CS\ClientMain\obj\Debug\ClientMain.UserEdit.resources
-D:\新建文件夹\CS\ClientMain\obj\Debug\ClientMain.UserManger.resources
-D:\新建文件夹\CS\ClientMain\obj\Debug\ClientMain.UserWatch.resources
-D:\新建文件夹\CS\ClientMain\obj\Debug\ClientMain.MeunMang.resources
-D:\新建文件夹\CS\ClientMain\obj\Debug\ClientMain.XtraForm1.resources
+D:\新建文件夹\CS\ClientMain\obj\Debug\ClientMain.exe.licenses
+D:\新建文件夹\CS\ClientMain\obj\Debug\ClientMain.FrmBranchAdjust.resources
+D:\新建文件夹\CS\ClientMain\obj\Debug\ClientMain.FrmSupplierAdjust.resources

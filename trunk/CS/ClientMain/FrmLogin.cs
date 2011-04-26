@@ -18,17 +18,12 @@ namespace ClientMain
         private static string strDeptName = "";
         private static string strUser = "";
         private static string strDeptID = "";
+        private static string strZTID = "";
         private static Dictionary<string, string> m_dictName2ID = new Dictionary<string, string>();
         private static Dictionary<string, string> m_dictID2Name = new Dictionary<string, string>();
-        //private static Dictionary<string, string> m_dictDeptID2Name = new Dictionary<string, string>();
-
-        OracleDataAdapter Adapter;
-        DataSet ds;
-        DataTable dt;
-       
-
+                
         private string m_PassWord = null;
-        const string strCon = "Data Source=XINHUA;User Id=xxb;Password=pass;Integrated Security=no;";
+        const string strCon = "Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.8.222)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=XINHUA)));User Id=xxb;Password=pass;Integrated Security=no;";
 
         public static string getAccount
         {
@@ -51,6 +46,18 @@ namespace ClientMain
             set
             {
                 strDeptID = value;
+            }
+        }
+
+        public static string getZTID
+        {
+            get
+            {
+                return strZTID;
+            }
+            set
+            {
+                strZTID = value;
             }
         }
 
@@ -116,6 +123,7 @@ namespace ClientMain
             {
                 MessageBox.Show("请您输入用户！！", "警告", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 this.loginuser.Focus();
+                this.comboBox1.DataSource = null;
                 this.comboBox1.Items.Clear();
                 this.comboBox2.DataSource = null;
                 this.comboBox2.Items.Clear();
@@ -133,20 +141,21 @@ namespace ClientMain
                     FrmLogin.strAcct = this.comboBox1.Text.Trim();
                     FrmLogin.strDeptName = this.comboBox2.Text.Trim();
                     FrmLogin.strDeptID = ((DataRowView)comboBox2.SelectedItem).Row["departmentid"].ToString();
+                    FrmLogin.strZTID = ((DataRowView)comboBox1.SelectedItem).Row["ZTID"].ToString();
                     this.Close();
                     this.DialogResult = DialogResult.OK;
                 }
                 else
                 {
                     if (MessageBox.Show("用户名密码不一致，登陆失败！！", "警告", MessageBoxButtons.OK, MessageBoxIcon.Stop) == DialogResult.OK)
-                    {
+                    {                        
                         this.loginuser.Text = "";
                         this.loginpassword.Text = "";
+                        this.loginuser.Focus();
+                        this.comboBox1.DataSource = null;
                         this.comboBox1.Items.Clear();
                         this.comboBox2.DataSource = null;
                         this.comboBox2.Items.Clear();
-                        this.loginuser.Focus();
-
                     }
 
                 }
@@ -164,6 +173,7 @@ namespace ClientMain
         {
             this.loginuser.Text = "";
             this.loginpassword.Text = "";
+            this.comboBox1.DataSource = null;
             this.comboBox1.Items.Clear();
             this.comboBox2.DataSource = null;
             this.comboBox2.Items.Clear();
@@ -178,40 +188,43 @@ namespace ClientMain
             m_dictName2ID.Clear();
 
 
-            OracleConnection Con = new OracleConnection();
-            Con.ConnectionString = strCon;
+            OracleConnection Con = new OracleConnection(strCon);
+            
             try
             {
-                Con.Open();
                 string strZTBM = "select ZTID, ZTMC from SYS_ZTBM";
-                OracleCommand cmd = new OracleCommand(strZTBM, Con);
-                OracleDataReader rdr = cmd.ExecuteReader();
-                while (rdr.Read())
+                OracleDataAdapter adaZTBM = new OracleDataAdapter(strZTBM, Con);
+                DataSet ds = new DataSet();
+                adaZTBM.Fill(ds, "SYS_ZTBM");
+                m_dictID2Name.Add("", "");
+                m_dictName2ID.Add("", "");
+                foreach (DataRowView theRow in ds.Tables["SYS_ZTBM"].DefaultView)
                 {
-                    m_dictName2ID.Add(rdr.GetString(1), rdr.GetString(0));
-                    m_dictID2Name.Add(rdr.GetString(0), rdr.GetString(1));
+                    m_dictName2ID.Add(theRow.Row["ZTMC"].ToString(), theRow.Row["ZTID"].ToString());
+                    m_dictID2Name.Add(theRow.Row["ZTID"].ToString(), theRow.Row["ZTMC"].ToString());
                 }
+                
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            finally
-            {
-                Con.Close();
-            }
+    
             
         }
 
         private void loginuser_Validating(object sender, EventArgs e)
         {
             string error = null;
+            this.comboBox1.DataSource = null;
             this.comboBox1.Items.Clear();
+            
 
             if (string.IsNullOrEmpty(loginuser.Text.Trim()))
             {
                 error = "请您输入用户！！";
                 this.loginuser.Focus();
+                this.comboBox1.DataSource = null;
                 this.comboBox1.Items.Clear();
                 this.comboBox2.DataSource = null;
                 this.comboBox2.Items.Clear();
@@ -220,59 +233,45 @@ namespace ClientMain
             {
                 string strUser = "select * from SYS_USER where username = '" + this.loginuser.Text + "'";
 
-                string strAccount = "select e.ztid,e.ztmc from sys_user  a " +                
-                "left join  sys_user_department c on c.username=a.username " +
-                "left join  sys_department  d on d.departmentid=c.departmentid " +
-                "left join  sys_ztbm  e on e.ztid=d.ztid " +
-                "where a.username='" + this.loginuser.Text + "'";
+                string strAccount = "select c.ztid, c.ztmc from sys_ztbm c where c.ztid in " +
+                                    "(select distinct b.ztid from sys_department b where " +
+                                    "b.departmentid in (select a.departmentid from sys_user_department a " +
+                                    "where a.username = '" + this.loginuser.Text + "'))";
+                
 
-
-                OracleConnection Con = new OracleConnection();
-                Con.ConnectionString = strCon;
+                OracleConnection Con = new OracleConnection(strCon);
+                
                 try
                 {
-                    Con.Open();
-                    OracleCommand cmdUser = new OracleCommand(strUser, Con);
-                    OracleCommand cmdAccount = new OracleCommand(strAccount, Con);
+                    DataSet ds = new DataSet();
+                    OracleDataAdapter adaUser = new OracleDataAdapter(strUser, Con);
+                    adaUser.Fill(ds, "USER");
 
-                    OracleDataReader rdrUser = cmdUser.ExecuteReader();
-                    // Always call Read before accessing data.
-                    if (rdrUser.Read())
+                    OracleDataAdapter adaAcct = new OracleDataAdapter(strAccount, Con);
+                    adaAcct.Fill(ds, "ACCOUNT");
+
+                    if (ds.Tables["USER"].Rows.Count != 0)
                     {
-                        OracleDataReader rdrAccount = cmdAccount.ExecuteReader();
-                        while (rdrAccount.Read())
-                        {
-                            if (!this.comboBox1.Items.Contains(rdrAccount.GetString(1)))
-                            {
-                                this.comboBox1.Items.Add(rdrAccount.GetString(1));
-                            }
-                        }
-                        if (this.comboBox1.Items.Count != 0)
-                        {
-                            this.comboBox1.SelectedIndex = 0;
-                        }
-                        // always call Close when done reading.
-                        rdrAccount.Close();
+                        this.comboBox1.DataSource = ds.Tables["ACCOUNT"];
+                        this.comboBox1.DisplayMember = "ztmc";
+                        this.comboBox1.ValueMember = "ztid";
                     }
                     else
                     {
                         error = "数据库中无此用户！！";
                         this.loginuser.Focus();
+                        this.comboBox1.DataSource = null;
                         this.comboBox1.Items.Clear();
                         this.comboBox2.DataSource = null;
                         this.comboBox2.Items.Clear();
                     }
-                    rdrUser.Close();
 
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
-                finally
-                {
-                    Con.Close();
-                }
+        
             }
 
             errorProvider1.SetError((Control)sender, error);
@@ -290,33 +289,30 @@ namespace ClientMain
             {
                 string strPass = "select password from SYS_USER where username = '" + this.loginuser.Text + "'";
 
-                OracleConnection Con = new OracleConnection();
-                Con.ConnectionString = strCon;
+                OracleConnection Con = new OracleConnection(strCon);
+                
                 try
                 {
-                    Con.Open();
-                    OracleCommand command = new OracleCommand(strPass, Con);
-                    OracleDataReader reader;
-                    reader = command.ExecuteReader();
-                    reader.Read();
-                    m_PassWord = reader.GetString(0);
-                    // Always call Read before accessing data.
+                    OracleDataAdapter adapter = new OracleDataAdapter(strPass, Con);
+                    DataSet ds = new DataSet();
+                    adapter.Fill(ds, "SYS_USER_PASS");
+                    foreach (DataRowView theRow in ds.Tables["SYS_USER_PASS"].DefaultView)
+                    {
+                        m_PassWord = theRow.Row["PASSWORD"].ToString();
+                    }                    
+                   
                     if (m_PassWord != this.loginpassword.Text)
                     {
                         error = "密码错误！！";
                     }
-                    // always call Close when done reading.
-                    reader.Close();
+                    
                 }
                 catch (Exception ex)
                 {
 
                     MessageBox.Show(ex.Message);
                 }
-                finally
-                {
-                    Con.Close();
-                }
+       
             }
 
             errorProvider2.SetError((Control)sender, error);
@@ -331,39 +327,22 @@ namespace ClientMain
                            " WHERE departmentid IN (SELECT departmentid " +
                            " FROM sys_user_department " +
                            " WHERE  username='" + this.loginuser.Text + "') and ztid='" +
-                           m_dictName2ID[this.comboBox1.Text] + "'";
+                            m_dictName2ID[this.comboBox1.Text] + "'";
             
             this.comboBox2.DataSource = null;
             this.comboBox2.Items.Clear();
-            
-            //m_dictDeptID2Name.Clear();
+
             try
             {
                 OracleConnection Con = new OracleConnection(strCon);
-                Adapter = new OracleDataAdapter(strDepart, Con);
-                ds = new DataSet();
+                OracleDataAdapter Adapter = new OracleDataAdapter(strDepart, Con);
+                DataSet ds = new DataSet();
                 Adapter.Fill(ds, "CUSTOMDEPT");
 
-                dt = ds.Tables["CUSTOMDEPT"];
-                this.comboBox2.DataSource = dt;
+                this.comboBox2.DataSource = ds.Tables["CUSTOMDEPT"];
                 this.comboBox2.DisplayMember = "departmentname";
                 this.comboBox2.ValueMember = "departmentid";
-                //OracleCommand cmdDepart = new OracleCommand(strDepart, m_cnn);
-                //OracleDataReader rdrDept = cmdDepart.ExecuteReader();
-                //while (rdrDept.Read())
-                //{
-                //    m_dictDeptID2Name.Add(rdrDept.GetString(0), rdrDept.GetString(1));
-                //}
-
-                //this.comboBox2.DataSource = new BindingSource(m_dictDeptID2Name, null);
-                //this.comboBox2.DisplayMember = "Value";
-                //this.comboBox2.ValueMember = "Key";
-
-                //if (this.comboBox2.Items.Count != 0)
-                //{
-                //    this.comboBox2.SelectedIndex = 0;
-                //}
-                //rdrDept.Close();
+                
             }
             catch (Exception ex)
             {

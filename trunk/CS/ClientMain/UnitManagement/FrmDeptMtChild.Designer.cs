@@ -66,6 +66,7 @@
             this.tbJCJC = new System.Windows.Forms.TextBox();
             this.tbYTH = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -403,11 +404,22 @@
             this.label18.TabIndex = 39;
             this.label18.Text = "基础教材编号";
             // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.ForeColor = System.Drawing.Color.Red;
+            this.label19.Location = new System.Drawing.Point(112, 150);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(11, 12);
+            this.label19.TabIndex = 40;
+            this.label19.Text = "*";
+            // 
             // FrmDeptMtChild
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(798, 424);
+            this.Controls.Add(this.label19);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.tbYTH);
             this.Controls.Add(this.tbJCJC);
@@ -495,5 +507,6 @@
         private System.Windows.Forms.TextBox tbJCJC;
         private System.Windows.Forms.TextBox tbYTH;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
     }
 }

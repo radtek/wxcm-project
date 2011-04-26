@@ -52,7 +52,7 @@ namespace ClientMain
 
         private void FrmStaffMtChild_Load(object sender, EventArgs e)
         {
-            string strCon = "Data Source=XINHUA;User Id=xxb;Password=pass;Integrated Security=no;";
+            string strCon = "Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.8.222)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=XINHUA)));User Id=xxb;Password=pass;Integrated Security=no;";
             Con = new OracleConnection(strCon);
 
             string sqlSuperUnit = "select DEPARTMENTID, DEPARTMENTNAME from SYS_DEPARTMENT";
@@ -81,17 +81,31 @@ namespace ClientMain
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (tbName.Text == "" || tbStaffNum.Text == "")
+            if (tbName.Text == "" || tbStaffNum.Text == "" || cbSuperUnit.Text == "")
             {
-                if (MessageBox.Show("员工姓名和编号不能为空！", "警告", MessageBoxButtons.OK, MessageBoxIcon.Stop) == DialogResult.OK)
+                if (MessageBox.Show("员工姓名、编号和上级部门不能为空！", "警告", MessageBoxButtons.OK, MessageBoxIcon.Stop) == DialogResult.OK)
                 {
                     this.tbName.Focus();
                 }
             }
             else
             {
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                string sql = "select * from SYS_EMPLOYEES where EMPLOYEENO = '" + tbStaffNum.Text +"'";
+                OracleDataAdapter Ada = new OracleDataAdapter(sql, Con);
+                DataSet dataset = new DataSet();
+                Ada.Fill(dataset, "SYS_EMPLOYEES");
+                if ((dataset.Tables["SYS_EMPLOYEES"].Rows.Count != 0) && (this.Text == "增加员工"))
+                {
+                    if (MessageBox.Show("员工编号必须唯一！", "警告", MessageBoxButtons.OK, MessageBoxIcon.Stop) == DialogResult.OK)
+                    {
+                        this.tbStaffNum.Focus();
+                    }
+                }
+                else
+                {
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
             }  
         }
 

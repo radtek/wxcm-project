@@ -29,7 +29,8 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>1</ApplicationRevision>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -70,24 +71,26 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Data.v10.2, Version=10.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Utils.v10.2, Version=10.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraBars.v10.2, Version=10.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraEditors.v10.2, Version=10.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraGrid.v10.2, Version=10.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraLayout.v10.2, Version=10.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraNavBar.v10.2, Version=10.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraTreeList.v10.2, Version=10.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v10.2, Version=10.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v10.2, Version=10.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpo.v10.2, Version=10.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v10.2, Version=10.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v10.2, Version=10.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v10.2, Version=10.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v10.2, Version=10.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraNavBar.v10.2, Version=10.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="Sybase.Data.AseClient, Version=1.1.510.0, Culture=neutral, PublicKeyToken=26e0f1529304f4a7">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\sybase\DataAccess\ADONET\dll\Sybase.Data.AseClient.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.OracleClient" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -97,6 +100,22 @@
     </Compile>
     <Compile Include="DatabaseManagement\FrmDBMt.Designer.cs">
       <DependentUpon>FrmDBMt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dsDWXX.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsDWXX.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsZTBM.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsZTBM.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBranchAdjust.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBranchAdjust.Designer.cs">
+      <DependentUpon>FrmBranchAdjust.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmChainDeptInfo.cs">
       <SubType>Form</SubType>
@@ -134,47 +153,17 @@
     <Compile Include="ClientType\FrmClientTypeMt.Designer.cs">
       <DependentUpon>FrmClientTypeMt.cs</DependentUpon>
     </Compile>
-    <Compile Include="MenuMangement\MeunMang.cs">
+    <Compile Include="FrmSupplierAdjust.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MenuMangement\MeunMang.designer.cs">
-      <DependentUpon>MeunMang.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MenuMangement\XtraForm1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MenuMangement\XtraForm1.designer.cs">
-      <DependentUpon>XtraForm1.cs</DependentUpon>
+    <Compile Include="FrmSupplierAdjust.Designer.cs">
+      <DependentUpon>FrmSupplierAdjust.cs</DependentUpon>
     </Compile>
     <Compile Include="PrintType\FrmPrintTypeMt.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PrintType\FrmPrintTypeMt.Designer.cs">
       <DependentUpon>FrmPrintTypeMt.cs</DependentUpon>
-    </Compile>
-    <Compile Include="RoleModule\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RoleModule\Form1.designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="RoleModule\RoleAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RoleModule\RoleAdd.designer.cs">
-      <DependentUpon>RoleAdd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="RoleModule\RoleEdit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RoleModule\RoleEdit.designer.cs">
-      <DependentUpon>RoleEdit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="RoleModule\rolemanger.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RoleModule\rolemanger.designer.cs">
-      <DependentUpon>rolemanger.cs</DependentUpon>
     </Compile>
     <Compile Include="TransType\FrmTransTypeMt.cs">
       <SubType>Form</SubType>
@@ -187,36 +176,6 @@
     </Compile>
     <Compile Include="UnitProp\FrmUnitPropMt.Designer.cs">
       <DependentUpon>FrmUnitPropMt.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserModule\EmpoeeTable.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UserModule\EmpoeeTable.designer.cs">
-      <DependentUpon>EmpoeeTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserModule\UserAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UserModule\UserAdd.designer.cs">
-      <DependentUpon>UserAdd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserModule\UserEdit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UserModule\UserEdit.designer.cs">
-      <DependentUpon>UserEdit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserModule\UserManger.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UserModule\UserManger.designer.cs">
-      <DependentUpon>UserManger.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserModule\UserWatch.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UserModule\UserWatch.designer.cs">
-      <DependentUpon>UserWatch.cs</DependentUpon>
     </Compile>
     <Compile Include="WareType\FrmWareTypeMt.cs">
       <SubType>Form</SubType>
@@ -289,6 +248,9 @@
     <EmbeddedResource Include="DatabaseManagement\FrmDBMtChild.resx">
       <DependentUpon>FrmDBMtChild.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmBranchAdjust.resx">
+      <DependentUpon>FrmBranchAdjust.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmChainDeptInfo.resx">
       <DependentUpon>FrmChainDeptInfo.cs</DependentUpon>
     </EmbeddedResource>
@@ -302,47 +264,18 @@
     <EmbeddedResource Include="DeptType\FrmDeptTypeMt.resx">
       <DependentUpon>FrmDeptTypeMt.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MenuMangement\MeunMang.resx">
-      <DependentUpon>MeunMang.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MenuMangement\XtraForm1.resx">
-      <DependentUpon>XtraForm1.cs</DependentUpon>
+    <EmbeddedResource Include="FrmSupplierAdjust.resx">
+      <DependentUpon>FrmSupplierAdjust.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PrintType\FrmPrintTypeMt.resx">
       <DependentUpon>FrmPrintTypeMt.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RoleModule\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RoleModule\RoleAdd.resx">
-      <DependentUpon>RoleAdd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RoleModule\RoleEdit.resx">
-      <DependentUpon>RoleEdit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RoleModule\rolemanger.resx">
-      <DependentUpon>rolemanger.cs</DependentUpon>
-    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="TransType\FrmTransTypeMt.resx">
       <DependentUpon>FrmTransTypeMt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UnitProp\FrmUnitPropMt.resx">
       <DependentUpon>FrmUnitPropMt.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserModule\EmpoeeTable.resx">
-      <DependentUpon>EmpoeeTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserModule\UserAdd.resx">
-      <DependentUpon>UserAdd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserModule\UserEdit.resx">
-      <DependentUpon>UserEdit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserModule\UserManger.resx">
-      <DependentUpon>UserManger.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserModule\UserWatch.resx">
-      <DependentUpon>UserWatch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WareType\FrmWareTypeMt.resx">
       <DependentUpon>FrmWareTypeMt.cs</DependentUpon>
@@ -365,7 +298,6 @@
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="StaffManagement\FrmStaffMt.resx">
       <DependentUpon>FrmStaffMt.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -387,6 +319,28 @@
       <DependentUpon>FrmStaffQuery.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClientMain_TemporaryKey.pfx" />
+    <None Include="dsDWXX.xsc">
+      <DependentUpon>dsDWXX.xsd</DependentUpon>
+    </None>
+    <None Include="dsDWXX.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsDWXX.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsDWXX.xss">
+      <DependentUpon>dsDWXX.xsd</DependentUpon>
+    </None>
+    <None Include="dsZTBM.xsc">
+      <DependentUpon>dsZTBM.xsd</DependentUpon>
+    </None>
+    <None Include="dsZTBM.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsZTBM.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsZTBM.xss">
+      <DependentUpon>dsZTBM.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -52,6 +52,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.cbSuperUnit = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -259,11 +260,22 @@
             this.cbSuperUnit.Size = new System.Drawing.Size(153, 20);
             this.cbSuperUnit.TabIndex = 25;
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.ForeColor = System.Drawing.Color.Red;
+            this.label13.Location = new System.Drawing.Point(427, 187);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(11, 12);
+            this.label13.TabIndex = 26;
+            this.label13.Text = "*";
+            // 
             // FrmStaffMtChild
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(669, 278);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.cbSuperUnit);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
@@ -322,5 +334,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox cbSuperUnit;
+        private System.Windows.Forms.Label label13;
     }
 }

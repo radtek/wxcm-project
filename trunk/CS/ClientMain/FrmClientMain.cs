@@ -6,8 +6,6 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraNavBar;
-using DevExpress.XtraTreeList;
-using DevExpress.XtraTreeList.Nodes;
 //using DevExpress.Utils;
 //using DevExpress.Utils.Serializers;
 using System.Security.Cryptography;
@@ -40,16 +38,17 @@ namespace ClientMain
         //OracleCommandBuilder cb;
         DataTable dt;
         //OracleCommand cmd;
-        readonly string m_strName;
-        readonly string m_strDeptID;
-        readonly string m_strDeptName;
+        string m_strName;
+        string m_strDeptID;
+        string m_strDeptName;
+        string m_strZTID; 
 
         public FrmClientMain()
         {
             InitializeComponent();
         }
 
-        public FrmClientMain(string strAccount, string strUser, string strDeptName, string strDeptID)
+        public FrmClientMain(string strAccount, string strUser, string strDeptName, string strDeptID, string strZTID)
         {
             InitializeComponent();
             lb_zt.Text = "   帐套：" + strAccount;
@@ -59,26 +58,51 @@ namespace ClientMain
             m_strDeptID = strDeptID;
             m_strDeptName = strDeptName;
             m_strName = strUser;
+            m_strZTID = strZTID;
 
         }
         private void FrmClientMain_Load(object sender, EventArgs e)
         {
             //            CreateToolBar();//创建outlookbar
-            string strCon = "Data Source=XINHUA;User Id=xxb;Password=pass;Integrated Security=no;";
+            string strCon = "Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.8.222)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=XINHUA)));User Id=xxb;Password=pass;Integrated Security=no;";
             Con = new OracleConnection(strCon);
 
             string strSQL = "select a.id, a.modelname, a.PARENTMODEL from sys_model a where a.id in (select b.module_id from sys_role_module b where b.role_id in (select c.roleid from sys_user_role c  where c.username = '" + m_strName + "' and c.deptid = '"+ m_strDeptID + "'))";
             Adapter = new OracleDataAdapter(strSQL, Con);
             //cb = new OracleCommandBuilder(Adapter);
 
+            
             ds = new DataSet();
             Adapter.Fill(ds, "SYS_MODEL");
 
             dt = ds.Tables["SYS_MODEL"];
 
-       
-
             CreateOutlookBar();
+        }
+
+        private void DBSelect(string ModelID, out string strDBType, out string strServer, out string strDbName, out string strUser, out string strPass)
+        {
+            strDBType = null;
+            strServer = null;
+            strDbName = null;
+            strUser = null;
+            strPass = null;
+
+            string strSqlDbSelect = "select b.dbtype, b.server, b.dbname, b.username, b.password from base_zt_db b "
+                                  + "where b.systype in (select a.systype from sys_model a where a.id = '" + ModelID + "') "
+                                  + "and b.ztid = '" + m_strZTID + "'";
+            OracleDataAdapter adaDB = new OracleDataAdapter(strSqlDbSelect, Con);
+            DataSet dsDb = new DataSet();
+            adaDB.Fill(dsDb, "DBSelect");
+            foreach (DataRowView theRow in dsDb.Tables["DBSelect"].DefaultView)
+            {
+                strDBType = theRow.Row["DBTYPE"].ToString().Trim();
+                strDbName = theRow.Row["DBNAME"].ToString().Trim();
+                strPass = theRow.Row["PASSWORD"].ToString().Trim();
+                strUser = theRow.Row["USERNAME"].ToString().Trim();
+                strServer = theRow.Row["SERVER"].ToString().Trim(); 
+            }
+
         }
 
         private void hasRight(string ModelID, out bool fgAdd, out bool fgDel, out bool fgUpdate, out bool fgQuery)
@@ -88,33 +112,43 @@ namespace ClientMain
             fgUpdate = false;
             fgQuery = false;
 
-            string sqlRight = "select ACTIONCODE from sys_role_module_action c where c.roleid || c.modeleid in "
-                            + "(select b.role_id || b.module_id from sys_role_module b where b.role_id in "
-                            + "(select a.roleid from sys_user_role a where a.username = '" 
-                            + m_strName + "' and a.deptid = '"+ m_strDeptID + "')) and c.modeleid = '" + ModelID + "'";
-            adaRight = new OracleDataAdapter(sqlRight, Con);
-            dsRight = new DataSet();
-            adaRight.Fill(dsRight, "ACT_RIGHT");
-            foreach (DataRowView theRow in dsRight.Tables["ACT_RIGHT"].DefaultView)
-            {
-                switch (theRow.Row["ACTIONCODE"].ToString().ToLower())
-                { 
-                    case "add":
-                        fgAdd = true;
-                        break;
-                    case"delete":
-                        fgDel = true;
-                        break;
-                    case "update":
-                        fgUpdate = true;
-                        break;
-                    case "query":
-                        fgQuery = true;
-                        break;
-                    default:
-                        break;
+            //if (m_strName == "admin")
+            //{
+            //    fgAdd = true;
+            //    fgDel = true;
+            //    fgUpdate = true;
+            //    fgQuery = true;
+            //}
+            //else
+            //{
+                string sqlRight = "select ACTIONCODE from sys_role_module_action c where c.roleid || c.modeleid in "
+                                + "(select b.role_id || b.module_id from sys_role_module b where b.role_id in "
+                                + "(select a.roleid from sys_user_role a where a.username = '"
+                                + m_strName + "' and a.deptid = '" + m_strDeptID + "')) and c.modeleid = '" + ModelID + "'";
+                adaRight = new OracleDataAdapter(sqlRight, Con);
+                dsRight = new DataSet();
+                adaRight.Fill(dsRight, "ACT_RIGHT");
+                foreach (DataRowView theRow in dsRight.Tables["ACT_RIGHT"].DefaultView)
+                {
+                    switch (theRow.Row["ACTIONCODE"].ToString().ToLower())
+                    {
+                        case "add":
+                            fgAdd = true;
+                            break;
+                        case "delete":
+                            fgDel = true;
+                            break;
+                        case "update":
+                            fgUpdate = true;
+                            break;
+                        case "query":
+                            fgQuery = true;
+                            break;
+                        default:
+                            break;
+                    }
                 }
-            }
+            //}
         }
 
         private void CreateNavGroup(DataView dvRoot)
@@ -409,42 +443,51 @@ namespace ClientMain
             bool fgUpdate;
             bool fgQuery;
 
-            hasRight(listView1.FocusedItem.Tag.ToString(), out fgAdd, out fgDel, out fgUpdate, out fgQuery);
+            
             switch (listView1.FocusedItem.Name.Trim())
             { 
                 case "单位信息":
+                    hasRight(listView1.FocusedItem.Tag.ToString(), out fgAdd, out fgDel, out fgUpdate, out fgQuery);
                     FrmDeptMt DeptMt = new FrmDeptMt(fgAdd, fgDel, fgUpdate, fgQuery);
                     DeptMt.ShowDialog();
                     break;
                 case "部门类型":
+                    hasRight(listView1.FocusedItem.Tag.ToString(), out fgAdd, out fgDel, out fgUpdate, out fgQuery);
                     FrmDeptTypeMt DeptType = new FrmDeptTypeMt(fgAdd, fgDel, fgUpdate, fgQuery);
                     DeptType.ShowDialog();
                     break;
                 case "客户类型":
+                    hasRight(listView1.FocusedItem.Tag.ToString(), out fgAdd, out fgDel, out fgUpdate, out fgQuery);
                     FrmClientTypeMt ClientType = new FrmClientTypeMt(fgAdd, fgDel, fgUpdate, fgQuery);
                     ClientType.ShowDialog();
                     break;
                 case "出版社类型":
+                    hasRight(listView1.FocusedItem.Tag.ToString(), out fgAdd, out fgDel, out fgUpdate, out fgQuery);
                     FrmPressTypeMt PressType = new FrmPressTypeMt(fgAdd, fgDel, fgUpdate, fgQuery);
                     PressType.ShowDialog();
                     break;
                 case "供应商类型":
+                    hasRight(listView1.FocusedItem.Tag.ToString(), out fgAdd, out fgDel, out fgUpdate, out fgQuery);
                     FrmSupplierTypeMt SupplierType = new FrmSupplierTypeMt(fgAdd, fgDel, fgUpdate, fgQuery);
                     SupplierType.ShowDialog();
                     break;
                 case "库房类型":
+                    hasRight(listView1.FocusedItem.Tag.ToString(), out fgAdd, out fgDel, out fgUpdate, out fgQuery);
                     FrmWareTypeMt WareType = new FrmWareTypeMt(fgAdd, fgDel, fgUpdate, fgQuery);
                     WareType.ShowDialog();
                     break;
                 case "印刷厂类型":
+                    hasRight(listView1.FocusedItem.Tag.ToString(), out fgAdd, out fgDel, out fgUpdate, out fgQuery);
                     FrmPrintTypeMt PrintingType = new FrmPrintTypeMt(fgAdd, fgDel, fgUpdate, fgQuery);
                     PrintingType.ShowDialog();
                     break;
                 case "运输单位类型":
+                    hasRight(listView1.FocusedItem.Tag.ToString(), out fgAdd, out fgDel, out fgUpdate, out fgQuery);
                     FrmTransTypeMt TransType = new FrmTransTypeMt(fgAdd, fgDel, fgUpdate, fgQuery);
                     TransType.ShowDialog();
                     break;
                 case "单位属性":
+                    hasRight(listView1.FocusedItem.Tag.ToString(), out fgAdd, out fgDel, out fgUpdate, out fgQuery);
                     FrmUnitPropMt UnitProp = new FrmUnitPropMt(fgAdd, fgDel, fgUpdate, fgQuery);
                     UnitProp.ShowDialog();
                     break;
@@ -543,13 +586,20 @@ namespace ClientMain
         private void navBarControl1_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
             NavBarItem item = e.Link.Item;
+
             bool fgAdd;
             bool fgDel;
             bool fgUpdate;
             bool fgQuery;
 
+            string strDBType;
+            string strServer;
+            string strDbName;
+            string strUser;
+            string strPass; 
+
             listView1.Hide();
-                        
+            
             if (item.Name == "单位管理")
             {
                 //FrmDeptMt DeptMt = new FrmDeptMt();
@@ -568,28 +618,40 @@ namespace ClientMain
                 FrmDBMt DBMt = new FrmDBMt(fgAdd, fgDel, fgUpdate, fgQuery);
                 DBMt.ShowDialog();
             }
-            else if (item.Name == "连锁客户端部门信息")
+            else if (item.Name == "连锁店部门信息")
             {
-                FrmChainDeptInfo FrmCDI = new FrmChainDeptInfo();
+                DBSelect(item.Tag.ToString(), out strDBType, out strServer, out strDbName, out strUser, out strPass);
+                FrmChainDeptInfo FrmCDI = new FrmChainDeptInfo(strDBType, strServer, strDbName, strUser, strPass);
                 FrmCDI.ShowDialog();
             }
-            else if (item.Name == "角色管理")
+            else if (item.Name == "仅对子分公司调整")
             {
-                hasRight(item.Tag.ToString(), out fgAdd, out fgDel, out fgUpdate, out fgQuery);
-                Form1 RoleMt = new Form1(true, true, true, true);//(fgAdd, fgDel, fgUpdate, fgQuery);
-                RoleMt.ShowDialog();
-            }else if (item.Name == "用户管理")
-            {
-                hasRight(item.Tag.ToString(), out fgAdd, out fgDel, out fgUpdate, out fgQuery);
-                UserManger UserMt = new UserManger(true, true, true, true);//(fgAdd, fgDel, fgUpdate, fgQuery);
-                UserMt.ShowDialog();
+                FrmBranchAdjust frmBraAdj = new FrmBranchAdjust(m_strName, m_strZTID, m_strDeptID);
+                frmBraAdj.ShowDialog();
             }
-            else if (item.Name == "菜单管理")
+            else if (item.Name == "仅对供应商调整")
             {
-                hasRight(item.Tag.ToString(), out fgAdd, out fgDel, out fgUpdate, out fgQuery);
-                MeunMang MenuMt = new MeunMang();
-                MenuMt.ShowDialog();
+                FrmSupplierAdjust frmSupAdj = new FrmSupplierAdjust(m_strName, m_strZTID, m_strDeptID);
+                frmSupAdj.ShowDialog();
             }
+            //else if (item.Name == "角色管理")
+            //{
+            //    hasRight(item.Tag.ToString(), out fgAdd, out fgDel, out fgUpdate, out fgQuery);
+            //    Form1 RoleMt = new Form1(fgAdd, fgDel, fgUpdate, fgQuery);
+            //    RoleMt.ShowDialog();
+            //}
+            //else if (item.Name == "用户管理")
+            //{
+            //    hasRight(item.Tag.ToString(), out fgAdd, out fgDel, out fgUpdate, out fgQuery);
+            //    UserManger UserMt = new UserManger(fgAdd, fgDel, fgUpdate, fgQuery);
+            //    UserMt.ShowDialog();
+            //}
+            //else if (item.Name == "菜单管理")
+            //{
+            //    hasRight(item.Tag.ToString(), out fgAdd, out fgDel, out fgUpdate, out fgQuery);
+            //    MeunMang MenuMt = new MeunMang();
+            //    MenuMt.ShowDialog();
+            //}
         }
 
         

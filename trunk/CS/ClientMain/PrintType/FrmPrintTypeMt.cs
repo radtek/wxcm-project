@@ -48,7 +48,7 @@ namespace ClientMain
         {
             dataGridView1.DataSource = bindingSource1;
 
-            string strCon = "Data Source=XINHUA;User Id=xxb;Password=pass;Integrated Security=no;";
+            string strCon = "Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.8.222)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=XINHUA)));User Id=xxb;Password=pass;Integrated Security=no;";
             Con = new OracleConnection(strCon);
 
             string strSQL = "select YSCLXID, LXBH, YSCDWLX, ZT from JT_J_YSCLX";
