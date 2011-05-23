@@ -176,9 +176,9 @@ namespace ClientMain
         private void CreateRightArea(DataView dvChild, NavBarItem Item)
         {
             dvChild.RowFilter = "PARENTMODEL = '" + Item.Tag.ToString() + "'";
-
-            if (listView1 == null || !panelRight.Controls.Contains(listView1))
-            {
+            listView1.Items.Clear();
+            //if (listView1 == null ||!panelRight.Controls.Contains(listView1))
+            //{
                 InitImageList();
                 listView1.DoubleClick += new EventHandler(listView1_DoubleClick);
                 listView1.KeyDown += new KeyEventHandler(listView1_KeyDown);
@@ -208,15 +208,17 @@ namespace ClientMain
                     listitem.Tag = theRow.Row["ID"].ToString();
                     listView1.Items.Add(listitem);
                 }
-                
-            }
-            else
-            {
-                
+
                 listView1.BringToFront();
                 listView1.Show();
+            //}
+            //else
+            //{
+                
+            //    listView1.BringToFront();
+            //    listView1.Show();
                
-            }
+            //}
 
             
         }
@@ -407,6 +409,9 @@ namespace ClientMain
 
         private void InitImageList()
         {
+            imageList1.Images.Clear();
+            imageList2.Images.Clear();
+
             int fsCount = System.IO.Directory.GetFiles(@"icon/ListViewIcon", "*.ico").Length;
 
             Icon img = null;
@@ -490,6 +495,10 @@ namespace ClientMain
                     hasRight(listView1.FocusedItem.Tag.ToString(), out fgAdd, out fgDel, out fgUpdate, out fgQuery);
                     FrmUnitPropMt UnitProp = new FrmUnitPropMt(fgAdd, fgDel, fgUpdate, fgQuery);
                     UnitProp.ShowDialog();
+                    break;
+                case"采购收货单列表":
+                    FrmPurchaseReceiveNote PurchaseReceiveNote = new FrmPurchaseReceiveNote();
+                    PurchaseReceiveNote.ShowDialog();
                     break;
                 default:
                     break;
@@ -600,13 +609,13 @@ namespace ClientMain
 
             listView1.Hide();
             
-            if (item.Name == "单位管理")
+            if (item.Name.Equals("单位管理") || item.Name.Equals("集团") || item.Name.Equals("市县"))
             {
                 //FrmDeptMt DeptMt = new FrmDeptMt();
                 //DeptMt.ShowDialog();
                 CreateRightArea(dt.DefaultView, item);
-            }
-            else if(item.Name == "员工管理")
+            }            
+            else if (item.Name == "员工管理")
             {
                 hasRight(item.Tag.ToString(), out fgAdd, out fgDel, out fgUpdate, out fgQuery);
                 FrmStaffMt StaffMt = new FrmStaffMt(fgAdd, fgDel, fgUpdate, fgQuery);

@@ -18,7 +18,8 @@
     </UpgradeBackupLocation>
     <OldToolsVersion>3.5</OldToolsVersion>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <TargetFrameworkProfile />
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <PublishUrl>c:\test\clientmain\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -71,14 +72,20 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Data.v10.2, Version=10.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Utils.v10.2, Version=10.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Xpo.v10.2, Version=10.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraBars.v10.2, Version=10.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraEditors.v10.2, Version=10.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraGrid.v10.2, Version=10.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraLayout.v10.2, Version=10.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraNavBar.v10.2, Version=10.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Localization.v10.2">
+      <HintPath>C:\Users\Kevin\Desktop\DevExpress.Localization.v10.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpo.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpo.v10.2.Providers, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraNavBar.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="Sybase.Data.AseClient, Version=1.1.510.0, Culture=neutral, PublicKeyToken=26e0f1529304f4a7">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\sybase\DataAccess\ADONET\dll\Sybase.Data.AseClient.dll</HintPath>
@@ -153,12 +160,26 @@
     <Compile Include="ClientType\FrmClientTypeMt.Designer.cs">
       <DependentUpon>FrmClientTypeMt.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmPurchaseReceiveDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPurchaseReceiveDetail.Designer.cs">
+      <DependentUpon>FrmPurchaseReceiveDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPurchaseReceiveNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPurchaseReceiveNote.Designer.cs">
+      <DependentUpon>FrmPurchaseReceiveNote.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmSupplierAdjust.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmSupplierAdjust.Designer.cs">
       <DependentUpon>FrmSupplierAdjust.cs</DependentUpon>
     </Compile>
+    <Compile Include="GridCheckMarksSelection.cs" />
+    <Compile Include="PersistentClassesXINHUA.cs" />
     <Compile Include="PrintType\FrmPrintTypeMt.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -263,6 +284,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DeptType\FrmDeptTypeMt.resx">
       <DependentUpon>FrmDeptTypeMt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPurchaseReceiveDetail.resx">
+      <DependentUpon>FrmPurchaseReceiveDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPurchaseReceiveNote.resx">
+      <DependentUpon>FrmPurchaseReceiveNote.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSupplierAdjust.resx">
       <DependentUpon>FrmSupplierAdjust.cs</DependentUpon>

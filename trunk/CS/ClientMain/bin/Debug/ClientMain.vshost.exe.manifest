@@ -58,6 +58,11 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="DevExpress.Xpo.v10.2.Providers" version="10.2.6.0" publicKeyToken="B88D1754D700E49A" language="neutral" processorArchitecture="msil" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
       <assemblyIdentity name="DevExpress.XtraBars.v10.2" version="10.2.6.0" publicKeyToken="B88D1754D700E49A" language="neutral" processorArchitecture="msil" />
     </dependentAssembly>
   </dependency>
@@ -82,14 +87,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ClientMain.exe" size="282112">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ClientMain.exe" size="502784">
       <assemblyIdentity name="ClientMain" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>LMsPQkwDdvpRj0dDqVLj2/8/7rw=</dsig:DigestValue>
+        <dsig:DigestValue>xWhjMe8hrklYpV9RUSM5q/WZuI0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

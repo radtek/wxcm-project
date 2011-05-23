@@ -115,6 +115,9 @@ D:\新建文件夹\CS\ClientMain\bin\Debug\ClientMain.exe.manifest
 D:\新建文件夹\CS\ClientMain\bin\Debug\ClientMain.application
 D:\新建文件夹\CS\ClientMain\obj\Debug\ClientMain.exe.manifest
 D:\新建文件夹\CS\ClientMain\obj\Debug\ClientMain.application
-D:\新建文件夹\CS\ClientMain\obj\Debug\ClientMain.exe.licenses
 D:\新建文件夹\CS\ClientMain\obj\Debug\ClientMain.FrmBranchAdjust.resources
 D:\新建文件夹\CS\ClientMain\obj\Debug\ClientMain.FrmSupplierAdjust.resources
+D:\新建文件夹\CS\ClientMain\obj\Debug\ClientMain.FrmPurchaseReceiveNote.resources
+D:\新建文件夹\CS\ClientMain\obj\Debug\ClientMain.FrmPurchaseReceiveDetail.resources
+D:\新建文件夹\CS\ClientMain\obj\Debug\ClientMain.exe.licenses
+D:\新建文件夹\CS\ClientMain\bin\Debug\DevExpress.Localization.v10.2.dll

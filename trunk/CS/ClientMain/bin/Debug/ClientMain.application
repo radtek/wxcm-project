@@ -4,14 +4,14 @@
   <description asmv2:publisher="ClientMain" asmv2:product="ClientMain" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <deployment install="true" mapFileExtensions="true" />
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="ClientMain.exe.manifest" size="6133">
+    <dependentAssembly dependencyType="install" codebase="ClientMain.exe.manifest" size="15653">
       <assemblyIdentity name="ClientMain.exe" version="1.0.0.2" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>jFavcAUXHAloxCkcHtTaozhYpz8=</dsig:DigestValue>
+        <dsig:DigestValue>gMa7WbXbBCwSBlEqLiAtkCYH2w0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
