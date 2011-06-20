@@ -2812,6 +2812,181 @@ namespace XINHUA
         public JT_J_YSCLX() : base(Session.DefaultSession) { }
         public override void AfterConstruction() { base.AfterConstruction(); }
     }
+    public class JC_C_CGFP : XPLiteObject
+    {
+        string fCGFPID;
+        [Key]
+        [Size(16)]
+        public string CGFPID
+        {
+            get { return fCGFPID; }
+            set { SetPropertyValue<string>("CGFPID", ref fCGFPID, value); }
+        }
+        string fCGFPH;
+        [Size(22)]
+        public string CGFPH
+        {
+            get { return fCGFPH; }
+            set { SetPropertyValue<string>("CGFPH", ref fCGFPH, value); }
+        }
+        string fSJPH;
+        [Size(40)]
+        public string SJPH
+        {
+            get { return fSJPH; }
+            set { SetPropertyValue<string>("SJPH", ref fSJPH, value); }
+        }
+        string fFPLXID;
+        [Size(16)]
+        public string FPLXID
+        {
+            get { return fFPLXID; }
+            set { SetPropertyValue<string>("FPLXID", ref fFPLXID, value); }
+        }
+        string fGYSID;
+        [Size(16)]
+        public string GYSID
+        {
+            get { return fGYSID; }
+            set { SetPropertyValue<string>("GYSID", ref fGYSID, value); }
+        }
+        string fZTID;
+        [Size(16)]
+        public string ZTID
+        {
+            get { return fZTID; }
+            set { SetPropertyValue<string>("ZTID", ref fZTID, value); }
+        }
+        string fCZYID;
+        [Size(16)]
+        public string CZYID
+        {
+            get { return fCZYID; }
+            set { SetPropertyValue<string>("CZYID", ref fCZYID, value); }
+        }
+        string fKPRID;
+        [Size(16)]
+        public string KPRID
+        {
+            get { return fKPRID; }
+            set { SetPropertyValue<string>("KPRID", ref fKPRID, value); }
+        }
+        int fSL;
+
+        public int SL
+        {
+            get { return fSL; }
+            set { SetPropertyValue<int>("SL", ref fSL, value); }
+        }
+        decimal fWSJE;
+
+        public decimal WSJE
+        {
+            get { return fWSJE; }
+            set { SetPropertyValue<decimal>("WSJE", ref fWSJE, value); }
+        }
+        decimal fSE;
+        public decimal SE
+        {
+            get { return fSE; }
+            set { SetPropertyValue<decimal>("SE", ref fSE, value); }
+        }
+        decimal fJSHJ;
+        public decimal JSHJ
+        {
+            get { return fJSHJ; }
+            set { SetPropertyValue<decimal>("JSHJ", ref fJSHJ, value); }
+        }
+        string fYWBMID;
+        [Size(16)]
+        public string YWBMID
+        {
+            get { return fYWBMID; }
+            set { SetPropertyValue<string>("YWBMID", ref fYWBMID, value); }
+        }
+        string fGYS;
+        [Size(80)]
+        public string YGYS
+        {
+            get { return fGYS; }
+            set { SetPropertyValue<string>("GYS", ref fGYS, value); }
+        }
+        string fSH;
+        [Size(100)]
+        public string SH
+        {
+            get { return fSH; }
+            set { SetPropertyValue<string>("SH", ref fSH, value); }
+        }
+        string fDZ;
+        [Size(100)]
+        public string DZ
+        {
+            get { return fDZ; }
+            set { SetPropertyValue<string>("DZ", ref fDZ, value); }
+        }
+        string fKHYH;
+        [Size(100)]
+        public string KHYH
+        {
+            get { return fKHYH; }
+            set { SetPropertyValue<string>("KHYH", ref fKHYH, value); }
+        }
+        string fZH;
+        [Size(100)]
+        public string ZH
+        {
+            get { return fZH; }
+            set { SetPropertyValue<string>("ZH", ref fZH, value); }
+        }
+        string fDH;
+        [Size(100)]
+        public string DH
+        {
+            get { return fDH; }
+            set { SetPropertyValue<string>("DH", ref fDH, value); }
+        }
+        DateTime fZDRQ;
+        public DateTime ZDRQ
+        {
+            get { return fZDRQ; }
+            set { SetPropertyValue<DateTime>("ZDRQ", ref fZDRQ, value); }
+        }
+        DateTime fCZRQ;
+        public DateTime CZRQ
+        {
+            get { return fCZRQ; }
+            set { SetPropertyValue<DateTime>("CZRQ", ref fCZRQ, value); }
+        }
+        string fZT;
+        [Size(100)]
+        public string ZT
+        {
+            get { return fZT; }
+            set { SetPropertyValue<string>("ZT", ref fZT, value); }
+        }
+        string fYZT;
+        [Size(4)]
+        public string YZT
+        {
+            get { return fYZT; }
+            set { SetPropertyValue<string>("YZT", ref fYZT, value); }
+        }
+
+        string fBZ;
+        [Size(100)]
+        public string BZ
+        {
+            get { return fBZ; }
+            set { SetPropertyValue<string>("BZ", ref fBZ, value); }
+        }
+
+
+
+        public JC_C_CGFP(Session session) : base(session) { }
+        public JC_C_CGFP() : base(Session.DefaultSession) { }
+        public override void AfterConstruction() { base.AfterConstruction(); }
+    }
     public static class XINHUASprocHelper
     {
     }

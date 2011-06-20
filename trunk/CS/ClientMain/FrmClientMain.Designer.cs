@@ -95,7 +95,7 @@
             // 
             this.lb_zt.AutoSize = true;
             this.lb_zt.BackColor = System.Drawing.Color.Transparent;
-            this.lb_zt.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lb_zt.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lb_zt.ForeColor = System.Drawing.SystemColors.Window;
             this.lb_zt.Image = ((System.Drawing.Image)(resources.GetObject("lb_zt.Image")));
             this.lb_zt.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -222,7 +222,7 @@
             // 
             this.lb_dept.AutoSize = true;
             this.lb_dept.BackColor = System.Drawing.Color.Transparent;
-            this.lb_dept.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lb_dept.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lb_dept.ForeColor = System.Drawing.SystemColors.Window;
             this.lb_dept.Image = ((System.Drawing.Image)(resources.GetObject("lb_dept.Image")));
             this.lb_dept.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -237,7 +237,7 @@
             // 
             this.lb_user.AutoSize = true;
             this.lb_user.BackColor = System.Drawing.Color.Transparent;
-            this.lb_user.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lb_user.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lb_user.ForeColor = System.Drawing.SystemColors.Window;
             this.lb_user.Image = ((System.Drawing.Image)(resources.GetObject("lb_user.Image")));
             this.lb_user.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;

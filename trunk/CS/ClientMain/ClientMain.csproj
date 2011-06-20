@@ -118,6 +118,42 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsZTBM.xsd</DependentUpon>
     </Compile>
+    <Compile Include="MenuMange\MenuEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuMange\MenuEdit.Designer.cs">
+      <DependentUpon>MenuEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuMange\MenuFirstDegreeAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuMange\MenuFirstDegreeAdd.Designer.cs">
+      <DependentUpon>MenuFirstDegreeAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuMange\MenuShow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuMange\MenuShow.Designer.cs">
+      <DependentUpon>MenuShow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuMange\MeunAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuMange\MeunAdd.Designer.cs">
+      <DependentUpon>MeunAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuMange\MeunMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuMange\MeunMain.Designer.cs">
+      <DependentUpon>MeunMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserMange\EmpoeeTable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserMange\EmpoeeTable.Designer.cs">
+      <DependentUpon>EmpoeeTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmBranchAdjust.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -160,6 +196,12 @@
     <Compile Include="ClientType\FrmClientTypeMt.Designer.cs">
       <DependentUpon>FrmClientTypeMt.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmPurchaseInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPurchaseInvoice.Designer.cs">
+      <DependentUpon>FrmPurchaseInvoice.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmPurchaseReceiveDetail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,6 +228,24 @@
     <Compile Include="PrintType\FrmPrintTypeMt.Designer.cs">
       <DependentUpon>FrmPrintTypeMt.cs</DependentUpon>
     </Compile>
+    <Compile Include="RoleManger\RoleAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RoleManger\RoleAdd.Designer.cs">
+      <DependentUpon>RoleAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RoleManger\RoleEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RoleManger\RoleEdit.Designer.cs">
+      <DependentUpon>RoleEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RoleManger\RoleMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RoleManger\RoleMain.Designer.cs">
+      <DependentUpon>RoleMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="TransType\FrmTransTypeMt.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -197,6 +257,30 @@
     </Compile>
     <Compile Include="UnitProp\FrmUnitPropMt.Designer.cs">
       <DependentUpon>FrmUnitPropMt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserMange\UserAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserMange\UserAdd.Designer.cs">
+      <DependentUpon>UserAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserMange\UserEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserMange\UserEdit.Designer.cs">
+      <DependentUpon>UserEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserMange\UserMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserMange\UserMain.Designer.cs">
+      <DependentUpon>UserMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserMange\UserWatch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserMange\UserWatch.Designer.cs">
+      <DependentUpon>UserWatch.cs</DependentUpon>
     </Compile>
     <Compile Include="WareType\FrmWareTypeMt.cs">
       <SubType>Form</SubType>
@@ -262,12 +346,32 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ClientType\FrmClientTypeMt.resx">
       <DependentUpon>FrmClientTypeMt.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="DatabaseManagement\FrmDBMt.resx">
       <DependentUpon>FrmDBMt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DatabaseManagement\FrmDBMtChild.resx">
       <DependentUpon>FrmDBMtChild.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuMange\MenuEdit.resx">
+      <DependentUpon>MenuEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuMange\MenuFirstDegreeAdd.resx">
+      <DependentUpon>MenuFirstDegreeAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuMange\MenuShow.resx">
+      <DependentUpon>MenuShow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuMange\MeunAdd.resx">
+      <DependentUpon>MeunAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuMange\MeunMain.resx">
+      <DependentUpon>MeunMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserMange\EmpoeeTable.resx">
+      <DependentUpon>EmpoeeTable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmBranchAdjust.resx">
       <DependentUpon>FrmBranchAdjust.cs</DependentUpon>
@@ -284,6 +388,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DeptType\FrmDeptTypeMt.resx">
       <DependentUpon>FrmDeptTypeMt.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPurchaseInvoice.resx">
+      <DependentUpon>FrmPurchaseInvoice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPurchaseReceiveDetail.resx">
       <DependentUpon>FrmPurchaseReceiveDetail.cs</DependentUpon>
@@ -298,11 +406,32 @@
       <DependentUpon>FrmPrintTypeMt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="RoleManger\RoleAdd.resx">
+      <DependentUpon>RoleAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RoleManger\RoleEdit.resx">
+      <DependentUpon>RoleEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RoleManger\RoleMain.resx">
+      <DependentUpon>RoleMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TransType\FrmTransTypeMt.resx">
       <DependentUpon>FrmTransTypeMt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UnitProp\FrmUnitPropMt.resx">
       <DependentUpon>FrmUnitPropMt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserMange\UserAdd.resx">
+      <DependentUpon>UserAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserMange\UserEdit.resx">
+      <DependentUpon>UserEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserMange\UserMain.resx">
+      <DependentUpon>UserMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserMange\UserWatch.resx">
+      <DependentUpon>UserWatch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WareType\FrmWareTypeMt.resx">
       <DependentUpon>FrmWareTypeMt.cs</DependentUpon>
@@ -345,6 +474,9 @@
     <EmbeddedResource Include="StaffManagement\FrmStaffQuery.resx">
       <DependentUpon>FrmStaffQuery.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="ClientMain_TemporaryKey.pfx" />
     <None Include="dsDWXX.xsc">
       <DependentUpon>dsDWXX.xsd</DependentUpon>

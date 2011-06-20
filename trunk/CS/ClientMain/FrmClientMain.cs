@@ -15,6 +15,7 @@ using System.Runtime.Remoting;
 using System.Runtime.Remoting.Channels;
 using System.Runtime.Remoting.Channels.Tcp;
 using System.Runtime.InteropServices;
+using System.Configuration;
 
 //using ZQSoft;
 
@@ -64,7 +65,7 @@ namespace ClientMain
         private void FrmClientMain_Load(object sender, EventArgs e)
         {
             //            CreateToolBar();//创建outlookbar
-            string strCon = "Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.8.222)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=XINHUA)));User Id=xxb;Password=pass;Integrated Security=no;";
+            string strCon = ConfigurationManager.ConnectionStrings["dbcon"].ConnectionString;
             Con = new OracleConnection(strCon);
 
             string strSQL = "select a.id, a.modelname, a.PARENTMODEL from sys_model a where a.id in (select b.module_id from sys_role_module b where b.role_id in (select c.roleid from sys_user_role c  where c.username = '" + m_strName + "' and c.deptid = '"+ m_strDeptID + "'))";
@@ -266,7 +267,7 @@ namespace ClientMain
             //System.Drawing.Image image = null;
             navBarControl1.SuspendLayout();
             navBarControl1.AllowSelectedLink = true;
-            navBarControl1.View = new DevExpress.XtraNavBar.ViewInfo.StandardSkinNavigationPaneViewInfoRegistrator("Blue");
+            navBarControl1.View = new DevExpress.XtraNavBar.ViewInfo.StandardSkinNavigationPaneViewInfoRegistrator("red");
             navBarControl1.Appearance.GroupHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             navBarControl1.NavigationPaneGroupClientHeight = 200;
             navBarControl1.Appearance.NavigationPaneHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
@@ -412,7 +413,7 @@ namespace ClientMain
             imageList1.Images.Clear();
             imageList2.Images.Clear();
 
-            int fsCount = System.IO.Directory.GetFiles(@"icon/ListViewIcon", "*.ico").Length;
+            int fsCount = System.IO.Directory.GetFiles(@"ICON/ListViewIcon", "*.ico").Length;
 
             Icon img = null;
             imageList1.ImageSize = new Size(32, 32);
@@ -499,6 +500,10 @@ namespace ClientMain
                 case"采购收货单列表":
                     FrmPurchaseReceiveNote PurchaseReceiveNote = new FrmPurchaseReceiveNote();
                     PurchaseReceiveNote.ShowDialog();
+                    break;
+                case "采购发票列表":
+                    FrmPurchaseInvoice FrmPurchaseInvoice = new FrmPurchaseInvoice();
+                    FrmPurchaseInvoice.ShowDialog();
                     break;
                 default:
                     break;
@@ -643,24 +648,24 @@ namespace ClientMain
                 FrmSupplierAdjust frmSupAdj = new FrmSupplierAdjust(m_strName, m_strZTID, m_strDeptID);
                 frmSupAdj.ShowDialog();
             }
-            //else if (item.Name == "角色管理")
-            //{
-            //    hasRight(item.Tag.ToString(), out fgAdd, out fgDel, out fgUpdate, out fgQuery);
-            //    Form1 RoleMt = new Form1(fgAdd, fgDel, fgUpdate, fgQuery);
-            //    RoleMt.ShowDialog();
-            //}
-            //else if (item.Name == "用户管理")
-            //{
-            //    hasRight(item.Tag.ToString(), out fgAdd, out fgDel, out fgUpdate, out fgQuery);
-            //    UserManger UserMt = new UserManger(fgAdd, fgDel, fgUpdate, fgQuery);
-            //    UserMt.ShowDialog();
-            //}
-            //else if (item.Name == "菜单管理")
-            //{
-            //    hasRight(item.Tag.ToString(), out fgAdd, out fgDel, out fgUpdate, out fgQuery);
-            //    MeunMang MenuMt = new MeunMang();
-            //    MenuMt.ShowDialog();
-            //}
+           else if (item.Name == "角色管理")
+            {
+               hasRight(item.Tag.ToString(), out fgAdd, out fgDel, out fgUpdate, out fgQuery);
+               RoleMain RoleMain = new RoleMain(fgAdd, fgDel, fgUpdate, fgQuery);
+               RoleMain.ShowDialog();
+            }
+            else if (item.Name == "用户管理")
+            {
+               hasRight(item.Tag.ToString(), out fgAdd, out fgDel, out fgUpdate, out fgQuery);
+               UserMain UserMt = new UserMain(fgAdd, fgDel, fgUpdate, fgQuery);
+              UserMt.ShowDialog();
+             }
+            else if (item.Name == "菜单管理")
+            {
+                hasRight(item.Tag.ToString(), out fgAdd, out fgDel, out fgUpdate, out fgQuery);
+                MeunMain MenuMt = new MeunMain(fgAdd, fgDel, fgUpdate, fgQuery);
+               MenuMt.ShowDialog();
+            }
         }
 
         

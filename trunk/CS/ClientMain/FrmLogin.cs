@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.OracleClient;
+using System.Configuration;
+using System.Diagnostics; 
 
 
 
@@ -23,8 +25,9 @@ namespace ClientMain
         private static Dictionary<string, string> m_dictID2Name = new Dictionary<string, string>();
                 
         private string m_PassWord = null;
-        const string strCon = "Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.8.222)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=XINHUA)));User Id=xxb;Password=pass;Integrated Security=no;";
-
+        private string strCon = ConfigurationManager.ConnectionStrings["dbcon"].ConnectionString;//数据库连接
+        private string sofverison = ConfigurationManager.ConnectionStrings["ver"].ConnectionString;//当前版本信息
+        private string sofcurrentver = string.Empty;//数据库中当前版本信息
         public static string getAccount
         {
             get
@@ -115,8 +118,52 @@ namespace ClientMain
 
             this.loginuser.Focus(); 
         }
+        private OracleConnection MyConn = null;
+        //定义数据库连接
+        private void Open()
+        {
+            string StrCon = ConfigurationManager.ConnectionStrings["dbcon"].ConnectionString;
+            MyConn = new OracleConnection(StrCon);
+            if (MyConn.State.ToString() != "Open")
+                MyConn.Open();
+        }
+        //定义数据库关闭
+        private void sClose()
+        {
+            //  if (ds != null)
+            //  { ds.Dispose(); }
+            if (MyConn != null & MyConn.State.ToString() != "Closed")
+            { MyConn.Close(); }
+        }
+        //判断版本是否需要更新
+        private bool CheckVeriosn()
+        {
+            try 
+            {
+                this.Open();
+                string selectverion = "select VERSION from UPDATAVERSION where ID='"+"1'";
+                OracleCommand mycomm = new OracleCommand(selectverion,MyConn);
+                OracleDataReader myreader = mycomm.ExecuteReader();
+                while (myreader.Read())
+                {
+                    sofcurrentver = myreader.GetValue(0).ToString();
+                }
+                
 
-
+            }
+            catch (OracleException)
+            {
+                MessageBox.Show("To run this example, replace the value of the " +
+                       "connectionString variable with a connection string that is " +
+                       "valid for your system.");
+            }
+            if (sofverison==sofcurrentver)
+            {return false;}
+             else
+            { return true; }
+        
+        }
+        //以上函数判断版本是否需要更新
         private void button1_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(loginuser.Text.Trim()))
@@ -186,8 +233,22 @@ namespace ClientMain
         {
             m_dictID2Name.Clear();
             m_dictName2ID.Clear();
-
-
+            if (CheckVeriosn())
+            {
+                this.button1.Visible = false;
+                this.button2.Visible = false;
+                this.button3.Visible = false;
+                this.button4.Visible = true;
+                this.loginuser.ReadOnly = true;
+                this.loginpassword.ReadOnly = false;
+                label6.Text = "您的版本需要更新为" + sofcurrentver.ToString();
+                timer1.Start();
+            }
+            else
+            {
+                this.button4.Visible = false;
+            label6.Text = "欢迎使用皖新传媒集团综合运维平台当前版本为V_" + sofverison.ToString();
+            timer1.Start();
             OracleConnection Con = new OracleConnection(strCon);
             
             try
@@ -210,7 +271,7 @@ namespace ClientMain
                 MessageBox.Show(ex.Message);
             }
     
-            
+            }
         }
 
         private void loginuser_Validating(object sender, EventArgs e)
@@ -355,6 +416,35 @@ namespace ClientMain
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
          
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            int FWidth = this.panel2.Width;
+             int FHeight = this.panel2.Height;
+
+              Point LPos = new Point(this.label6.Location.X, this.label6.Location.Y);
+             if (LPos.X < FWidth)
+             {
+               this.label6.Location = new Point(LPos.X+2, LPos.Y);
+               return;
+              }
+             else
+             {
+                 this.label6.Location = new Point(0, 50);
+              }
+
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+            Process ps = new Process();
+            ps.StartInfo.FileName = Application.StartupPath + "\\XHAutoUpdate.exe";
+            ps.Start();
+            this.Close();
+
         }
 
     }

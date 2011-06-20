@@ -8,6 +8,7 @@ using System.Data.OracleClient;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace ClientMain
 {
@@ -39,7 +40,7 @@ namespace ClientMain
         {
             dataGridView1.DataSource = bindingSource1;
 
-            string strCon = "Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.8.222)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=XINHUA)));User Id=xxb;Password=pass;Integrated Security=no;";
+            string strCon = ConfigurationManager.ConnectionStrings["dbcon"].ConnectionString;
             Con = new OracleConnection(strCon);
 
             string strSQL = "select * from SYS_DEPARTMENT";
