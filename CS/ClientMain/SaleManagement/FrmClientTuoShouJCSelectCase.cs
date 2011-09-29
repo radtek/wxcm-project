@@ -41,7 +41,7 @@ namespace ClientMain
             }
             else
             {
-                string StrCon = ConfigurationManager.ConnectionStrings["dbcon"].ConnectionString;
+                string StrCon = FrmLogin.strCon;
                 using (OracleConnection connection = new OracleConnection(StrCon))
                 {
                     connection.Open();

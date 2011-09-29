@@ -23,7 +23,7 @@ namespace ClientMain
         private GridCheckMarksSelection selection1;
         private GridCheckMarksSelection selection2;
         private const int MAXROWCOUNT = 50000;
-        private string StrCon = ConfigurationManager.ConnectionStrings["dbcon"].ConnectionString;
+        private string StrCon = FrmLogin.strCon;
         //定义主单的选计
         double dWSJE = 0;
         double dSE = 0;

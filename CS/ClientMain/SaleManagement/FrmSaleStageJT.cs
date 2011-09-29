@@ -27,7 +27,7 @@ namespace ClientMain
         GridCheckMarksSelection selection2;
         const int MAXROWCOUNT = 50000;
         private double TuoShouXianE;//从托收限额模块得到限额
-        private string StrCon = ConfigurationManager.ConnectionStrings["dbcon"].ConnectionString;
+        private string StrCon = FrmLogin.strCon;
         //销售结算单选计
         private double dSE = 0;
         private double dJSHJ = 0;

@@ -20,7 +20,7 @@ namespace ClientMain
     public partial class FrmSaleStageJTAdd : Form
     {
         GridCheckMarksSelection selection;
-        private string StrCon = ConfigurationManager.ConnectionStrings["dbcon"].ConnectionString;//数据库连接
+        private string StrCon = FrmLogin.strCon;//数据库连接
         const int MAXROWCOUNT = 50000;
         private string JSLX = "整单";
         //明细选计

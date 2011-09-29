@@ -1,0 +1,3216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F2230003-DBEE-4670-8CE5-7ED89A49EB50}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ClientMain</RootNamespace>
+    <AssemblyName>ClientMain</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <PublishUrl>\\192.168.8.222\e\ClientMain\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Unc</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <TargetCulture>zh-CN</TargetCulture>
+    <ProductName>综合维护平台（.NET）版</ProductName>
+    <PublisherName>安徽新华传媒股份有限公司信息部</PublisherName>
+    <SuiteName>Maintenance</SuiteName>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>publish.htm</WebPage>
+    <ApplicationRevision>9</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>ClientMain.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>BE357AF0E290D5BA8B4C169D90807FA9DBF48537</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>ClientMain_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Charts.v10.2.Core, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Localization.v10.2, Version=10.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>E:\Software\DevExpress\10.2.3\DevExpress.Localization.v10.2.3(汉化_来自fosoyo)\DevExpress.Localization.v10.2.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.PivotGrid.v10.2.Core, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v10.2.Core, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpo.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpo.v10.2.Providers, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraLayout.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraNavBar.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraPivotGrid.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraRichEdit.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="Sybase.Data.AseClient, Version=1.1.510.0, Culture=neutral, PublicKeyToken=26e0f1529304f4a7">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\sybase\DataAccess\ADONET\dll\Sybase.Data.AseClient.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Configuration">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data.OracleClient">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Deployment">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Remoting">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Services">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountManagement\FrmClientAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AccountManagement\FrmClientAccount.Designer.cs">
+      <DependentUpon>FrmClientAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AccountManagement\FrmClientAccountBranch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AccountManagement\FrmClientAccountBranch.designer.cs">
+      <DependentUpon>FrmClientAccountBranch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AccountManagement\FrmClientAccountDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AccountManagement\FrmClientAccountDetail.Designer.cs">
+      <DependentUpon>FrmClientAccountDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AccountManagement\FrmClientAccountDetailBranch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AccountManagement\FrmClientAccountDetailBranch.designer.cs">
+      <DependentUpon>FrmClientAccountDetailBranch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AccountManagement\FrmSupplierAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AccountManagement\FrmSupplierAccount.Designer.cs">
+      <DependentUpon>FrmSupplierAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AccountManagement\FrmSupplierAccountBranch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AccountManagement\FrmSupplierAccountBranch.designer.cs">
+      <DependentUpon>FrmSupplierAccountBranch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AccountManagement\FrmSupplierAccountDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AccountManagement\FrmSupplierAccountDetail.Designer.cs">
+      <DependentUpon>FrmSupplierAccountDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AccountManagement\FrmSupplierAccountDetailBranch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AccountManagement\FrmSupplierAccountDetailBranch.designer.cs">
+      <DependentUpon>FrmSupplierAccountDetailBranch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AccountManagement\FrmZTTZinquire.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AccountManagement\FrmZTTZinquire.designer.cs">
+      <DependentUpon>FrmZTTZinquire.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmHeXiaoDate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmHeXiaoDate.designer.cs">
+      <DependentUpon>FrmHeXiaoDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmInvoiceAlter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmInvoiceAlter.designer.cs">
+      <DependentUpon>FrmInvoiceAlter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPurchaseInvoiceKPR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPurchaseInvoiceKPR.designer.cs">
+      <DependentUpon>FrmPurchaseInvoiceKPR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSelectDW.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSelectDW.designer.cs">
+      <DependentUpon>FrmSelectDW.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSelectFYQK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSelectFYQK.Designer.cs" />
+    <Compile Include="FrmSelectKXNR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSelectKXNR.Designer.cs" />
+    <Compile Include="FrmSelectTSPJ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSelectTSPJ.Designer.cs" />
+    <Compile Include="FrmSPXXSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSPXXSelect.Designer.cs" />
+    <Compile Include="MenuManagement\MenuEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuManagement\MenuEdit.designer.cs">
+      <DependentUpon>MenuEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuManagement\MenuFirstDegreeAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuManagement\MenuFirstDegreeAdd.designer.cs">
+      <DependentUpon>MenuFirstDegreeAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuManagement\MenuShow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuManagement\MenuShow.designer.cs">
+      <DependentUpon>MenuShow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuManagement\MeunAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuManagement\MeunAdd.designer.cs">
+      <DependentUpon>MeunAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuManagement\MeunMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuManagement\MeunMain.designer.cs">
+      <DependentUpon>MeunMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseInvoiceJC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseInvoiceJC.designer.cs">
+      <DependentUpon>FrmPurchaseInvoiceJC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseInvoiceJT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseInvoiceJT.designer.cs">
+      <DependentUpon>FrmPurchaseInvoiceJT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseReturnDetailBranch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseReturnDetailBranch.designer.cs">
+      <DependentUpon>FrmPurchaseReturnDetailBranch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseReturnNoteBranch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseReturnNoteBranch.designer.cs">
+      <DependentUpon>FrmPurchaseReturnNoteBranch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseStageJC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseStageJC.Designer.cs">
+      <DependentUpon>FrmPurchaseStageJC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseStageJCAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseStageJCAdd.Designer.cs">
+      <DependentUpon>FrmPurchaseStageJCAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseStageJT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseStageJT.Designer.cs">
+      <DependentUpon>FrmPurchaseStageJT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseStageJTAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseStageJTAdd.Designer.cs">
+      <DependentUpon>FrmPurchaseStageJTAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseStageSelectCase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseStageSelectCase.Designer.cs">
+      <DependentUpon>FrmPurchaseStageSelectCase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\CGSHReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\CGSHReport.Designer.cs">
+      <DependentUpon>CGSHReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseManagement\FrmDBMt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DatabaseManagement\FrmDBMt.Designer.cs">
+      <DependentUpon>FrmDBMt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Adjustment\FrmBranchAdjust.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Adjustment\FrmBranchAdjust.Designer.cs">
+      <DependentUpon>FrmBranchAdjust.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorNote\FrmAllocateErrorDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErrorNote\FrmAllocateErrorDetail.Designer.cs">
+      <DependentUpon>FrmAllocateErrorDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorNote\FrmAllocateErrorNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErrorNote\FrmAllocateErrorNote.Designer.cs">
+      <DependentUpon>FrmAllocateErrorNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorNote\FrmAllocateErrorStatistic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErrorNote\FrmAllocateErrorStatistic.Designer.cs">
+      <DependentUpon>FrmAllocateErrorStatistic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorNote\FrmProfitLossErrorDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErrorNote\FrmProfitLossErrorDetail.Designer.cs">
+      <DependentUpon>FrmProfitLossErrorDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorNote\FrmProfitLossErrorNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErrorNote\FrmProfitLossErrorNote.Designer.cs">
+      <DependentUpon>FrmProfitLossErrorNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorNote\FrmProfitLossErrorStatistic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErrorNote\FrmProfitLossErrorStatistic.Designer.cs">
+      <DependentUpon>FrmProfitLossErrorStatistic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorNote\FrmPurchaseReceiveErrStatistic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErrorNote\FrmPurchaseReceiveErrStatistic.Designer.cs">
+      <DependentUpon>FrmPurchaseReceiveErrStatistic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorNote\FrmPurchaseReturnErrStatistic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErrorNote\FrmPurchaseReturnErrStatistic.Designer.cs">
+      <DependentUpon>FrmPurchaseReturnErrStatistic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorNote\FrmSaleErrorDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErrorNote\FrmSaleErrorDetail.Designer.cs">
+      <DependentUpon>FrmSaleErrorDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorNote\FrmSaleErrorNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErrorNote\FrmSaleErrorNote.Designer.cs">
+      <DependentUpon>FrmSaleErrorNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorNote\FrmSaleErrorStatistic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErrorNote\FrmSaleErrorStatistic.Designer.cs">
+      <DependentUpon>FrmSaleErrorStatistic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorNote\FrmSaleReturnErrDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErrorNote\FrmSaleReturnErrDetail.Designer.cs">
+      <DependentUpon>FrmSaleReturnErrDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorNote\FrmSaleReturnErrNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErrorNote\FrmSaleReturnErrNote.Designer.cs">
+      <DependentUpon>FrmSaleReturnErrNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorNote\FrmSaleReturnErrStatistic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErrorNote\FrmSaleReturnErrStatistic.Designer.cs">
+      <DependentUpon>FrmSaleReturnErrStatistic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmChainDeptInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmChainDeptInfo.Designer.cs">
+      <DependentUpon>FrmChainDeptInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmClientMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmClientMain.Designer.cs">
+      <DependentUpon>FrmClientMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseManagement\FrmDBMtChild.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DatabaseManagement\FrmDBMtChild.Designer.cs">
+      <DependentUpon>FrmDBMtChild.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseCollectionDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseCollectionDetail.Designer.cs">
+      <DependentUpon>FrmPurchaseCollectionDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseCollectionNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseCollectionNote.Designer.cs">
+      <DependentUpon>FrmPurchaseCollectionNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseReceiveTotalBranch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseReceiveTotalBranch.Designer.cs">
+      <DependentUpon>FrmPurchaseReceiveTotalBranch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseReceiveTotalDetailBranch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseReceiveTotalDetailBranch.Designer.cs">
+      <DependentUpon>FrmPurchaseReceiveTotalDetailBranch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmWriteOff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmWriteOff.Designer.cs">
+      <DependentUpon>FrmWriteOff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\JTDReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\JTDReport.Designer.cs">
+      <DependentUpon>JTDReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\SHHZDReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\SHHZDReport.Designer.cs">
+      <DependentUpon>SHHZDReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\SHHZDTotalReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\SHHZDTotalReport.Designer.cs">
+      <DependentUpon>SHHZDTotalReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\XSDReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\XSDReport.Designer.cs">
+      <DependentUpon>XSDReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\XSHZDReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\XSHZDReport.Designer.cs">
+      <DependentUpon>XSHZDReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\XSHZDTotalReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\XSHZDTotalReport.Designer.cs">
+      <DependentUpon>XSHZDTotalReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\XTDReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\XTDReport.Designer.cs">
+      <DependentUpon>XTDReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\XtraReportCGJSD.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\XtraReportCGJSD.Designer.cs" />
+    <Compile Include="Reports\XtraReportJTDMX.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\XtraReportJTDMX.Designer.cs" />
+    <Compile Include="Reports\XtraReportXSJSDjc.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\XtraReportXSJSDjc.Designer.cs" />
+    <Compile Include="Reports\XtraReportXSJSDjt.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\XtraReportXSJSDjt.Designer.cs" />
+    <Compile Include="Reports\XtraReportXSTSDjc.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\XtraReportXSTSDjc.Designer.cs" />
+    <Compile Include="Reports\XtraReportXSTSDjt.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\XtraReportXSTSDjt.Designer.cs" />
+    <Compile Include="RoleManagement\RoleAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RoleManagement\RoleAdd.designer.cs">
+      <DependentUpon>RoleAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RoleManagement\RoleEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RoleManagement\RoleEdit.designer.cs">
+      <DependentUpon>RoleEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RoleManagement\RoleMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RoleManagement\RoleMain.designer.cs">
+      <DependentUpon>RoleMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SaleManagement\FrmClientTuoShouJC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleManagement\FrmClientTuoShouJC.designer.cs">
+      <DependentUpon>FrmClientTuoShouJC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SaleManagement\FrmClientTuoShouJCAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleManagement\FrmClientTuoShouJCAdd.designer.cs">
+      <DependentUpon>FrmClientTuoShouJCAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SaleManagement\FrmClientTuoShouJCSelectCase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleManagement\FrmClientTuoShouJCSelectCase.designer.cs">
+      <DependentUpon>FrmClientTuoShouJCSelectCase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SaleManagement\FrmClientTuoShouJT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleManagement\FrmClientTuoShouJT.designer.cs">
+      <DependentUpon>FrmClientTuoShouJT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SaleManagement\FrmClientTuoShouJTAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleManagement\FrmClientTuoShouJTAdd.designer.cs">
+      <DependentUpon>FrmClientTuoShouJTAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SaleManagement\FrmClientTuoShouJTSelectCase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleManagement\FrmClientTuoShouJTSelectCase.designer.cs">
+      <DependentUpon>FrmClientTuoShouJTSelectCase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SaleManagement\FrmSaleDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleManagement\FrmSaleDetail.Designer.cs">
+      <DependentUpon>FrmSaleDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SaleManagement\FrmSaleDiscountCorrection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleManagement\FrmSaleDiscountCorrection.Designer.cs">
+      <DependentUpon>FrmSaleDiscountCorrection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SaleManagement\FrmSaleInvoiceJC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleManagement\FrmSaleInvoiceJC.Designer.cs" />
+    <Compile Include="SaleManagement\FrmSaleInvoiceJT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleManagement\FrmSaleInvoiceJT.Designer.cs" />
+    <Compile Include="SaleManagement\FrmSaleNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleManagement\FrmSaleNote.Designer.cs">
+      <DependentUpon>FrmSaleNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SaleManagement\FrmSaleReturnDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleManagement\FrmSaleReturnDetail.Designer.cs">
+      <DependentUpon>FrmSaleReturnDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SaleManagement\FrmSaleReturnNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleManagement\FrmSaleReturnNote.Designer.cs">
+      <DependentUpon>FrmSaleReturnNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SaleManagement\FrmSaleStageJC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleManagement\FrmSaleStageJC.Designer.cs" />
+    <Compile Include="SaleManagement\FrmSaleStageJCAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleManagement\FrmSaleStageJCAdd.Designer.cs" />
+    <Compile Include="SaleManagement\FrmSaleStageJT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleManagement\FrmSaleStageJT.Designer.cs" />
+    <Compile Include="SaleManagement\FrmSaleStageJTAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleManagement\FrmSaleStageJTAdd.Designer.cs" />
+    <Compile Include="SaleManagement\FrmSaleStageSelectcase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleManagement\FrmSaleStageSelectcase.Designer.cs" />
+    <Compile Include="SaleManagement\FrmSaleTotal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleManagement\FrmSaleTotal.Designer.cs">
+      <DependentUpon>FrmSaleTotal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SaleManagement\FrmSaleTotalBranch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleManagement\FrmSaleTotalBranch.designer.cs">
+      <DependentUpon>FrmSaleTotalBranch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SaleManagement\FrmSaleTotalDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleManagement\FrmSaleTotalDetail.Designer.cs">
+      <DependentUpon>FrmSaleTotalDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SaleManagement\FrmSaleTotalDetailBranch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleManagement\FrmSaleTotalDetailBranch.designer.cs">
+      <DependentUpon>FrmSaleTotalDetailBranch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SaleManagement\FrmTuoShouData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleManagement\FrmTuoShouData.Designer.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="StaffManagement\FrmStaffManageMent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StaffManagement\FrmStaffManageMent.Designer.cs">
+      <DependentUpon>FrmStaffManageMent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StockManagement\FrmAllocateDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockManagement\FrmAllocateDetail.Designer.cs">
+      <DependentUpon>FrmAllocateDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StockManagement\FrmAllocateNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockManagement\FrmAllocateNote.Designer.cs">
+      <DependentUpon>FrmAllocateNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StockManagement\FrmProfitLossDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockManagement\FrmProfitLossDetail.Designer.cs">
+      <DependentUpon>FrmProfitLossDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StockManagement\FrmProfitLossNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockManagement\FrmProfitLossNote.Designer.cs">
+      <DependentUpon>FrmProfitLossNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnitManagement\FrmClientTypeMt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UnitManagement\FrmClientTypeMt.Designer.cs">
+      <DependentUpon>FrmClientTypeMt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnitManagement\FrmDepartmentManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UnitManagement\FrmDepartmentManagement.Designer.cs">
+      <DependentUpon>FrmDepartmentManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnitManagement\FrmDeptTypeMt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UnitManagement\FrmDeptTypeMt.designer.cs">
+      <DependentUpon>FrmDeptTypeMt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnitManagement\FrmDeptTypeMtChild.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UnitManagement\FrmDeptTypeMtChild.Designer.cs">
+      <DependentUpon>FrmDeptTypeMtChild.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseReturnDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseReturnDetail.Designer.cs">
+      <DependentUpon>FrmPurchaseReturnDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorNote\FrmPurchaseReturnErr.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErrorNote\FrmPurchaseReturnErr.Designer.cs">
+      <DependentUpon>FrmPurchaseReturnErr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorNote\FrmPurchaseReturnErrDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErrorNote\FrmPurchaseReturnErrDetail.Designer.cs">
+      <DependentUpon>FrmPurchaseReturnErrDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseReturnNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseReturnNote.Designer.cs">
+      <DependentUpon>FrmPurchaseReturnNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmDiscountCorrection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmDiscountCorrection.Designer.cs">
+      <DependentUpon>FrmDiscountCorrection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmSupplierCorrection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmSupplierCorrection.Designer.cs">
+      <DependentUpon>FrmSupplierCorrection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseReceiveTotalDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseReceiveTotalDetail.Designer.cs">
+      <DependentUpon>FrmPurchaseReceiveTotalDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseReceiveTotal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseReceiveTotal.Designer.cs">
+      <DependentUpon>FrmPurchaseReceiveTotal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorNote\FrmPurchaseReceiveErrDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErrorNote\FrmPurchaseReceiveErrDetail.Designer.cs">
+      <DependentUpon>FrmPurchaseReceiveErrDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorNote\FrmPurchaseReceiveErrNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErrorNote\FrmPurchaseReceiveErrNote.Designer.cs">
+      <DependentUpon>FrmPurchaseReceiveErrNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseReceiveDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseReceiveDetail.Designer.cs">
+      <DependentUpon>FrmPurchaseReceiveDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseReceiveNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseReceiveNote.Designer.cs">
+      <DependentUpon>FrmPurchaseReceiveNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Adjustment\FrmSupplierAdjust.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Adjustment\FrmSupplierAdjust.Designer.cs">
+      <DependentUpon>FrmSupplierAdjust.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GridCheckMarksSelection.cs" />
+    <Compile Include="PersistentClassesXINHUA.cs" />
+    <Compile Include="UnitManagement\FrmDeptMtChild.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UnitManagement\FrmDeptMtChild.Designer.cs">
+      <DependentUpon>FrmDeptMtChild.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StaffManagement\FrmStaffMtChild.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StaffManagement\FrmStaffMtChild.Designer.cs">
+      <DependentUpon>FrmStaffMtChild.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitManagement\FrmPressTypeMt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UnitManagement\FrmPressTypeMt.designer.cs">
+      <DependentUpon>FrmPressTypeMt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnitManagement\FrmPrintTypeMt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UnitManagement\FrmPrintTypeMt.designer.cs">
+      <DependentUpon>FrmPrintTypeMt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnitManagement\FrmSupplierTypeMt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UnitManagement\FrmSupplierTypeMt.designer.cs">
+      <DependentUpon>FrmSupplierTypeMt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnitManagement\FrmTransTypeMt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UnitManagement\FrmTransTypeMt.designer.cs">
+      <DependentUpon>FrmTransTypeMt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnitManagement\FrmUnitPropMt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UnitManagement\FrmUnitPropMt.designer.cs">
+      <DependentUpon>FrmUnitPropMt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnitManagement\FrmWareTypeMt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UnitManagement\FrmWareTypeMt.designer.cs">
+      <DependentUpon>FrmWareTypeMt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnusualStock\FrmCheckExcelData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UnusualStock\FrmCheckExcelData.designer.cs">
+      <DependentUpon>FrmCheckExcelData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnusualStock\FrmUnusualStockImporCheck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UnusualStock\FrmUnusualStockImporCheck.designer.cs">
+      <DependentUpon>FrmUnusualStockImporCheck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnusualStock\FrmUnusualStockInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UnusualStock\FrmUnusualStockInput.designer.cs">
+      <DependentUpon>FrmUnusualStockInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnusualStock\FrmUnusualStockInputAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UnusualStock\FrmUnusualStockInputAdd.designer.cs">
+      <DependentUpon>FrmUnusualStockInputAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnusualStock\FrmUnusualStockReturns.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UnusualStock\FrmUnusualStockReturns.designer.cs">
+      <DependentUpon>FrmUnusualStockReturns.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnusualStock\FrmUnusualStockReturnsAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UnusualStock\FrmUnusualStockReturnsAdd.designer.cs">
+      <DependentUpon>FrmUnusualStockReturnsAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserManagement\EmpoeeTable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserManagement\EmpoeeTable.designer.cs">
+      <DependentUpon>EmpoeeTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserManagement\UserAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserManagement\UserAdd.designer.cs">
+      <DependentUpon>UserAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserManagement\UserEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserManagement\UserEdit.designer.cs">
+      <DependentUpon>UserEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserManagement\UserMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserManagement\UserMain.designer.cs">
+      <DependentUpon>UserMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VoucherManagement\FrmAllocateVoucherDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VoucherManagement\FrmAllocateVoucherDetail.Designer.cs">
+      <DependentUpon>FrmAllocateVoucherDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VoucherManagement\FrmAllocateVoucherNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VoucherManagement\FrmAllocateVoucherNote.Designer.cs">
+      <DependentUpon>FrmAllocateVoucherNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VoucherManagement\FrmCarryoverCostVoucherDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VoucherManagement\FrmCarryoverCostVoucherDetail.Designer.cs">
+      <DependentUpon>FrmCarryoverCostVoucherDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VoucherManagement\FrmCarryoverCostVoucherNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VoucherManagement\FrmCarryoverCostVoucherNote.Designer.cs">
+      <DependentUpon>FrmCarryoverCostVoucherNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VoucherManagement\FrmCollectionVoucherDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VoucherManagement\FrmCollectionVoucherDetail.Designer.cs">
+      <DependentUpon>FrmCollectionVoucherDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VoucherManagement\FrmCollectionVoucherNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VoucherManagement\FrmCollectionVoucherNote.Designer.cs">
+      <DependentUpon>FrmCollectionVoucherNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VoucherManagement\FrmDeliveryVoucherDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VoucherManagement\FrmDeliveryVoucherDetail.Designer.cs">
+      <DependentUpon>FrmDeliveryVoucherDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VoucherManagement\FrmDeliveryVoucherNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VoucherManagement\FrmDeliveryVoucherNote.Designer.cs">
+      <DependentUpon>FrmDeliveryVoucherNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VoucherManagement\FrmInventoryProfitLossVoucherDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VoucherManagement\FrmInventoryProfitLossVoucherDetail.Designer.cs">
+      <DependentUpon>FrmInventoryProfitLossVoucherDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VoucherManagement\FrmInventoryProfitLossVoucherNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VoucherManagement\FrmInventoryProfitLossVoucherNote.Designer.cs">
+      <DependentUpon>FrmInventoryProfitLossVoucherNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VoucherManagement\FrmLossVoucherDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VoucherManagement\FrmLossVoucherDetail.Designer.cs">
+      <DependentUpon>FrmLossVoucherDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VoucherManagement\FrmLossVoucherNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VoucherManagement\FrmLossVoucherNote.Designer.cs">
+      <DependentUpon>FrmLossVoucherNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VoucherManagement\FrmPaymentVoucherDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VoucherManagement\FrmPaymentVoucherDetail.Designer.cs">
+      <DependentUpon>FrmPaymentVoucherDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VoucherManagement\FrmPaymentVoucherNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VoucherManagement\FrmPaymentVoucherNote.Designer.cs">
+      <DependentUpon>FrmPaymentVoucherNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VoucherManagement\FrmPurchaseReceiveVoucherDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VoucherManagement\FrmPurchaseReceiveVoucherDetail.Designer.cs">
+      <DependentUpon>FrmPurchaseReceiveVoucherDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VoucherManagement\FrmPurchaseReveiveVoucherNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VoucherManagement\FrmPurchaseReveiveVoucherNote.Designer.cs">
+      <DependentUpon>FrmPurchaseReveiveVoucherNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VoucherManagement\FrmReceivableVoucherDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VoucherManagement\FrmReceivableVoucherDetail.Designer.cs">
+      <DependentUpon>FrmReceivableVoucherDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VoucherManagement\FrmReceivableVoucherNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VoucherManagement\FrmReceivableVoucherNote.Designer.cs">
+      <DependentUpon>FrmReceivableVoucherNote.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AccountManagement\FrmClientAccount.resx">
+      <DependentUpon>FrmClientAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AccountManagement\FrmClientAccountBranch.resx">
+      <DependentUpon>FrmClientAccountBranch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AccountManagement\FrmClientAccountDetail.resx">
+      <DependentUpon>FrmClientAccountDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AccountManagement\FrmClientAccountDetailBranch.resx">
+      <DependentUpon>FrmClientAccountDetailBranch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AccountManagement\FrmSupplierAccount.resx">
+      <DependentUpon>FrmSupplierAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AccountManagement\FrmSupplierAccountBranch.resx">
+      <DependentUpon>FrmSupplierAccountBranch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AccountManagement\FrmSupplierAccountDetail.resx">
+      <DependentUpon>FrmSupplierAccountDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AccountManagement\FrmSupplierAccountDetailBranch.resx">
+      <DependentUpon>FrmSupplierAccountDetailBranch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AccountManagement\FrmZTTZinquire.resx">
+      <DependentUpon>FrmZTTZinquire.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmHeXiaoDate.resx">
+      <DependentUpon>FrmHeXiaoDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInvoiceAlter.resx">
+      <DependentUpon>FrmInvoiceAlter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPurchaseInvoiceKPR.resx">
+      <DependentUpon>FrmPurchaseInvoiceKPR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSelectDW.resx">
+      <DependentUpon>FrmSelectDW.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSelectFYQK.resx" />
+    <EmbeddedResource Include="FrmSelectKXNR.resx" />
+    <EmbeddedResource Include="FrmSelectTSPJ.resx" />
+    <EmbeddedResource Include="FrmSPXXSelect.resx" />
+    <EmbeddedResource Include="MenuManagement\MenuEdit.resx">
+      <DependentUpon>MenuEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuManagement\MenuFirstDegreeAdd.resx">
+      <DependentUpon>MenuFirstDegreeAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuManagement\MenuShow.resx">
+      <DependentUpon>MenuShow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuManagement\MeunAdd.resx">
+      <DependentUpon>MeunAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuManagement\MeunMain.resx">
+      <DependentUpon>MeunMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseReceive\FrmPurchaseInvoiceJC.resx">
+      <DependentUpon>FrmPurchaseInvoiceJC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseReceive\FrmPurchaseInvoiceJT.resx">
+      <DependentUpon>FrmPurchaseInvoiceJT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseReceive\FrmPurchaseReturnDetailBranch.resx">
+      <DependentUpon>FrmPurchaseReturnDetailBranch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseReceive\FrmPurchaseReturnNoteBranch.resx">
+      <DependentUpon>FrmPurchaseReturnNoteBranch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseReceive\FrmPurchaseStageJC.resx" />
+    <EmbeddedResource Include="PurchaseReceive\FrmPurchaseStageJCAdd.resx" />
+    <EmbeddedResource Include="PurchaseReceive\FrmPurchaseStageJT.resx" />
+    <EmbeddedResource Include="PurchaseReceive\FrmPurchaseStageJTAdd.resx" />
+    <EmbeddedResource Include="PurchaseReceive\FrmPurchaseStageSelectCase.resx" />
+    <EmbeddedResource Include="Reports\CGSHReport.resx">
+      <DependentUpon>CGSHReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorNote\FrmAllocateErrorDetail.resx">
+      <DependentUpon>FrmAllocateErrorDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorNote\FrmAllocateErrorNote.resx">
+      <DependentUpon>FrmAllocateErrorNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorNote\FrmAllocateErrorStatistic.resx">
+      <DependentUpon>FrmAllocateErrorStatistic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorNote\FrmProfitLossErrorDetail.resx">
+      <DependentUpon>FrmProfitLossErrorDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorNote\FrmProfitLossErrorNote.resx">
+      <DependentUpon>FrmProfitLossErrorNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorNote\FrmProfitLossErrorStatistic.resx">
+      <DependentUpon>FrmProfitLossErrorStatistic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorNote\FrmPurchaseReceiveErrStatistic.resx">
+      <DependentUpon>FrmPurchaseReceiveErrStatistic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorNote\FrmPurchaseReturnErrDetail.resx">
+      <DependentUpon>FrmPurchaseReturnErrDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorNote\FrmPurchaseReturnErrStatistic.resx">
+      <DependentUpon>FrmPurchaseReturnErrStatistic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorNote\FrmSaleErrorDetail.resx">
+      <DependentUpon>FrmSaleErrorDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorNote\FrmSaleErrorNote.resx">
+      <DependentUpon>FrmSaleErrorNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorNote\FrmSaleErrorStatistic.resx">
+      <DependentUpon>FrmSaleErrorStatistic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorNote\FrmSaleReturnErrDetail.resx">
+      <DependentUpon>FrmSaleReturnErrDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorNote\FrmSaleReturnErrNote.resx">
+      <DependentUpon>FrmSaleReturnErrNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorNote\FrmSaleReturnErrStatistic.resx">
+      <DependentUpon>FrmSaleReturnErrStatistic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseReceive\FrmPurchaseCollectionDetail.resx">
+      <DependentUpon>FrmPurchaseCollectionDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseReceive\FrmPurchaseCollectionNote.resx">
+      <DependentUpon>FrmPurchaseCollectionNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseReceive\FrmPurchaseReceiveTotalBranch.resx">
+      <DependentUpon>FrmPurchaseReceiveTotalBranch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseReceive\FrmPurchaseReceiveTotalDetailBranch.resx">
+      <DependentUpon>FrmPurchaseReceiveTotalDetailBranch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseReceive\FrmPurchaseReturnDetail.resx">
+      <DependentUpon>FrmPurchaseReturnDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorNote\FrmPurchaseReturnErr.resx">
+      <DependentUpon>FrmPurchaseReturnErr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseReceive\FrmPurchaseReturnNote.resx">
+      <DependentUpon>FrmPurchaseReturnNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseReceive\FrmWriteOff.resx">
+      <DependentUpon>FrmWriteOff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\JTDReport.resx">
+      <DependentUpon>JTDReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\JTDReport.zh-CN.resx">
+      <DependentUpon>JTDReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\SHHZDReport.resx">
+      <DependentUpon>SHHZDReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\SHHZDTotalReport.resx">
+      <DependentUpon>SHHZDTotalReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\XSDReport.resx">
+      <DependentUpon>XSDReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\XSHZDReport.resx">
+      <DependentUpon>XSHZDReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\XSHZDTotalReport.resx">
+      <DependentUpon>XSHZDTotalReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\XTDReport.resx">
+      <DependentUpon>XTDReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\XtraReportCGJSD.resx" />
+    <EmbeddedResource Include="Reports\XtraReportJTDMX.resx" />
+    <EmbeddedResource Include="Reports\XtraReportXSJSDjc.resx" />
+    <EmbeddedResource Include="Reports\XtraReportXSJSDjt.resx" />
+    <EmbeddedResource Include="Reports\XtraReportXSTSDjc.resx" />
+    <EmbeddedResource Include="Reports\XtraReportXSTSDjt.resx" />
+    <EmbeddedResource Include="RoleManagement\RoleAdd.resx">
+      <DependentUpon>RoleAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RoleManagement\RoleEdit.resx">
+      <DependentUpon>RoleEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RoleManagement\RoleMain.resx">
+      <DependentUpon>RoleMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaleManagement\FrmClientTuoShouJC.resx">
+      <DependentUpon>FrmClientTuoShouJC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaleManagement\FrmClientTuoShouJCAdd.resx">
+      <DependentUpon>FrmClientTuoShouJCAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaleManagement\FrmClientTuoShouJCSelectCase.resx">
+      <DependentUpon>FrmClientTuoShouJCSelectCase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaleManagement\FrmClientTuoShouJT.resx">
+      <DependentUpon>FrmClientTuoShouJT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaleManagement\FrmClientTuoShouJTAdd.resx">
+      <DependentUpon>FrmClientTuoShouJTAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaleManagement\FrmClientTuoShouJTSelectCase.resx">
+      <DependentUpon>FrmClientTuoShouJTSelectCase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaleManagement\FrmSaleDetail.resx">
+      <DependentUpon>FrmSaleDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaleManagement\FrmSaleDiscountCorrection.resx">
+      <DependentUpon>FrmSaleDiscountCorrection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaleManagement\FrmSaleInvoiceJC.resx" />
+    <EmbeddedResource Include="SaleManagement\FrmSaleInvoiceJT.resx" />
+    <EmbeddedResource Include="SaleManagement\FrmSaleNote.resx">
+      <DependentUpon>FrmSaleNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaleManagement\FrmSaleReturnDetail.resx">
+      <DependentUpon>FrmSaleReturnDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaleManagement\FrmSaleReturnNote.resx">
+      <DependentUpon>FrmSaleReturnNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaleManagement\FrmSaleStageJC.resx" />
+    <EmbeddedResource Include="SaleManagement\FrmSaleStageJCAdd.resx" />
+    <EmbeddedResource Include="SaleManagement\FrmSaleStageJT.resx" />
+    <EmbeddedResource Include="SaleManagement\FrmSaleStageJTAdd.resx" />
+    <EmbeddedResource Include="SaleManagement\FrmSaleStageSelectcase.resx" />
+    <EmbeddedResource Include="SaleManagement\FrmSaleTotal.resx">
+      <DependentUpon>FrmSaleTotal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaleManagement\FrmSaleTotalBranch.resx">
+      <DependentUpon>FrmSaleTotalBranch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaleManagement\FrmSaleTotalDetail.resx">
+      <DependentUpon>FrmSaleTotalDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaleManagement\FrmSaleTotalDetailBranch.resx">
+      <DependentUpon>FrmSaleTotalDetailBranch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaleManagement\FrmTuoShouData.resx" />
+    <EmbeddedResource Include="StaffManagement\FrmStaffManageMent.resx">
+      <DependentUpon>FrmStaffManageMent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StockManagement\FrmAllocateDetail.resx">
+      <DependentUpon>FrmAllocateDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StockManagement\FrmAllocateNote.resx">
+      <DependentUpon>FrmAllocateNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StockManagement\FrmProfitLossDetail.resx">
+      <DependentUpon>FrmProfitLossDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StockManagement\FrmProfitLossNote.resx">
+      <DependentUpon>FrmProfitLossNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DatabaseManagement\FrmDBMt.resx">
+      <DependentUpon>FrmDBMt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DatabaseManagement\FrmDBMtChild.resx">
+      <DependentUpon>FrmDBMtChild.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Adjustment\FrmBranchAdjust.resx">
+      <DependentUpon>FrmBranchAdjust.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmChainDeptInfo.resx">
+      <DependentUpon>FrmChainDeptInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmClientMain.resx">
+      <DependentUpon>FrmClientMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitManagement\FrmClientTypeMt.resx">
+      <DependentUpon>FrmClientTypeMt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitManagement\FrmDepartmentManagement.resx">
+      <DependentUpon>FrmDepartmentManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitManagement\FrmDeptTypeMt.resx">
+      <DependentUpon>FrmDeptTypeMt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitManagement\FrmDeptTypeMtChild.resx">
+      <DependentUpon>FrmDeptTypeMtChild.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseReceive\FrmDiscountCorrection.resx">
+      <DependentUpon>FrmDiscountCorrection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseReceive\FrmSupplierCorrection.resx">
+      <DependentUpon>FrmSupplierCorrection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseReceive\FrmPurchaseReceiveTotalDetail.resx">
+      <DependentUpon>FrmPurchaseReceiveTotalDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseReceive\FrmPurchaseReceiveTotal.resx">
+      <DependentUpon>FrmPurchaseReceiveTotal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorNote\FrmPurchaseReceiveErrDetail.resx">
+      <DependentUpon>FrmPurchaseReceiveErrDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorNote\FrmPurchaseReceiveErrNote.resx">
+      <DependentUpon>FrmPurchaseReceiveErrNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseReceive\FrmPurchaseReceiveDetail.resx">
+      <DependentUpon>FrmPurchaseReceiveDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseReceive\FrmPurchaseReceiveNote.resx">
+      <DependentUpon>FrmPurchaseReceiveNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Adjustment\FrmSupplierAdjust.resx">
+      <DependentUpon>FrmSupplierAdjust.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="UnitManagement\FrmDeptMtChild.resx">
+      <DependentUpon>FrmDeptMtChild.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="StaffManagement\FrmStaffMtChild.resx">
+      <DependentUpon>FrmStaffMtChild.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitManagement\FrmPressTypeMt.resx">
+      <DependentUpon>FrmPressTypeMt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitManagement\FrmPrintTypeMt.resx">
+      <DependentUpon>FrmPrintTypeMt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitManagement\FrmSupplierTypeMt.resx">
+      <DependentUpon>FrmSupplierTypeMt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitManagement\FrmTransTypeMt.resx">
+      <DependentUpon>FrmTransTypeMt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitManagement\FrmUnitPropMt.resx">
+      <DependentUpon>FrmUnitPropMt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitManagement\FrmWareTypeMt.resx">
+      <DependentUpon>FrmWareTypeMt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnusualStock\FrmCheckExcelData.resx">
+      <DependentUpon>FrmCheckExcelData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnusualStock\FrmUnusualStockImporCheck.resx">
+      <DependentUpon>FrmUnusualStockImporCheck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnusualStock\FrmUnusualStockInput.resx">
+      <DependentUpon>FrmUnusualStockInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnusualStock\FrmUnusualStockInputAdd.resx">
+      <DependentUpon>FrmUnusualStockInputAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnusualStock\FrmUnusualStockReturns.resx">
+      <DependentUpon>FrmUnusualStockReturns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnusualStock\FrmUnusualStockReturnsAdd.resx">
+      <DependentUpon>FrmUnusualStockReturnsAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserManagement\EmpoeeTable.resx">
+      <DependentUpon>EmpoeeTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserManagement\UserAdd.resx">
+      <DependentUpon>UserAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserManagement\UserEdit.resx">
+      <DependentUpon>UserEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserManagement\UserMain.resx">
+      <DependentUpon>UserMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VoucherManagement\FrmAllocateVoucherDetail.resx">
+      <DependentUpon>FrmAllocateVoucherDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VoucherManagement\FrmAllocateVoucherNote.resx">
+      <DependentUpon>FrmAllocateVoucherNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VoucherManagement\FrmCarryoverCostVoucherDetail.resx">
+      <DependentUpon>FrmCarryoverCostVoucherDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VoucherManagement\FrmCarryoverCostVoucherNote.resx">
+      <DependentUpon>FrmCarryoverCostVoucherNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VoucherManagement\FrmCollectionVoucherDetail.resx">
+      <DependentUpon>FrmCollectionVoucherDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VoucherManagement\FrmCollectionVoucherNote.resx">
+      <DependentUpon>FrmCollectionVoucherNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VoucherManagement\FrmDeliveryVoucherDetail.resx">
+      <DependentUpon>FrmDeliveryVoucherDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VoucherManagement\FrmDeliveryVoucherNote.resx">
+      <DependentUpon>FrmDeliveryVoucherNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VoucherManagement\FrmInventoryProfitLossVoucherDetail.resx">
+      <DependentUpon>FrmInventoryProfitLossVoucherDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VoucherManagement\FrmInventoryProfitLossVoucherNote.resx">
+      <DependentUpon>FrmInventoryProfitLossVoucherNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VoucherManagement\FrmLossVoucherDetail.resx">
+      <DependentUpon>FrmLossVoucherDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VoucherManagement\FrmLossVoucherNote.resx">
+      <DependentUpon>FrmLossVoucherNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VoucherManagement\FrmPaymentVoucherDetail.resx">
+      <DependentUpon>FrmPaymentVoucherDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VoucherManagement\FrmPaymentVoucherNote.resx">
+      <DependentUpon>FrmPaymentVoucherNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VoucherManagement\FrmPurchaseReceiveVoucherDetail.resx">
+      <DependentUpon>FrmPurchaseReceiveVoucherDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VoucherManagement\FrmPurchaseReveiveVoucherNote.resx">
+      <DependentUpon>FrmPurchaseReveiveVoucherNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VoucherManagement\FrmReceivableVoucherDetail.resx">
+      <DependentUpon>FrmReceivableVoucherDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VoucherManagement\FrmReceivableVoucherNote.resx">
+      <DependentUpon>FrmReceivableVoucherNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Resources\ICON\copyright.jpg.psd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\ICON\ToolBarIcon\descript.ion">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Content Include="tnsnames.ora">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shutdown1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\userchange1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="DevExpress.BonusSkins.v10.2">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.Charts.v10.2.Core">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.Data.v10.2">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.Localization.v10.2">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.OfficeSkins.v10.2">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.PivotGrid.v10.2.Core">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.RichEdit.v10.2.Core">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.SpellChecker.v10.2.Core">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.Utils.v10.2">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.Web.ASPxEditors.v10.2">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.Web.ASPxGridView.v10.2">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.Web.ASPxHtmlEditor.v10.2">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.Web.ASPxScheduler.v10.2">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.Web.ASPxSpellChecker.v10.2">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.Web.ASPxTreeList.v10.2">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.Web.v10.2">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.Xpo.v10.2">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.Xpo.v10.2.Providers">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.XtraBars.v10.2">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.XtraCharts.v10.2">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.XtraEditors.v10.2">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.XtraGrid.v10.2">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.XtraLayout.v10.2">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.XtraNavBar.v10.2">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.XtraPivotGrid.v10.2">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.XtraPrinting.v10.2">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.XtraReports.v10.2">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.XtraRichEdit.v10.2">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.XtraRichEdit.v10.2.Extensions">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.XtraScheduler.v10.2">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.XtraScheduler.v10.2.Core">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.XtraScheduler.v10.2.Extensions">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.XtraSpellChecker.v10.2">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.XtraTreeList.v10.2">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.XtraVerticalGrid.v10.2">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.XtraWizard.v10.2">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="EnvDTE">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="stdole">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Sybase.Data.AseClient">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="msvcr71.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="oci.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ocijdbc10.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ociw32.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="orannzsbb10.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="oraocci10.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="oraociei10.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\02220.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\77.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\alert.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\back_smgl.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\back_smlr.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\btnSelect.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\business.ICO">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\check.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\clock02.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\close.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\close.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\computer.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\copyright.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\copyrighte.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\copyrightn.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\copyrightnn.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\dept.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\deptment.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\flash弹出面.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\foldclose.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\foldopen.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\help.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ItemConfig.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\0.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\00138.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\1.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\10.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\100.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\101.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\102.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\103.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\104.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\105.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\106.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\107.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\108.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\109.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\11.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\110.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\111.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\112.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\113.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\114.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\115.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\116.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\117.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\118.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\119.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\12.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\120.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\121.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\122.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\123.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\124.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\125.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\126.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\127.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\128.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\129.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\13.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\130.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\131.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\132.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\133.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\134.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\135.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\136.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\137.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\138.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\139.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\14.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\140.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\141.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\142.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\143.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\144.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\145.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\146.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\147.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\148.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\149.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\15.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\150.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\151.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\152.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\153.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\154.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\155.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\156.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\157.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\158.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\159.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\16.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\160.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\161.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\162.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\163.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\164.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\165.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\166.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\167.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\168.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\169.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\17.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\170.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\171.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\172.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\173.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\174.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\175.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\176.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\177.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\178.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\179.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\18.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\180.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\181.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\19.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\2.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\20.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\21.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\22.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\23.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\24.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\25.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\26.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\27.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\28.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\29.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\3.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\30.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\31.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\32.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\33.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\34.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\35.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\36.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\37.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\38.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\39.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\4.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\40.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\41.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\42.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\43.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\44.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\45.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\46.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\47.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\48.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\49.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\5.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\50.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\51.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\52.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\53.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\54.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\55.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\56.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\57.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\58.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\59.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\6.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\60.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\61.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\62.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\63.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\64.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\65.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\66.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\67.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\68.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\69.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\7.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\70.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\71.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\72.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\73.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\74.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\75.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\76.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\77.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\78.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\79.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\8.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\80.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\81.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\82.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\83.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\84.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\85.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\86.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\87.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\88.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\89.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\9.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\90.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\91.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\92.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\93.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\94.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\95.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\96.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\97.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\98.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ListViewIcon\99.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\login.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\login1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\LogOff.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\MainPanel.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\MainPanel1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\MenuIcon\24exit.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\MenuIcon\check.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\MenuIcon\clear.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\MenuIcon\default.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\MenuIcon\del.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\MenuIcon\delete.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\MenuIcon\edit.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\MenuIcon\exit.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\MenuIcon\finish.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\MenuIcon\firstPage.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\MenuIcon\list.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\MenuIcon\listview.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\MenuIcon\LogOff.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\MenuIcon\modi.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\MenuIcon\Msg.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\MenuIcon\new.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\MenuIcon\next.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\MenuIcon\pre.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\MenuIcon\print.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\MenuIcon\reLogin.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\MenuIcon\save.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\MenuIcon\search.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\MenuIcon\windows.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\msg.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\msgskin.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\msgskin.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\openbook.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\0001.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\0002.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\0003.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\Appearance.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\business.ICO">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\cal.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\Cd data and music.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\check.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\config.ICO">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\config1.ICO">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\default.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\dict.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\editbar.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\exitbar.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\filebar.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\find.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\font.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\get.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\help.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\inout.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\inquire.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\list.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\lock.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\log.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\loss.ICO">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\manage.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\Mine.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\music.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\MyWork.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\Png image.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\purch.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\purview.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\salecon.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\saledoc.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\saleejec.ICO">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\savebar.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\sendmag.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\Solitare.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\stock.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\stock1.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\stock2.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\stockcon.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\Telephony.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\unitmag.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\user.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\user1.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\userbalance.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\userorder1.ICO">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\userorder2.ICO">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\web.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\Whistler 2428 icon 27.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\Whistler 2428 icon 29.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\Whistler 2428 icon 43.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\Whistler xp icon 13.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\Whistler xp icon 16.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\Whistler xp icon 55.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookBarIcon\Whistler xp icon 57.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\OutLookHeader.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\priv.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\search.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\select.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\skin.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\splash.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\splash11.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\status User.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\step.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\team2.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\Timer.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\check.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\clear.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\default.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\default1.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\default10.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\default11.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\default12.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\default13.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\default14.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\default15.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\default2.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\default3.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\default4.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\default5.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\default6.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\default7.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\default8.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\default9.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\del.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\edit.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\exit.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\export.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\finish.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\firstPage.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\freeze.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\check.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\default.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\default1.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\default10.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\default11.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\default12.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\default13.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\default14.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\default15.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\default16.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\default17.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\default2.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\default3.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\default4.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\default5.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\default6.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\default7.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\default8.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\default9.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\del.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\exit.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\export_wiz.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\freeze.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\help.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\history.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\iceout.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\import_wiz.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\listview.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\lock.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\modi.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\msg.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\newdetail.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\newfile_wiz.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\new_wiz.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\ok.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\print.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\printview.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\realize.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\save.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\search.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\sure.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\talk.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\testerr.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\testfail.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\testok.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\testrun.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\tsuite.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\tsuiteerror.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\tsuitefail.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\tsuiterun.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\twowaycompare_co.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\gif\unlock.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\help.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\history.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\iceout.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\import.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\list.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\listview.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\lock.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\LogOff.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\modi.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\msg.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\new.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\newdetail.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\next.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\notice.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\ok.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\pre.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\print.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\printview.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\realize.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\reLogin.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\save.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\search.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\sure.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\talk.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\unlock.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\ToolBarIcon\windows.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\User.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\xml\FORM4133.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\xml\FORM4251.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\xml\FORM4448.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\xml\LoginUser.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\zhangtao.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\zq.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\zqForm.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\zqForm1.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\zqForm2.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ICON\进度条.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\ICON\back\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

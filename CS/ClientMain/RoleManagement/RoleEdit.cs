@@ -13,7 +13,7 @@ namespace ClientMain
 {
     public partial class RoleEdit : Form
     {
-        private string StrCon = ConfigurationManager.ConnectionStrings["dbcon"].ConnectionString;
+        private string StrCon = FrmLogin.strCon;
         private OracleConnection MyConn = null;
         private void Open()
         {

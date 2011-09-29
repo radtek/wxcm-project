@@ -23,7 +23,7 @@ namespace ClientMain
     public partial class RoleMain : Form
     {
         private GridCheckMarksSelection selection;
-        private string StrCon = ConfigurationManager.ConnectionStrings["dbcon"].ConnectionString;
+        private string StrCon = FrmLogin.strCon;
         bool m_fgAdd;
         bool m_fgDel;
         bool m_fgUpdate;

@@ -32,7 +32,7 @@ namespace ClientMain
         private int getCountspidNum()
         {
             int i = 0;
-            string StrCon = ConfigurationManager.ConnectionStrings["dbcon"].ConnectionString;
+            string StrCon = FrmLogin.strCon;
             string strselect = "select count(SPXXID) from JT_J_SPXX where SPBH='" + txtSPBH.Text.Trim() + "'";
             OracleConnection conn = new OracleConnection(StrCon);
             OracleCommand comm = new OracleCommand(strselect, conn);
@@ -62,7 +62,7 @@ namespace ClientMain
         }
         private void getSPXX(string spbh)
         {
-            string StrCon = ConfigurationManager.ConnectionStrings["dbcon"].ConnectionString;
+            string StrCon = FrmLogin.strCon;
             OracleConnection conn = new OracleConnection(StrCon);
             string strselect = "select SPXXID,PM,DJ from JT_J_SPXX where SPBH='" + txtSPBH.Text.Trim() + "'";
             OracleCommand comm = new OracleCommand(strselect, conn);
@@ -158,7 +158,7 @@ namespace ClientMain
         }
         private void load_Alter()
         {
-            string strconn = ConfigurationManager.ConnectionStrings["dbcon"].ConnectionString;
+            string strconn = FrmLogin.strCon;
             OracleConnection conn = new OracleConnection(strconn);
             string strselect = "select SPXXID,ZTID,YCCS,CZYID,CZRQ,CLZT,ZTIDMC,CZYMC,SPBH,DJ,SPMC from VIEW_JC_C_YCKC where YCKCID='" + yckc_id + "'";
             OracleCommand comm = new OracleCommand(strselect, conn);
@@ -221,7 +221,7 @@ namespace ClientMain
         private string getczyxm()
         {
             string czyxm = "";
-            string strconn = ConfigurationManager.ConnectionStrings["dbcon"].ConnectionString;
+            string strconn = FrmLogin.strCon;
             string strselect = "select operatorname from base_operator where operatorid='" + FrmLogin.getUserID.ToString() + "'";
             OracleConnection conn = new OracleConnection(strconn);
             OracleCommand comm = new OracleCommand(strselect,conn);
@@ -254,7 +254,7 @@ namespace ClientMain
         }
         private void InserintoYCKC()
         {
-            string strconn = ConfigurationManager.ConnectionStrings["dbcon"].ConnectionString;
+            string strconn = FrmLogin.strCon;
             using (OracleConnection connection = new OracleConnection(strconn))
             {
                 OracleCommand cmd = connection.CreateCommand();
@@ -289,7 +289,7 @@ namespace ClientMain
         }
         private void UpdataYCKC()
         {
-            string strconn = ConfigurationManager.ConnectionStrings["dbcon"].ConnectionString;
+            string strconn = FrmLogin.strCon;
             OracleConnection conn = new OracleConnection(strconn);
             string sttime = this.dateTimePicker1.Value.ToShortDateString();
             string strupdata = "UPDATE   JC_C_YCKC SET SPXXID='" + this.txtSPBH.Tag.ToString() + "',YCCS=" + Convert.ToInt32(this.txtECCS.Text.ToString().Trim()) + ",CZRQ=TO_DATE('" + sttime + "','YYYY-MM-DD ') where YCKCID='" + yckc_id + "'";
@@ -314,7 +314,7 @@ namespace ClientMain
         private int GetCountExit()
         {
             int i = 0;
-            string strconn = ConfigurationManager.ConnectionStrings["dbcon"].ConnectionString;
+            string strconn = FrmLogin.strCon;
             OracleConnection conn = new OracleConnection(strconn);
             string strselect = "select count(*)   JC_C_YCKC where SPXXID='" + this.txtSPBH.Tag.ToString() + "AND CZYID='"+FrmLogin.getUserID.ToString()+"'";
             OracleCommand comm = new OracleCommand(strselect, conn);

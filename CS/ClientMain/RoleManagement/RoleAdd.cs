@@ -13,7 +13,7 @@ namespace ClientMain
 {
     public partial class RoleAdd : Form
     {
-        private string StrCon = ConfigurationManager.ConnectionStrings["dbcon"].ConnectionString;
+        private string StrCon = FrmLogin.strCon;
         public RoleAdd()
         {
             InitializeComponent();

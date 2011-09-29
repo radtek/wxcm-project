@@ -23,7 +23,7 @@ namespace ClientMain
         }
         private void ReportTitle_Load(string jsdid)
         {
-            string StrCon = ConfigurationManager.ConnectionStrings["dbcon"].ConnectionString;
+            string StrCon = FrmLogin.strCon;
             OracleConnection connection = new OracleConnection(StrCon);
             string str = "select ztidmc,GHDWMC,XSJSDH,jsfsmc,jsr,czrmc,ZHJSRQ from VIEW_JT_C_XSJSD where XSJSDID='" + jsdid + "'";
             OracleCommand comm = new OracleCommand(str, connection);
@@ -58,7 +58,7 @@ namespace ClientMain
         private DataSet Setds(string jsdid)
         {
             DataSet ds = new DataSet();
-            string StrCon = ConfigurationManager.ConnectionStrings["dbcon"].ConnectionString;
+            string StrCon = FrmLogin.strCon;
             OracleConnection connection = new OracleConnection(StrCon);
             try
             {

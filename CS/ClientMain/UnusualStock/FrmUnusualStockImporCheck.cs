@@ -64,7 +64,7 @@ namespace ClientMain
         private int CheckNum(string id)
         {
             int i=0;
-            string StrCon = ConfigurationManager.ConnectionStrings["dbcon"].ConnectionString;
+            string StrCon = FrmLogin.strCon;
             OracleConnection conn = new OracleConnection(StrCon);
             string count = "select count(0) from JT_J_SPXX where SPXXID='" + id + "'";
             OracleCommand comm = new OracleCommand(count,conn);
@@ -313,7 +313,7 @@ namespace ClientMain
         }
         private void InserintoYCKC(string id,int num)
         {
-            string strconn = ConfigurationManager.ConnectionStrings["dbcon"].ConnectionString;
+            string strconn = FrmLogin.strCon;
             using (OracleConnection connection = new OracleConnection(strconn))
             {
                 OracleCommand cmd = connection.CreateCommand();
@@ -350,7 +350,7 @@ namespace ClientMain
         }
         private void InserintoJTD(string id, int num)
         {
-            string strconn = ConfigurationManager.ConnectionStrings["dbcon"].ConnectionString;
+            string strconn = FrmLogin.strCon;
             using (OracleConnection connection = new OracleConnection(strconn))
             {
                 OracleCommand cmd = connection.CreateCommand();
@@ -454,7 +454,7 @@ namespace ClientMain
                             num = Convert.ToInt32(row.ItemArray[1].ToString());
                         }
 
-                        string strconn = ConfigurationManager.ConnectionStrings["dbcon"].ConnectionString;
+                        string strconn = FrmLogin.strCon;
                         using (OracleConnection connection = new OracleConnection(strconn))
                         {
                             OracleCommand cmd = connection.CreateCommand();

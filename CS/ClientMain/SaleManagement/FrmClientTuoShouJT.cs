@@ -25,7 +25,7 @@ namespace ClientMain
         GridCheckMarksSelection selection1;
         GridCheckMarksSelection selection2;
         const int MAXROWCOUNT = 50000;
-        private string StrCon = ConfigurationManager.ConnectionStrings["dbcon"].ConnectionString;
+        private string StrCon = FrmLogin.strCon;
         //托收单选计
         private double dTSJE = 0;
         //托收单明细选计
@@ -272,8 +272,8 @@ namespace ClientMain
 
             if (!String.IsNullOrEmpty(gridView1.ActiveFilterString))
             {
-               // xpServerCollectionSource1.FixedFilterString = gridView1.ActiveFilterString;
-                xpServerCollectionSource1.FixedFilterString = gridView1.ActiveFilterString + " And [ZTID] = \'" + FrmLogin.getZTID.ToString() + "\'";                
+                xpServerCollectionSource1.FixedFilterString = gridView1.ActiveFilterString;
+               // xpServerCollectionSource1.FixedFilterString = gridView1.ActiveFilterString + " And [ZTID] = \'" + FrmLogin.getZTID.ToString() + "\'";                
                 gridView1.BestFitColumns();
             }
         }

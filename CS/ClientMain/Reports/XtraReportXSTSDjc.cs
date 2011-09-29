@@ -27,7 +27,7 @@ namespace ClientMain
         }
         private void ReportTitle_Load(string tsdid)
         {
-            string StrCon = ConfigurationManager.ConnectionStrings["dbcon"].ConnectionString;
+            string StrCon = FrmLogin.strCon;
             OracleConnection connection = new OracleConnection(StrCon);
             string str = "select YWBMID,KHMC,DZ,KHYH,ZH,XSFPID,TSJE from JC_C_XSTSD where XSTSDID='" + tsdid + "'";
             OracleCommand comm = new OracleCommand(str, connection);
@@ -45,7 +45,7 @@ namespace ClientMain
                     this.txtKHZH.Text = reader["ZH"].ToString();
                     fpid = reader["XSFPID"].ToString();
                     this.txtJE.Text = ConverDouble(reader["TSJE"].ToString());
-                    this.txtHK.Text = ConvertMoney(Convert.ToDecimal(this.txtJE.Text.Trim()));
+                    this.txtHK.Text = ConvertMoney(Convert.ToDecimal(reader["TSJE"].ToString()));
 
 
                 }
@@ -62,7 +62,7 @@ namespace ClientMain
         }
         private void ReportCWBM_Load()
         {
-            string StrCon = ConfigurationManager.ConnectionStrings["dbcon"].ConnectionString;
+            string StrCon = FrmLogin.strCon;
             OracleConnection connection = new OracleConnection(StrCon);
             string str = "select DWMC,ZH,TXDZ,KHYH from JT_J_DWXX where DWID='" + cwbmid + "'";
             OracleCommand comm = new OracleCommand(str, connection);

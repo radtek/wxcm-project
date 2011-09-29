@@ -36,7 +36,7 @@
     <SuiteName>Maintenance</SuiteName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>9</ApplicationRevision>
+    <ApplicationRevision>10</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -84,7 +84,7 @@
     </Reference>
     <Reference Include="DevExpress.Localization.v10.2, Version=10.2.3.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\Software\DevExpress\10.2.3\DevExpress.Localization.v10.2.3(汉化_来自fosoyo)\DevExpress.Localization.v10.2.dll</HintPath>
+      <HintPath>.\DevExpress.Localization.v10.2.DLL</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="DevExpress.PivotGrid.v10.2.Core, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -124,7 +124,7 @@
     <Reference Include="DevExpress.XtraRichEdit.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="Sybase.Data.AseClient, Version=1.1.510.0, Culture=neutral, PublicKeyToken=26e0f1529304f4a7">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\sybase\DataAccess\ADONET\dll\Sybase.Data.AseClient.dll</HintPath>
+      <HintPath>..\..\..\..\Sybase.Data.AseClient.dll\Sybase.Data.AseClient.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System">
@@ -215,46 +215,46 @@
     <Compile Include="AccountManagement\FrmZTTZinquire.designer.cs">
       <DependentUpon>FrmZTTZinquire.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmHeXiaoDate.cs">
+    <Compile Include="PublicDateFrom\FrmHeXiaoDate.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmHeXiaoDate.designer.cs">
+    <Compile Include="PublicDateFrom\FrmHeXiaoDate.designer.cs">
       <DependentUpon>FrmHeXiaoDate.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmInvoiceAlter.cs">
+    <Compile Include="PublicDateFrom\FrmInvoiceAlter.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmInvoiceAlter.designer.cs">
+    <Compile Include="PublicDateFrom\FrmInvoiceAlter.designer.cs">
       <DependentUpon>FrmInvoiceAlter.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmPurchaseInvoiceKPR.cs">
+    <Compile Include="PublicDateFrom\FrmPurchaseInvoiceKPR.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmPurchaseInvoiceKPR.designer.cs">
+    <Compile Include="PublicDateFrom\FrmPurchaseInvoiceKPR.designer.cs">
       <DependentUpon>FrmPurchaseInvoiceKPR.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmSelectDW.cs">
+    <Compile Include="PublicDateFrom\FrmSelectDW.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmSelectDW.designer.cs">
+    <Compile Include="PublicDateFrom\FrmSelectDW.designer.cs">
       <DependentUpon>FrmSelectDW.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmSelectFYQK.cs">
+    <Compile Include="PublicDateFrom\FrmSelectFYQK.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmSelectFYQK.Designer.cs" />
-    <Compile Include="FrmSelectKXNR.cs">
+    <Compile Include="PublicDateFrom\FrmSelectFYQK.Designer.cs" />
+    <Compile Include="PublicDateFrom\FrmSelectKXNR.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmSelectKXNR.Designer.cs" />
-    <Compile Include="FrmSelectTSPJ.cs">
+    <Compile Include="PublicDateFrom\FrmSelectKXNR.Designer.cs" />
+    <Compile Include="PublicDateFrom\FrmSelectTSPJ.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmSelectTSPJ.Designer.cs" />
-    <Compile Include="FrmSPXXSelect.cs">
+    <Compile Include="PublicDateFrom\FrmSelectTSPJ.Designer.cs" />
+    <Compile Include="PublicDateFrom\FrmSPXXSelect.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmSPXXSelect.Designer.cs" />
+    <Compile Include="PublicDateFrom\FrmSPXXSelect.Designer.cs" />
     <Compile Include="MenuManagement\MenuEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1081,21 +1081,21 @@
     <EmbeddedResource Include="AccountManagement\FrmZTTZinquire.resx">
       <DependentUpon>FrmZTTZinquire.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmHeXiaoDate.resx">
+    <EmbeddedResource Include="PublicDateFrom\FrmHeXiaoDate.resx">
       <DependentUpon>FrmHeXiaoDate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmInvoiceAlter.resx">
+    <EmbeddedResource Include="PublicDateFrom\FrmInvoiceAlter.resx">
       <DependentUpon>FrmInvoiceAlter.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmPurchaseInvoiceKPR.resx">
+    <EmbeddedResource Include="PublicDateFrom\FrmPurchaseInvoiceKPR.resx">
       <DependentUpon>FrmPurchaseInvoiceKPR.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmSelectDW.resx">
+    <EmbeddedResource Include="PublicDateFrom\FrmSelectDW.resx">
       <DependentUpon>FrmSelectDW.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmSelectFYQK.resx" />
-    <EmbeddedResource Include="FrmSelectKXNR.resx" />
-    <EmbeddedResource Include="FrmSelectTSPJ.resx" />
+    <EmbeddedResource Include="PublicDateFrom\FrmSelectFYQK.resx" />
+    <EmbeddedResource Include="PublicDateFrom\FrmSelectKXNR.resx" />
+    <EmbeddedResource Include="PublicDateFrom\FrmSelectTSPJ.resx" />
     <EmbeddedResource Include="FrmSPXXSelect.resx" />
     <EmbeddedResource Include="MenuManagement\MenuEdit.resx">
       <DependentUpon>MenuEdit.cs</DependentUpon>
@@ -1363,7 +1363,6 @@
     <EmbeddedResource Include="Adjustment\FrmSupplierAdjust.resx">
       <DependentUpon>FrmSupplierAdjust.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="UnitManagement\FrmDeptMtChild.resx">
       <DependentUpon>FrmDeptMtChild.cs</DependentUpon>
     </EmbeddedResource>

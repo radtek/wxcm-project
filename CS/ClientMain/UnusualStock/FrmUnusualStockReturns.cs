@@ -340,7 +340,7 @@ namespace ClientMain
                     if (fgCheck == true)
                     {
                         string alarm = "0";
-                        string StrCon = ConfigurationManager.ConnectionStrings["dbcon"].ConnectionString;
+                        string StrCon = FrmLogin.strCon;
                         using (OracleConnection connection = new OracleConnection(StrCon))
                         {
                             connection.Open();
@@ -659,7 +659,7 @@ namespace ClientMain
                     if (fgCheck == true)
                     {
                         string alarm = "0";
-                        string StrCon = ConfigurationManager.ConnectionStrings["dbcon"].ConnectionString;
+                        string StrCon = FrmLogin.strCon;
                         using (OracleConnection connection = new OracleConnection(StrCon))
                         {
                             connection.Open();
@@ -880,7 +880,7 @@ namespace ClientMain
         }
         private void MakeStrArry(string id)
         {
-            string StrCon = ConfigurationManager.ConnectionStrings["dbcon"].ConnectionString;
+            string StrCon = FrmLogin.strCon;
             OracleConnection connection = new OracleConnection(StrCon);
             string str = "select GYSMC,JTDH,JTBMMC,ZDRQ,JTPZS,JTZSL,JTZMY,JTZSY from view_jc_g_jtd where JTDID='" + id + "'";
             OracleCommand comm = new OracleCommand(str, connection);
@@ -918,7 +918,7 @@ namespace ClientMain
         private DataSet GetTempDataSet(string id)
         {
             DataSet ds = new DataSet();
-            string StrCon = ConfigurationManager.ConnectionStrings["dbcon"].ConnectionString;
+            string StrCon = FrmLogin.strCon;
             OracleConnection connection = new OracleConnection(StrCon);
             try
             {

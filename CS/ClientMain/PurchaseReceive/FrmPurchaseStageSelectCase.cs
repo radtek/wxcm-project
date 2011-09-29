@@ -25,7 +25,7 @@ namespace ClientMain
         private string csl;//税率
         private string chjsdid;//采购结算单ID
         private string cztid;//传递的帐套ID
-        private string StrCon = ConfigurationManager.ConnectionStrings["dbcon"].ConnectionString;
+        private string StrCon = FrmLogin.strCon;
         //选计
         private double dSSMY = 0;
         private double dSSSY = 0;
