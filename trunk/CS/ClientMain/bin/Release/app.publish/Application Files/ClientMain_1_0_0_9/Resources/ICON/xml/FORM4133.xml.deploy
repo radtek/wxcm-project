@@ -1,0 +1,46 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <zQPageDataGrid>
+    <ID>52</ID>
+    <KHMC>清华出版社</KHMC>
+    <BMID>2118</BMID>
+    <DWMC>图书信息中心</DWMC>
+    <ZT>录入</ZT>
+    <CJRQ>2006-04-28T00:00:00.0000000+08:00</CJRQ>
+    <CJR>史云明</CJR>
+    <CZYID>181</CZYID>
+    <SELECTEDCOLUMN>false</SELECTEDCOLUMN>
+    <_row_satate>Unchanged</_row_satate>
+  </zQPageDataGrid>
+  <zQPageDataGrid>
+    <ID>51</ID>
+    <KHMC>科技出版社</KHMC>
+    <BMID>2118</BMID>
+    <DWMC>图书信息中心</DWMC>
+    <ZT>录入</ZT>
+    <CJRQ>2006-04-28T00:00:00.0000000+08:00</CJRQ>
+    <CJR>史云明</CJR>
+    <CZYID>181</CZYID>
+    <SELECTEDCOLUMN>false</SELECTEDCOLUMN>
+    <_row_satate>Unchanged</_row_satate>
+  </zQPageDataGrid>
+  <zQPageDataGrid>
+    <ID>53</ID>
+    <KHMC>中华地图学社</KHMC>
+    <QDRQ>2006-04-28T00:00:00.0000000+08:00</QDRQ>
+    <SXRQ>2006-05-28T00:00:00.0000000+08:00</SXRQ>
+    <ZZRQ>2007-04-28T00:00:00.0000000+08:00</ZZRQ>
+    <HTMC>合同名称</HTMC>
+    <HTJE>9876</HTJE>
+    <TKNR>反复发分为分</TKNR>
+    <BMID>2118</BMID>
+    <DWMC>图书信息中心</DWMC>
+    <ZT>录入</ZT>
+    <CJRQ>2006-04-28T00:00:00.0000000+08:00</CJRQ>
+    <CJR>史云明</CJR>
+    <KHID>161</KHID>
+    <CZYID>181</CZYID>
+    <KHIDMC>中华地图学社</KHIDMC>
+    <_row_satate>Unchanged</_row_satate>
+  </zQPageDataGrid>
+</NewDataSet>

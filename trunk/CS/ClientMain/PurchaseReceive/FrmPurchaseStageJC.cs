@@ -26,7 +26,7 @@ namespace ClientMain
         GridCheckMarksSelection selection2;
         const int MAXROWCOUNT = 50000;
         private string[] StrArrySetRepotr = new string[7];//传递到报表中的数组
-        private string StrCon = ConfigurationManager.ConnectionStrings["dbcon"].ConnectionString;
+        private string StrCon = FrmLogin.strCon;
         //采购单选计
         private Int64 iPZS = 0;
         private Int64 iSHSL = 0;
@@ -1213,7 +1213,7 @@ namespace ClientMain
         }
         private void MakeStrArry(string id)
         {
-            string StrCon = ConfigurationManager.ConnectionStrings["dbcon"].ConnectionString;
+            string StrCon = FrmLogin.strCon;
             OracleConnection connection = new OracleConnection(StrCon);
             string str = "select ztidmc,dwmc,cgjsdh,jsfsmc,jsr,czrmc,zhjsrq from view_jc_c_cgjsd where cgjsdid='" + id + "'";
             OracleCommand comm = new OracleCommand(str, connection);
@@ -1249,7 +1249,7 @@ namespace ClientMain
         private DataSet GetTempDataSet(string id)
         {
             DataSet ds = new DataSet();
-            string StrCon = ConfigurationManager.ConnectionStrings["dbcon"].ConnectionString;
+            string StrCon = FrmLogin.strCon;
             OracleConnection connection = new OracleConnection(StrCon);
             try
             {

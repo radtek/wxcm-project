@@ -23,7 +23,7 @@ namespace ClientMain
     public partial class UserEdit : Form
     {
         private GridCheckMarksSelection selection;
-        private string StrCon = ConfigurationManager.ConnectionStrings["dbcon"].ConnectionString;
+        private string StrCon = FrmLogin.strCon;
         public UserEdit(string id)
         {
             InitializeComponent();

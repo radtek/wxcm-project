@@ -253,7 +253,7 @@ namespace ClientMain
                             int RowIndex = selection.GetSelectedRowIndex(0);
                             int RowHandle = gridView1.GetRowHandle(RowIndex);
                             string strYCKCID = gridView1.GetRowCellDisplayText(RowHandle, colYCKCID).ToString();
-                            string strCon = ConfigurationManager.ConnectionStrings["dbcon"].ConnectionString;
+                            string strCon = FrmLogin.strCon;
                             OracleConnection conn = new OracleConnection(strCon);
                             string deleteds = "delete from JC_C_YCKC where YCKCID='" + strYCKCID + "'";
                             OracleCommand comm = new OracleCommand(deleteds,conn);
@@ -348,7 +348,7 @@ namespace ClientMain
                       }
                       if (fgConfirmStop ==true)
                     {
-                        string StrCon = ConfigurationManager.ConnectionStrings["dbcon"].ConnectionString;
+                        string StrCon = FrmLogin.strCon;
                         using (OracleConnection connection = new OracleConnection(StrCon))
                         {
                             OracleCommand cmd = connection.CreateCommand();

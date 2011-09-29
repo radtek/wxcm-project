@@ -21,7 +21,7 @@ namespace ClientMain
         //定义数据库连接
         private void Open()
         {
-            string StrCon = ConfigurationManager.ConnectionStrings["dbcon"].ConnectionString;
+            string StrCon = FrmLogin.strCon;
             MyConn = new OracleConnection(StrCon);
             if (MyConn.State.ToString() != "Open")
                 MyConn.Open();
