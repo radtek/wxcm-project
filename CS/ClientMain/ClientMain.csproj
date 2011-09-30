@@ -82,10 +82,8 @@
     <Reference Include="DevExpress.Data.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.Localization.v10.2, Version=10.2.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\DevExpress.Localization.v10.2.DLL</HintPath>
-      <Private>True</Private>
+    <Reference Include="DevExpress.Localization.v10.2">
+      <HintPath>E:\Software\DevExpress\10.2.3\DevExpress.Localization.v10.2.3(汉化_来自fosoyo)\DevExpress.Localization.v10.2.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.PivotGrid.v10.2.Core, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.RichEdit.v10.2.Core, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -122,10 +120,9 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="DevExpress.XtraRichEdit.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="Sybase.Data.AseClient, Version=1.1.510.0, Culture=neutral, PublicKeyToken=26e0f1529304f4a7">
+    <Reference Include="Sybase.Data.AseClient, Version=1.1.327.0, Culture=neutral, PublicKeyToken=26e0f1529304f4a7">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Sybase.Data.AseClient.dll\Sybase.Data.AseClient.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>C:\sybase\ADO.NET\dll\Sybase.Data.AseClient.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Private>False</Private>
@@ -1096,7 +1093,6 @@
     <EmbeddedResource Include="PublicDateFrom\FrmSelectFYQK.resx" />
     <EmbeddedResource Include="PublicDateFrom\FrmSelectKXNR.resx" />
     <EmbeddedResource Include="PublicDateFrom\FrmSelectTSPJ.resx" />
-    <EmbeddedResource Include="FrmSPXXSelect.resx" />
     <EmbeddedResource Include="MenuManagement\MenuEdit.resx">
       <DependentUpon>MenuEdit.cs</DependentUpon>
     </EmbeddedResource>
@@ -1111,6 +1107,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MenuManagement\MeunMain.resx">
       <DependentUpon>MeunMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PublicDateFrom\FrmSPXXSelect.resx">
+      <DependentUpon>FrmSPXXSelect.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PurchaseReceive\FrmPurchaseInvoiceJC.resx">
       <DependentUpon>FrmPurchaseInvoiceJC.cs</DependentUpon>
@@ -1916,6 +1915,16 @@
       <PublishState>Include</PublishState>
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="tnsnames.ora">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
     </PublishFile>
   </ItemGroup>
   <ItemGroup>

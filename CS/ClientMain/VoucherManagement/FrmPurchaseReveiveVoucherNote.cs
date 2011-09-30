@@ -178,7 +178,10 @@ namespace ClientMain
                         sbXML.Append(theRow.Row["attachment_number"].ToString());
                         sbXML.Append("</attachment_number>\n");
                         sbXML.Append("<prepareddate>");
-                        sbXML.Append(theRow.Row["prepareddate"].ToString().Substring(0, theRow.Row["prepareddate"].ToString().IndexOf(" ")));
+                        if (!String.IsNullOrEmpty(theRow.Row["prepareddate"].ToString()))
+                        {
+                            sbXML.Append(theRow.Row["prepareddate"].ToString().Substring(0, theRow.Row["prepareddate"].ToString().IndexOf(" ")));
+                        }
                         sbXML.Append("</prepareddate>\n");
                         sbXML.Append("<enter>");
                         sbXML.Append(theRow.Row["enter"].ToString());
@@ -193,7 +196,10 @@ namespace ClientMain
                         sbXML.Append(theRow.Row["checker"].ToString());
                         sbXML.Append("</checker>\n");
                         sbXML.Append("<posting_date>");
-                        sbXML.Append(theRow.Row["posting_date"].ToString().Substring(0, theRow.Row["posting_date"].ToString().IndexOf(" ")));
+                        if (!String.IsNullOrEmpty(theRow.Row["posting_date"].ToString()))
+                        {
+                            sbXML.Append(theRow.Row["posting_date"].ToString().Substring(0, theRow.Row["posting_date"].ToString().IndexOf(" ")));
+                        }
                         sbXML.Append("</posting_date>\n");
                         sbXML.Append("<posting_person>");
                         sbXML.Append(theRow.Row["posting_person"].ToString());
@@ -223,7 +229,7 @@ namespace ClientMain
                     foreach (DataRowView theRow in ds.Tables["jt_c_cgshpzmx"].DefaultView)
                     {
                         sbXML.Append("<entry>\n");
-                        sbXML.Append("<entry_id>");
+                        sbXML.Append("<entry_id>");                        
                         sbXML.Append(theRow.Row["entry_id"].ToString());
                         sbXML.Append("</entry_id>\n");
                         sbXML.Append("<account_code>");
@@ -238,8 +244,11 @@ namespace ClientMain
                         sbXML.Append("<document_id>");
                         sbXML.Append(theRow.Row["document_id"].ToString());
                         sbXML.Append("</document_id>\n");
-                        sbXML.Append("<document_date>");
-                        sbXML.Append(theRow.Row["document_date"].ToString().Substring(0, theRow.Row["document_date"].ToString().IndexOf(" ")));
+                        sbXML.Append("<document_date>");      
+                        if(!String.IsNullOrEmpty(theRow.Row["document_date"].ToString()))
+                        {
+                            sbXML.Append(theRow.Row["document_date"].ToString().Substring(0, theRow.Row["document_date"].ToString().IndexOf(" ")));
+                        }
                         sbXML.Append("</document_date>\n");
                         sbXML.Append("<currency>");
                         sbXML.Append(theRow.Row["currency"].ToString());
@@ -284,7 +293,10 @@ namespace ClientMain
                         sbXML.Append(theRow.Row["bill_id"].ToString());
                         sbXML.Append("</bill_id>\n");
                         sbXML.Append("<bill_date>");
-                        sbXML.Append(theRow.Row["bill_date"].ToString().Substring(0, theRow.Row["bill_date"].ToString().IndexOf(" ")));
+                        if (!String.IsNullOrEmpty(theRow.Row["bill_date"].ToString()))
+                        {
+                            sbXML.Append(theRow.Row["bill_date"].ToString().Substring(0, theRow.Row["bill_date"].ToString().IndexOf(" ")));
+                        }
                         sbXML.Append("</bill_date>\n");
                         if (!String.IsNullOrEmpty(theRow.Row["AUXILIARY_ACCOUNTING_ITEM1"].ToString()) || !String.IsNullOrEmpty(theRow.Row["AUXILIARY_ACCOUNTING_ITEM2"].ToString())
                             || !String.IsNullOrEmpty(theRow.Row["AUXILIARY_ACCOUNTING_ITEM3"].ToString()) || !String.IsNullOrEmpty(theRow.Row["AUXILIARY_ACCOUNTING_ITEM4"].ToString())
@@ -379,7 +391,14 @@ namespace ClientMain
                     if (strZT == "02")
                     {
                         string strTemp = gridView1.GetRowCellDisplayText(RowHandle, colVOUCHERID);
-                        strVOUCHERID += "\'" + strTemp + "\', ";
+                        if (fgMakeXML(strTemp))
+                        {
+                            strVOUCHERID += "\'" + strTemp + "\', ";
+                        }
+                        else
+                        {
+                            strVOUCHERID = "";
+                        }
                     }
                     else
                     {
