@@ -34,7 +34,9 @@
     <ProductName>综合维护平台（.NET）版</ProductName>
     <PublisherName>安徽新华传媒股份有限公司信息部</PublisherName>
     <SuiteName>Maintenance</SuiteName>
-    <ApplicationRevision>10</ApplicationRevision>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>publish.htm</WebPage>
+    <ApplicationRevision>13</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -73,7 +75,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>false</SignManifests>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.Charts.v10.2.Core, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -81,7 +83,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="DevExpress.Localization.v10.2">
-      <HintPath>..\..\..\CS\CS\CS\ClientMain\DevExpress.Localization.v10.2.DLL</HintPath>
+      <HintPath>E:\Software\DevExpress\10.2.3\DevExpress.Localization.v10.2.3(汉化_来自fosoyo)\DevExpress.Localization.v10.2.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.PivotGrid.v10.2.Core, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.RichEdit.v10.2.Core, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -120,7 +122,7 @@
     <Reference Include="DevExpress.XtraRichEdit.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="Sybase.Data.AseClient, Version=1.1.327.0, Culture=neutral, PublicKeyToken=26e0f1529304f4a7">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\CS\CS\CS\ClientMain\Sybase.Data.AseClient.dll</HintPath>
+      <HintPath>C:\sybase\ADO.NET\dll\Sybase.Data.AseClient.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Private>False</Private>
@@ -1577,6 +1579,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Content Include="oraociei10.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\wxcmlogo.jpg" />
     <Content Include="tnsnames.ora">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -2013,9 +2019,6 @@
     <Content Include="oci.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="ocijdbc10.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="ociw32.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -2023,9 +2026,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="oraocci10.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="oraociei10.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\ICON\02220.ico">

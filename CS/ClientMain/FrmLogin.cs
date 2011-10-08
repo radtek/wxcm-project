@@ -400,6 +400,11 @@ namespace ClientMain
 
         }
 
+        private void loginpassword_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
 
 
     }
