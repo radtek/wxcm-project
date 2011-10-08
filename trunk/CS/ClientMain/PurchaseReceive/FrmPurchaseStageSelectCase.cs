@@ -14,7 +14,6 @@ using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using System.IO;
- 
 
 namespace ClientMain
 {

@@ -6,7 +6,6 @@ using DevExpress.XtraReports.UI;
 using System.Data.OracleClient;
 using System.Configuration;
 using System.Data;
- 
 
 namespace ClientMain
 {
@@ -147,18 +146,19 @@ namespace ClientMain
         //以下为处理小写字符串格式
         private string ConverDouble(string str)
         {
-            string returnstr = str.Replace(".", "");//取消符号
-            string laststr = "";
-            string[] strbuf = new string[returnstr.Length];
-            for (int i = 0; i < returnstr.Length; i++)
+            string returnstr = str.Replace(".", "");
+            string laststr="";
+            string[] strbuf=new string[returnstr.Length];
+            for(int i=0;i<returnstr.Length;i++)
             {
-                strbuf[i] = returnstr.Substring(i, 1);
+                strbuf[i] = returnstr.Substring(i,1);
             }
             for (int i = 0; i < returnstr.Length; i++)
             {
-                laststr = laststr + " " + strbuf[i];
+                laststr =laststr+ "   " + strbuf[i];
             }
             return laststr;
+ 
         }
         
     }
