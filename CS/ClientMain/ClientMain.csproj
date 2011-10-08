@@ -34,8 +34,6 @@
     <ProductName>综合维护平台（.NET）版</ProductName>
     <PublisherName>安徽新华传媒股份有限公司信息部</PublisherName>
     <SuiteName>Maintenance</SuiteName>
-    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
-    <WebPage>publish.htm</WebPage>
     <ApplicationRevision>10</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
@@ -75,7 +73,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.Charts.v10.2.Core, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -83,7 +81,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="DevExpress.Localization.v10.2">
-      <HintPath>E:\Software\DevExpress\10.2.3\DevExpress.Localization.v10.2.3(汉化_来自fosoyo)\DevExpress.Localization.v10.2.dll</HintPath>
+      <HintPath>..\..\..\CS\CS\CS\ClientMain\DevExpress.Localization.v10.2.DLL</HintPath>
     </Reference>
     <Reference Include="DevExpress.PivotGrid.v10.2.Core, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.RichEdit.v10.2.Core, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -122,7 +120,7 @@
     <Reference Include="DevExpress.XtraRichEdit.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="Sybase.Data.AseClient, Version=1.1.327.0, Culture=neutral, PublicKeyToken=26e0f1529304f4a7">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\sybase\ADO.NET\dll\Sybase.Data.AseClient.dll</HintPath>
+      <HintPath>..\..\..\CS\CS\CS\ClientMain\Sybase.Data.AseClient.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Private>False</Private>
@@ -212,6 +210,108 @@
     <Compile Include="AccountManagement\FrmZTTZinquire.designer.cs">
       <DependentUpon>FrmZTTZinquire.cs</DependentUpon>
     </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseStageJC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseStageJC.designer.cs">
+      <DependentUpon>FrmPurchaseStageJC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseStageJCAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseStageJCAdd.designer.cs">
+      <DependentUpon>FrmPurchaseStageJCAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseStageJT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseStageJT.designer.cs">
+      <DependentUpon>FrmPurchaseStageJT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseStageJTAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseStageJTAdd.Designer.cs">
+      <DependentUpon>FrmPurchaseStageJTAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseStageSelectCase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseReceive\FrmPurchaseStageSelectCase.Designer.cs">
+      <DependentUpon>FrmPurchaseStageSelectCase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PublicDateFrom\FrmSelectFYQK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PublicDateFrom\FrmSelectFYQK.Designer.cs">
+      <DependentUpon>FrmSelectFYQK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PublicDateFrom\FrmSelectKXNR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PublicDateFrom\FrmSelectKXNR.Designer.cs">
+      <DependentUpon>FrmSelectKXNR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PublicDateFrom\FrmSelectTSPJ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PublicDateFrom\FrmSelectTSPJ.designer.cs">
+      <DependentUpon>FrmSelectTSPJ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PublicDateFrom\FrmSPXXSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PublicDateFrom\FrmSPXXSelect.Designer.cs">
+      <DependentUpon>FrmSPXXSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SaleManagement\FrmSaleInvoiceJC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleManagement\FrmSaleInvoiceJC.Designer.cs">
+      <DependentUpon>FrmSaleInvoiceJC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SaleManagement\FrmSaleInvoiceJT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleManagement\FrmSaleInvoiceJT.Designer.cs">
+      <DependentUpon>FrmSaleInvoiceJT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SaleManagement\FrmSaleStageJC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleManagement\FrmSaleStageJC.Designer.cs">
+      <DependentUpon>FrmSaleStageJC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SaleManagement\FrmSaleStageJCAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleManagement\FrmSaleStageJCAdd.Designer.cs">
+      <DependentUpon>FrmSaleStageJCAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SaleManagement\FrmSaleStageJT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleManagement\FrmSaleStageJT.designer.cs">
+      <DependentUpon>FrmSaleStageJT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SaleManagement\FrmSaleStageJTAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleManagement\FrmSaleStageJTAdd.Designer.cs">
+      <DependentUpon>FrmSaleStageJTAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SaleManagement\FrmSaleStageSelectcase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleManagement\FrmSaleStageSelectcase.Designer.cs">
+      <DependentUpon>FrmSaleStageSelectcase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SaleManagement\FrmTuoShouData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleManagement\FrmTuoShouData.Designer.cs">
+      <DependentUpon>FrmTuoShouData.cs</DependentUpon>
+    </Compile>
     <Compile Include="PublicDateFrom\FrmHeXiaoDate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -236,22 +336,6 @@
     <Compile Include="PublicDateFrom\FrmSelectDW.designer.cs">
       <DependentUpon>FrmSelectDW.cs</DependentUpon>
     </Compile>
-    <Compile Include="PublicDateFrom\FrmSelectFYQK.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PublicDateFrom\FrmSelectFYQK.Designer.cs" />
-    <Compile Include="PublicDateFrom\FrmSelectKXNR.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PublicDateFrom\FrmSelectKXNR.Designer.cs" />
-    <Compile Include="PublicDateFrom\FrmSelectTSPJ.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PublicDateFrom\FrmSelectTSPJ.Designer.cs" />
-    <Compile Include="PublicDateFrom\FrmSPXXSelect.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PublicDateFrom\FrmSPXXSelect.Designer.cs" />
     <Compile Include="MenuManagement\MenuEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -305,36 +389,6 @@
     </Compile>
     <Compile Include="PurchaseReceive\FrmPurchaseReturnNoteBranch.designer.cs">
       <DependentUpon>FrmPurchaseReturnNoteBranch.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PurchaseReceive\FrmPurchaseStageJC.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PurchaseReceive\FrmPurchaseStageJC.Designer.cs">
-      <DependentUpon>FrmPurchaseStageJC.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PurchaseReceive\FrmPurchaseStageJCAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PurchaseReceive\FrmPurchaseStageJCAdd.Designer.cs">
-      <DependentUpon>FrmPurchaseStageJCAdd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PurchaseReceive\FrmPurchaseStageJT.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PurchaseReceive\FrmPurchaseStageJT.Designer.cs">
-      <DependentUpon>FrmPurchaseStageJT.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PurchaseReceive\FrmPurchaseStageJTAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PurchaseReceive\FrmPurchaseStageJTAdd.Designer.cs">
-      <DependentUpon>FrmPurchaseStageJTAdd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PurchaseReceive\FrmPurchaseStageSelectCase.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PurchaseReceive\FrmPurchaseStageSelectCase.Designer.cs">
-      <DependentUpon>FrmPurchaseStageSelectCase.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\CGSHReport.cs">
       <SubType>Component</SubType>
@@ -528,30 +582,6 @@
     <Compile Include="Reports\XTDReport.Designer.cs">
       <DependentUpon>XTDReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\XtraReportCGJSD.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Reports\XtraReportCGJSD.Designer.cs" />
-    <Compile Include="Reports\XtraReportJTDMX.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Reports\XtraReportJTDMX.Designer.cs" />
-    <Compile Include="Reports\XtraReportXSJSDjc.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Reports\XtraReportXSJSDjc.Designer.cs" />
-    <Compile Include="Reports\XtraReportXSJSDjt.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Reports\XtraReportXSJSDjt.Designer.cs" />
-    <Compile Include="Reports\XtraReportXSTSDjc.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Reports\XtraReportXSTSDjc.Designer.cs" />
-    <Compile Include="Reports\XtraReportXSTSDjt.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Reports\XtraReportXSTSDjt.Designer.cs" />
     <Compile Include="RoleManagement\RoleAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -618,14 +648,6 @@
     <Compile Include="SaleManagement\FrmSaleDiscountCorrection.Designer.cs">
       <DependentUpon>FrmSaleDiscountCorrection.cs</DependentUpon>
     </Compile>
-    <Compile Include="SaleManagement\FrmSaleInvoiceJC.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SaleManagement\FrmSaleInvoiceJC.Designer.cs" />
-    <Compile Include="SaleManagement\FrmSaleInvoiceJT.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SaleManagement\FrmSaleInvoiceJT.Designer.cs" />
     <Compile Include="SaleManagement\FrmSaleNote.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -644,26 +666,6 @@
     <Compile Include="SaleManagement\FrmSaleReturnNote.Designer.cs">
       <DependentUpon>FrmSaleReturnNote.cs</DependentUpon>
     </Compile>
-    <Compile Include="SaleManagement\FrmSaleStageJC.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SaleManagement\FrmSaleStageJC.Designer.cs" />
-    <Compile Include="SaleManagement\FrmSaleStageJCAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SaleManagement\FrmSaleStageJCAdd.Designer.cs" />
-    <Compile Include="SaleManagement\FrmSaleStageJT.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SaleManagement\FrmSaleStageJT.Designer.cs" />
-    <Compile Include="SaleManagement\FrmSaleStageJTAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SaleManagement\FrmSaleStageJTAdd.Designer.cs" />
-    <Compile Include="SaleManagement\FrmSaleStageSelectcase.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SaleManagement\FrmSaleStageSelectcase.Designer.cs" />
     <Compile Include="SaleManagement\FrmSaleTotal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -688,10 +690,6 @@
     <Compile Include="SaleManagement\FrmSaleTotalDetailBranch.designer.cs">
       <DependentUpon>FrmSaleTotalDetailBranch.cs</DependentUpon>
     </Compile>
-    <Compile Include="SaleManagement\FrmTuoShouData.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SaleManagement\FrmTuoShouData.Designer.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="StaffManagement\FrmStaffManageMent.cs">
       <SubType>Form</SubType>
@@ -1051,6 +1049,42 @@
     <Compile Include="VoucherManagement\FrmReceivableVoucherNote.Designer.cs">
       <DependentUpon>FrmReceivableVoucherNote.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\XtraReportCGJSD.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\XtraReportCGJSD.Designer.cs">
+      <DependentUpon>XtraReportCGJSD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\XtraReportJTDMX.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\XtraReportJTDMX.Designer.cs">
+      <DependentUpon>XtraReportJTDMX.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\XtraReportXSJSDjc.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\XtraReportXSJSDjc.designer.cs">
+      <DependentUpon>XtraReportXSJSDjc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\XtraReportXSJSDjt.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\XtraReportXSJSDjt.designer.cs">
+      <DependentUpon>XtraReportXSJSDjt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\XtraReportXSTSDjc.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\XtraReportXSTSDjc.designer.cs">
+      <DependentUpon>XtraReportXSTSDjc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\XtraReportXSTSDjt.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\XtraReportXSTSDjt.Designer.cs">
+      <DependentUpon>XtraReportXSTSDjt.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AccountManagement\FrmClientAccount.resx">
       <DependentUpon>FrmClientAccount.cs</DependentUpon>
     </EmbeddedResource>
@@ -1078,6 +1112,58 @@
     <EmbeddedResource Include="AccountManagement\FrmZTTZinquire.resx">
       <DependentUpon>FrmZTTZinquire.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="PurchaseReceive\FrmPurchaseStageJC.resx">
+      <DependentUpon>FrmPurchaseStageJC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseReceive\FrmPurchaseStageJCAdd.resx">
+      <DependentUpon>FrmPurchaseStageJCAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseReceive\FrmPurchaseStageJT.resx">
+      <DependentUpon>FrmPurchaseStageJT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseReceive\FrmPurchaseStageJTAdd.resx">
+      <DependentUpon>FrmPurchaseStageJTAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseReceive\FrmPurchaseStageSelectCase.resx">
+      <DependentUpon>FrmPurchaseStageSelectCase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PublicDateFrom\FrmSelectFYQK.resx">
+      <DependentUpon>FrmSelectFYQK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PublicDateFrom\FrmSelectKXNR.resx">
+      <DependentUpon>FrmSelectKXNR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PublicDateFrom\FrmSelectTSPJ.resx">
+      <DependentUpon>FrmSelectTSPJ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PublicDateFrom\FrmSPXXSelect.resx">
+      <DependentUpon>FrmSPXXSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaleManagement\FrmSaleInvoiceJC.resx">
+      <DependentUpon>FrmSaleInvoiceJC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaleManagement\FrmSaleInvoiceJT.resx">
+      <DependentUpon>FrmSaleInvoiceJT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaleManagement\FrmSaleStageJC.resx">
+      <DependentUpon>FrmSaleStageJC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaleManagement\FrmSaleStageJCAdd.resx">
+      <DependentUpon>FrmSaleStageJCAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaleManagement\FrmSaleStageJT.resx">
+      <DependentUpon>FrmSaleStageJT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaleManagement\FrmSaleStageJTAdd.resx">
+      <DependentUpon>FrmSaleStageJTAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaleManagement\FrmSaleStageSelectcase.resx">
+      <DependentUpon>FrmSaleStageSelectcase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaleManagement\FrmTuoShouData.resx">
+      <DependentUpon>FrmTuoShouData.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PublicDateFrom\FrmHeXiaoDate.resx">
       <DependentUpon>FrmHeXiaoDate.cs</DependentUpon>
     </EmbeddedResource>
@@ -1090,9 +1176,6 @@
     <EmbeddedResource Include="PublicDateFrom\FrmSelectDW.resx">
       <DependentUpon>FrmSelectDW.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PublicDateFrom\FrmSelectFYQK.resx" />
-    <EmbeddedResource Include="PublicDateFrom\FrmSelectKXNR.resx" />
-    <EmbeddedResource Include="PublicDateFrom\FrmSelectTSPJ.resx" />
     <EmbeddedResource Include="MenuManagement\MenuEdit.resx">
       <DependentUpon>MenuEdit.cs</DependentUpon>
     </EmbeddedResource>
@@ -1108,9 +1191,6 @@
     <EmbeddedResource Include="MenuManagement\MeunMain.resx">
       <DependentUpon>MeunMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PublicDateFrom\FrmSPXXSelect.resx">
-      <DependentUpon>FrmSPXXSelect.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="PurchaseReceive\FrmPurchaseInvoiceJC.resx">
       <DependentUpon>FrmPurchaseInvoiceJC.cs</DependentUpon>
     </EmbeddedResource>
@@ -1123,11 +1203,6 @@
     <EmbeddedResource Include="PurchaseReceive\FrmPurchaseReturnNoteBranch.resx">
       <DependentUpon>FrmPurchaseReturnNoteBranch.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PurchaseReceive\FrmPurchaseStageJC.resx" />
-    <EmbeddedResource Include="PurchaseReceive\FrmPurchaseStageJCAdd.resx" />
-    <EmbeddedResource Include="PurchaseReceive\FrmPurchaseStageJT.resx" />
-    <EmbeddedResource Include="PurchaseReceive\FrmPurchaseStageJTAdd.resx" />
-    <EmbeddedResource Include="PurchaseReceive\FrmPurchaseStageSelectCase.resx" />
     <EmbeddedResource Include="Reports\CGSHReport.resx">
       <DependentUpon>CGSHReport.cs</DependentUpon>
     </EmbeddedResource>
@@ -1224,12 +1299,6 @@
     <EmbeddedResource Include="Reports\XTDReport.resx">
       <DependentUpon>XTDReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\XtraReportCGJSD.resx" />
-    <EmbeddedResource Include="Reports\XtraReportJTDMX.resx" />
-    <EmbeddedResource Include="Reports\XtraReportXSJSDjc.resx" />
-    <EmbeddedResource Include="Reports\XtraReportXSJSDjt.resx" />
-    <EmbeddedResource Include="Reports\XtraReportXSTSDjc.resx" />
-    <EmbeddedResource Include="Reports\XtraReportXSTSDjt.resx" />
     <EmbeddedResource Include="RoleManagement\RoleAdd.resx">
       <DependentUpon>RoleAdd.cs</DependentUpon>
     </EmbeddedResource>
@@ -1263,8 +1332,6 @@
     <EmbeddedResource Include="SaleManagement\FrmSaleDiscountCorrection.resx">
       <DependentUpon>FrmSaleDiscountCorrection.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SaleManagement\FrmSaleInvoiceJC.resx" />
-    <EmbeddedResource Include="SaleManagement\FrmSaleInvoiceJT.resx" />
     <EmbeddedResource Include="SaleManagement\FrmSaleNote.resx">
       <DependentUpon>FrmSaleNote.cs</DependentUpon>
     </EmbeddedResource>
@@ -1274,11 +1341,6 @@
     <EmbeddedResource Include="SaleManagement\FrmSaleReturnNote.resx">
       <DependentUpon>FrmSaleReturnNote.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SaleManagement\FrmSaleStageJC.resx" />
-    <EmbeddedResource Include="SaleManagement\FrmSaleStageJCAdd.resx" />
-    <EmbeddedResource Include="SaleManagement\FrmSaleStageJT.resx" />
-    <EmbeddedResource Include="SaleManagement\FrmSaleStageJTAdd.resx" />
-    <EmbeddedResource Include="SaleManagement\FrmSaleStageSelectcase.resx" />
     <EmbeddedResource Include="SaleManagement\FrmSaleTotal.resx">
       <DependentUpon>FrmSaleTotal.cs</DependentUpon>
     </EmbeddedResource>
@@ -1291,7 +1353,6 @@
     <EmbeddedResource Include="SaleManagement\FrmSaleTotalDetailBranch.resx">
       <DependentUpon>FrmSaleTotalDetailBranch.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SaleManagement\FrmTuoShouData.resx" />
     <EmbeddedResource Include="StaffManagement\FrmStaffManageMent.resx">
       <DependentUpon>FrmStaffManageMent.cs</DependentUpon>
     </EmbeddedResource>
@@ -1482,6 +1543,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VoucherManagement\FrmReceivableVoucherNote.resx">
       <DependentUpon>FrmReceivableVoucherNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\XtraReportCGJSD.resx">
+      <DependentUpon>XtraReportCGJSD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\XtraReportJTDMX.resx">
+      <DependentUpon>XtraReportJTDMX.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\XtraReportXSJSDjc.resx">
+      <DependentUpon>XtraReportXSJSDjc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\XtraReportXSJSDjt.resx">
+      <DependentUpon>XtraReportXSJSDjt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\XtraReportXSTSDjc.resx">
+      <DependentUpon>XtraReportXSTSDjc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\XtraReportXSTSDjt.resx">
+      <DependentUpon>XtraReportXSTSDjt.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Resources\ICON\copyright.jpg.psd">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
