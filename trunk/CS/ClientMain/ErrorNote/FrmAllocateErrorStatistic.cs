@@ -27,7 +27,7 @@ namespace ClientMain
 
         public FrmAllocateErrorStatistic(string strCCDID)
         {
-            XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+            XpoDefault.ConnectionString = FrmLogin.xpoDataCentStr;
 
             InitializeComponent();
 

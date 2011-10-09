@@ -54,7 +54,7 @@ namespace ClientMain
 
         public FrmClientAccountBranch(string strZTBMKHSPTZID = null)
         {
-            XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+            XpoDefault.ConnectionString = FrmLogin.xpoDataCentStr;
 
             InitializeComponent();
 
@@ -304,7 +304,7 @@ namespace ClientMain
         private void btnMasterQuery_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             
-            gridView1.ShowFilterEditor(gridView1.FocusedColumn);
+            gridView1.ShowFilterEditor(colYWBMMC);
 
             if (!String.IsNullOrEmpty(gridView1.ActiveFilterString))
             {

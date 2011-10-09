@@ -44,7 +44,7 @@ namespace ClientMain
         bool m_fgBranch = false;
         public FrmPurchaseReceiveNote(bool fgBranch, string strCGSHID = null)
         {
-            XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+            XpoDefault.ConnectionString = FrmLogin.xpoDataCentStr;
             
             InitializeComponent();
             if (String.IsNullOrEmpty(strCGSHID))
@@ -94,7 +94,7 @@ namespace ClientMain
         private void btnMasterQuery_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
            
-            gridView1.ShowFilterEditor(gridView1.FocusedColumn);
+            gridView1.ShowFilterEditor(colCGSHDH);
 
             if (!String.IsNullOrEmpty(gridView1.ActiveFilterString))
             {
@@ -285,7 +285,7 @@ namespace ClientMain
 
                 if (!String.IsNullOrEmpty(strCGSHID))
                 {
-                    using (OracleConnection connection = new OracleConnection(FrmLogin.strCon))
+                    using (OracleConnection connection = new OracleConnection(FrmLogin.strDataCent))
                     {
                         connection.Open();
                         OracleCommand command = connection.CreateCommand();
@@ -405,7 +405,7 @@ namespace ClientMain
             }
             else
             {
-                using (OracleConnection connection = new OracleConnection(FrmLogin.strCon))
+                using (OracleConnection connection = new OracleConnection(FrmLogin.strDataCent))
                 {
                     connection.Open();
 
@@ -501,7 +501,7 @@ namespace ClientMain
             }
             else
             {
-                using (OracleConnection connection = new OracleConnection(FrmLogin.strCon))
+                using (OracleConnection connection = new OracleConnection(FrmLogin.strDataCent))
                 {
                     connection.Open();
 
@@ -596,7 +596,7 @@ namespace ClientMain
             }
             else
             {
-                using (OracleConnection connection = new OracleConnection(FrmLogin.strCon))
+                using (OracleConnection connection = new OracleConnection(FrmLogin.strDataCent))
                 {
                     connection.Open();
 

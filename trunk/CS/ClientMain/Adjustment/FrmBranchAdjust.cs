@@ -25,15 +25,15 @@ namespace ClientMain
         public FrmBranchAdjust(string strUser, string strZTID, string strDeptID)
         {
             Conn = new OracleConnection(FrmLogin.strCon);
-            string strSQL = "select ZTID, ZTMC from JT_J_ZTBM";
+            string strSQL = "select ZTID, ZTMC from SYS_ZTBM";
             OracleDataAdapter ada = new OracleDataAdapter(strSQL, Conn);
             DataSet ds = new DataSet();
-            ada.Fill(ds, "JT_J_ZTBM");
+            ada.Fill(ds, "SYS_ZTBM");
 
             InitializeComponent();
 
             jTJZTBMBindingSource.DataSource = ds;
-            jTJZTBMBindingSource.DataMember = "JT_J_ZTBM";
+            jTJZTBMBindingSource.DataMember = "SYS_ZTBM";
 
             m_strZTID = strZTID;
             m_strDeptID = strDeptID;

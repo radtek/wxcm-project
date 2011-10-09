@@ -25,7 +25,7 @@ namespace ClientMain
 
         public FrmPurchaseCollectionNote(string strCGTSDID = null)
         {
-            XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+            XpoDefault.ConnectionString = FrmLogin.xpoDataCentStr;
 
             InitializeComponent();
             if (String.IsNullOrEmpty(strCGTSDID))
@@ -122,7 +122,7 @@ namespace ClientMain
         private void btnMasterQuery_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             
-            gridView1.ShowFilterEditor(gridView1.FocusedColumn);
+            gridView1.ShowFilterEditor(colCGTSDH);
 
             if (!String.IsNullOrEmpty(gridView1.ActiveFilterString))
             {
@@ -273,7 +273,7 @@ namespace ClientMain
                 vClearSelectSummary();
                 if (!String.IsNullOrEmpty(strCGTSDID))
                 {
-                    using (OracleConnection connection = new OracleConnection(FrmLogin.strCon))
+                    using (OracleConnection connection = new OracleConnection(FrmLogin.strDataCent))
                     {
                         connection.Open();
                         OracleCommand command = connection.CreateCommand();
@@ -323,7 +323,7 @@ namespace ClientMain
             }
             else
             {
-                using (OracleConnection connection = new OracleConnection(FrmLogin.strCon))
+                using (OracleConnection connection = new OracleConnection(FrmLogin.strDataCent))
                 {
                     connection.Open();
 
@@ -345,6 +345,10 @@ namespace ClientMain
                         if (i4Status < 15)
                         {
                             MessageBox.Show("所选记录未被审核，请重新选择！");
+                        }
+                        else if (i4Status == 44)
+                        {
+                            MessageBox.Show("所选记录已被核销，请重新选择！");
                         }
                         else
                         {

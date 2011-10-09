@@ -13,7 +13,7 @@ namespace ClientMain
         public JTDReport(string strJTDID)
         {
             InitializeComponent();
-            OracleConnection con = new OracleConnection(FrmLogin.strCon);
+            OracleConnection con = new OracleConnection(FrmLogin.strDataCent);
             string sql = "select a.jtdid, a.ztmc, a.jtdh, a.zdrq, a.ywyxm, a.statusmc, a.czyxm, a.czrq, a.gysmc, a.bz, a.jtpzs, a.jtzsl, a.jtzmy, "
                        + "a.jtbmmc, b.pm, b.spbh, b.dj, b.bz, b.jtsl, b.jtmy from view_jt_g_jtd a "
                        + "left join view_jt_g_jtdmx b on a.jtdid = b.jtdid where a.jtdid in (" + strJTDID + ")";

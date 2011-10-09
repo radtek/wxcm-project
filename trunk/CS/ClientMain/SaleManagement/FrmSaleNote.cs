@@ -35,7 +35,7 @@ namespace ClientMain
         bool m_fgBranch = false;
         public FrmSaleNote(bool fgBranch, string strXSDID = null)
         {
-            XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+            XpoDefault.ConnectionString = FrmLogin.xpoDataCentStr;
 
             InitializeComponent();
 
@@ -236,7 +236,7 @@ namespace ClientMain
         {
             selection.ClearSelection();
             vClearSelectSummary();
-            gridView1.ShowFilterEditor(gridView1.FocusedColumn);
+            gridView1.ShowFilterEditor(colXSDH);
 
             if (!String.IsNullOrEmpty(gridView1.ActiveFilterString))
             {
@@ -317,7 +317,7 @@ namespace ClientMain
                 vClearSelectSummary();
                 if (!String.IsNullOrEmpty(strXSDID))
                 {
-                    using (OracleConnection connection = new OracleConnection(FrmLogin.strCon))
+                    using (OracleConnection connection = new OracleConnection(FrmLogin.strDataCent))
                     {
                         connection.Open();
                         OracleCommand command = connection.CreateCommand();
@@ -363,7 +363,7 @@ namespace ClientMain
             }
             else
             {
-                using (OracleConnection connection = new OracleConnection(FrmLogin.strCon))
+                using (OracleConnection connection = new OracleConnection(FrmLogin.strDataCent))
                 {
                     connection.Open();
 
@@ -459,7 +459,7 @@ namespace ClientMain
             }
             else
             {
-                using (OracleConnection connection = new OracleConnection(FrmLogin.strCon))
+                using (OracleConnection connection = new OracleConnection(FrmLogin.strDataCent))
                 {
                     connection.Open();
 

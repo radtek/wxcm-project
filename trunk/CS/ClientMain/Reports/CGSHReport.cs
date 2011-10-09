@@ -13,7 +13,7 @@ namespace ClientMain
         public CGSHReport(string strCGSHID)
         {
             InitializeComponent();
-            OracleConnection con = new OracleConnection(FrmLogin.strCon);
+            OracleConnection con = new OracleConnection(FrmLogin.strDataCent);
             string sql = "select a.cgshid, a.ztmc, a.cgshdh, a.ysdh, a.sszpz, a.sszsl, a.sszmy, a.sszsy, a.shrxm, a.czyxm, a.zdrq, a.gysmc, "
                        + "a.statusmc, b.pm, b.spbh, b.dj, b.bz, b.sssl, b.ssmy, b.sssy from view_jt_g_cgsh a "
                        + "left join view_jt_g_cgshmx b on a.cgshid = b.cgshid where a.cgshid in (" + strCGSHID + ")";

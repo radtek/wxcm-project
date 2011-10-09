@@ -28,7 +28,7 @@ namespace ClientMain
 
         public FrmProfitLossErrorStatistic(string strCCDID=null)
         {
-            XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+            XpoDefault.ConnectionString = FrmLogin.xpoDataCentStr;
 
             InitializeComponent();
 

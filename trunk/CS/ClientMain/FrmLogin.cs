@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.OracleClient;
 using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.Xpo.DB;
 
 
 namespace ClientMain
@@ -26,7 +27,13 @@ namespace ClientMain
         private string m_PassWord = null;
         
         public const string strCon = "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.8.222)(PORT=1521))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=XINHUA)));User Id=xxb;Password=pass;";
-        
+
+        public const string strDataCent = "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.8.109)(PORT=1521))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=DATACENTER)));User Id=jt_user;Password=jt_user;";
+
+        public static string xpoConStr = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+
+        public static string xpoDataCentStr = OracleConnectionProvider.GetConnectionString("DATACENT", "jt_user", "jt_user");
+
         public const int MAXROWCOUNT = 50000;
         
         public static void vDrawFootCell(FooterCellCustomDrawEventArgs e, DevExpress.XtraGrid.Columns.GridColumn col, string strSum)
