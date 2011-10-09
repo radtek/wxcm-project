@@ -27,7 +27,7 @@ namespace ClientMain
 
         public FrmPurchaseCollectionDetail(string strCGTSDID=null)
         {
-            XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+            XpoDefault.ConnectionString = FrmLogin.xpoDataCentStr;
 
             InitializeComponent();
             if (String.IsNullOrEmpty(strCGTSDID))
@@ -143,7 +143,7 @@ namespace ClientMain
         private void btnDetailQuery_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             
-            gridView1.ShowFilterEditor(gridView1.FocusedColumn);
+            gridView1.ShowFilterEditor(colCGTSDH);
 
             if (!String.IsNullOrEmpty(gridView1.ActiveFilterString))
             {

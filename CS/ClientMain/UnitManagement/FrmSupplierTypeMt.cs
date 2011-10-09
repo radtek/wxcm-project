@@ -22,7 +22,7 @@ namespace ClientMain
 
         public FrmSupplierTypeMt(bool fgAdd, bool fgDel, bool fgUpdate, bool fgQuery, string strGYSLXID = null)
         {
-            XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+            XpoDefault.ConnectionString = FrmLogin.xpoDataCentStr;
 
             InitializeComponent();
 
@@ -104,7 +104,7 @@ namespace ClientMain
         private void btnQuery_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             
-            gridView1.ShowFilterEditor(gridView1.FocusedColumn);
+            gridView1.ShowFilterEditor(colGYSLX);
 
             if (!String.IsNullOrEmpty(gridView1.ActiveFilterString))
             {
@@ -118,7 +118,7 @@ namespace ClientMain
         {
             selection.ClearSelection();
 
-            using (OracleConnection connection = new OracleConnection(FrmLogin.strCon))
+            using (OracleConnection connection = new OracleConnection(FrmLogin.strDataCent))
             {
                 connection.Open();
                 OracleCommand command = connection.CreateCommand();
@@ -193,7 +193,7 @@ namespace ClientMain
                     strZT = gridView1.GetRowCellDisplayText(RowHandle, colZT);
                     
                 }
-                using (OracleConnection connection = new OracleConnection(FrmLogin.strCon))
+                using (OracleConnection connection = new OracleConnection(FrmLogin.strDataCent))
                 {
                     connection.Open();
                     OracleCommand command = connection.CreateCommand();
@@ -268,7 +268,7 @@ namespace ClientMain
                 int index = strGYSLXID.LastIndexOf("'");
                 strGYSLXID = strGYSLXID.Substring(0, index + 1).Trim();
 
-                using (OracleConnection connection = new OracleConnection(FrmLogin.strCon))
+                using (OracleConnection connection = new OracleConnection(FrmLogin.strDataCent))
                 {
                     connection.Open();
                     OracleCommand command = connection.CreateCommand();

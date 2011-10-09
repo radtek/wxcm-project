@@ -31,7 +31,7 @@ namespace ClientMain
 
         public FrmPurchaseReturnDetailBranch(bool fgBranch, string strJTDID = null)
         {
-            XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+            XpoDefault.ConnectionString = FrmLogin.xpoDataCentStr;
 
             InitializeComponent();
             if (String.IsNullOrEmpty(strJTDID))
@@ -102,7 +102,7 @@ namespace ClientMain
         private void btnDetailQuery_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             
-            gridView1.ShowFilterEditor(gridView1.FocusedColumn);
+            gridView1.ShowFilterEditor(colJTDH);
 
             if (!String.IsNullOrEmpty(gridView1.ActiveFilterString))
             {

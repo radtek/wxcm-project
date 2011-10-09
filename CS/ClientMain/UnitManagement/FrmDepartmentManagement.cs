@@ -22,7 +22,7 @@ namespace ClientMain
 
         public FrmDepartmentManagement(bool fgAdd, bool fgDel, bool fgUpdate, bool fgQuery, string strDEPARTMENTID = null)
         {
-            XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+            XpoDefault.ConnectionString = FrmLogin.xpoConStr;
 
             InitializeComponent();
 
@@ -87,7 +87,7 @@ namespace ClientMain
         private void btnQuery_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             
-            gridView1.ShowFilterEditor(gridView1.FocusedColumn);
+            gridView1.ShowFilterEditor(colDEPARTMENTNAME);
 
             if (!String.IsNullOrEmpty(gridView1.ActiveFilterString))
             {

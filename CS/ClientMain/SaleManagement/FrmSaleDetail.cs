@@ -35,7 +35,7 @@ namespace ClientMain
         
         public FrmSaleDetail(bool fgBranch, string strXSDID= null)
         {
-            XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+            XpoDefault.ConnectionString = FrmLogin.xpoDataCentStr;
 
             InitializeComponent();
             if (String.IsNullOrEmpty(strXSDID))
@@ -180,7 +180,7 @@ namespace ClientMain
         private void btnDetailQuery_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             
-            gridView1.ShowFilterEditor(gridView1.FocusedColumn);
+            gridView1.ShowFilterEditor(colXSDH);
 
             if (!String.IsNullOrEmpty(gridView1.ActiveFilterString))
             {
@@ -204,7 +204,7 @@ namespace ClientMain
             }
             else
             {
-                using (OracleConnection connection = new OracleConnection(FrmLogin.strCon))
+                using (OracleConnection connection = new OracleConnection(FrmLogin.strDataCent))
                 {
                     connection.Open();
 

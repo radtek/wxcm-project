@@ -42,7 +42,7 @@ namespace ClientMain
                 sqlMinor = "select a.cgbmmc, a.czyxm, a.zdrq from VIEW_JT_C_SHHZD a where a.shhzdid in (" + strSHHZDID + ")";
             }
 
-            OracleConnection con = new OracleConnection(FrmLogin.strCon);
+            OracleConnection con = new OracleConnection(FrmLogin.strDataCent);
             OracleDataAdapter Ada = new OracleDataAdapter(sql, con);
             DataSet ds = new DataSet();
             Ada.Fill(ds);

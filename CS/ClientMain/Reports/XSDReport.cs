@@ -13,7 +13,7 @@ namespace ClientMain
         public XSDReport(string strXSDID)
         {
             InitializeComponent();
-            OracleConnection con = new OracleConnection(FrmLogin.strCon);
+            OracleConnection con = new OracleConnection(FrmLogin.strDataCent);
             string sql = "select a.xsdid, a.ztmc, a.xsdh, a.zdrq, a.jsfsmc, a.wlbmmc, a.xsbmmc, a.khmc, a.fhdz, a.czyxm, a.czrq, a.bz, a.pzs, "
                        + "a.xssl as xszsl, a.xssy as xszsy, a.xsmy as xszmy, b.pm, b.spbh, b.dj, b.xj, b.xz, b.xssl, b.xsmy, b.xssy from view_jt_x_xsd a "
                        + "left join view_jt_x_xsdmx b on a.xsdid = b.xsdid where a.xsdid in (" + strXSDID + ")";

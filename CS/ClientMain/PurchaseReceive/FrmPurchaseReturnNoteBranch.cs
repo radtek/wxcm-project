@@ -37,7 +37,7 @@ namespace ClientMain
 
         public FrmPurchaseReturnNoteBranch(bool fgBranch, string strJTDID = null)
         {
-            XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+            XpoDefault.ConnectionString = FrmLogin.xpoDataCentStr;
 
             InitializeComponent();
 
@@ -236,7 +236,7 @@ namespace ClientMain
 
         private void btnMasterQuery_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            gridView1.ShowFilterEditor(gridView1.FocusedColumn);
+            gridView1.ShowFilterEditor(colJTDH);
 
             if (!String.IsNullOrEmpty(gridView1.ActiveFilterString))
             {
@@ -322,7 +322,7 @@ namespace ClientMain
 
                 if (!String.IsNullOrEmpty(strJTDID))
                 {
-                    using (OracleConnection connection = new OracleConnection(FrmLogin.strCon))
+                    using (OracleConnection connection = new OracleConnection(FrmLogin.strDataCent))
                     {
                         connection.Open();
                         OracleCommand command = connection.CreateCommand();
@@ -368,7 +368,7 @@ namespace ClientMain
             }
             else
             {
-                using (OracleConnection connection = new OracleConnection(FrmLogin.strCon))
+                using (OracleConnection connection = new OracleConnection(FrmLogin.strDataCent))
                 {
                     connection.Open();
 
@@ -464,7 +464,7 @@ namespace ClientMain
             }
             else
             {
-                using (OracleConnection connection = new OracleConnection(FrmLogin.strCon))
+                using (OracleConnection connection = new OracleConnection(FrmLogin.strDataCent))
                 {
                     connection.Open();
 

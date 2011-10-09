@@ -53,7 +53,7 @@ namespace ClientMain
 
         public FrmPurchaseReceiveTotalDetailBranch(bool fgBranch, string strSHHZDID = null)
         {
-            XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+            XpoDefault.ConnectionString = FrmLogin.xpoDataCentStr;
 
             InitializeComponent();
             if (String.IsNullOrEmpty(strSHHZDID))
@@ -328,7 +328,7 @@ namespace ClientMain
         private void btnDetailQuery_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             
-            gridView1.ShowFilterEditor(gridView1.FocusedColumn);
+            gridView1.ShowFilterEditor(colSHHZDH);
 
             if (!String.IsNullOrEmpty(gridView1.ActiveFilterString))
             {

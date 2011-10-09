@@ -13,7 +13,7 @@ namespace ClientMain
         public XTDReport(string strXTDID)
         {
             InitializeComponent();
-            OracleConnection con = new OracleConnection(FrmLogin.strCon);
+            OracleConnection con = new OracleConnection(FrmLogin.strDataCent);
             string sql = "select a.xtdid, a.ztmc, a.xtdh, a.zdrq, a.jsfsmc, a.shdwid, a.wlmc, a.khmc, a.xsbmmc, a.czyxm, a.czrq, a.bz, a.pzs, "
                        + "a.xtsl as xtzsl, a.xtsy as xtzsy, a.xtmy as xtzmy, b.pm, b.spbh, b.dj, b.xj, b.xz, b.xtsl, b.xtmy, b.xtsy from view_jt_x_xtd a "
                        + "left join view_jt_x_xtdmx b on a.xtdid = b.xtdid where a.xtdid in (" + strXTDID + ")";
