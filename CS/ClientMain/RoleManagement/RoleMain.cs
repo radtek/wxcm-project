@@ -23,6 +23,7 @@ namespace ClientMain
     public partial class RoleMain : Form
     {
         private GridCheckMarksSelection selection;
+        // private string StrCon = FrmLogin.strCon;
         private string StrCon = FrmLogin.strCon;
         bool m_fgAdd;
         bool m_fgDel;
@@ -31,7 +32,8 @@ namespace ClientMain
         public RoleMain(bool fgAdd, bool fgDel, bool fgUpdate, bool fgQuery)
         {
             InitializeComponent();
-            XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+            //  XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+            XpoDefault.ConnectionString = FrmLogin.xpoConStr;
             selection = new GridCheckMarksSelection(gridView1);
             selection.CheckMarkColumn.VisibleIndex = 0;
             m_fgAdd = fgAdd;
@@ -193,6 +195,18 @@ namespace ClientMain
         {
             unitOfWork1.DropIdentityMap();
             xpServerCollectionSource1.Reload();
+        }
+
+        private void btnQuirey_Click(object sender, EventArgs e)
+        {
+            selection.ClearSelection();
+            gridView1.ShowFilterEditor(colROLE_NAME);
+            xpServerCollectionSource1.Reload();
+            if (!String.IsNullOrEmpty(gridView1.ActiveFilterString))
+            {
+                xpServerCollectionSource1.FixedFilterString = gridView1.ActiveFilterString;
+                gridView1.BestFitColumns();
+            }
         }
     }
 }

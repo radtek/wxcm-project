@@ -29,7 +29,8 @@ namespace ClientMain
         public MeunMain(bool fgAdd, bool fgDel, bool fgUpdate, bool fgQuery)
         {
             InitializeComponent();
-            XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+            //  XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+            XpoDefault.ConnectionString = FrmLogin.xpoConStr;
             
             m_fgAdd = fgAdd;
             m_fgDel = fgDel;

@@ -20,7 +20,8 @@ namespace ClientMain
     public partial class FrmSaleStageJCAdd : Form
     {
         GridCheckMarksSelection selection;
-        private string StrCon = FrmLogin.strCon;//数据库连接
+        // private string StrCon = FrmLogin.strCon;
+        private string StrCon = FrmLogin.strDataCent;
         const int MAXROWCOUNT = 50000;
         private string JSLX = "整单";
         //明细选计
@@ -35,7 +36,8 @@ namespace ClientMain
         public FrmSaleStageJCAdd(string strXSJSDID)
         {
             InitializeComponent();
-            XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+            //  XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+            XpoDefault.ConnectionString = FrmLogin.xpoDataCentStr;
             selection = new GridCheckMarksSelection(gridView1);
             selection.CheckMarkColumn.VisibleIndex = 0;
             this.txtJSDH.Tag = strXSJSDID;

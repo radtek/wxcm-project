@@ -26,7 +26,8 @@ namespace ClientMain
         public EmpoeeTable()
         {
             InitializeComponent();
-            XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+            //  XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+            XpoDefault.ConnectionString = FrmLogin.xpoConStr;
             selection = new GridCheckMarksSelection(gridView1);
             selection.CheckMarkColumn.VisibleIndex = 0;
 

@@ -30,11 +30,13 @@ namespace ClientMain
         Int64 YTCS = 0;
         double DJ = 0;
 
-  
+        // private string StrCon = FrmLogin.strCon;
+        private string StrCon = FrmLogin.strDataCent;
         public FrmUnusualStockInput()
         {
             InitializeComponent();
-            XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+            //  XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+            XpoDefault.ConnectionString = FrmLogin.xpoDataCentStr;
             selection = new GridCheckMarksSelection(gridView1);
             selection.CheckMarkColumn.VisibleIndex = 0;
             xpServerCollectionSource1.FixedFilterString = "[YCKCID] Is Null";
@@ -253,8 +255,7 @@ namespace ClientMain
                             int RowIndex = selection.GetSelectedRowIndex(0);
                             int RowHandle = gridView1.GetRowHandle(RowIndex);
                             string strYCKCID = gridView1.GetRowCellDisplayText(RowHandle, colYCKCID).ToString();
-                            string strCon = FrmLogin.strCon;
-                            OracleConnection conn = new OracleConnection(strCon);
+                            OracleConnection conn = new OracleConnection(StrCon);
                             string deleteds = "delete from JC_C_YCKC where YCKCID='" + strYCKCID + "'";
                             OracleCommand comm = new OracleCommand(deleteds,conn);
                           try 
@@ -292,7 +293,7 @@ namespace ClientMain
         private void btnInquire_Click(object sender, EventArgs e)
         {
             selection.ClearSelection();
-            gridView1.ShowFilterEditor(gridView1.FocusedColumn);
+            gridView1.ShowFilterEditor(colSPBH);
 
             if (!String.IsNullOrEmpty(gridView1.ActiveFilterString))
             {
@@ -348,7 +349,6 @@ namespace ClientMain
                       }
                       if (fgConfirmStop ==true)
                     {
-                        string StrCon = FrmLogin.strCon;
                         using (OracleConnection connection = new OracleConnection(StrCon))
                         {
                             OracleCommand cmd = connection.CreateCommand();

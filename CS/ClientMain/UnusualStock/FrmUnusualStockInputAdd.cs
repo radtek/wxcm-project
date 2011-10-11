@@ -17,6 +17,8 @@ namespace ClientMain
     public partial class FrmUnusualStockInputAdd : DevExpress.XtraEditors.XtraForm
     {
         private string yckc_id;//接受的异常库存ID
+        // private string StrCon = FrmLogin.strCon;
+        private string StrCon = FrmLogin.strDataCent;
         public FrmUnusualStockInputAdd()
         {
             InitializeComponent();
@@ -32,7 +34,6 @@ namespace ClientMain
         private int getCountspidNum()
         {
             int i = 0;
-            string StrCon = FrmLogin.strCon;
             string strselect = "select count(SPXXID) from JT_J_SPXX where SPBH='" + txtSPBH.Text.Trim() + "'";
             OracleConnection conn = new OracleConnection(StrCon);
             OracleCommand comm = new OracleCommand(strselect, conn);
@@ -62,7 +63,6 @@ namespace ClientMain
         }
         private void getSPXX(string spbh)
         {
-            string StrCon = FrmLogin.strCon;
             OracleConnection conn = new OracleConnection(StrCon);
             string strselect = "select SPXXID,PM,DJ from JT_J_SPXX where SPBH='" + txtSPBH.Text.Trim() + "'";
             OracleCommand comm = new OracleCommand(strselect, conn);
@@ -158,8 +158,7 @@ namespace ClientMain
         }
         private void load_Alter()
         {
-            string strconn = FrmLogin.strCon;
-            OracleConnection conn = new OracleConnection(strconn);
+            OracleConnection conn = new OracleConnection(StrCon);
             string strselect = "select SPXXID,ZTID,YCCS,CZYID,CZRQ,CLZT,ZTIDMC,CZYMC,SPBH,DJ,SPMC from VIEW_JC_C_YCKC where YCKCID='" + yckc_id + "'";
             OracleCommand comm = new OracleCommand(strselect, conn);
             OracleDataReader reader;

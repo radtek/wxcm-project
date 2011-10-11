@@ -38,7 +38,7 @@ namespace ClientMain
         DataSet ds;
         private void Open()
         {
-            string StrCon = FrmLogin.strCon;
+            string StrCon = FrmLogin.strDataCent;
             MyConn = new OracleConnection(StrCon);
             if (MyConn.State.ToString() != "Open")
                 MyConn.Open();

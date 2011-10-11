@@ -27,7 +27,7 @@ namespace ClientMain
         }
         private void ReportTitle_Load(string tsdid)
         {
-            string StrCon = FrmLogin.strCon;
+            string StrCon = FrmLogin.strDataCent;
             OracleConnection connection = new OracleConnection(StrCon);
             string str = "select YWBMID,KHMC,DZ,KHYH,ZH,XSFPID,TSJE from JT_C_XSTSD where XSTSDID='" + tsdid + "'";
             OracleCommand comm = new OracleCommand(str, connection);
@@ -62,7 +62,7 @@ namespace ClientMain
         }
         private void ReportCWBM_Load()
         {
-            string StrCon = FrmLogin.strCon;
+            string StrCon = FrmLogin.strDataCent;
             OracleConnection connection = new OracleConnection(StrCon);
             string str = "select DWMC,ZH,TXDZ,KHYH from JT_J_DWXX where DWID='" + cwbmid + "'";
             OracleCommand comm = new OracleCommand(str, connection);

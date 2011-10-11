@@ -26,6 +26,8 @@ namespace ClientMain
         GridCheckMarksSelection selection1;
         GridCheckMarksSelection selection2;
         const int MAXROWCOUNT = 50000;
+        // private string StrCon = FrmLogin.strCon;
+        private string StrCon = FrmLogin.strDataCent;
         //JTD选计
         Int64 iJTPZS = 0;
         Int64 iJTZSL = 0;
@@ -41,7 +43,8 @@ namespace ClientMain
         public FrmUnusualStockReturns()
         {
             InitializeComponent();
-            XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+            //  XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+            XpoDefault.ConnectionString = FrmLogin.xpoDataCentStr;
             selection1 = new GridCheckMarksSelection(gridView1);
             selection1.CheckMarkColumn.VisibleIndex = 0;
             xpServerCollectionSource1.FixedFilterString = "[JTDID] Is Null";
@@ -278,7 +281,7 @@ namespace ClientMain
         private void btnBillQuery_Click(object sender, EventArgs e)
         {
             selection1.ClearSelection();
-            gridView1.ShowFilterEditor(gridView1.FocusedColumn);
+            gridView1.ShowFilterEditor(colZTMC);
 
             if (!String.IsNullOrEmpty(gridView1.ActiveFilterString))
             {
@@ -340,7 +343,6 @@ namespace ClientMain
                     if (fgCheck == true)
                     {
                         string alarm = "0";
-                        string StrCon = FrmLogin.strCon;
                         using (OracleConnection connection = new OracleConnection(StrCon))
                         {
                             connection.Open();
@@ -556,7 +558,7 @@ namespace ClientMain
         {
             if (selection1.SelectedCount == 0)
             {
-                gridView2.ShowFilterEditor(gridView2.FocusedColumn);
+                gridView2.ShowFilterEditor(colJTDHZTMC1);
 
                 if (!String.IsNullOrEmpty(gridView2.ActiveFilterString))
                 {
@@ -659,7 +661,6 @@ namespace ClientMain
                     if (fgCheck == true)
                     {
                         string alarm = "0";
-                        string StrCon = FrmLogin.strCon;
                         using (OracleConnection connection = new OracleConnection(StrCon))
                         {
                             connection.Open();

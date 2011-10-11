@@ -23,12 +23,14 @@ namespace ClientMain
     public partial class UserEdit : Form
     {
         private GridCheckMarksSelection selection;
+        // private string StrCon = FrmLogin.strCon;
         private string StrCon = FrmLogin.strCon;
         public UserEdit(string id)
         {
             InitializeComponent();
             txtName.Tag = id;
-            XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+            //  XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+            XpoDefault.ConnectionString = FrmLogin.xpoConStr;
             selection = new GridCheckMarksSelection(gridView1);
             selection.CheckMarkColumn.VisibleIndex = 0;
 

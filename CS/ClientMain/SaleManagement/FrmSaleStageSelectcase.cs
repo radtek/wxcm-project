@@ -25,7 +25,8 @@ namespace ClientMain
         private string csl;//税率
         private string xsjsdid;//采购结算单ID
         private string cztid;//传递的帐套ID
-        private string StrCon = FrmLogin.strCon;
+        // private string StrCon = FrmLogin.strCon;
+        private string StrCon = FrmLogin.strDataCent;
         //选计
         private double dXSMY = 0;
         private double dXSSY = 0;
@@ -37,7 +38,8 @@ namespace ClientMain
         public FrmSaleStageSelectcase(string id, string sl, string ghdwid, string ztid)
         {
             InitializeComponent();
-            XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+            //  XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+            XpoDefault.ConnectionString = FrmLogin.xpoDataCentStr;
             xpServerCollectionSource1.FixedFilterString = "[ZTID] = \'" + ztid + "\' AND [KHID] = \'" + ghdwid + "\' AND [SL]=\'" + sl + "\'";
             selection = new GridCheckMarksSelection(gridView1);
             selection.CheckMarkColumn.VisibleIndex = 0;
@@ -438,7 +440,7 @@ namespace ClientMain
         private void btniuquire_Click(object sender, EventArgs e)
         {
             selection.ClearSelection();
-            gridView1.ShowFilterEditor(gridView1.FocusedColumn);
+            gridView1.ShowFilterEditor(colSJLX);
 
             if (!String.IsNullOrEmpty(gridView1.ActiveFilterString))
             {

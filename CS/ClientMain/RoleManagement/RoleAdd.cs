@@ -13,6 +13,7 @@ namespace ClientMain
 {
     public partial class RoleAdd : Form
     {
+        // private string StrCon = FrmLogin.strCon;
         private string StrCon = FrmLogin.strCon;
         public RoleAdd()
         {

@@ -13,6 +13,7 @@ namespace ClientMain
 {
     public partial class RoleEdit : Form
     {
+        // private string StrCon = FrmLogin.strCon;
         private string StrCon = FrmLogin.strCon;
         private OracleConnection MyConn = null;
         private void Open()

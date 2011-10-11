@@ -99,7 +99,8 @@ namespace ClientMain
         public FrmZTTZinquire()
         {
             InitializeComponent();
-            XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+            //  XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+            XpoDefault.ConnectionString = FrmLogin.xpoDataCentStr;
             selection1 = new GridCheckMarksSelection(gridView1);
             selection1.CheckMarkColumn.VisibleIndex = 0;
             this.gridView1.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView1_CustomDrawRowIndicator);
@@ -142,7 +143,7 @@ namespace ClientMain
         //定义数据库连接
         private void Open()
         {
-            string StrCon = FrmLogin.strCon;
+            string StrCon = FrmLogin.strDataCent;
             MyConn = new OracleConnection(StrCon);
             if (MyConn.State.ToString() != "Open")
                 MyConn.Open();

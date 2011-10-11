@@ -21,11 +21,14 @@ namespace ClientMain
     public partial class FrmClientTuoShouJTSelectCase : Form
     {
         GridCheckMarksSelection selection;
+        // private string StrCon = FrmLogin.strCon;
+        private string StrCon = FrmLogin.strDataCent;
 
         public FrmClientTuoShouJTSelectCase(string id, string khid)
         {
             InitializeComponent();
-            XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+            //  XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+            XpoDefault.ConnectionString = FrmLogin.xpoDataCentStr;
             xpServerCollectionSource1.FixedFilterString = "[ZTID] = \'" + FrmLogin.getZTID.ToString() + "\' AND [ZT] > \'" + "15" + "\' AND [JSFSID]=\'" + "01" + "\'AND [GHDWID]=\'" + khid + "\'";
             selection = new GridCheckMarksSelection(gridView1);
             selection.CheckMarkColumn.VisibleIndex = 0;
@@ -52,7 +55,7 @@ namespace ClientMain
             }
             else
             {
-                string StrCon = FrmLogin.strCon;
+
                   using (OracleConnection connection = new OracleConnection(StrCon))
                   {
                       connection.Open();
@@ -112,7 +115,7 @@ namespace ClientMain
         private void btniuquire_Click(object sender, EventArgs e)
         {
             selection.ClearSelection();
-            gridView1.ShowFilterEditor(gridView1.FocusedColumn);
+            gridView1.ShowFilterEditor(colZTMC);
 
             if (!String.IsNullOrEmpty(gridView1.ActiveFilterString))
             {
