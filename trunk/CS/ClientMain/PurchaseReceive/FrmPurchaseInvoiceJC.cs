@@ -23,7 +23,8 @@ namespace ClientMain
         GridCheckMarksSelection selection1;
         GridCheckMarksSelection selection2;
         const int MAXROWCOUNT = 50000;
-        private string StrCon = FrmLogin.strCon;
+       // private string StrCon = FrmLogin.strCon;
+      private string StrCon = FrmLogin.strDataCent;
         //主单的选计
         private double dWSJE = 0;
         private double dSE = 0;
@@ -39,7 +40,8 @@ namespace ClientMain
         public FrmPurchaseInvoiceJC()
         {
             InitializeComponent();
-            XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+          //  XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+            XpoDefault.ConnectionString = FrmLogin.xpoDataCentStr;
             selection1 = new GridCheckMarksSelection(gridView1);
             selection1.CheckMarkColumn.VisibleIndex = 0;
             xpServerCollectionSource1.FixedFilterString = "[CGFPID] Is Null";
@@ -268,7 +270,7 @@ namespace ClientMain
         private void btnBillQuery_Click(object sender, EventArgs e)
         {
             selection1.ClearSelection();
-            gridView1.ShowFilterEditor(gridView1.FocusedColumn);
+            gridView1.ShowFilterEditor(colZTMC);
             xpServerCollectionSource1.Reload();
             if (!String.IsNullOrEmpty(gridView1.ActiveFilterString))
             {
@@ -283,7 +285,7 @@ namespace ClientMain
             {
                 if (selection1.SelectedCount == 0)
                 {
-                    gridView2.ShowFilterEditor(gridView2.FocusedColumn);
+                    gridView2.ShowFilterEditor(colCGFPH1);
 
                     if (!String.IsNullOrEmpty(gridView2.ActiveFilterString))
                     {
@@ -321,7 +323,7 @@ namespace ClientMain
             else if (this.Tag.ToString() == "JC_C_CGFPMX")
             {
                 selection2.ClearSelection();
-                gridView2.ShowFilterEditor(gridView1.FocusedColumn);
+                gridView2.ShowFilterEditor(colCGFPH1);
 
                 if (!String.IsNullOrEmpty(gridView1.ActiveFilterString))
                 {

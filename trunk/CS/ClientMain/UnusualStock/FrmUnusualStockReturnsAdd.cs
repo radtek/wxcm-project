@@ -26,10 +26,13 @@ namespace ClientMain
         double JTMY = 0;
         double JTSY = 0;
         double DJ = 0;
-        
+        // private string StrCon = FrmLogin.strCon;
+        private string StrCon = FrmLogin.strDataCent;
         public FrmUnusualStockReturnsAdd()
         {
             InitializeComponent();
+            //  XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+            XpoDefault.ConnectionString = FrmLogin.xpoDataCentStr;
             selection = new GridCheckMarksSelection(gridView1);
             selection.CheckMarkColumn.VisibleIndex = 0;
             xpServerCollectionSource1.FixedFilterString = "[JTDMXID] Is Null";
@@ -45,6 +48,8 @@ namespace ClientMain
         public FrmUnusualStockReturnsAdd(string jtdid)
         {
             InitializeComponent();
+            //  XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+            XpoDefault.ConnectionString = FrmLogin.xpoDataCentStr;
             selection = new GridCheckMarksSelection(gridView1);
             selection.CheckMarkColumn.VisibleIndex = 0;
             xpServerCollectionSource1.FixedFilterString = "[JTDID] = \'" + jtdid + "\'";
@@ -142,9 +147,8 @@ namespace ClientMain
         private string getczyxm()
         {
             string czyxm = "";
-            string strconn = FrmLogin.strCon;
             string strselect = "select operatorname from base_operator where operatorid='" + FrmLogin.getUserID.ToString() + "'";
-            OracleConnection conn = new OracleConnection(strconn);
+            OracleConnection conn = new OracleConnection(StrCon);
             OracleCommand comm = new OracleCommand(strselect, conn);
             OracleDataReader reader;
             try
@@ -215,9 +219,8 @@ namespace ClientMain
         }
         private void Load_Content_Edit()
         {
-            string strconn = FrmLogin.strCon;
             string strselect = "select JTDH,GYSID,GYSMC,CZYID,CZYMC,JTPZS,JTZSL,JTZMY,JTZSY,ZTID,ZTIDMC,SL,ZT,ZTMC,JTBMID,JTBMMC,BZ from view_jc_g_jtd where JTDID='" + this.txtJTDH.Tag.ToString() + "'";
-            OracleConnection conn = new OracleConnection(strconn);
+            OracleConnection conn = new OracleConnection(StrCon);
             OracleCommand comm = new OracleCommand(strselect, conn);
             OracleDataReader reader;
             try
@@ -301,7 +304,6 @@ namespace ClientMain
 
         private void btnSaveExit_Click(object sender, EventArgs e)
         {
-            string StrCon = FrmLogin.strCon;
             using (OracleConnection connection = new OracleConnection(StrCon))
             {
                 OracleCommand cmd = connection.CreateCommand();
@@ -362,7 +364,6 @@ namespace ClientMain
 
         private void btnSaveGoon_Click(object sender, EventArgs e)
         {
-            string StrCon = FrmLogin.strCon;
             using (OracleConnection connection = new OracleConnection(StrCon))
             {
                 OracleCommand cmd = connection.CreateCommand();
@@ -426,7 +427,6 @@ namespace ClientMain
         private int getCountspidNum()
         {
             int i = 0;
-            string StrCon = FrmLogin.strCon;
             string strselect = "select count(SPXXID) from JT_J_SPXX where SPBH='" + txtSH.Text.Trim() + "'";
             OracleConnection conn = new OracleConnection(StrCon);
             OracleCommand comm = new OracleCommand(strselect, conn);
@@ -456,7 +456,6 @@ namespace ClientMain
         }
         private void getSPXX(string spbh)
         {
-            string StrCon = FrmLogin.strCon;
             OracleConnection conn = new OracleConnection(StrCon);
             string strselect = "select SPXXID,PM from JT_J_SPXX where SPBH='" + txtSH.Text.Trim() + "'";
             OracleCommand comm = new OracleCommand(strselect, conn);
@@ -556,7 +555,6 @@ namespace ClientMain
         }
         private void TxtAlter()
         {
-            string StrCon = FrmLogin.strCon;
             OracleConnection connection = new OracleConnection(StrCon);
             string select = "select JTPZS,JTZSL,JTZMY,JTZSY  from  JC_G_JTD  where JTDID='" + this.txtJTDH.Tag.ToString() + "'";
             OracleCommand comm = new OracleCommand(select,connection);
@@ -619,7 +617,6 @@ namespace ClientMain
             }
             if(fgChecck==true&&fgCheckNum==true)
             {
-                string StrCon = FrmLogin.strCon;
                 using (OracleConnection connection = new OracleConnection(StrCon))
                 {
                     OracleCommand cmd = connection.CreateCommand();
@@ -677,7 +674,6 @@ namespace ClientMain
         }
         private void UpdataJTD()
         {
-            string StrCon = FrmLogin.strCon;
             OracleConnection conn = new OracleConnection(StrCon);
             string strupdata = "UPDATE JC_G_JTD SET GYSID='"+this.txtGYS.Tag.ToString()+"',SL='"+this.comboxSL.Text.ToString()+"',BZ='"+this.txtBZ.Text.ToString()+"' WHERE JTDID='"+this.txtJTDH.Tag.ToString()+"'";
             OracleCommand comm = new OracleCommand(strupdata, conn);
@@ -780,7 +776,6 @@ namespace ClientMain
             }
             else
             {
-                string StrCon = FrmLogin.strCon;
                 using (OracleConnection connection = new OracleConnection(StrCon))
                 {
                     connection.Open();

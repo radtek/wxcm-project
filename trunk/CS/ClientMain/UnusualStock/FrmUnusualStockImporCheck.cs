@@ -17,6 +17,8 @@ namespace ClientMain
     {
         private string InputFileName;
         private string InputJTDID;
+        // private string StrCon = FrmLogin.strCon;
+        private string StrCon = FrmLogin.strDataCent;
         public FrmUnusualStockImporCheck()
         {
             InitializeComponent();
@@ -64,7 +66,7 @@ namespace ClientMain
         private int CheckNum(string id)
         {
             int i=0;
-            string StrCon = FrmLogin.strCon;
+
             OracleConnection conn = new OracleConnection(StrCon);
             string count = "select count(0) from JT_J_SPXX where SPXXID='" + id + "'";
             OracleCommand comm = new OracleCommand(count,conn);

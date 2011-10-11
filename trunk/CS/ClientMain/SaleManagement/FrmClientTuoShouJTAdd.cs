@@ -21,7 +21,8 @@ namespace ClientMain
     {
         GridCheckMarksSelection selection;
         const int MAXROWCOUNT = 50000;
-        private string StrCon = FrmLogin.strCon;//数据库连接
+        // private string StrCon = FrmLogin.strCon;
+        private string StrCon = FrmLogin.strDataCent;
         //托收单明细选计
         private Int64 iSL = 0;
         private double WSJE = 0;
@@ -30,7 +31,8 @@ namespace ClientMain
         public FrmClientTuoShouJTAdd(string strXSTSDID)
         {
             InitializeComponent();
-            XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+            //  XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+            XpoDefault.ConnectionString = FrmLogin.xpoDataCentStr;
             selection = new GridCheckMarksSelection(gridView1);
             selection.CheckMarkColumn.VisibleIndex = 0;
             this.txtTSDH.Tag = strXSTSDID;

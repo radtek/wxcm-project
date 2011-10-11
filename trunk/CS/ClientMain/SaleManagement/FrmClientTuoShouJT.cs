@@ -25,7 +25,8 @@ namespace ClientMain
         GridCheckMarksSelection selection1;
         GridCheckMarksSelection selection2;
         const int MAXROWCOUNT = 50000;
-        private string StrCon = FrmLogin.strCon;
+        // private string StrCon = FrmLogin.strCon;
+        private string StrCon = FrmLogin.strDataCent;
         //托收单选计
         private double dTSJE = 0;
         //托收单明细选计
@@ -36,7 +37,8 @@ namespace ClientMain
         public FrmClientTuoShouJT()
         {
             InitializeComponent();
-            XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+            //  XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+            XpoDefault.ConnectionString = FrmLogin.xpoDataCentStr;
             selection1 = new GridCheckMarksSelection(gridView1);
             selection1.CheckMarkColumn.VisibleIndex = 0;
             xpServerCollectionSource1.FixedFilterString = "[XSTSDID] Is Null";
@@ -503,7 +505,7 @@ namespace ClientMain
             {
                 if (selection1.SelectedCount == 0)
                 {
-                    gridView2.ShowFilterEditor(gridView2.FocusedColumn);
+                    gridView2.ShowFilterEditor(colXSJSDH);
 
                     if (!String.IsNullOrEmpty(gridView2.ActiveFilterString))
                     {
@@ -542,7 +544,7 @@ namespace ClientMain
             else if (this.Tag.ToString() == "JT_C_KHTSDMX")
             {
                 selection2.ClearSelection();
-                gridView2.ShowFilterEditor(gridView1.FocusedColumn);
+                gridView2.ShowFilterEditor(colZTMC);
 
                 if (!String.IsNullOrEmpty(gridView1.ActiveFilterString))
                 {
@@ -960,6 +962,12 @@ namespace ClientMain
                                 break;
 
                             }
+                            else if (Convert.ToInt32(strZT) == 44)
+                            {
+                                fgcheck = false;
+                                MessageBox.Show("单号为" + strXSTSDH + "已经核销");
+                                break;
+                            }
                             else if (string.IsNullOrEmpty(time))
                             {
                                 fgcheck = false;
@@ -1332,7 +1340,7 @@ namespace ClientMain
         private void btnBillQuery_Click_1(object sender, EventArgs e)
         {
             selection1.ClearSelection();
-            gridView1.ShowFilterEditor(gridView1.FocusedColumn);
+            gridView1.ShowFilterEditor(colZTMC);
 
             if (!String.IsNullOrEmpty(gridView1.ActiveFilterString))
             {

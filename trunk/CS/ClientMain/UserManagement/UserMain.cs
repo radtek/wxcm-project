@@ -23,6 +23,7 @@ namespace ClientMain
     public partial class UserMain : Form
     {
         private GridCheckMarksSelection selection;
+        // private string StrCon = FrmLogin.strCon;
         private string StrCon = FrmLogin.strCon;
         bool m_fgAdd;
         bool m_fgDel;
@@ -31,7 +32,8 @@ namespace ClientMain
         public UserMain(bool fgAdd, bool fgDel, bool fgUpdate, bool fgQuery)
         {
             InitializeComponent();
-            XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+            //  XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+            XpoDefault.ConnectionString = FrmLogin.xpoConStr;
             selection = new GridCheckMarksSelection(gridView1);
             selection.CheckMarkColumn.VisibleIndex = 0;
             m_fgAdd = fgAdd;
@@ -122,7 +124,7 @@ namespace ClientMain
         private void btnQuery_Click(object sender, EventArgs e)
         {
             selection.ClearSelection();
-            gridView1.ShowFilterEditor(gridView1.FocusedColumn);
+            gridView1.ShowFilterEditor(colUSERNAME);
             xpServerCollectionSource1.Reload();
             if (!String.IsNullOrEmpty(gridView1.ActiveFilterString))
             {

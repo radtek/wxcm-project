@@ -83,8 +83,8 @@
             this.btnUserAlter,
             this.btnUserLook,
             this.btnUserDelete,
-            this.btnUserReload,
-            this.btnQuery});
+            this.btnQuery,
+            this.btnUserReload});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(977, 22);
@@ -93,38 +93,42 @@
             // 
             // btnUserAdd
             // 
+            this.btnUserAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnUserAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnUserAdd.Image")));
             this.btnUserAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnUserAdd.Name = "btnUserAdd";
-            this.btnUserAdd.Size = new System.Drawing.Size(49, 19);
-            this.btnUserAdd.Text = "添加";
+            this.btnUserAdd.Size = new System.Drawing.Size(51, 19);
+            this.btnUserAdd.Text = " 添加  ";
             this.btnUserAdd.Click += new System.EventHandler(this.btnUserAdd_Click);
             // 
             // btnUserAlter
             // 
+            this.btnUserAlter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnUserAlter.Image = ((System.Drawing.Image)(resources.GetObject("btnUserAlter.Image")));
             this.btnUserAlter.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnUserAlter.Name = "btnUserAlter";
-            this.btnUserAlter.Size = new System.Drawing.Size(49, 19);
-            this.btnUserAlter.Text = "编辑";
+            this.btnUserAlter.Size = new System.Drawing.Size(51, 19);
+            this.btnUserAlter.Text = " 编辑  ";
             this.btnUserAlter.Click += new System.EventHandler(this.btnUserAlter_Click);
             // 
             // btnUserLook
             // 
+            this.btnUserLook.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnUserLook.Image = ((System.Drawing.Image)(resources.GetObject("btnUserLook.Image")));
             this.btnUserLook.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnUserLook.Name = "btnUserLook";
-            this.btnUserLook.Size = new System.Drawing.Size(49, 19);
-            this.btnUserLook.Text = "查看";
+            this.btnUserLook.Size = new System.Drawing.Size(57, 19);
+            this.btnUserLook.Text = "  查看  ";
             this.btnUserLook.Click += new System.EventHandler(this.btnUserLook_Click);
             // 
             // btnUserDelete
             // 
+            this.btnUserDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnUserDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnUserDelete.Image")));
             this.btnUserDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnUserDelete.Name = "btnUserDelete";
-            this.btnUserDelete.Size = new System.Drawing.Size(49, 19);
-            this.btnUserDelete.Text = "删除";
+            this.btnUserDelete.Size = new System.Drawing.Size(45, 19);
+            this.btnUserDelete.Text = " 删除 ";
             this.btnUserDelete.Click += new System.EventHandler(this.btnUserDelete_Click);
             // 
             // btnUserReload
@@ -138,11 +142,12 @@
             // 
             // btnQuery
             // 
+            this.btnQuery.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnQuery.Image = ((System.Drawing.Image)(resources.GetObject("btnQuery.Image")));
             this.btnQuery.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnQuery.Name = "btnQuery";
-            this.btnQuery.Size = new System.Drawing.Size(49, 19);
-            this.btnQuery.Text = "查询";
+            this.btnQuery.Size = new System.Drawing.Size(57, 19);
+            this.btnQuery.Text = "  查询  ";
             this.btnQuery.Click += new System.EventHandler(this.btnQuery_Click);
             // 
             // panel2

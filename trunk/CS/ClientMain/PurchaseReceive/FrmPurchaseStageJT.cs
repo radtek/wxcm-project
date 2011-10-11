@@ -30,7 +30,8 @@ namespace ClientMain
         GridCheckMarksSelection selection2;
         const int MAXROWCOUNT = 50000;
         private string[] StrArrySetRepotr = new string[7];//传递到报表中的数组
-        private string StrCon = FrmLogin.strCon;
+        // private string StrCon = FrmLogin.strCon;
+        private string StrCon = FrmLogin.strDataCent;
         //采购单选计
         private Int64 iPZS = 0;
         private Int64 iSHSL = 0;
@@ -51,7 +52,8 @@ namespace ClientMain
         public FrmPurchaseStageJT()
         {
             InitializeComponent();
-            XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+            //  XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+            XpoDefault.ConnectionString = FrmLogin.xpoDataCentStr;
             selection1 = new GridCheckMarksSelection(gridView1);
             selection1.CheckMarkColumn.VisibleIndex = 0;
             xpServerCollectionSource1.FixedFilterString = "[CGJSDID] Is Null";
@@ -332,7 +334,7 @@ namespace ClientMain
         private void btnBillQuery_Click(object sender, EventArgs e)
         {
             selection1.ClearSelection();
-            gridView1.ShowFilterEditor(gridView1.FocusedColumn);
+            gridView1.ShowFilterEditor(colZTMC);
 
             if (!String.IsNullOrEmpty(gridView1.ActiveFilterString))
             {
@@ -640,7 +642,7 @@ namespace ClientMain
             {
                 if (selection1.SelectedCount == 0)
                 {
-                    gridView2.ShowFilterEditor(gridView2.FocusedColumn);
+                    gridView2.ShowFilterEditor(colSJLX1);
 
                     if (!String.IsNullOrEmpty(gridView2.ActiveFilterString))
                     {
@@ -678,7 +680,7 @@ namespace ClientMain
             else if (this.Tag.ToString() == "JT_C_CGJSDMX")
             {
                 selection2.ClearSelection();
-                gridView2.ShowFilterEditor(gridView1.FocusedColumn);
+                gridView2.ShowFilterEditor(colSJLX1);
 
                 if (!String.IsNullOrEmpty(gridView1.ActiveFilterString))
                 {
@@ -931,6 +933,8 @@ namespace ClientMain
                             string strCGFPID = gridView1.GetRowCellDisplayText(RowHandle, colCGFPID).ToString();
                             string strCGJSDH = gridView1.GetRowCellDisplayText(RowHandle, colCGJSDH).ToString();
                             string strZT = gridView1.GetRowCellDisplayText(RowHandle, colZT).ToString();
+                            //补充核销条件，根据状态全部付款（44）进行是否核销的判断-------更新
+
                             string strZDRQ = gridView1.GetRowCellDisplayText(RowHandle, colZDRQ).ToString();
                             DateTime dt1 = Convert.ToDateTime(strZDRQ);
                             DateTime dt2 = Convert.ToDateTime(time);
@@ -940,6 +944,12 @@ namespace ClientMain
                                 MessageBox.Show("单号为" + strCGJSDH + "还未审核，无法核销");
                                 break;
 
+                            }
+                            else if (Convert.ToInt32(strZT) == 44)
+                            {
+                                fgcheck = false;
+                                MessageBox.Show("单号为" + strCGJSDH + "已经核销完毕");
+                                break;
                             }
                             else if (string.IsNullOrEmpty(time))
                             {

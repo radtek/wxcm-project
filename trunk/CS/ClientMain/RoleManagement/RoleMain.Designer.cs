@@ -54,6 +54,7 @@
             this.colCREATE_DATE = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTYPE = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colROLE_LEVEL = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.btnQuirey = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -81,6 +82,7 @@
             this.btnEdit,
             this.btnDelete,
             this.btnLook,
+            this.btnQuirey,
             this.btnReload,
             this.btnExit});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
@@ -292,7 +294,17 @@
             this.colROLE_LEVEL.Visible = true;
             this.colROLE_LEVEL.VisibleIndex = 9;
             // 
-            // RoleMain1
+            // btnQuirey
+            // 
+            this.btnQuirey.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnQuirey.Image = ((System.Drawing.Image)(resources.GetObject("btnQuirey.Image")));
+            this.btnQuirey.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnQuirey.Name = "btnQuirey";
+            this.btnQuirey.Size = new System.Drawing.Size(69, 23);
+            this.btnQuirey.Text = "   查询   ";
+            this.btnQuirey.Click += new System.EventHandler(this.btnQuirey_Click);
+            // 
+            // RoleMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -300,7 +312,7 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Name = "RoleMain1";
+            this.Name = "RoleMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "角色管理";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -347,5 +359,6 @@
         private System.Windows.Forms.ToolStripButton btnLook;
         private System.Windows.Forms.ToolStripButton btnReload;
         private System.Windows.Forms.ToolStripButton btnExit;
+        private System.Windows.Forms.ToolStripButton btnQuirey;
     }
 }
