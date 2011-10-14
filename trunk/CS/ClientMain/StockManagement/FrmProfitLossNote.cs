@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -308,16 +309,9 @@ namespace ClientMain
                                                      MessageBoxButtons.YesNo,
                                                      MessageBoxIcon.Question);
                         if (result == DialogResult.Yes)
-                        {
-                            bool fgBFPZ = false;
-                            bool fgPDYKPZ = false;
-                            OracleCommand command = connection.CreateCommand();
-
-                            command.CommandText = "truncate table temp_bfpz";
-                            command.ExecuteNonQuery();
-
-                            command.CommandText = "truncate table temp_pdykpz";
-                            command.ExecuteNonQuery();
+                        {                           
+                            ArrayList alBFPZ = new ArrayList();
+                            ArrayList alPDYKPZ = new ArrayList();
 
                             for (int i = 0; i < selection.SelectedCount; ++i)
                             {
@@ -327,8 +321,8 @@ namespace ClientMain
                                 int i4Status = Convert.ToInt32(gridView1.GetRowCellDisplayText(RowHandle, colZT));
                                 if (i4Status < 15)
                                 {
-                                    fgBFPZ = false;
-                                    fgPDYKPZ = false;
+                                    alBFPZ.Clear();
+                                    alPDYKPZ.Clear();
                                     MessageBox.Show("所选记录未被审核，请重新选择！");
                                     break;
                                 }
@@ -337,23 +331,18 @@ namespace ClientMain
                                 string strSYLXMC = gridView1.GetRowCellDisplayText(RowHandle, colSYLXMC);
                                 if (String.Equals(strSYLXMC, "报废"))
                                 {
-                                    fgBFPZ = true;
-                                    command.CommandText = "INSERT INTO TEMP_BFPZ (TEMPID, ID) Values (temp_id_seq.nextval, '" + strSYDID + "')";
-                                    command.ExecuteNonQuery();
+                                    alBFPZ.Add(strSYDID);
                                 }
                                 else
                                 {
-                                    fgPDYKPZ = true;
-                                    command.CommandText = "INSERT INTO TEMP_PDYKPZ (TEMPID, ID) Values (temp_id_seq.nextval, '" + strSYDID + "')";
-                                    command.ExecuteNonQuery();                                 
+                                    alPDYKPZ.Add(strSYDID);                                
                                 }
-
-
                             }
 
                             selection.ClearSelection();
                             vClearSelectSummary();
-                            if (fgBFPZ)
+
+                            if (alBFPZ.Count > 0)
                             {
                                 OracleCommand cmdBFPZ = connection.CreateCommand();
                                 // Start a local transaction
@@ -361,12 +350,13 @@ namespace ClientMain
                                 // Assign transaction object for a pending local transaction
                                 cmdBFPZ.Transaction = transBFPZ;
 
-                                cmdBFPZ.CommandText = "INSERT INTO TEMP_SAVE_ID select * from TEMP_BFPZ";
-                                cmdBFPZ.ExecuteNonQuery();
-
+                                for (int i = 0; i < alBFPZ.Count; ++i)
+                                {
+                                    cmdBFPZ.CommandText = "INSERT INTO TEMP_SAVE_ID(TEMPID, ID) Values ('" + i.ToString() + "','" + alBFPZ[i].ToString() + "')";
+                                    cmdBFPZ.ExecuteNonQuery();
+                                }
                                 cmdBFPZ.CommandType = CommandType.StoredProcedure;
                                 cmdBFPZ.CommandText = "JT_C_SYD_TO_BFPZ";
-
 
                                 cmdBFPZ.Parameters.Add("Userid", OracleType.VarChar).Value = FrmLogin.getUserID;
 
@@ -383,10 +373,12 @@ namespace ClientMain
 
                                 xpServerCollectionSource1.Reload();
 
+                                alBFPZ.Clear();
+
                                 MessageBox.Show(cmdBFPZ.Parameters["Message"].Value.ToString());
                             }
 
-                            if (fgPDYKPZ)
+                            if (alPDYKPZ.Count > 0)
                             {
                                 OracleCommand cmdPDYKPZ = connection.CreateCommand();
                                 // Start a local transaction
@@ -394,12 +386,14 @@ namespace ClientMain
                                 // Assign transaction object for a pending local transaction
                                 cmdPDYKPZ.Transaction = transPDYKPZ;
 
-                                cmdPDYKPZ.CommandText = "INSERT INTO TEMP_SAVE_ID select * from TEMP_PDYKPZ";
-                                cmdPDYKPZ.ExecuteNonQuery();
+                                for (int i = 0; i < alPDYKPZ.Count; ++i)
+                                {                                    
+                                    cmdPDYKPZ.CommandText = "INSERT INTO TEMP_SAVE_ID(TEMPID, ID) Values ('" + i.ToString() + "','" + alPDYKPZ[i].ToString() + "')";
+                                    cmdPDYKPZ.ExecuteNonQuery();
+                                }
 
                                 cmdPDYKPZ.CommandType = CommandType.StoredProcedure;
                                 cmdPDYKPZ.CommandText = "JT_C_SYD_TO_PDYKPZ";
-
 
                                 cmdPDYKPZ.Parameters.Add("Userid", OracleType.VarChar).Value = FrmLogin.getUserID;
 
@@ -415,6 +409,9 @@ namespace ClientMain
                                 unitOfWork1.DropIdentityMap();
 
                                 xpServerCollectionSource1.Reload();
+
+                                alPDYKPZ.Clear();
+
                                 MessageBox.Show(cmdPDYKPZ.Parameters["Message"].Value.ToString());
                             }
 
