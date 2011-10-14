@@ -152,6 +152,7 @@
             this.btnSend.Caption = "发送";
             this.btnSend.Id = 3;
             this.btnSend.Name = "btnSend";
+            this.btnSend.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSend_ItemClick);
             // 
             // barSubItem1
             // 

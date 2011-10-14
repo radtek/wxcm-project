@@ -12,7 +12,9 @@ using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using System.IO;
+using System.Collections;
 using System.Data.OracleClient;
+using System.Net;
 
 namespace ClientMain
 {
@@ -41,7 +43,7 @@ namespace ClientMain
         }
 
         private void btnMasterQuery_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {            
+        {
             gridView1.ShowFilterEditor(colVOUCHER_ID);
 
             if (!String.IsNullOrEmpty(gridView1.ActiveFilterString))
@@ -135,9 +137,9 @@ namespace ClientMain
                 OracleTransaction transaction = connection.BeginTransaction();
                 command.Connection = connection;
                 command.Transaction = transaction;
-                
+
                 try
-                {             
+                {
                     string sqlPZ = "select voucherid,voucher_id,pzlxid,company,voucher_type,fiscal_year,"
                                  + "accounting_period,attachment_number,prepareddate,enter,cashier,"
                                  + "signature,checker,posting_date,posting_person,voucher_making_system,"
@@ -228,7 +230,7 @@ namespace ClientMain
                     foreach (DataRowView theRow in ds.Tables["jt_c_cgshpzmx"].DefaultView)
                     {
                         sbXML.Append("<entry>\n");
-                        sbXML.Append("<entry_id>");                        
+                        sbXML.Append("<entry_id>");
                         sbXML.Append(theRow.Row["entry_id"].ToString());
                         sbXML.Append("</entry_id>\n");
                         sbXML.Append("<account_code>");
@@ -243,8 +245,8 @@ namespace ClientMain
                         sbXML.Append("<document_id>");
                         sbXML.Append(theRow.Row["document_id"].ToString());
                         sbXML.Append("</document_id>\n");
-                        sbXML.Append("<document_date>");      
-                        if(!String.IsNullOrEmpty(theRow.Row["document_date"].ToString()))
+                        sbXML.Append("<document_date>");
+                        if (!String.IsNullOrEmpty(theRow.Row["document_date"].ToString()))
                         {
                             sbXML.Append(theRow.Row["document_date"].ToString().Substring(0, theRow.Row["document_date"].ToString().IndexOf(" ")));
                         }
@@ -361,7 +363,7 @@ namespace ClientMain
                 catch (Exception exception)
                 {
                     transaction.Rollback();
-                    MessageBox.Show(exception.ToString());                    
+                    MessageBox.Show(exception.ToString());
                 }
                 finally
                 {
@@ -455,33 +457,132 @@ namespace ClientMain
             {
                 MessageBox.Show("请先选择需要发送的记录");
             }
-            else 
+            else
             {
-                //bool fgSend = true;
+                ArrayList alVoucherID = new ArrayList();
                 for (int i = 0; i < selection.SelectedCount; ++i)
                 {
                     int RowIndex = selection.GetSelectedRowIndex(i);
                     int RowHandle = gridView1.GetRowHandle(RowIndex);
 
                     int i4Status = Convert.ToInt32(gridView1.GetRowCellDisplayText(RowHandle, colZT));
+                    string strVoucherID = gridView1.GetRowCellDisplayText(RowHandle, colVOUCHERID);
+
                     if (i4Status < 15)
                     {
-                        //fgSend = false;
+                        alVoucherID.Clear();
                         MessageBox.Show("所选记录未被审核，请重新选择！");
                         break;
                     }
                     else if (i4Status == 90)
                     {
-                        //fgSend = false;
+                        alVoucherID.Clear();
                         MessageBox.Show("所选记录已被发送，请重新选择！");
                         break;
                     }
                     else
                     {
-                       
+                        alVoucherID.Add(strVoucherID);
                     }
                 }
 
+                selection.ClearSelection();
+
+                if (alVoucherID.Count > 0)
+                {
+                    for (int i = 0; i < alVoucherID.Count; ++i)
+                    {
+                        string strVoucherID = alVoucherID[i].ToString();
+                        fgPostXML2YY(strVoucherID);
+                    }
+                }                
+
+                alVoucherID.Clear();
+                unitOfWork1.DropIdentityMap();
+                xpServerCollectionSource1.Reload();
+            }
+        }
+
+        private bool fgPostXML2YY(string strVoucherID)
+        {
+            bool fgSuccess = false;
+            using (OracleConnection connection = new OracleConnection(FrmLogin.strDataCent))
+            {
+                connection.Open();
+                OracleCommand command = connection.CreateCommand();
+                OracleTransaction transaction = connection.BeginTransaction();
+                command.Connection = connection;
+                command.Transaction = transaction;
+
+                string sql = "select company from jt_c_cgshpz where voucherid = '" + strVoucherID + "'";
+                OracleDataAdapter Ada = new OracleDataAdapter(sql, connection);
+                Ada.SelectCommand.Transaction = transaction;
+                DataSet ds = new DataSet();
+                Ada.Fill(ds);
+                string strReceiver = "";
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    strReceiver = ds.Tables[0].Rows[0]["COMPANY"].ToString();
+                }                
+
+                string sqlXML = "select XML from jt_c_cgshpz_xml where cgshpzid = '" + strVoucherID + "'";
+                OracleDataAdapter adaXML = new OracleDataAdapter(sqlXML, connection);
+                adaXML.SelectCommand.Transaction = transaction;
+                DataSet dsXML = new DataSet();
+                adaXML.Fill(dsXML);
+                string strXML = "";
+                if (dsXML.Tables[0].Rows.Count > 0)
+                {
+                    strXML = dsXML.Tables[0].Rows[0]["XML"].ToString();
+                }
+
+                string strURL = @"http://61.191.17.203:80/service/XChangeServlet?account=0002&receiver=" + strReceiver;
+                WebRequest req = null;
+                WebResponse rsp = null;
+                try
+                {
+                    req = WebRequest.Create(strURL);
+                    req.Method = "POST";
+                    req.ContentType = "text/xml";
+
+                    StreamWriter writer = new StreamWriter(req.GetRequestStream());
+                    writer.WriteLine(strXML);
+                    writer.Close();
+
+                    rsp = req.GetResponse();
+                    StreamReader reader = new StreamReader(rsp.GetResponseStream());
+                    string result = reader.ReadToEnd();
+                    MessageBox.Show(result);
+
+                    int idxSuccess = result.IndexOf("successful=\"Y\"");
+                    if (idxSuccess > 0)
+                    {
+                        fgSuccess = true;
+
+                        string strSQL = "update jt_c_cgshpz set zt = '90', czrq = sysdate where voucherid = '" + strVoucherID + "'";
+                        command.CommandText = strSQL;
+                        command.ExecuteNonQuery();
+                        transaction.Commit();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    if (req != null)
+                    {
+                        req.GetRequestStream().Close();
+                    }
+                    if (rsp != null)
+                    {
+                        rsp.GetResponseStream().Close();
+                    }
+                    connection.Close();
+                }
+                return fgSuccess;
             }
         }
 

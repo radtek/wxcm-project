@@ -12,7 +12,9 @@ using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using System.IO;
+using System.Collections;
 using System.Data.OracleClient;
+using System.Net;
 
 namespace ClientMain
 {
@@ -474,6 +476,141 @@ namespace ClientMain
                         }
                     }
                 }
+            }
+        }
+
+        private void btnSend_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (selection.SelectedCount == 0)
+            {
+                MessageBox.Show("请先选择需要发送的记录");
+            }
+            else
+            {
+                ArrayList alVoucherID = new ArrayList();
+                for (int i = 0; i < selection.SelectedCount; ++i)
+                {
+                    int RowIndex = selection.GetSelectedRowIndex(i);
+                    int RowHandle = gridView1.GetRowHandle(RowIndex);
+
+                    int i4Status = Convert.ToInt32(gridView1.GetRowCellDisplayText(RowHandle, colZT));
+                    string strVoucherID = gridView1.GetRowCellDisplayText(RowHandle, colVOUCHERID);
+
+                    if (i4Status < 15)
+                    {
+                        alVoucherID.Clear();
+                        MessageBox.Show("所选记录未被审核，请重新选择！");
+                        break;
+                    }
+                    else if (i4Status == 90)
+                    {
+                        alVoucherID.Clear();
+                        MessageBox.Show("所选记录已被发送，请重新选择！");
+                        break;
+                    }
+                    else
+                    {
+                        alVoucherID.Add(strVoucherID);
+                    }
+                }
+
+                selection.ClearSelection();
+
+                if (alVoucherID.Count > 0)
+                {
+                    for (int i = 0; i < alVoucherID.Count; ++i)
+                    {
+                        string strVoucherID = alVoucherID[i].ToString();
+                        fgPostXML2YY(strVoucherID);
+                    }
+                }                
+
+                alVoucherID.Clear();
+                unitOfWork1.DropIdentityMap();
+                xpServerCollectionSource1.Reload();
+            }
+        }
+
+        private bool fgPostXML2YY(string strVoucherID)
+        {
+            bool fgSuccess = false;
+            using (OracleConnection connection = new OracleConnection(FrmLogin.strDataCent))
+            {
+                connection.Open();
+                OracleCommand command = connection.CreateCommand();
+                OracleTransaction transaction = connection.BeginTransaction();
+                command.Connection = connection;
+                command.Transaction = transaction;
+
+                string sql = "select company from jt_c_fhpz where voucherid = '" + strVoucherID + "'";
+                OracleDataAdapter Ada = new OracleDataAdapter(sql, connection);
+                Ada.SelectCommand.Transaction = transaction;
+                DataSet ds = new DataSet();
+                Ada.Fill(ds);
+                string strReceiver = "";
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    strReceiver = ds.Tables[0].Rows[0]["COMPANY"].ToString();
+                }                
+
+                string sqlXML = "select XML from jt_c_fhpz_xml where cgshpzid = '" + strVoucherID + "'";
+                OracleDataAdapter adaXML = new OracleDataAdapter(sqlXML, connection);
+                adaXML.SelectCommand.Transaction = transaction;
+                DataSet dsXML = new DataSet();
+                adaXML.Fill(dsXML);
+                string strXML = "";
+                if (dsXML.Tables[0].Rows.Count > 0)
+                {
+                    strXML = dsXML.Tables[0].Rows[0]["XML"].ToString();
+                }
+
+                string strURL = @"http://61.191.17.203:80/service/XChangeServlet?account=0002&receiver=" + strReceiver;
+                WebRequest req = null;
+                WebResponse rsp = null;
+                try
+                {
+                    req = WebRequest.Create(strURL);
+                    req.Method = "POST";
+                    req.ContentType = "text/xml";
+
+                    StreamWriter writer = new StreamWriter(req.GetRequestStream());
+                    writer.WriteLine(strXML);
+                    writer.Close();
+
+                    rsp = req.GetResponse();
+                    StreamReader reader = new StreamReader(rsp.GetResponseStream());
+                    string result = reader.ReadToEnd();
+                    MessageBox.Show(result);
+
+                    int idxSuccess = result.IndexOf("successful=\"Y\"");
+                    if (idxSuccess > 0)
+                    {
+                        fgSuccess = true;
+
+                        string strSQL = "update jt_c_fhpz set zt = '90', czrq = sysdate where voucherid = '" + strVoucherID + "'";
+                        command.CommandText = strSQL;
+                        command.ExecuteNonQuery();
+                        transaction.Commit();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    if (req != null)
+                    {
+                        req.GetRequestStream().Close();
+                    }
+                    if (rsp != null)
+                    {
+                        rsp.GetResponseStream().Close();
+                    }
+                    connection.Close();
+                }
+                return fgSuccess;
             }
         }
     }
