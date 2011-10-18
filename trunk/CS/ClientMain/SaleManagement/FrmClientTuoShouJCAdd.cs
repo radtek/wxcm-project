@@ -126,7 +126,7 @@ namespace ClientMain
         private string LoadtxtCZY(string id)
         {
             string name = "";
-            OracleConnection conn = new OracleConnection(StrCon);
+            OracleConnection conn = new OracleConnection(FrmLogin.strCon);
             string selectempname = "select NAME from SYS_EMPLOYEES where EMPLOYEEID='" + id + "'";
             OracleCommand mycomm = new OracleCommand(selectempname, conn);
             OracleDataReader myreader;
