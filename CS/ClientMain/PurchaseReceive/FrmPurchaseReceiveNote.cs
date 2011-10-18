@@ -441,7 +441,7 @@ namespace ClientMain
                                 }
 
                                 string strCGSHID = gridView1.GetRowCellDisplayText(RowHandle, colCGSHID);
-                                command.CommandText = "INSERT INTO TEMP_SAVE_ID (TEMPID, ID) Values (temp_id_seq.nextval, '" + strCGSHID + "')";
+                                command.CommandText = "INSERT INTO TEMP_SAVE_ID (TEMPID, ID) Values (temp_save_id_seq.nextval, '" + strCGSHID + "')";
                                 command.ExecuteNonQuery();
                             }
 
@@ -537,7 +537,7 @@ namespace ClientMain
                                 }
 
                                 string strCGSHID = gridView1.GetRowCellDisplayText(RowHandle, colCGSHID);
-                                command.CommandText = "INSERT INTO TEMP_SAVE_ID (TEMPID, ID) Values (temp_id_seq.nextval, '" + strCGSHID + "')";
+                                command.CommandText = "INSERT INTO TEMP_SAVE_ID (TEMPID, ID) Values (temp_save_id_seq.nextval, '" + strCGSHID + "')";
                                 command.ExecuteNonQuery();
                             }
 

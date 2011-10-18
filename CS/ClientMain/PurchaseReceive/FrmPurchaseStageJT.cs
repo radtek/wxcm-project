@@ -1092,7 +1092,7 @@ namespace ClientMain
                                     int RowIndex = selection1.GetSelectedRowIndex(i);
                                     int RowHandle = gridView1.GetRowHandle(RowIndex);
                                     string strCGJSDID = gridView1.GetRowCellValue(RowHandle, colCGJSDID).ToString();
-                                    cmd.CommandText = "INSERT INTO TEMP_SAVE_ID (TEMPID, ID) Values (temp_id_seq.nextval, '" + strCGJSDID + "')";
+                                    cmd.CommandText = "INSERT INTO TEMP_SAVE_ID (TEMPID, ID) Values (temp_save_id_seq.nextval, '" + strCGJSDID + "')";
                                     cmd.ExecuteNonQuery();
                                 }
                                     selection1.ClearSelection();
@@ -1426,7 +1426,7 @@ namespace ClientMain
                                     int RowIndex = selection1.GetSelectedRowIndex(i);
                                     int RowHandle = gridView1.GetRowHandle(RowIndex);
                                     string strCGJSDID = gridView1.GetRowCellValue(RowHandle, colCGJSDID).ToString();
-                                    cmd.CommandText = "INSERT INTO TEMP_SAVE_ID (TEMPID, ID) Values (temp_id_seq.nextval, '" + strCGJSDID + "')";
+                                    cmd.CommandText = "INSERT INTO TEMP_SAVE_ID (TEMPID, ID) Values (temp_save_id_seq.nextval, '" + strCGJSDID + "')";
                                     cmd.ExecuteNonQuery();
                                 }
                                 selection1.ClearSelection();

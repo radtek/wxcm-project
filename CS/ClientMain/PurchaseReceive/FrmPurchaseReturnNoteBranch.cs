@@ -404,7 +404,7 @@ namespace ClientMain
                                 }
 
                                 string strJTDID = gridView1.GetRowCellDisplayText(RowHandle, colJTDID);
-                                command.CommandText = "INSERT INTO TEMP_SAVE_ID (TEMPID, ID) Values (temp_id_seq.nextval, '" + strJTDID + "')";
+                                command.CommandText = "INSERT INTO TEMP_SAVE_ID (TEMPID, ID) Values (temp_save_id_seq.nextval, '" + strJTDID + "')";
                                 command.ExecuteNonQuery();
                             }
 
@@ -500,7 +500,7 @@ namespace ClientMain
                                 //}
 
                                 string strJTDID = gridView1.GetRowCellDisplayText(RowHandle, colJTDID);
-                                command.CommandText = "INSERT INTO TEMP_SAVE_ID (TEMPID, ID) Values (temp_id_seq.nextval, '" + strJTDID + "')";
+                                command.CommandText = "INSERT INTO TEMP_SAVE_ID (TEMPID, ID) Values (temp_save_id_seq.nextval, '" + strJTDID + "')";
                                 command.ExecuteNonQuery();
                             }
 

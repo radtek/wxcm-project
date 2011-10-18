@@ -367,7 +367,7 @@ namespace ClientMain
                                 string strGYSID = gridView1.GetRowCellDisplayText(RowHandle, colGYSID).ToString();
                                 string strBDWID = gridView1.GetRowCellDisplayText(RowHandle, colBDWID).ToString();
 
-                                cmd.CommandText = "INSERT INTO TEMP_SAVE_ID (tempid，id,wlbmid,ztid) Values (temp_id_seq.nextval, '" + strYCKCID + "','" + strGYSID + "','" + strBDWID + "')";
+                                cmd.CommandText = "INSERT INTO TEMP_SAVE_ID (tempid，id,wlbmid,ztid) Values (temp_save_id_seq.nextval, '" + strYCKCID + "','" + strGYSID + "','" + strBDWID + "')";
                                 cmd.ExecuteNonQuery();
 
 
