@@ -317,7 +317,7 @@ namespace ClientMain
         }
         private void LoadtxtCZY()
         {
-            OracleConnection conn = new OracleConnection(StrCon);
+            OracleConnection conn = new OracleConnection(FrmLogin.strCon);
             string selectempname = "select NAME from SYS_EMPLOYEES where EMPLOYEEID='" + this.txtCZY.Tag + "'";
             OracleCommand mycomm = new OracleCommand(selectempname, conn);
             OracleDataReader myreader;
