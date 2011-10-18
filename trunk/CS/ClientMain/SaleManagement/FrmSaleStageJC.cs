@@ -1216,7 +1216,7 @@ namespace ClientMain
                                     int RowIndex = selection1.GetSelectedRowIndex(i);
                                     int RowHandle = gridView1.GetRowHandle(RowIndex);
                                     string strXSJSDID = gridView1.GetRowCellValue(RowHandle, colXSJSDID).ToString();
-                                    cmd.CommandText = "INSERT INTO TEMP_SAVE_ID (TEMPID, ID) Values (temp_id_seq.nextval, '" + strXSJSDID + "')";
+                                    cmd.CommandText = "INSERT INTO TEMP_SAVE_ID (TEMPID, ID) Values (temp_save_id_seq.nextval, '" + strXSJSDID + "')";
                                     cmd.ExecuteNonQuery();
                                 }
                                 selection1.ClearSelection();
@@ -1438,7 +1438,7 @@ namespace ClientMain
                                     int RowHandle = gridView1.GetRowHandle(RowIndex);
                                     string strXSJSDH = gridView1.GetRowCellDisplayText(RowHandle, colXSJSDH);
                                     string strXSJSDID = gridView1.GetRowCellValue(RowHandle, colXSJSDID).ToString();
-                                    cmd.CommandText = "INSERT INTO TEMP_SAVE_ID (TEMPID, ID) Values (temp_id_seq.nextval, '" + strXSJSDID + "')";
+                                    cmd.CommandText = "INSERT INTO TEMP_SAVE_ID (TEMPID, ID) Values (temp_save_id_seq.nextval, '" + strXSJSDID + "')";
                                     cmd.ExecuteNonQuery();
                                 }
                                 selection1.ClearSelection();
@@ -1534,7 +1534,7 @@ namespace ClientMain
                                     int RowIndex = selection1.GetSelectedRowIndex(i);
                                     int RowHandle = gridView1.GetRowHandle(RowIndex);
                                     string strXSJSDID = gridView1.GetRowCellValue(RowHandle, colXSJSDID).ToString();
-                                    cmd.CommandText = "INSERT INTO TEMP_SAVE_ID (TEMPID, ID) Values (temp_id_seq.nextval, '" + strXSJSDID + "')";
+                                    cmd.CommandText = "INSERT INTO TEMP_SAVE_ID (TEMPID, ID) Values (temp_save_id_seq.nextval, '" + strXSJSDID + "')";
                                     cmd.ExecuteNonQuery();
                                 }
                                 selection1.ClearSelection();

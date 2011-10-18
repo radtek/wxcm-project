@@ -172,7 +172,7 @@ namespace ClientMain
 
                             string strXSDID = gridView1.GetRowCellDisplayText(RowHandle, colXSDID).Trim();
                             string strSJLX = gridView1.GetRowCellDisplayText(RowHandle, colSJLX).Trim();
-                            command.CommandText = "insert into Temp_Save_Id(id,wlbmid,tempid) values ('" + strXSDID + "','" + strSJLX + "',temp_id_seq.nextval)";
+                            command.CommandText = "insert into Temp_Save_Id(id,wlbmid,tempid) values ('" + strXSDID + "','" + strSJLX + "',temp_save_id_seq.nextval)";
 
                             command.ExecuteNonQuery();
 
@@ -242,7 +242,7 @@ namespace ClientMain
 
                             string strXSDID = gridView1.GetRowCellDisplayText(RowHandle, colXSDID).Trim();
                             string strSJLX = gridView1.GetRowCellDisplayText(RowHandle, colSJLX).Trim();
-                            command.CommandText = "insert into Temp_Save_Id(id,wlbmid,tempid) values ('" + strXSDID + "','" + strSJLX + "',temp_id_seq.nextval)";
+                            command.CommandText = "insert into Temp_Save_Id(id,wlbmid,tempid) values ('" + strXSDID + "','" + strSJLX + "',temp_save_id_seq.nextval)";
 
                             command.ExecuteNonQuery();
 
@@ -312,7 +312,7 @@ namespace ClientMain
 
                             string strXSDID = gridView1.GetRowCellDisplayText(RowHandle, colXSDID).Trim();
                             string strSJLX = gridView1.GetRowCellDisplayText(RowHandle, colSJLX).Trim();
-                            command.CommandText = "insert into Temp_Save_Id(id,wlbmid,tempid) values ('" + strXSDID + "','" + strSJLX + "',temp_id_seq.nextval)";
+                            command.CommandText = "insert into Temp_Save_Id(id,wlbmid,tempid) values ('" + strXSDID + "','" + strSJLX + "',temp_save_id_seq.nextval)";
 
                             command.ExecuteNonQuery();
 
@@ -382,7 +382,7 @@ namespace ClientMain
                                 int RowHandle = gridView1.GetRowHandle(RowIndex);
                                 string strXSDID = gridView1.GetRowCellDisplayText(RowHandle, colXSDID).Trim();
                                 string strSJLX = gridView1.GetRowCellDisplayText(RowHandle, colSJLX).Trim();
-                                command.CommandText = "insert into Temp_Save_Id(id,wlbmid,tempid) values ('" + strXSDID + "','" + strSJLX + "',temp_id_seq.nextval)";
+                                command.CommandText = "insert into Temp_Save_Id(id,wlbmid,tempid) values ('" + strXSDID + "','" + strSJLX + "',temp_save_id_seq.nextval)";
 
                                 command.ExecuteNonQuery();
 

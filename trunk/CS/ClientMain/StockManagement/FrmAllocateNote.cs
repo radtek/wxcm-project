@@ -316,7 +316,7 @@ namespace ClientMain
                                 }
 
                                 string strDBDID = gridView1.GetRowCellDisplayText(RowHandle, colDBDID);
-                                command.CommandText = "INSERT INTO TEMP_SAVE_ID (TEMPID, ID) Values (temp_id_seq.nextval, '" + strDBDID + "')";
+                                command.CommandText = "INSERT INTO TEMP_SAVE_ID (TEMPID, ID) Values (temp_save_id_seq.nextval, '" + strDBDID + "')";
                                 command.ExecuteNonQuery();
                             }
 
