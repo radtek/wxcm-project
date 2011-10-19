@@ -1024,6 +1024,7 @@ namespace ClientMain
                             int RowHandle = gridView1.GetRowHandle(RowIndex);
                             string strCGFPID = gridView1.GetRowCellDisplayText(RowHandle, colCGFPID).ToString();
                             string strCGJSDH = gridView1.GetRowCellDisplayText(RowHandle, colCGJSDH).ToString();
+                           // string strHXRQ=gridView1.GetRowCellDisplayText(RowHandle,col)
                             string strZT = gridView1.GetRowCellDisplayText(RowHandle, colZT).ToString();
                             string strZDRQ = gridView1.GetRowCellDisplayText(RowHandle, colZDRQ).ToString();
                             DateTime dt1 = Convert.ToDateTime(strZDRQ);
