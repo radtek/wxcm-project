@@ -43,20 +43,17 @@
             this.label2 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(287, 16);
+            this.button3.Location = new System.Drawing.Point(296, 295);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(96, 36);
+            this.button3.Size = new System.Drawing.Size(75, 25);
             this.button3.TabIndex = 23;
             this.button3.Text = "清空";
             this.button3.UseVisualStyleBackColor = true;
@@ -65,9 +62,9 @@
             // button2
             // 
             this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.Location = new System.Drawing.Point(151, 16);
+            this.button2.Location = new System.Drawing.Point(171, 295);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(95, 36);
+            this.button2.Size = new System.Drawing.Size(75, 25);
             this.button2.TabIndex = 22;
             this.button2.Text = "退出";
             this.button2.UseVisualStyleBackColor = true;
@@ -75,9 +72,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(14, 16);
+            this.button1.Location = new System.Drawing.Point(43, 295);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(96, 36);
+            this.button1.Size = new System.Drawing.Size(75, 25);
             this.button1.TabIndex = 21;
             this.button1.Text = "进入";
             this.button1.UseVisualStyleBackColor = true;
@@ -87,9 +84,9 @@
             // 
             this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(114, 241);
+            this.comboBox2.Location = new System.Drawing.Point(122, 240);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(267, 22);
+            this.comboBox2.Size = new System.Drawing.Size(249, 22);
             this.comboBox2.Sorted = true;
             this.comboBox2.TabIndex = 20;
             this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
@@ -98,9 +95,9 @@
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(114, 191);
+            this.comboBox1.Location = new System.Drawing.Point(122, 190);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(267, 22);
+            this.comboBox1.Size = new System.Drawing.Size(249, 22);
             this.comboBox1.Sorted = true;
             this.comboBox1.TabIndex = 19;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
@@ -108,10 +105,10 @@
             // loginpassword
             // 
             this.loginpassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.loginpassword.Location = new System.Drawing.Point(114, 141);
+            this.loginpassword.Location = new System.Drawing.Point(122, 140);
             this.loginpassword.Name = "loginpassword";
             this.loginpassword.PasswordChar = '*';
-            this.loginpassword.Size = new System.Drawing.Size(267, 22);
+            this.loginpassword.Size = new System.Drawing.Size(249, 22);
             this.loginpassword.TabIndex = 18;
             this.loginpassword.TextChanged += new System.EventHandler(this.loginpassword_TextChanged);
             this.loginpassword.Validating += new System.ComponentModel.CancelEventHandler(this.loginpassword_Validating);
@@ -119,16 +116,16 @@
             // loginuser
             // 
             this.loginuser.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.loginuser.Location = new System.Drawing.Point(114, 91);
+            this.loginuser.Location = new System.Drawing.Point(122, 90);
             this.loginuser.Name = "loginuser";
-            this.loginuser.Size = new System.Drawing.Size(267, 22);
+            this.loginuser.Size = new System.Drawing.Size(249, 22);
             this.loginuser.TabIndex = 17;
             this.loginuser.Validating += new System.ComponentModel.CancelEventHandler(this.loginuser_Validating);
             // 
             // label5
             // 
-            this.label5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.Location = new System.Drawing.Point(33, 241);
+            this.label5.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label5.Location = new System.Drawing.Point(41, 240);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(75, 22);
             this.label5.TabIndex = 16;
@@ -137,8 +134,8 @@
             // 
             // label4
             // 
-            this.label4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.Location = new System.Drawing.Point(33, 191);
+            this.label4.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label4.Location = new System.Drawing.Point(41, 190);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(75, 22);
             this.label4.TabIndex = 15;
@@ -147,8 +144,8 @@
             // 
             // label3
             // 
-            this.label3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(33, 140);
+            this.label3.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.Location = new System.Drawing.Point(41, 140);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(75, 22);
             this.label3.TabIndex = 14;
@@ -157,8 +154,8 @@
             // 
             // label2
             // 
-            this.label2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(33, 90);
+            this.label2.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.Location = new System.Drawing.Point(41, 90);
             this.label2.Name = "label2";
             this.label2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label2.Size = new System.Drawing.Size(75, 22);
@@ -174,34 +171,14 @@
             // 
             this.errorProvider2.ContainerControl = this;
             // 
-            // pictureBox1
+            // pictureEdit1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(-2, -2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(427, 69);
-            this.pictureBox1.TabIndex = 24;
-            this.pictureBox1.TabStop = false;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.PowderBlue;
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.button1);
-            this.panel2.Controls.Add(this.button3);
-            this.panel2.Controls.Add(this.button2);
-            this.panel2.Location = new System.Drawing.Point(-2, 278);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(428, 69);
-            this.panel2.TabIndex = 26;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(34, 54);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 14);
-            this.label1.TabIndex = 24;
+            this.pictureEdit1.EditValue = ((object)(resources.GetObject("pictureEdit1.EditValue")));
+            this.pictureEdit1.Location = new System.Drawing.Point(0, 0);
+            this.pictureEdit1.Name = "pictureEdit1";
+            this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
+            this.pictureEdit1.Size = new System.Drawing.Size(420, 67);
+            this.pictureEdit1.TabIndex = 24;
             // 
             // FrmLogin
             // 
@@ -211,9 +188,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.button2;
-            this.ClientSize = new System.Drawing.Size(421, 342);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.pictureBox1);
+            this.ClientSize = new System.Drawing.Size(422, 342);
+            this.Controls.Add(this.pictureEdit1);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.loginpassword);
@@ -228,9 +207,7 @@
             this.Load += new System.EventHandler(this.FrmLogin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -251,8 +228,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.ErrorProvider errorProvider2;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label1;
+        private DevExpress.XtraEditors.PictureEdit pictureEdit1;
     }
 }

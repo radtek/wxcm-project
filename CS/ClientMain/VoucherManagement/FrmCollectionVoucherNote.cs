@@ -573,7 +573,7 @@ namespace ClientMain
                     req.Method = "POST";
                     req.ContentType = "text/xml";
 
-                    StreamWriter writer = new StreamWriter(req.GetRequestStream());
+                    StreamWriter writer = new StreamWriter(req.GetRequestStream(), Encoding.GetEncoding("GB2312"));
                     writer.WriteLine(strXML);
                     writer.Close();
 

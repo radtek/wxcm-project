@@ -8435,12 +8435,6 @@ namespace XINHUA
             get { return fORISTATUSMC; }
             set { SetPropertyValue<string>("ORISTATUSMC", ref fORISTATUSMC, value); }
         }
-        string fBZ;
-        public string BZ
-        {
-            get { return fBZ; }
-            set { SetPropertyValue<string>("BZ", ref fBZ, value); }
-        }
         string fZTMC;
         [Size(40)]
         public string ZTMC
@@ -8669,12 +8663,6 @@ namespace XINHUA
             get { return fORISTATUSMC; }
             set { SetPropertyValue<string>("ORISTATUSMC", ref fORISTATUSMC, value); }
         }
-        string fBZ;
-        public string BZ
-        {
-            get { return fBZ; }
-            set { SetPropertyValue<string>("BZ", ref fBZ, value); }
-        }
         string fZTMC;
         [Size(40)]
         public string ZTMC
@@ -8902,12 +8890,6 @@ namespace XINHUA
         {
             get { return fORISTATUSMC; }
             set { SetPropertyValue<string>("ORISTATUSMC", ref fORISTATUSMC, value); }
-        }
-        string fBZ;
-        public string BZ
-        {
-            get { return fBZ; }
-            set { SetPropertyValue<string>("BZ", ref fBZ, value); }
         }
         string fZTMC;
         [Size(40)]
