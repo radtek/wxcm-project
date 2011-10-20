@@ -25,17 +25,19 @@ namespace ClientMain
         private static string strZTMC = "";
 
         private string m_PassWord = null;
-        
+
         public const string strCon = "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.8.222)(PORT=1521))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=XINHUA)));User Id=xxb;Password=pass;";
 
         public const string strDataCent = "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.8.109)(PORT=1521))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=DATACENTER)));User Id=jt_user;Password=jt_user;";
+        // test public const string strDataCent = "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.8.222)(PORT=1521))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=XINHUA)));User Id=xxb;Password=pass;";
 
         public static string xpoConStr = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
 
         public static string xpoDataCentStr = OracleConnectionProvider.GetConnectionString("DATACENT", "jt_user", "jt_user");
+        // test public static string xpoDataCentStr = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
 
         public const int MAXROWCOUNT = 50000;
-        
+
         public static void vDrawFootCell(FooterCellCustomDrawEventArgs e, DevExpress.XtraGrid.Columns.GridColumn col, string strSum)
         {
             if (e.Column == col)
@@ -329,34 +331,23 @@ namespace ClientMain
                 try
                 {
                     OracleConnection Con = new OracleConnection(strCon);
-                    string strYTHNO = "";
                     OracleDataAdapter adapter = new OracleDataAdapter(strPass, Con);
                     DataSet ds = new DataSet();
-                    adapter.Fill(ds, "SYS_USER_PASS");
-                    foreach (DataRowView theRow in ds.Tables["SYS_USER_PASS"].DefaultView)
-                    {
-                        m_PassWord = theRow.Row["PASSWORD"].ToString();
-                        strYTHNO = theRow.Row["YTHPTNO"].ToString();
-                    }
+                    adapter.Fill(ds);
+                    m_PassWord = ds.Tables[0].Rows[0]["PASSWORD"].ToString();
+                    strUserID = ds.Tables[0].Rows[0]["EMPID"].ToString();
 
                     if (m_PassWord != this.loginpassword.Text)
                     {
                         error = "密码错误！！";
                     }
-                    else if (!String.IsNullOrEmpty(strYTHNO))
-                    {
-                        string sqlUSERID = "select t.operatorid, t.operatorname from base_operator t where t.operatorno = '" + strYTHNO + "'";
 
-                        OracleDataAdapter adaUserID = new OracleDataAdapter(sqlUSERID, Con);
-                        DataSet dsUserID = new DataSet();
-                        adaUserID.Fill(dsUserID, "BASE_OPERATOR");
-                        foreach (DataRowView theRow in dsUserID.Tables["BASE_OPERATOR"].DefaultView)
-                        {
-                            strUserID = theRow.Row["OPERATORID"].ToString();
-                            strUserName = theRow.Row["OPERATORNAME"].ToString();
-                        }
+                    string sqlUSERNAME = "select t.operatorname from base_operator t where t.operatorid = '" + strUserID + "'";
 
-                    }
+                    OracleDataAdapter adaUserName = new OracleDataAdapter(sqlUSERNAME, Con);
+                    DataSet dsUserName = new DataSet();
+                    adaUserName.Fill(dsUserName);
+                    strUserName = dsUserName.Tables[0].Rows[0]["OPERATORNAME"].ToString();
 
                 }
                 catch (Exception ex)
