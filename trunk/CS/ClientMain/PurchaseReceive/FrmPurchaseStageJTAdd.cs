@@ -649,7 +649,7 @@ namespace ClientMain
             }
             else
             {
-                if (this.Tag.ToString() == "JT_CGJSD_ZDJS_ADD" || this.Tag.ToString() == "JT_CGJSD_ZDJS_ALTRE")
+                if (this.Tag.ToString() == "JT_CGJSD_ZDJS_ADD" || this.Tag.ToString() == "JT_CGJSD_ZDJS_ALTER")
                 {
                     using (OracleConnection connection = new OracleConnection(StrCon))
                     {
