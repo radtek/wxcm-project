@@ -1054,7 +1054,7 @@ namespace ClientMain
 
                         string strFKPZID = gridView1.GetRowCellDisplayText(RowHandle, colFKPZID).ToString();
                         string strCGJSDH = gridView1.GetRowCellValue(RowHandle, colCGJSDH).ToString();
-                        string strFKRQ = gridView1.GetRowCellDisplayText(RowHandle, colFKRQ).ToString();
+                 //       string strFKRQ = gridView1.GetRowCellDisplayText(RowHandle, colFKRQ).ToString();
                         string strZT = gridView1.GetRowCellDisplayText(RowHandle, colZT).ToString();
 
                         if (!String.IsNullOrEmpty(strFKPZID))
@@ -1064,7 +1064,8 @@ namespace ClientMain
                             break;
 
                         }
-                        else if (String.IsNullOrEmpty(strFKRQ))
+
+                        else if (Convert.ToInt32(strZT)<44)
                         {
                             fgcheck = false;
                             MessageBox.Show("账号" + strCGJSDH + "还未核销");
