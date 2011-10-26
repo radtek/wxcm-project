@@ -244,6 +244,7 @@ namespace ClientMain
             this.btnBillQuery.Visible = false;
             this.btnConfirm.Visible = false;
             this.btnAlter.Visible = false;
+            this.btnView.Visible = false;
             this.xpServerCollectionSource1.Dispose();
             this.gridControl1.Visible = false;
             this.gridControl2.Visible = true;
@@ -605,6 +606,43 @@ namespace ClientMain
             {
                 unitOfWork2.DropIdentityMap();
                 xpServerCollectionSource2.Reload();
+            }
+        }
+
+        private void btnColCustomize_Click(object sender, EventArgs e)
+        {
+            if (this.Tag.ToString() == "JT_C_CGFP")
+            {
+                gridView1.ShowCustomization();
+
+            }
+
+        }
+
+        private void btnSaveLayout_Click(object sender, EventArgs e)
+        {
+            if (this.Tag.ToString() == "JT_C_CGFP")
+            {
+                string strLayout = FrmLogin.getUser + "_FrmPurchaseInvoiceJTLayout.xml";
+                FileStream stream = new FileStream(strLayout, FileMode.Create);
+                gridView1.SaveLayoutToStream(stream);
+                stream.Close();
+
+            }
+
+        }
+
+        private void btnLoadLayout_Click(object sender, EventArgs e)
+        {
+            string strLayout = FrmLogin.getUser + "_FrmPurchaseInvoiceJTLayout.xml";
+            if (File.Exists(strLayout))
+            {
+                gridView1.RestoreLayoutFromXml(strLayout);
+                MessageBox.Show("载入视图成功！");
+            }
+            else
+            {
+                MessageBox.Show("未发现视图保存文件，请确认是否曾经保存！");
             }
         }
 
