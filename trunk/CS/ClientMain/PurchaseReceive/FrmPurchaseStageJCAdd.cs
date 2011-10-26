@@ -37,7 +37,7 @@ namespace ClientMain
             selection.CheckMarkColumn.VisibleIndex = 0;
 
             this.txtJSDH.Tag = strCGJSDID;
-
+            xpServerCollectionSource1.FixedFilterString = "[CGJSDID] = \'" + this.txtJSDH.Tag.ToString() + "\'";
 
         }
         private void gridView1_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
@@ -116,7 +116,7 @@ namespace ClientMain
         private string GetXDtag(string tagtext)//传递选单的TAG
         {
             string tagname = "";
-            if (tagtext == "JC_CGJSD_ZDJS_ADD" || tagtext == "JC_CGJSD_ZDJS_ALTER")
+            if (tagtext == "JC_CGJSD_ZDJS_ADD" || tagtext == "JC_C_CGJSD_ZDJS_ALTER")
             {
                 tagname = "JC_CGJSD_ZDJS_XD";
             }
@@ -307,7 +307,7 @@ namespace ClientMain
         //取操作员姓名
         private void LoadtxtCZY()
         {
-            OracleConnection conn = new OracleConnection(StrCon);
+            OracleConnection conn = new OracleConnection(FrmLogin.strCon);
             string selectempname = "select NAME from SYS_EMPLOYEES where EMPLOYEEID='" + this.txtCZY.Tag + "'";
             OracleCommand mycomm = new OracleCommand(selectempname, conn);
             OracleDataReader myreader;
@@ -370,7 +370,7 @@ namespace ClientMain
                 LoadGridView_SX();
                 JSLX = "实销实结";
             }
-            else if (this.Tag.ToString() == "JC_CGJSD_ZDJS_ALTER")
+            else if (this.Tag.ToString() == "JC_C_CGJSD_ZDJS_ALTER")
             {
                 LoadControl_ALTER();
                 LoadContent_ALTER();
@@ -849,8 +849,8 @@ namespace ClientMain
                     this.ComboxJSFS.Enabled = true;
                     this.txtBZ.ReadOnly = false;
                     unitOfWork1.DropIdentityMap();
-                    this.xpServerCollectionSource1.FixedFilterString = "[CGJSDID] = \'" + this.txtJSDH.Tag.ToString() + "\'";
-
+              //      this.xpServerCollectionSource1.FixedFilterString = "[CGJSDID] = \'" + this.txtJSDH.Tag.ToString() + "\'";
+                    LoadInitializeLook();
                     xpServerCollectionSource1.Reload();
                     gridView1.BestFitColumns();
                 }

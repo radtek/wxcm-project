@@ -588,10 +588,10 @@ namespace ClientMain
                     FrmCGJSDZDJS.ShowDialog();//FrmCGJSDSXSJ
                     break;
                 case "604"://县市采购结算单整单结算
-                    FrmPurchaseStageJC FrmCGJSDZDJSJC = new FrmPurchaseStageJC();
-                    FrmCGJSDZDJSJC.Text = "县市——采购结算单——整单结算";
-                    FrmCGJSDZDJSJC.Tag = "JC_C_CGJSD_ZDJS";
-                    FrmCGJSDZDJSJC.ShowDialog();//FrmCGJSDSXSJ
+                    FrmPurchaseStageJC FrmPurchaseStageJC = new FrmPurchaseStageJC();
+                    FrmPurchaseStageJC.Text = "县市——采购结算单——整单结算";
+                    FrmPurchaseStageJC.Tag = "JC_C_CGJSD_ZDJS";
+                    FrmPurchaseStageJC.ShowDialog();//FrmCGJSDSXSJ
                     break;
                 case "528"://县市采购结算单实销实结
                     FrmPurchaseStageJC FrmCGJSDXSXJJC = new FrmPurchaseStageJC();

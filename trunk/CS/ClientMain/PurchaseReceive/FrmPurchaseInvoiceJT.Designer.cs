@@ -69,6 +69,10 @@
             this.btnReload = new System.Windows.Forms.ToolStripButton();
             this.btnPrintGrid = new System.Windows.Forms.ToolStripButton();
             this.btnExportGrid = new System.Windows.Forms.ToolStripButton();
+            this.btnView = new System.Windows.Forms.ToolStripDropDownButton();
+            this.btnColCustomize = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnSaveLayout = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnLoadLayout = new System.Windows.Forms.ToolStripMenuItem();
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
             this.xpServerCollectionSource2 = new DevExpress.Xpo.XPServerCollectionSource();
             this.unitOfWork2 = new DevExpress.Xpo.UnitOfWork();
@@ -169,6 +173,10 @@
             this.gridView1.OptionsSelection.MultiSelect = true;
             this.gridView1.OptionsView.ColumnAutoWidth = false;
             this.gridView1.OptionsView.ShowFooter = true;
+            this.gridView1.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView1_CustomDrawRowIndicator);
+            this.gridView1.CustomDrawFooterCell += new DevExpress.XtraGrid.Views.Grid.FooterCellCustomDrawEventHandler(this.gridView1_CustomDrawFooterCell);
+            this.gridView1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.gridView1_MouseUp);
+            this.gridView1.DoubleClick += new System.EventHandler(this.gridView1_DoubleClick);
             // 
             // colZTMC
             // 
@@ -395,7 +403,8 @@
             this.btnConfirm,
             this.btnReload,
             this.btnPrintGrid,
-            this.btnExportGrid});
+            this.btnExportGrid,
+            this.btnView});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1059, 29);
@@ -444,30 +453,67 @@
             // 
             // btnReload
             // 
+            this.btnReload.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnReload.Image = ((System.Drawing.Image)(resources.GetObject("btnReload.Image")));
             this.btnReload.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnReload.Name = "btnReload";
-            this.btnReload.Size = new System.Drawing.Size(49, 26);
+            this.btnReload.Size = new System.Drawing.Size(33, 26);
             this.btnReload.Text = "刷新";
             this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
             // 
             // btnPrintGrid
             // 
+            this.btnPrintGrid.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnPrintGrid.Image = ((System.Drawing.Image)(resources.GetObject("btnPrintGrid.Image")));
             this.btnPrintGrid.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnPrintGrid.Name = "btnPrintGrid";
-            this.btnPrintGrid.Size = new System.Drawing.Size(73, 26);
+            this.btnPrintGrid.Size = new System.Drawing.Size(57, 26);
             this.btnPrintGrid.Text = "打印表格";
             this.btnPrintGrid.Click += new System.EventHandler(this.btnPrintGrid_Click);
             // 
             // btnExportGrid
             // 
+            this.btnExportGrid.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnExportGrid.Image = ((System.Drawing.Image)(resources.GetObject("btnExportGrid.Image")));
             this.btnExportGrid.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnExportGrid.Name = "btnExportGrid";
-            this.btnExportGrid.Size = new System.Drawing.Size(73, 26);
+            this.btnExportGrid.Size = new System.Drawing.Size(57, 26);
             this.btnExportGrid.Text = "导出表格";
             this.btnExportGrid.Click += new System.EventHandler(this.btnExportGrid_Click);
+            // 
+            // btnView
+            // 
+            this.btnView.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnColCustomize,
+            this.btnSaveLayout,
+            this.btnLoadLayout});
+            this.btnView.Image = ((System.Drawing.Image)(resources.GetObject("btnView.Image")));
+            this.btnView.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnView.Name = "btnView";
+            this.btnView.Size = new System.Drawing.Size(66, 26);
+            this.btnView.Text = "  视图  ";
+            // 
+            // btnColCustomize
+            // 
+            this.btnColCustomize.Name = "btnColCustomize";
+            this.btnColCustomize.Size = new System.Drawing.Size(152, 22);
+            this.btnColCustomize.Text = "定制列";
+            this.btnColCustomize.Click += new System.EventHandler(this.btnColCustomize_Click);
+            // 
+            // btnSaveLayout
+            // 
+            this.btnSaveLayout.Name = "btnSaveLayout";
+            this.btnSaveLayout.Size = new System.Drawing.Size(152, 22);
+            this.btnSaveLayout.Text = "保存视图";
+            this.btnSaveLayout.Click += new System.EventHandler(this.btnSaveLayout_Click);
+            // 
+            // btnLoadLayout
+            // 
+            this.btnLoadLayout.Name = "btnLoadLayout";
+            this.btnLoadLayout.Size = new System.Drawing.Size(152, 22);
+            this.btnLoadLayout.Text = "载入视图";
+            this.btnLoadLayout.Click += new System.EventHandler(this.btnLoadLayout_Click);
             // 
             // gridControl2
             // 
@@ -519,17 +565,10 @@
             this.gridView2.OptionsView.ColumnAutoWidth = false;
             this.gridView2.OptionsView.ShowFooter = true;
             this.gridView2.OptionsView.ShowGroupedColumns = true;
-            // 
-
-            //gridview
-
-            this.gridView1.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView1_CustomDrawRowIndicator);
-            this.gridView1.CustomDrawFooterCell += new DevExpress.XtraGrid.Views.Grid.FooterCellCustomDrawEventHandler(this.gridView1_CustomDrawFooterCell);
-            this.gridView1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.gridView1_MouseUp);
-            this.gridView1.DoubleClick += new System.EventHandler(this.gridView1_DoubleClick);
             this.gridView2.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView2_CustomDrawRowIndicator);
             this.gridView2.CustomDrawFooterCell += new DevExpress.XtraGrid.Views.Grid.FooterCellCustomDrawEventHandler(this.gridView2_CustomDrawFooterCell);
             this.gridView2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.gridView2_MouseUp);
+            // 
             // colmxCGFPH
             // 
             this.colmxCGFPH.Caption = "采购发票号";
@@ -848,5 +887,9 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ToolStripButton btnReload;
         private DevExpress.XtraGrid.Columns.GridColumn colZTID1;
+        private System.Windows.Forms.ToolStripDropDownButton btnView;
+        private System.Windows.Forms.ToolStripMenuItem btnColCustomize;
+        private System.Windows.Forms.ToolStripMenuItem btnSaveLayout;
+        private System.Windows.Forms.ToolStripMenuItem btnLoadLayout;
     }
 }
