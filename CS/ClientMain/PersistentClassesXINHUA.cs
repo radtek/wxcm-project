@@ -8435,6 +8435,12 @@ namespace XINHUA
             get { return fORISTATUSMC; }
             set { SetPropertyValue<string>("ORISTATUSMC", ref fORISTATUSMC, value); }
         }
+        string fBZ;
+        public string BZ
+        {
+            get { return fBZ; }
+            set { SetPropertyValue<string>("BZ", ref fBZ, value); }
+        }
         string fZTMC;
         [Size(40)]
         public string ZTMC
@@ -8663,6 +8669,12 @@ namespace XINHUA
             get { return fORISTATUSMC; }
             set { SetPropertyValue<string>("ORISTATUSMC", ref fORISTATUSMC, value); }
         }
+        string fBZ;
+        public string BZ
+        {
+            get { return fBZ; }
+            set { SetPropertyValue<string>("BZ", ref fBZ, value); }
+        }
         string fZTMC;
         [Size(40)]
         public string ZTMC
@@ -8890,6 +8902,12 @@ namespace XINHUA
         {
             get { return fORISTATUSMC; }
             set { SetPropertyValue<string>("ORISTATUSMC", ref fORISTATUSMC, value); }
+        }
+        string fBZ;
+        public string BZ
+        {
+            get { return fBZ; }
+            set { SetPropertyValue<string>("BZ", ref fBZ, value); }
         }
         string fZTMC;
         [Size(40)]
@@ -17905,13 +17923,7 @@ namespace XINHUA
             set { SetPropertyValue<string>("DZ", ref fDZ, value); }
         }
 
-        string fZT;
-        [Size(16)]
-        public string ZT
-        {
-            get { return fZT; }
-            set { SetPropertyValue<string>("ZT", ref fZT, value); }
-        }
+       
 
         string fKHYH;
         [Size(16)]
@@ -17953,7 +17965,13 @@ namespace XINHUA
             set { SetPropertyValue<DateTime>("CZRQ", ref fCZRQ, value); }
         }
 
-
+        string fZT;
+        [Size(16)]
+        public string ZT
+        {
+            get { return fZT; }
+            set { SetPropertyValue<string>("ZT", ref fZT, value); }
+        }
         string fYZT;
         [Size(16)]
         public string YZT
@@ -17969,12 +17987,12 @@ namespace XINHUA
             set { SetPropertyValue<string>("BZ", ref fBZ, value); }
         }
 
-        long fYGYS;
-        public long YGYS
-        {
-            get { return fYGYS; }
-            set { SetPropertyValue<long>("YGYS", ref fYGYS, value); }
-        }
+      //  long fYGYS;
+      //  public long YGYS
+      //  {
+      //      get { return fYGYS; }
+     //       set { SetPropertyValue<long>("YGYS", ref fYGYS, value); }
+     //   }
         string fFPLXMC;
         [Size(16)]
         public string FPLXMC
