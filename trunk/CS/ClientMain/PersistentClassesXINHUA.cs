@@ -3,6 +3,664 @@ using System;
 using DevExpress.Xpo;
 namespace XINHUA
 {
+    public class JT_J_DWXX : XPLiteObject
+    {
+        string fSFID;
+        [Size(16)]
+        public string SFID
+        {
+            get { return fSFID; }
+            set { SetPropertyValue<string>("SFID", ref fSFID, value); }
+        }
+        string fDQID;
+        [Size(16)]
+        public string DQID
+        {
+            get { return fDQID; }
+            set { SetPropertyValue<string>("DQID", ref fDQID, value); }
+        }
+        string fYZBM;
+        [Size(20)]
+        public string YZBM
+        {
+            get { return fYZBM; }
+            set { SetPropertyValue<string>("YZBM", ref fYZBM, value); }
+        }
+        string fTXDZ;
+        public string TXDZ
+        {
+            get { return fTXDZ; }
+            set { SetPropertyValue<string>("TXDZ", ref fTXDZ, value); }
+        }
+        string fDH;
+        [Size(40)]
+        public string DH
+        {
+            get { return fDH; }
+            set { SetPropertyValue<string>("DH", ref fDH, value); }
+        }
+        string fCZ;
+        [Size(40)]
+        public string CZ
+        {
+            get { return fCZ; }
+            set { SetPropertyValue<string>("CZ", ref fCZ, value); }
+        }
+        string fLXR;
+        [Size(20)]
+        public string LXR
+        {
+            get { return fLXR; }
+            set { SetPropertyValue<string>("LXR", ref fLXR, value); }
+        }
+        string fKHYH;
+        public string KHYH
+        {
+            get { return fKHYH; }
+            set { SetPropertyValue<string>("KHYH", ref fKHYH, value); }
+        }
+        string fZH;
+        public string ZH
+        {
+            get { return fZH; }
+            set { SetPropertyValue<string>("ZH", ref fZH, value); }
+        }
+        string fSH;
+        public string SH
+        {
+            get { return fSH; }
+            set { SetPropertyValue<string>("SH", ref fSH, value); }
+        }
+        string fEMAIL;
+        public string EMAIL
+        {
+            get { return fEMAIL; }
+            set { SetPropertyValue<string>("EMAIL", ref fEMAIL, value); }
+        }
+        string fWZ;
+        public string WZ
+        {
+            get { return fWZ; }
+            set { SetPropertyValue<string>("WZ", ref fWZ, value); }
+        }
+        string fJSFSID;
+        [Size(16)]
+        public string JSFSID
+        {
+            get { return fJSFSID; }
+            set { SetPropertyValue<string>("JSFSID", ref fJSFSID, value); }
+        }
+        decimal fTSSX;
+        public decimal TSSX
+        {
+            get { return fTSSX; }
+            set { SetPropertyValue<decimal>("TSSX", ref fTSSX, value); }
+        }
+        decimal fTSXX;
+        public decimal TSXX
+        {
+            get { return fTSXX; }
+            set { SetPropertyValue<decimal>("TSXX", ref fTSXX, value); }
+        }
+        decimal fSDSX;
+        public decimal SDSX
+        {
+            get { return fSDSX; }
+            set { SetPropertyValue<decimal>("SDSX", ref fSDSX, value); }
+        }
+        decimal fSDXX;
+        public decimal SDXX
+        {
+            get { return fSDXX; }
+            set { SetPropertyValue<decimal>("SDXX", ref fSDXX, value); }
+        }
+        decimal fZKSX;
+        public decimal ZKSX
+        {
+            get { return fZKSX; }
+            set { SetPropertyValue<decimal>("ZKSX", ref fZKSX, value); }
+        }
+        decimal fZKXX;
+        public decimal ZKXX
+        {
+            get { return fZKXX; }
+            set { SetPropertyValue<decimal>("ZKXX", ref fZKXX, value); }
+        }
+        string fJSDWID;
+        [Size(16)]
+        public string JSDWID
+        {
+            get { return fJSDWID; }
+            set { SetPropertyValue<string>("JSDWID", ref fJSDWID, value); }
+        }
+        string fDJSDBZ;
+        [Size(5)]
+        public string DJSDBZ
+        {
+            get { return fDJSDBZ; }
+            set { SetPropertyValue<string>("DJSDBZ", ref fDJSDBZ, value); }
+        }
+        string fTSJSDBZ;
+        [Size(5)]
+        public string TSJSDBZ
+        {
+            get { return fTSJSDBZ; }
+            set { SetPropertyValue<string>("TSJSDBZ", ref fTSJSDBZ, value); }
+        }
+        decimal fKHZZYFBZ;
+        public decimal KHZZYFBZ
+        {
+            get { return fKHZZYFBZ; }
+            set { SetPropertyValue<decimal>("KHZZYFBZ", ref fKHZZYFBZ, value); }
+        }
+        decimal fKHZZBZFBZ;
+        public decimal KHZZBZFBZ
+        {
+            get { return fKHZZBZFBZ; }
+            set { SetPropertyValue<decimal>("KHZZBZFBZ", ref fKHZZBZFBZ, value); }
+        }
+        decimal fKHZZQTFYBZ;
+        public decimal KHZZQTFYBZ
+        {
+            get { return fKHZZQTFYBZ; }
+            set { SetPropertyValue<decimal>("KHZZQTFYBZ", ref fKHZZQTFYBZ, value); }
+        }
+        long fCGJSZQ;
+        public long CGJSZQ
+        {
+            get { return fCGJSZQ; }
+            set { SetPropertyValue<long>("CGJSZQ", ref fCGJSZQ, value); }
+        }
+        long fTSJSZQ;
+        public long TSJSZQ
+        {
+            get { return fTSJSZQ; }
+            set { SetPropertyValue<long>("TSJSZQ", ref fTSJSZQ, value); }
+        }
+        string fSHDZ;
+        public string SHDZ
+        {
+            get { return fSHDZ; }
+            set { SetPropertyValue<string>("SHDZ", ref fSHDZ, value); }
+        }
+        string fKJDZ;
+        public string KJDZ
+        {
+            get { return fKJDZ; }
+            set { SetPropertyValue<string>("KJDZ", ref fKJDZ, value); }
+        }
+        string fMJDZ;
+        public string MJDZ
+        {
+            get { return fMJDZ; }
+            set { SetPropertyValue<string>("MJDZ", ref fMJDZ, value); }
+        }
+        string fYSFSID;
+        [Size(16)]
+        public string YSFSID
+        {
+            get { return fYSFSID; }
+            set { SetPropertyValue<string>("YSFSID", ref fYSFSID, value); }
+        }
+        string fYSFXID;
+        [Size(16)]
+        public string YSFXID
+        {
+            get { return fYSFXID; }
+            set { SetPropertyValue<string>("YSFXID", ref fYSFXID, value); }
+        }
+        string fZZDBZ;
+        [Size(5)]
+        public string ZZDBZ
+        {
+            get { return fZZDBZ; }
+            set { SetPropertyValue<string>("ZZDBZ", ref fZZDBZ, value); }
+        }
+        string fYZDBH;
+        [Size(16)]
+        public string YZDBH
+        {
+            get { return fYZDBH; }
+            set { SetPropertyValue<string>("YZDBH", ref fYZDBH, value); }
+        }
+        string fEZDBH;
+        [Size(16)]
+        public string EZDBH
+        {
+            get { return fEZDBH; }
+            set { SetPropertyValue<string>("EZDBH", ref fEZDBH, value); }
+        }
+        string fKFDZ;
+        public string KFDZ
+        {
+            get { return fKFDZ; }
+            set { SetPropertyValue<string>("KFDZ", ref fKFDZ, value); }
+        }
+        long fTDYZS;
+        public long TDYZS
+        {
+            get { return fTDYZS; }
+            set { SetPropertyValue<long>("TDYZS", ref fTDYZS, value); }
+        }
+        string fDWTJBH;
+        public string DWTJBH
+        {
+            get { return fDWTJBH; }
+            set { SetPropertyValue<string>("DWTJBH", ref fDWTJBH, value); }
+        }
+        short fCGJSYXJB;
+        public short CGJSYXJB
+        {
+            get { return fCGJSYXJB; }
+            set { SetPropertyValue<short>("CGJSYXJB", ref fCGJSYXJB, value); }
+        }
+        short fXSJSYXJB;
+        public short XSJSYXJB
+        {
+            get { return fXSJSYXJB; }
+            set { SetPropertyValue<short>("XSJSYXJB", ref fXSJSYXJB, value); }
+        }
+        short fPHYXJB;
+        public short PHYXJB
+        {
+            get { return fPHYXJB; }
+            set { SetPropertyValue<short>("PHYXJB", ref fPHYXJB, value); }
+        }
+        short fXTYXJB;
+        public short XTYXJB
+        {
+            get { return fXTYXJB; }
+            set { SetPropertyValue<short>("XTYXJB", ref fXTYXJB, value); }
+        }
+        short fJTYXJB;
+        public short JTYXJB
+        {
+            get { return fJTYXJB; }
+            set { SetPropertyValue<short>("JTYXJB", ref fJTYXJB, value); }
+        }
+        short fCGYXJB;
+        public short CGYXJB
+        {
+            get { return fCGYXJB; }
+            set { SetPropertyValue<short>("CGYXJB", ref fCGYXJB, value); }
+        }
+        string fWEBYH;
+        [Size(20)]
+        public string WEBYH
+        {
+            get { return fWEBYH; }
+            set { SetPropertyValue<string>("WEBYH", ref fWEBYH, value); }
+        }
+        string fWEBMM;
+        [Size(16)]
+        public string WEBMM
+        {
+            get { return fWEBMM; }
+            set { SetPropertyValue<string>("WEBMM", ref fWEBMM, value); }
+        }
+        string fZT;
+        [Size(4)]
+        public string ZT
+        {
+            get { return fZT; }
+            set { SetPropertyValue<string>("ZT", ref fZT, value); }
+        }
+        string fCJR;
+        [Size(10)]
+        public string CJR
+        {
+            get { return fCJR; }
+            set { SetPropertyValue<string>("CJR", ref fCJR, value); }
+        }
+        string fTYR;
+        [Size(10)]
+        public string TYR
+        {
+            get { return fTYR; }
+            set { SetPropertyValue<string>("TYR", ref fTYR, value); }
+        }
+        DateTime fCZRQ;
+        public DateTime CZRQ
+        {
+            get { return fCZRQ; }
+            set { SetPropertyValue<DateTime>("CZRQ", ref fCZRQ, value); }
+        }
+        string fBZ;
+        public string BZ
+        {
+            get { return fBZ; }
+            set { SetPropertyValue<string>("BZ", ref fBZ, value); }
+        }
+        string fSFZT;
+        [Size(5)]
+        public string SFZT
+        {
+            get { return fSFZT; }
+            set { SetPropertyValue<string>("SFZT", ref fSFZT, value); }
+        }
+        string fCWXTID;
+        [Size(16)]
+        public string CWXTID
+        {
+            get { return fCWXTID; }
+            set { SetPropertyValue<string>("CWXTID", ref fCWXTID, value); }
+        }
+        string fDWID;
+        [Key]
+        [Size(16)]
+        public string DWID
+        {
+            get { return fDWID; }
+            set { SetPropertyValue<string>("DWID", ref fDWID, value); }
+        }
+        string fDWBH;
+        [Size(16)]
+        public string DWBH
+        {
+            get { return fDWBH; }
+            set { SetPropertyValue<string>("DWBH", ref fDWBH, value); }
+        }
+        string fDWMC;
+        public string DWMC
+        {
+            get { return fDWMC; }
+            set { SetPropertyValue<string>("DWMC", ref fDWMC, value); }
+        }
+        string fDWJC;
+        [Size(20)]
+        public string DWJC
+        {
+            get { return fDWJC; }
+            set { SetPropertyValue<string>("DWJC", ref fDWJC, value); }
+        }
+        string fZJM;
+        [Size(10)]
+        public string ZJM
+        {
+            get { return fZJM; }
+            set { SetPropertyValue<string>("ZJM", ref fZJM, value); }
+        }
+        string fSJDWID;
+        [Size(16)]
+        public string SJDWID
+        {
+            get { return fSJDWID; }
+            set { SetPropertyValue<string>("SJDWID", ref fSJDWID, value); }
+        }
+        string fDWSX;
+        [Size(5)]
+        public string DWSX
+        {
+            get { return fDWSX; }
+            set { SetPropertyValue<string>("DWSX", ref fDWSX, value); }
+        }
+        string fBMLXID;
+        [Size(16)]
+        public string BMLXID
+        {
+            get { return fBMLXID; }
+            set { SetPropertyValue<string>("BMLXID", ref fBMLXID, value); }
+        }
+        string fGYSLXID;
+        [Size(16)]
+        public string GYSLXID
+        {
+            get { return fGYSLXID; }
+            set { SetPropertyValue<string>("GYSLXID", ref fGYSLXID, value); }
+        }
+        string fKHLXID;
+        [Size(16)]
+        public string KHLXID
+        {
+            get { return fKHLXID; }
+            set { SetPropertyValue<string>("KHLXID", ref fKHLXID, value); }
+        }
+        string fKFLXID;
+        [Size(16)]
+        public string KFLXID
+        {
+            get { return fKFLXID; }
+            set { SetPropertyValue<string>("KFLXID", ref fKFLXID, value); }
+        }
+        string fYINSDWLXID;
+        [Size(16)]
+        public string YINSDWLXID
+        {
+            get { return fYINSDWLXID; }
+            set { SetPropertyValue<string>("YINSDWLXID", ref fYINSDWLXID, value); }
+        }
+        string fCBSLXID;
+        [Size(16)]
+        public string CBSLXID
+        {
+            get { return fCBSLXID; }
+            set { SetPropertyValue<string>("CBSLXID", ref fCBSLXID, value); }
+        }
+        string fYSDWLXID;
+        [Size(16)]
+        public string YSDWLXID
+        {
+            get { return fYSDWLXID; }
+            set { SetPropertyValue<string>("YSDWLXID", ref fYSDWLXID, value); }
+        }
+        string fBMZTID;
+        [Size(16)]
+        public string BMZTID
+        {
+            get { return fBMZTID; }
+            set { SetPropertyValue<string>("BMZTID", ref fBMZTID, value); }
+        }
+        string fGZLID;
+        [Size(16)]
+        public string GZLID
+        {
+            get { return fGZLID; }
+            set { SetPropertyValue<string>("GZLID", ref fGZLID, value); }
+        }
+        short fDWJB;
+        public short DWJB
+        {
+            get { return fDWJB; }
+            set { SetPropertyValue<short>("DWJB", ref fDWJB, value); }
+        }
+        string fDWFR;
+        [Size(10)]
+        public string DWFR
+        {
+            get { return fDWFR; }
+            set { SetPropertyValue<string>("DWFR", ref fDWFR, value); }
+        }
+        public JT_J_DWXX(Session session) : base(session) { }
+        public JT_J_DWXX() : base(Session.DefaultSession) { }
+        public override void AfterConstruction() { base.AfterConstruction(); }
+    }
+
+    public class JT_J_ZTBM : XPLiteObject
+    {
+        string fZTID;
+        [Key]
+        [Size(16)]
+        public string ZTID
+        {
+            get { return fZTID; }
+            set { SetPropertyValue<string>("ZTID", ref fZTID, value); }
+        }
+        string fZTBH;
+        [Size(16)]
+        public string ZTBH
+        {
+            get { return fZTBH; }
+            set { SetPropertyValue<string>("ZTBH", ref fZTBH, value); }
+        }
+        string fZTMC;
+        [Size(40)]
+        public string ZTMC
+        {
+            get { return fZTMC; }
+            set { SetPropertyValue<string>("ZTMC", ref fZTMC, value); }
+        }
+        string fZTPY;
+        [Size(20)]
+        public string ZTPY
+        {
+            get { return fZTPY; }
+            set { SetPropertyValue<string>("ZTPY", ref fZTPY, value); }
+        }
+        string fBZ;
+        public string BZ
+        {
+            get { return fBZ; }
+            set { SetPropertyValue<string>("BZ", ref fBZ, value); }
+        }
+        string fFLAG;
+        [Size(4)]
+        public string FLAG
+        {
+            get { return fFLAG; }
+            set { SetPropertyValue<string>("FLAG", ref fFLAG, value); }
+        }
+        string fZT;
+        [Size(4)]
+        public string ZT
+        {
+            get { return fZT; }
+            set { SetPropertyValue<string>("ZT", ref fZT, value); }
+        }
+        string fCJR;
+        [Size(10)]
+        public string CJR
+        {
+            get { return fCJR; }
+            set { SetPropertyValue<string>("CJR", ref fCJR, value); }
+        }
+        string fTYR;
+        [Size(10)]
+        public string TYR
+        {
+            get { return fTYR; }
+            set { SetPropertyValue<string>("TYR", ref fTYR, value); }
+        }
+        DateTime fCZRQ;
+        public DateTime CZRQ
+        {
+            get { return fCZRQ; }
+            set { SetPropertyValue<DateTime>("CZRQ", ref fCZRQ, value); }
+        }
+        string fDWID;
+        [Size(16)]
+        public string DWID
+        {
+            get { return fDWID; }
+            set { SetPropertyValue<string>("DWID", ref fDWID, value); }
+        }
+        string fCOMPANY;
+        [Size(16)]
+        public string COMPANY
+        {
+            get { return fCOMPANY; }
+            set { SetPropertyValue<string>("COMPANY", ref fCOMPANY, value); }
+        }
+        string fCOMPANYNAME;
+        public string COMPANYNAME
+        {
+            get { return fCOMPANYNAME; }
+            set { SetPropertyValue<string>("COMPANYNAME", ref fCOMPANYNAME, value); }
+        }
+        public JT_J_ZTBM(Session session) : base(session) { }
+        public JT_J_ZTBM() : base(Session.DefaultSession) { }
+        public override void AfterConstruction() { base.AfterConstruction(); }
+    }
+
+    public class VIEW_BASE_OPERATOR : XPLiteObject
+    {
+        string fOPERATORID;
+        [Key]
+        [Size(16)]
+        public string OPERATORID
+        {
+            get { return fOPERATORID; }
+            set { SetPropertyValue<string>("OPERATORID", ref fOPERATORID, value); }
+        }
+        string fOPERATORNO;
+        [Size(10)]
+        public string OPERATORNO
+        {
+            get { return fOPERATORNO; }
+            set { SetPropertyValue<string>("OPERATORNO", ref fOPERATORNO, value); }
+        }
+        string fOPERATORNAME;
+        [Size(16)]
+        public string OPERATORNAME
+        {
+            get { return fOPERATORNAME; }
+            set { SetPropertyValue<string>("OPERATORNAME", ref fOPERATORNAME, value); }
+        }
+        string fFASTCODE;
+        [Size(10)]
+        public string FASTCODE
+        {
+            get { return fFASTCODE; }
+            set { SetPropertyValue<string>("FASTCODE", ref fFASTCODE, value); }
+        }
+        string fSEX;
+        [Size(2)]
+        public string SEX
+        {
+            get { return fSEX; }
+            set { SetPropertyValue<string>("SEX", ref fSEX, value); }
+        }
+        DateTime fBIRTHDAY;
+        public DateTime BIRTHDAY
+        {
+            get { return fBIRTHDAY; }
+            set { SetPropertyValue<DateTime>("BIRTHDAY", ref fBIRTHDAY, value); }
+        }
+        string fEMAIL;
+        [Size(50)]
+        public string EMAIL
+        {
+            get { return fEMAIL; }
+            set { SetPropertyValue<string>("EMAIL", ref fEMAIL, value); }
+        }
+        string fCONTACTADDRESS;
+        public string CONTACTADDRESS
+        {
+            get { return fCONTACTADDRESS; }
+            set { SetPropertyValue<string>("CONTACTADDRESS", ref fCONTACTADDRESS, value); }
+        }
+        string fTELEPHONE;
+        [Size(15)]
+        public string TELEPHONE
+        {
+            get { return fTELEPHONE; }
+            set { SetPropertyValue<string>("TELEPHONE", ref fTELEPHONE, value); }
+        }
+        string fMOBILETELEPHONE;
+        [Size(15)]
+        public string MOBILETELEPHONE
+        {
+            get { return fMOBILETELEPHONE; }
+            set { SetPropertyValue<string>("MOBILETELEPHONE", ref fMOBILETELEPHONE, value); }
+        }
+        string fDEPARTID;
+        [Size(16)]
+        public string DEPARTID
+        {
+            get { return fDEPARTID; }
+            set { SetPropertyValue<string>("DEPARTID", ref fDEPARTID, value); }
+        }
+        string fBMMC;
+        [Size(100)]
+        public string BMMC
+        {
+            get { return fBMMC; }
+            set { SetPropertyValue<string>("BMMC", ref fBMMC, value); }
+        }
+        public VIEW_BASE_OPERATOR(Session session) : base(session) { }
+        public VIEW_BASE_OPERATOR() : base(Session.DefaultSession) { }
+        public override void AfterConstruction() { base.AfterConstruction(); }
+    }
+
     public class SYS_EMPLOYEES : XPLiteObject
     {
         string fEMPLOYEEID;
@@ -168,6 +826,13 @@ namespace XINHUA
         {
             get { return fDH; }
             set { SetPropertyValue<string>("DH", ref fDH, value); }
+        }
+        string fZJM;
+        [Size(100)]
+        public string ZJM
+        {
+            get { return fZJM; }
+            set { SetPropertyValue<string>("ZJM", ref fZJM, value); }
         }
         string fDEPARTMENTNO;
         [Size(16)]
@@ -8435,12 +9100,6 @@ namespace XINHUA
             get { return fORISTATUSMC; }
             set { SetPropertyValue<string>("ORISTATUSMC", ref fORISTATUSMC, value); }
         }
-        string fBZ;
-        public string BZ
-        {
-            get { return fBZ; }
-            set { SetPropertyValue<string>("BZ", ref fBZ, value); }
-        }
         string fZTMC;
         [Size(40)]
         public string ZTMC
@@ -8669,12 +9328,6 @@ namespace XINHUA
             get { return fORISTATUSMC; }
             set { SetPropertyValue<string>("ORISTATUSMC", ref fORISTATUSMC, value); }
         }
-        string fBZ;
-        public string BZ
-        {
-            get { return fBZ; }
-            set { SetPropertyValue<string>("BZ", ref fBZ, value); }
-        }
         string fZTMC;
         [Size(40)]
         public string ZTMC
@@ -8902,12 +9555,6 @@ namespace XINHUA
         {
             get { return fORISTATUSMC; }
             set { SetPropertyValue<string>("ORISTATUSMC", ref fORISTATUSMC, value); }
-        }
-        string fBZ;
-        public string BZ
-        {
-            get { return fBZ; }
-            set { SetPropertyValue<string>("BZ", ref fBZ, value); }
         }
         string fZTMC;
         [Size(40)]

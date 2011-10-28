@@ -26,16 +26,14 @@ namespace ClientMain
 
         private string m_PassWord = null;
 
-        public const string strCon = "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.8.222)(PORT=1521))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=XINHUA)));User Id=xxb;Password=pass;";
+        public const string strCon = "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.8.109)(PORT=1521))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=DATACENTER)));User Id=jt_user;Password=jt_user;";
 
         public const string strDataCent = "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.8.109)(PORT=1521))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=DATACENTER)));User Id=jt_user;Password=jt_user;";
-        // test public const string strDataCent = "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.8.222)(PORT=1521))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=XINHUA)));User Id=xxb;Password=pass;";
 
-        public static string xpoConStr = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
+        public static string xpoConStr = OracleConnectionProvider.GetConnectionString("DATACENT", "jt_user", "jt_user");
 
         public static string xpoDataCentStr = OracleConnectionProvider.GetConnectionString("DATACENT", "jt_user", "jt_user");
-        // test public static string xpoDataCentStr = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
-
+        
         public const int MAXROWCOUNT = 50000;
 
         public static void vDrawFootCell(FooterCellCustomDrawEventArgs e, DevExpress.XtraGrid.Columns.GridColumn col, string strSum)
@@ -156,7 +154,7 @@ namespace ClientMain
             string strChildZTID = "";
             try
             {
-                OracleConnection Con = new OracleConnection(strCon);
+                OracleConnection Con = new OracleConnection(strDataCent);
                 string strZFGX = "select SON_ZTID from BASE_ZFGX where ZTID = '" + strZTID + "'";
                 OracleDataAdapter adaZFGX = new OracleDataAdapter(strZFGX, Con);
                 DataSet ds = new DataSet();
@@ -206,7 +204,7 @@ namespace ClientMain
                     strUser = this.loginuser.Text.Trim();
                     strAcct = this.comboBox1.Text.Trim();
                     strDeptName = this.comboBox2.Text.Trim();
-                    strDeptID = ((DataRowView)comboBox2.SelectedItem).Row["departmentid"].ToString();
+                    strDeptID = ((DataRowView)comboBox2.SelectedItem).Row["dwid"].ToString();
                     strZTID = ((DataRowView)comboBox1.SelectedItem).Row["ZTID"].ToString();
                     strZTMC = ((DataRowView)comboBox1.SelectedItem).Row["ZTMC"].ToString();
                     this.Close();
@@ -273,15 +271,15 @@ namespace ClientMain
             {
                 string strUser = "select * from SYS_USER where username = '" + this.loginuser.Text + "'";
 
-                string strAccount = "select c.ztid, c.ztmc from sys_ztbm c where c.ztid in " +
-                                    "(select distinct b.ztid from sys_department b where " +
-                                    "b.departmentid in (select a.departmentid from sys_user_department a " +
+                string strAccount = "select c.ztid, c.ztmc from jt_j_ztbm c where c.ztid in " +
+                                    "(select distinct b.bmztid from jt_j_dwxx b where " +
+                                    "b.dwid in (select a.departmentid from sys_user_department a " +
                                     "where a.username = '" + this.loginuser.Text + "'))";
 
 
                 try
                 {
-                    OracleConnection Con = new OracleConnection(strCon);
+                    OracleConnection Con = new OracleConnection(strDataCent);
                     DataSet ds = new DataSet();
                     OracleDataAdapter adaUser = new OracleDataAdapter(strUser, Con);
                     adaUser.Fill(ds, "USER");
@@ -330,7 +328,7 @@ namespace ClientMain
 
                 try
                 {
-                    OracleConnection Con = new OracleConnection(strCon);
+                    OracleConnection Con = new OracleConnection(strDataCent);
                     OracleDataAdapter adapter = new OracleDataAdapter(strPass, Con);
                     DataSet ds = new DataSet();
                     adapter.Fill(ds);
@@ -352,7 +350,6 @@ namespace ClientMain
                 }
                 catch (Exception ex)
                 {
-
                     MessageBox.Show(ex.Message);
                 }
 
@@ -366,8 +363,8 @@ namespace ClientMain
         {
             if (!String.IsNullOrEmpty(comboBox1.Text))
             {
-                string strDepart = "SELECT departmentid, departmentname FROM sys_department  WHERE departmentid IN (SELECT departmentid "
-                                 + "FROM sys_user_department WHERE  username='" + this.loginuser.Text + "') and ztid = '"
+                string strDepart = "SELECT dwid, dwmc FROM jt_j_dwxx  WHERE dwid IN (SELECT departmentid "
+                                 + "FROM sys_user_department WHERE  username='" + this.loginuser.Text + "') and bmztid = '"
                                  + ((DataRowView)comboBox1.SelectedItem).Row["ZTID"].ToString() + "'";
 
                 this.comboBox2.DataSource = null;
@@ -375,14 +372,14 @@ namespace ClientMain
 
                 try
                 {
-                    OracleConnection Con = new OracleConnection(strCon);
+                    OracleConnection Con = new OracleConnection(strDataCent);
                     OracleDataAdapter Adapter = new OracleDataAdapter(strDepart, Con);
                     DataSet ds = new DataSet();
                     Adapter.Fill(ds, "CUSTOMDEPT");
 
                     this.comboBox2.DataSource = ds.Tables["CUSTOMDEPT"];
-                    this.comboBox2.DisplayMember = "departmentname";
-                    this.comboBox2.ValueMember = "departmentid";
+                    this.comboBox2.DisplayMember = "dwmc";
+                    this.comboBox2.ValueMember = "dwid";
 
                 }
                 catch (Exception ex)

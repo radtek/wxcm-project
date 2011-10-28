@@ -41,14 +41,15 @@ namespace ClientMain
         string m_strName;
         string m_strDeptID;
         string m_strDeptName;
-        string m_strZTID; 
+        string m_strZTID;
+        string m_strUserID;
         
         public FrmClientMain()
         {
             InitializeComponent();
         }
 
-        public FrmClientMain(string strAccount, string strUser, string strDeptName, string strDeptID, string strZTID)
+        public FrmClientMain(string strAccount, string strUser, string strDeptName, string strDeptID, string strZTID, string strUserID)
         {
             InitializeComponent();
             lb_zt.Text = "   帐套：" + strAccount;
@@ -59,13 +60,13 @@ namespace ClientMain
             m_strDeptName = strDeptName;
             m_strName = strUser;
             m_strZTID = strZTID;
-
+            m_strUserID = strUserID;
         }
         private void FrmClientMain_Load(object sender, EventArgs e)
         {
             //            CreateToolBar();//创建outlookbar
 
-            Con = new OracleConnection(FrmLogin.strCon);
+            Con = new OracleConnection(FrmLogin.strDataCent);
 
             string strSQL = "select a.id, a.modelname, a.PARENTMODEL from sys_model a where a.id in (select b.module_id from sys_role_module b where b.role_id in (select c.roleid from sys_user_role c  where c.username = '" + m_strName + "' and c.deptid = '"+ m_strDeptID + "')) order by a.model_sortno";
             Adapter = new OracleDataAdapter(strSQL, Con);
@@ -796,11 +797,11 @@ namespace ClientMain
                     FrmCDI.ShowDialog();
                     break;
                 case "236":
-                    FrmBranchAdjust frmBraAdj = new FrmBranchAdjust(m_strName, m_strZTID, m_strDeptID);
+                    FrmBranchAdjust frmBraAdj = new FrmBranchAdjust(m_strUserID, m_strZTID, m_strDeptID);
                     frmBraAdj.ShowDialog();
                     break;
                 case "235":
-                    FrmSupplierAdjust frmSupAdj = new FrmSupplierAdjust(m_strName, m_strZTID, m_strDeptID);
+                    FrmSupplierAdjust frmSupAdj = new FrmSupplierAdjust(m_strUserID, m_strZTID, m_strDeptID);
                     frmSupAdj.ShowDialog();
                     break;
                 case "544":

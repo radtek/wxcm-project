@@ -14,7 +14,7 @@ namespace ClientMain
     {
         string m_strZTID;
         string m_strDeptID;
-        string m_strUser;
+        string m_strUserID;
         OracleConnection Conn;
 
         public FrmSupplierAdjust()
@@ -23,9 +23,9 @@ namespace ClientMain
         }
         
 
-        public FrmSupplierAdjust(string strUser, string strZTID, string strDeptID)
+        public FrmSupplierAdjust(string strUserID, string strZTID, string strDeptID)
         {
-            Conn = new OracleConnection(FrmLogin.strCon);
+            Conn = new OracleConnection(FrmLogin.strDataCent);
             string strSQL = "select DWID, DWMC from JT_J_DWXX";
             OracleDataAdapter ada = new OracleDataAdapter(strSQL, Conn);
             DataSet ds = new DataSet();
@@ -38,7 +38,7 @@ namespace ClientMain
 
             m_strZTID = strZTID;
             m_strDeptID = strDeptID;
-            m_strUser = strUser;
+            m_strUserID = strUserID;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -48,9 +48,6 @@ namespace ClientMain
 
         private void btnAdjust_Click(object sender, EventArgs e)
         {
-            string strUserID = getUserID(m_strUser);
-            string strDeptID = getDWID(m_strDeptID);
-            string strZTID = getDWID(m_strZTID);
 
             if((leSupplier.EditValue == null) || ((m_strDeptID == "306") && (cbFinance.Text.Trim() == "")) ||
                 (tbPrice.Text.Trim() == "") || (cbTaxRate.Text.Trim() == "") || (tbOldDiscount.Text.Trim() == "") ||
@@ -58,11 +55,11 @@ namespace ClientMain
             {
                 MessageBox.Show("所有项不能为空！", "警告", MessageBoxButtons.OK, MessageBoxIcon.Stop);                   
             }
-            else if(strUserID.Equals(""))
+            else if(m_strUserID.Equals(""))
             {
                 MessageBox.Show("您所登录的账号在一体化平台中没有对应操作员，请检查配置！", "警告", MessageBoxButtons.OK, MessageBoxIcon.Stop); 
             }
-            else if (strZTID.Equals("") || strDeptID.Equals(""))
+            else if (m_strZTID.Equals("") || m_strDeptID.Equals(""))
             {
                 MessageBox.Show("您所登录的账套或部门在一体化平台中没有对应单位，请检查配置！", "警告", MessageBoxButtons.OK, MessageBoxIcon.Stop); 
             }
@@ -82,15 +79,15 @@ namespace ClientMain
                                 
                 OracleCommand cmd = new OracleCommand("Z_GYSZKTZ", Conn);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("ztid", OracleType.VarChar).Value = strZTID;
-                cmd.Parameters.Add("bmid", OracleType.VarChar).Value = strDeptID;
+                cmd.Parameters.Add("ztid", OracleType.VarChar).Value = m_strZTID;
+                cmd.Parameters.Add("bmid", OracleType.VarChar).Value = m_strDeptID;
                 cmd.Parameters.Add("gysid", OracleType.VarChar).Value = leSupplier.EditValue.ToString().Trim();
                 cmd.Parameters.Add("cwlx", OracleType.VarChar).Value = strFinaceID;
                 cmd.Parameters.Add("my", OracleType.Double).Value = double.Parse(tbPrice.Text.Trim());
                 cmd.Parameters.Add("sl", OracleType.Double).Value = double.Parse(cbTaxRate.Text.Trim());
                 cmd.Parameters.Add("yzk", OracleType.Double).Value = double.Parse(tbOldDiscount.Text.Trim());
                 cmd.Parameters.Add("fdzk", OracleType.Double).Value = double.Parse(tbFloatDiscount.Text.Trim());
-                cmd.Parameters.Add("operator", OracleType.VarChar).Value = strUserID;
+                cmd.Parameters.Add("operator", OracleType.VarChar).Value = m_strUserID;
                 
                 cmd.Parameters.Add("msg", OracleType.VarChar, 255).Direction = ParameterDirection.Output;
 
@@ -126,65 +123,6 @@ namespace ClientMain
                 labelControl3.Visible = false;
             }
 
-        }
-
-        private string getDWID(string strID)
-        {
-            string strDWID = "";
-            string strTemp = "";
-            
-            string srcSQL = "select t.ythno from SYS_DEPARTMENT t where t.departmentid = '" + strID + "'";
-            OracleDataAdapter srcAda = new OracleDataAdapter(srcSQL, Conn);
-            DataSet srcDS = new DataSet();
-            srcAda.Fill(srcDS, "SYS_DEPARTMENT");
-            foreach (DataRowView theRow in srcDS.Tables["SYS_DEPARTMENT"].DefaultView)
-            {
-                strTemp = theRow.Row["ythno"].ToString().Trim();
-            }
-
-
-            string strCon = "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.1.11)(PORT=1521))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=QUERY)));User Id=jt_user;Password=jt_user;";
-            OracleConnection dstCon = new OracleConnection(strCon);
-            string dstSQL = "select t.dwid from jt_j_dwxx t where t.dwbh = '" + strTemp + "'";
-            OracleDataAdapter dstAda = new OracleDataAdapter(dstSQL, dstCon);
-            DataSet dstDS = new DataSet();
-            dstAda.Fill(dstDS, "jt_j_dwxx");
-            foreach (DataRowView theRow in dstDS.Tables["jt_j_dwxx"].DefaultView)
-            {
-                strDWID = theRow.Row["dwid"].ToString().Trim();
-            }
-
-            return strDWID;
-        }
-
-        private string getUserID(string strUserName)
-        {
-            string strUserID = "";
-            string strTemp = "";
-            
-            
-            string srcSQL = "select t.ythptno from SYS_USER t where t.username = '" + strUserName + "'";
-            OracleDataAdapter srcAda = new OracleDataAdapter(srcSQL, Conn);
-            DataSet srcDS = new DataSet();
-            srcAda.Fill(srcDS, "SYS_USER");
-            foreach (DataRowView theRow in srcDS.Tables["SYS_USER"].DefaultView)
-            {
-                strTemp = theRow.Row["ythptno"].ToString().Trim();
-            }
-
-
-            string strCon = "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.1.11)(PORT=1521))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=QUERY)));User Id=jt_user;Password=jt_user;";
-            OracleConnection dstCon = new OracleConnection(strCon);
-            string dstSQL = "select t.operatorid from base_operator t where t.operatorno = '" + strTemp + "'";
-            OracleDataAdapter dstAda = new OracleDataAdapter(dstSQL, dstCon);
-            DataSet dstDS = new DataSet();
-            dstAda.Fill(dstDS, "base_operator");
-            foreach (DataRowView theRow in dstDS.Tables["base_operator"].DefaultView)
-            {
-                strUserID = theRow.Row["operatorid"].ToString().Trim();
-            }
-
-            return strUserID;
         }
     }
 }

@@ -47,7 +47,7 @@ namespace ClientMain
             FrmLogin fLogin = new FrmLogin();
             if (fLogin.ShowDialog() == DialogResult.OK)
             {
-                Application.Run(new FrmClientMain(FrmLogin.getAccount, FrmLogin.getUser, FrmLogin.getDeptName, FrmLogin.getDeptID, FrmLogin.getZTID));
+                Application.Run(new FrmClientMain(FrmLogin.getAccount, FrmLogin.getUser, FrmLogin.getDeptName, FrmLogin.getDeptID, FrmLogin.getZTID, FrmLogin.getUserID));
             }
             
         }
