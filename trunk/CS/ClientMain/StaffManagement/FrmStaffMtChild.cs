@@ -11,81 +11,108 @@ namespace ClientMain
 {
     public partial class FrmStaffMtChild : DevExpress.XtraEditors.XtraForm
     {
-        OracleConnection m_Con;
-        OracleTransaction m_Trans;
-        public FrmStaffMtChild(OracleConnection Con, OracleTransaction Trans,
-                               string strStaffNum = null, string strStaffName = null, string strFastCode = null,
-                               string strGender = null, string strBirth = null, string strEmail = null,
-                               string strAddress = null, string strTel = null, string strMobile = null, string strSuperUnit = null)
-        {
-            m_Con = Con;
-            m_Trans = Trans;
-            OracleDataAdapter AdaSuperUnit;
-            DataSet ds;     
+        structStaff m_sStaff;
 
+        public FrmStaffMtChild(structStaff sStaff)
+        {  
             InitializeComponent();
 
-            string sqlSuperUnit = "select DEPARTMENTID, DEPARTMENTNAME from SYS_DEPARTMENT";
-            AdaSuperUnit = new OracleDataAdapter(sqlSuperUnit, Con);
-            AdaSuperUnit.SelectCommand.Transaction = Trans;
-
-            ds = new DataSet();
-            AdaSuperUnit.Fill(ds, "SYS_DEPARTMENT");
-
-            cbSuperUnit.DataSource = ds.Tables["SYS_DEPARTMENT"];
-            cbSuperUnit.ValueMember = "DEPARTMENTID";
-            cbSuperUnit.DisplayMember = "DEPARTMENTNAME";
-            cbSuperUnit.SelectedItem = strSuperUnit;
-
-            this.comboBox1.Items.Add("女");
-            this.comboBox1.Items.Add("男");
-            this.comboBox1.SelectedItem = strGender;
-
-            this.tbAddress.Text = strAddress;
-            this.tbEmail.Text = strEmail;
-            this.tbFastCode.Text = strFastCode;
-            this.tbMobile.Text = strMobile;
-            this.tbName.Text = strStaffName;
-            this.tbStaffNum.Text = strStaffNum;
-            this.tbTel.Text = strTel;
-            this.dateTimePicker1.Text = strBirth;
+            m_sStaff = sStaff;
         }
-        
 
-        private void FrmStaffMtChild_Load(object sender, EventArgs e)
+        private void vUpdateStaff(OracleCommand command, OracleTransaction transaction)
         {
+            string strUpdate = "update BASE_OPERATOR set OPERATORNO = :OPERATORNO, OPERATORNAME = :OPERATORNAME, "
+                             + "FASTCODE = :FASTCODE, SEX = :SEX, BIRTHDAY = :BIRTHDAY, EMAIL = :EMAIL, CONTACTADDRESS = :CONTACTADDRESS, "
+                             + "TELEPHONE = :TELEPHONE, MOBILETELEPHONE = :MOBILETELEPHONE, DEPARTID = :DEPARTID "
+                             + "where OPERATORID = '" + m_sStaff.strOPERATORID + "'";
+
+            command.CommandText = strUpdate;
+            command.Parameters.Add(new OracleParameter("OPERATORNAME", OracleType.VarChar)).Value = tbName.Text;
+            command.Parameters.Add(new OracleParameter("OPERATORNO", OracleType.VarChar)).Value = tbStaffNum.Text;
+            command.Parameters.Add(new OracleParameter("FASTCODE", OracleType.VarChar)).Value = tbFastCode.Text;
+            command.Parameters.Add(new OracleParameter("SEX", OracleType.VarChar)).Value = cbGender.Text;
+            command.Parameters.Add(new OracleParameter("BIRTHDAY", OracleType.DateTime)).Value = dateTimePicker1.Value.ToString();
+            command.Parameters.Add(new OracleParameter("EMAIL", OracleType.VarChar)).Value = tbEmail.Text;
+            command.Parameters.Add(new OracleParameter("CONTACTADDRESS", OracleType.VarChar)).Value = tbAddress.Text;
+            command.Parameters.Add(new OracleParameter("TELEPHONE", OracleType.VarChar)).Value = tbTel.Text;
+            command.Parameters.Add(new OracleParameter("MOBILETELEPHONE", OracleType.VarChar)).Value = tbMobile.Text;
+            command.Parameters.Add(new OracleParameter("DEPARTID", OracleType.VarChar)).Value = sleDepart.EditValue ?? "";
+
+            command.ExecuteNonQuery();
+            transaction.Commit();
+            MessageBox.Show("修改成功！");
+        }
+
+        private void vAddStaff(OracleCommand command, OracleTransaction transaction)
+        {
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = "BASE_OPERATOR_INSERT";
             
+            command.Parameters.Add("ls_OPERATORNO", OracleType.VarChar).Value = tbStaffNum.Text;
+            command.Parameters.Add("ls_OPERATORNAME", OracleType.VarChar).Value = tbName.Text;
+            command.Parameters.Add("ls_FASTCODE", OracleType.VarChar).Value = tbFastCode.Text;
+            command.Parameters.Add("ls_SEX", OracleType.VarChar).Value = cbGender.Text;
+            command.Parameters.Add("ls_BIRTHDAY", OracleType.VarChar).Value = dateTimePicker1.Value.ToString();
+            command.Parameters.Add("ls_EMAIL", OracleType.VarChar).Value = tbEmail.Text;
+            command.Parameters.Add("ls_CONTACTADDRESS", OracleType.VarChar).Value = tbAddress.Text;
+            command.Parameters.Add("ls_TELEPHONE", OracleType.VarChar).Value = tbTel.Text;
+            command.Parameters.Add("ls_MOBILETELEPHONE", OracleType.VarChar).Value = tbMobile.Text;
+            command.Parameters.Add("ls_DEPARTID", OracleType.VarChar).Value = sleDepart.EditValue ?? "";
+
+            command.Parameters.Add("descerr", OracleType.VarChar, 255).Direction = ParameterDirection.Output;
+            command.Parameters.Add("Message", OracleType.VarChar, 255).Direction = ParameterDirection.Output;
+            command.Parameters.Add("ls_OPTID", OracleType.VarChar, 255).Direction = ParameterDirection.Output;
+
+            command.ExecuteNonQuery();
+
+            transaction.Commit();
+            MessageBox.Show(command.Parameters["Message"].Value.ToString());
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (tbName.Text == "" || tbStaffNum.Text == "" || cbSuperUnit.Text == "")
+            if (tbName.Text == "" || tbStaffNum.Text == "")
             {
-                if (MessageBox.Show("员工姓名、编号和上级部门不能为空！", "警告", MessageBoxButtons.OK, MessageBoxIcon.Stop) == DialogResult.OK)
+                if (MessageBox.Show("员工姓名和编号不能为空！", "警告", MessageBoxButtons.OK, MessageBoxIcon.Stop) == DialogResult.OK)
                 {
-                    this.tbName.Focus();
+                    tbStaffNum.Focus();
                 }
             }
             else
             {
-                string sql = "select * from SYS_EMPLOYEES where EMPLOYEENO = '" + tbStaffNum.Text +"'";
-                OracleDataAdapter Ada = new OracleDataAdapter(sql, m_Con);
-                Ada.SelectCommand.Transaction = m_Trans;
-                DataSet dataset = new DataSet();
-                Ada.Fill(dataset, "SYS_EMPLOYEES");
-                if ((dataset.Tables["SYS_EMPLOYEES"].Rows.Count != 0) && (this.Text == "增加员工"))
+                using (OracleConnection connection = new OracleConnection(FrmLogin.strDataCent))
                 {
-                    if (MessageBox.Show("员工编号必须唯一！", "警告", MessageBoxButtons.OK, MessageBoxIcon.Stop) == DialogResult.OK)
+                    connection.Open();
+                    OracleCommand command = connection.CreateCommand();
+                    OracleTransaction transaction = connection.BeginTransaction();
+                    command.Connection = connection;
+                    command.Transaction = transaction;
+                    try
                     {
-                        this.tbStaffNum.Focus();
+                        if (this.Text == "增加员工")
+                        {
+                            vAddStaff(command, transaction);
+                            this.Close();
+                        }
+                        else if (this.Text == "修改员工")
+                        {
+                            vUpdateStaff(command, transaction);
+                            this.Close();
+                        }
+                        
+                    }
+                    catch (Exception exception)
+                    {
+                        transaction.Rollback();
+                        MessageBox.Show(exception.ToString());
+                    }
+                    finally
+                    {
+                        connection.Close();
                     }
                 }
-                else
-                {
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
-                }
-            }  
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -93,59 +120,99 @@ namespace ClientMain
             this.Close();
         }
 
-        public string getName()
+        private void btnSaveContinue_Click(object sender, EventArgs e)
         {
-            return this.tbName.Text.Trim();
-        }
-
-        public string getNum()
-        {
-            return this.tbStaffNum.Text.Trim();
-        }
-
-        public string getFastCode()
-        {
-            return this.tbFastCode.Text.Trim();
-        }
-
-        public string getGender()
-        {
-            string str = "";
-            if (!String.IsNullOrEmpty(comboBox1.Text))
+            if (tbName.Text == "" || tbStaffNum.Text == "")
             {
-                str = this.comboBox1.SelectedIndex.ToString().Trim();
+                if (MessageBox.Show("员工姓名和编号不能为空！", "警告", MessageBoxButtons.OK, MessageBoxIcon.Stop) == DialogResult.OK)
+                {
+                    tbStaffNum.Focus();
+                }
             }
-            return str;
+            else
+            {
+                using (OracleConnection connection = new OracleConnection(FrmLogin.strDataCent))
+                {
+                    connection.Open();
+                    OracleCommand command = connection.CreateCommand();
+                    OracleTransaction transaction = connection.BeginTransaction();
+                    command.Connection = connection;
+                    command.Transaction = transaction;
+                    try
+                    {
+                        if (this.Text == "增加员工")
+                        {
+                            vAddStaff(command, transaction);
+                            btnClear_Click(sender, e);
+                        }
+                        else if (this.Text == "修改员工")
+                        {
+                            vUpdateStaff(command, transaction);
+                            btnClear_Click(sender, e);
+                        }
+                    }
+                    catch (Exception exception)
+                    {
+                        transaction.Rollback();
+                        MessageBox.Show(exception.ToString());
+                    }
+                    finally
+                    {
+                        connection.Close();
+                    }
+                }
+            }
         }
 
-        public string getBirth()
+        private void btnClear_Click(object sender, EventArgs e)
         {
-            return this.dateTimePicker1.Text.Trim();
+            tbAddress.Text = "";
+            tbEmail.Text = "";
+            tbFastCode.Text = "";
+            tbMobile.Text = "";
+            tbName.Text = "";
+            tbStaffNum.Text = "";
+            tbTel.Text = "";
+            sleDepart.Text = "";
+            cbGender.SelectedIndex = 0;
         }
 
-        public string getMobile()
+        private void FrmStaffMtChild_Load(object sender, EventArgs e)
         {
-            return this.tbMobile.Text.Trim();
-        }
+            OracleConnection Con = new OracleConnection(FrmLogin.strDataCent);
+            string sqlSuperUnit = "select DWID, DWMC, DWBH, ZJM from JT_J_DWXX";
+            OracleDataAdapter AdaSuperUnit = new OracleDataAdapter(sqlSuperUnit, Con);
+            DataSet ds = new DataSet();
+            AdaSuperUnit.Fill(ds, "JT_J_DWXX");
+            jTJDWXXBindingSource.DataSource = ds;
+            jTJDWXXBindingSource.DataMember = "JT_J_DWXX";
 
-        public string getTel()
-        {
-            return this.tbTel.Text.Trim();
-        }
+            cbGender.Items.Add("女");
+            cbGender.Items.Add("男");
+            if (this.Text == "增加员工")
+            {
+                cbGender.SelectedIndex = 0;
+            }
+            else if (this.Text == "修改员工")
+            {
+                cbGender.SelectedItem = m_sStaff.strSEX;
+                btnSaveContinue.Visible = false;
+            }
 
-        public string getEmail()
-        {
-            return this.tbEmail.Text.Trim();
-        }
 
-        public string getAddress()
-        {
-            return this.tbAddress.Text.Trim();
-        }
+            tbAddress.Text = m_sStaff.strCONTACTADDRESS;
+            tbEmail.Text = m_sStaff.strEMAIL;
+            tbFastCode.Text = m_sStaff.strFASTCODE;
+            tbMobile.Text = m_sStaff.strMOBILETELEPHONE;
+            tbName.Text = m_sStaff.strOPERATORNAME;
+            tbStaffNum.Text = m_sStaff.strOPERATORNO;
+            tbTel.Text = m_sStaff.strTELEPHONE;
+            dateTimePicker1.Text = m_sStaff.strBIRTHDAY;
 
-        public string getSuperUnit()
-        {
-            return ((DataRowView)cbSuperUnit.SelectedItem).Row["DEPARTMENTID"].ToString();
+            if (sleDepart.Handle != IntPtr.Zero)
+            {
+                sleDepart.EditValue = m_sStaff.strDEPARTID;
+            }            
         }
     }
 }

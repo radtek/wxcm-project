@@ -264,7 +264,7 @@ namespace ClientMain
                     int RowIndex = selection.GetSelectedRowIndex(i);
                     int RowHandle = gridView1.GetRowHandle(RowIndex);
 
-                    string strZT = gridView1.GetRowCellValue(RowHandle, colZT).ToString();
+                    string strZT = gridView1.GetRowCellDisplayText(RowHandle, colZT);
 
                     if (strZT == "02")
                     {

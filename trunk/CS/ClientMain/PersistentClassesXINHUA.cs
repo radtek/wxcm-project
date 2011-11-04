@@ -3,8 +3,36 @@ using System;
 using DevExpress.Xpo;
 namespace XINHUA
 {
-    public class JT_J_DWXX : XPLiteObject
+    public class VIEW_JT_J_DWXX : XPLiteObject
     {
+        string fDWSXMC;
+        [Size(80)]
+        public string DWSXMC
+        {
+            get { return fDWSXMC; }
+            set { SetPropertyValue<string>("DWSXMC", ref fDWSXMC, value); }
+        }
+        string fGYSLXMC;
+        [Size(80)]
+        public string GYSLXMC
+        {
+            get { return fGYSLXMC; }
+            set { SetPropertyValue<string>("GYSLXMC", ref fGYSLXMC, value); }
+        }
+        string fKHLXMC;
+        [Size(80)]
+        public string KHLXMC
+        {
+            get { return fKHLXMC; }
+            set { SetPropertyValue<string>("KHLXMC", ref fKHLXMC, value); }
+        }
+        string fCBSLXMC;
+        [Size(80)]
+        public string CBSLXMC
+        {
+            get { return fCBSLXMC; }
+            set { SetPropertyValue<string>("CBSLXMC", ref fCBSLXMC, value); }
+        }
         string fSFID;
         [Size(16)]
         public string SFID
@@ -470,8 +498,8 @@ namespace XINHUA
             get { return fDWFR; }
             set { SetPropertyValue<string>("DWFR", ref fDWFR, value); }
         }
-        public JT_J_DWXX(Session session) : base(session) { }
-        public JT_J_DWXX() : base(Session.DefaultSession) { }
+        public VIEW_JT_J_DWXX(Session session) : base(session) { }
+        public VIEW_JT_J_DWXX() : base(Session.DefaultSession) { }
         public override void AfterConstruction() { base.AfterConstruction(); }
     }
 

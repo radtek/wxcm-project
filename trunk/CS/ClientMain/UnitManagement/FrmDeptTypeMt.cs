@@ -84,21 +84,21 @@ namespace ClientMain
 
         private void gridView1_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
         {
-            if (e.Column == colZT)
-            {
-                if (e.Value.ToString() == "0")
-                {
-                    e.DisplayText = "录入";
-                }
-                else if (e.Value.ToString() == "1")
-                {
-                    e.DisplayText = "启用";
-                }
-                else if (e.Value.ToString() == "2")
-                {
-                    e.DisplayText = "停用";
-                }
-            }
+            //if (e.Column == colZT)
+            //{
+            //    if (e.Value.ToString() == "0")
+            //    {
+            //        e.DisplayText = "录入";
+            //    }
+            //    else if (e.Value.ToString() == "1")
+            //    {
+            //        e.DisplayText = "启用";
+            //    }
+            //    else if (e.Value.ToString() == "2")
+            //    {
+            //        e.DisplayText = "停用";
+            //    }
+            //}
         }
 
         private void btnQuery_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -134,12 +134,12 @@ namespace ClientMain
                 {
                     if (frmAdd.ShowDialog() == DialogResult.OK)
                     {
-                        string strIns = "INSERT INTO BASE_DEPARTTYPE (DEPARTTYPEID, DEPARTTYPENAME, DEPARTTYPENO, ZT) VALUES (BASE_DEPARTMENTTYPE_SEQ.nextval, :DEPARTTYPENAME, :DEPARTTYPENO, :ZT)";
+                        string strIns = "INSERT INTO BASE_DEPARTTYPE (DEPARTTYPEID, DEPARTTYPENAME, DEPARTTYPENO) VALUES (BASE_DEPARTMENTTYPE_SEQ.nextval, :DEPARTTYPENAME, :DEPARTTYPENO)";
 
                         command.CommandText = strIns;
                         command.Parameters.Add(new OracleParameter("DEPARTTYPENO", OracleType.VarChar)).Value = frmAdd.getNum();
                         command.Parameters.Add(new OracleParameter("DEPARTTYPENAME", OracleType.VarChar)).Value = frmAdd.getName();
-                        command.Parameters.Add(new OracleParameter("ZT", OracleType.VarChar)).Value = frmAdd.getStatus();                        
+                        //command.Parameters.Add(new OracleParameter("ZT", OracleType.VarChar)).Value = frmAdd.getStatus();                        
 
                         command.ExecuteNonQuery();
 
@@ -169,7 +169,7 @@ namespace ClientMain
             string strDEPARTTYPEID = "";
             string strDEPARTTYPENAME = "";
             string strDEPARTTYPENO = "";
-            string strZT = "";            
+            //string strZT = "";            
 
             int RowHandle = 0;
             if (selection.SelectedCount == 0)
@@ -190,7 +190,7 @@ namespace ClientMain
                     strDEPARTTYPEID = gridView1.GetRowCellDisplayText(RowHandle, colDEPARTTYPEID);
                     strDEPARTTYPENAME = gridView1.GetRowCellDisplayText(RowHandle, colDEPARTTYPENAME);
                     strDEPARTTYPENO = gridView1.GetRowCellDisplayText(RowHandle, colDEPARTTYPENO);
-                    strZT = gridView1.GetRowCellDisplayText(RowHandle, colZT);
+                    //strZT = gridView1.GetRowCellDisplayText(RowHandle, colZT);
                     
                 }
                 using (OracleConnection connection = new OracleConnection(FrmLogin.strDataCent))
@@ -201,7 +201,7 @@ namespace ClientMain
                     command.Connection = connection;
                     command.Transaction = transaction;
 
-                    FrmDeptTypeMtChild frmUpdate = new FrmDeptTypeMtChild(strDEPARTTYPENAME, strDEPARTTYPENO, strZT);
+                    FrmDeptTypeMtChild frmUpdate = new FrmDeptTypeMtChild(strDEPARTTYPENAME, strDEPARTTYPENO);
                     frmUpdate.Text = "修改部门类型";
                     frmUpdate.lbName.Text = "部门类型";
 
@@ -209,12 +209,12 @@ namespace ClientMain
                     {
                         if (frmUpdate.ShowDialog() == DialogResult.OK)
                         {
-                            string strUpdate = "update BASE_DEPARTTYPE set DEPARTTYPENAME = :DEPARTTYPENAME, DEPARTTYPENO = :DEPARTTYPENO, ZT = :ZT where DEPARTTYPEID = '" + strDEPARTTYPEID + "'";                                             
+                            string strUpdate = "update BASE_DEPARTTYPE set DEPARTTYPENAME = :DEPARTTYPENAME, DEPARTTYPENO = :DEPARTTYPENO where DEPARTTYPEID = '" + strDEPARTTYPEID + "'";                                             
 
                             command.CommandText = strUpdate;
                             command.Parameters.Add(new OracleParameter("DEPARTTYPENAME", OracleType.VarChar)).Value = frmUpdate.getName();
                             command.Parameters.Add(new OracleParameter("DEPARTTYPENO", OracleType.VarChar)).Value = frmUpdate.getNum();
-                            command.Parameters.Add(new OracleParameter("ZT", OracleType.VarChar)).Value = frmUpdate.getStatus();
+                            //command.Parameters.Add(new OracleParameter("ZT", OracleType.VarChar)).Value = frmUpdate.getStatus();
                            
                             command.ExecuteNonQuery();
 
