@@ -15,7 +15,7 @@ namespace ClientMain
         
         public FrmSupplierCorrection(OracleConnection Conn, OracleTransaction Trans, string strGYSMC)
         {
-            string strSQL = "select DWID, DWMC from JT_J_DWXX";
+            string strSQL = "select DWID, DWMC, DWBH, ZJM from JT_J_DWXX";
             OracleDataAdapter ada = new OracleDataAdapter(strSQL, Conn);
             ada.SelectCommand.Transaction = Trans;
             DataSet ds = new DataSet();

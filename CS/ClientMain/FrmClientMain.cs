@@ -68,7 +68,7 @@ namespace ClientMain
 
             Con = new OracleConnection(FrmLogin.strDataCent);
 
-            string strSQL = "select a.id, a.modelname, a.PARENTMODEL from sys_model a where a.id in (select b.module_id from sys_role_module b where b.role_id in (select c.roleid from sys_user_role c  where c.username = '" + m_strName + "' and c.deptid = '"+ m_strDeptID + "')) order by a.model_sortno";
+            string strSQL = "select a.id, a.modelname, a.PARENTMODEL from sys_model a where a.id in (select b.module_id from sys_role_module b where b.role_id in (select c.roleid from sys_user_role c  where c.username = '" + m_strName + "' and c.deptid = '" + m_strDeptID + "')) order by to_number(a.model_sortno)";
             Adapter = new OracleDataAdapter(strSQL, Con);
             //cb = new OracleCommandBuilder(Adapter);
 

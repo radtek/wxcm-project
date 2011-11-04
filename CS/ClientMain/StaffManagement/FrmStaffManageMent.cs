@@ -16,13 +16,29 @@ using System.Data.OracleClient;
 
 namespace ClientMain
 {
+    public struct structStaff
+    {
+        public string strOPERATORID;
+        public string strOPERATORNAME;
+        public string strOPERATORNO;
+        public string strFASTCODE;
+        public string strSEX;
+        public string strBIRTHDAY;
+        public string strEMAIL;
+        public string strCONTACTADDRESS;
+        public string strTELEPHONE;
+        public string strMOBILETELEPHONE;
+        public string strDEPARTID;
+    }
+
+
     public partial class FrmStaffManageMent : DevExpress.XtraEditors.XtraForm
     {
         GridCheckMarksSelection selection;
 
-        public FrmStaffManageMent(bool fgAdd, bool fgDel, bool fgUpdate, bool fgQuery, string strEMPLOYEEID = null)
+        public FrmStaffManageMent(bool fgAdd, bool fgDel, bool fgUpdate, bool fgQuery, string strOPERATORID = null)
         {
-            XpoDefault.ConnectionString = FrmLogin.xpoConStr;
+            XpoDefault.ConnectionString = FrmLogin.xpoDataCentStr;
 
             InitializeComponent();
 
@@ -59,13 +75,13 @@ namespace ClientMain
                 btnQuery.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }
 
-            if (String.IsNullOrEmpty(strEMPLOYEEID))
+            if (String.IsNullOrEmpty(strOPERATORID))
             {
-                xpServerCollectionSource1.FixedFilterString = "[EMPLOYEEID] Is Null";
+                xpServerCollectionSource1.FixedFilterString = "[OPERATORID] Is Null";
             }
             else
             {
-                xpServerCollectionSource1.FixedFilterString = strEMPLOYEEID;
+                xpServerCollectionSource1.FixedFilterString = strOPERATORID;
             }
 
             selection = new GridCheckMarksSelection(gridView1);
@@ -82,25 +98,10 @@ namespace ClientMain
             }
         }
 
-        private void gridView1_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
-        {
-            if (e.Column == colSEX)
-            {
-                if (e.Value.ToString() == "0")
-                {
-                    e.DisplayText = "女";
-                }
-                else if (e.Value.ToString() == "1")
-                {
-                    e.DisplayText = "男";
-                }
-            }
-        }
-
         private void btnQuery_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             
-            gridView1.ShowFilterEditor(colNAME);
+            gridView1.ShowFilterEditor(colOPERATORNAME);
 
             if (!String.IsNullOrEmpty(gridView1.ActiveFilterString))
             {
@@ -112,76 +113,19 @@ namespace ClientMain
 
         private void btnAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            structStaff sStaff = new structStaff();
+
+            FrmStaffMtChild frmAdd = new FrmStaffMtChild(sStaff);
+            frmAdd.Text = "增加员工";
+            frmAdd.ShowDialog();
+
             selection.ClearSelection();
-
-            using (OracleConnection connection = new OracleConnection(FrmLogin.strCon))
-            {
-                connection.Open();
-                OracleCommand command = connection.CreateCommand();
-                OracleTransaction transaction = connection.BeginTransaction();
-                command.Connection = connection;
-                command.Transaction = transaction;
-
-                FrmStaffMtChild frmAdd = new FrmStaffMtChild(connection, transaction);
-                frmAdd.Text = "增加员工";
-
-                try
-                {
-                    if (frmAdd.ShowDialog() == DialogResult.OK)
-                    {
-                        string strIns = "INSERT INTO SYS_EMPLOYEES (EMPLOYEEID, NAME, EMPLOYEENO, FASTCODE, SEX, BIRTHDAY, EMAIL, TXDZ, TELEPHONE, "
-                                      + "MOBILETELEPHONE, SJDWID) VALUES (seq_sys_employees_employeeid.nextval, :NAME, :EMPLOYEENO, :FASTCODE, :SEX, "
-                                      + ":BIRTHDAY, :EMAIL, :TXDZ, :TELEPHONE, :MOBILETELEPHONE, :SJDWID)";
-
-                        command.CommandText = strIns;
-                        command.Parameters.Add(new OracleParameter("NAME", OracleType.VarChar)).Value = frmAdd.getName();
-                        command.Parameters.Add(new OracleParameter("EMPLOYEENO", OracleType.VarChar)).Value = frmAdd.getNum();
-                        command.Parameters.Add(new OracleParameter("FASTCODE", OracleType.VarChar)).Value = frmAdd.getFastCode();
-                        command.Parameters.Add(new OracleParameter("SEX", OracleType.VarChar)).Value = frmAdd.getGender();
-                        command.Parameters.Add(new OracleParameter("BIRTHDAY", OracleType.DateTime)).Value = frmAdd.getBirth();
-                        command.Parameters.Add(new OracleParameter("EMAIL", OracleType.VarChar)).Value = frmAdd.getEmail();
-                        command.Parameters.Add(new OracleParameter("TXDZ", OracleType.VarChar)).Value = frmAdd.getAddress();
-                        command.Parameters.Add(new OracleParameter("TELEPHONE", OracleType.VarChar)).Value = frmAdd.getTel();
-                        command.Parameters.Add(new OracleParameter("MOBILETELEPHONE", OracleType.VarChar)).Value = frmAdd.getMobile();
-                        command.Parameters.Add(new OracleParameter("SJDWID", OracleType.VarChar)).Value = frmAdd.getSuperUnit();
-
-                        command.ExecuteNonQuery();
-
-                        transaction.Commit();
-
-                        unitOfWork1.DropIdentityMap();
-
-                        xpServerCollectionSource1.Reload();
-
-                        MessageBox.Show("增加成功！");
-                    }
-                }
-                catch (Exception exception)
-                {
-                    transaction.Rollback();
-                    MessageBox.Show(exception.ToString());
-                }
-                finally
-                {
-                    connection.Close();
-                }
-            }
+            unitOfWork1.DropIdentityMap();
+            xpServerCollectionSource1.Reload();
         }
 
         private void btnUpdate_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            string strEMPLOYEEID = "";
-            string strNAME = "";
-            string strEMPLOYEENO = "";
-            string strFASTCODE = "";
-            string strSEX = "";
-            string strBIRTHDAY = "";
-            string strEMAIL = "";
-            string strTXDZ = "";
-            string strTELEPHONE = "";
-            string strMOBILETELEPHONE = "";
-            string strSJDWID = "";
-
             int RowHandle = 0;
             if (selection.SelectedCount == 0)
             {
@@ -193,84 +137,31 @@ namespace ClientMain
             }
             else
             {
-                for (int i = 0; i < selection.SelectedCount; ++i)
-                {
-                    int RowIndex = selection.GetSelectedRowIndex(i);
-                    RowHandle = gridView1.GetRowHandle(RowIndex);
+                int RowIndex = selection.GetSelectedRowIndex(0);
+                RowHandle = gridView1.GetRowHandle(RowIndex);
 
-                    strEMPLOYEEID = gridView1.GetRowCellDisplayText(RowHandle, colEMPLOYEEID);
-                    strEMPLOYEENO = gridView1.GetRowCellDisplayText(RowHandle, colEMPLOYEENO);
-                    strNAME = gridView1.GetRowCellDisplayText(RowHandle, colNAME);
-                    strFASTCODE = gridView1.GetRowCellDisplayText(RowHandle, colFASTCODE);
-                    strSEX = gridView1.GetRowCellDisplayText(RowHandle, colSEX);
-                    strSJDWID = gridView1.GetRowCellDisplayText(RowHandle, colSJDWID);
-                    strBIRTHDAY = gridView1.GetRowCellDisplayText(RowHandle, colBIRTHDAY);
-                    strTELEPHONE = gridView1.GetRowCellDisplayText(RowHandle, colTELEPHONE);
-                    strTXDZ = gridView1.GetRowCellDisplayText(RowHandle, colTXDZ);
-                    strMOBILETELEPHONE = gridView1.GetRowCellDisplayText(RowHandle, colMOBILETELEPHONE);
-                    strEMAIL = gridView1.GetRowCellDisplayText(RowHandle, colEMAIL);
-                }
-                using (OracleConnection connection = new OracleConnection(FrmLogin.strCon))
-                {
-                    connection.Open();
-                    OracleCommand command = connection.CreateCommand();
-                    OracleTransaction transaction = connection.BeginTransaction();
-                    command.Connection = connection;
-                    command.Transaction = transaction;
+                structStaff sStaff = new structStaff();
+                sStaff.strOPERATORID = gridView1.GetRowCellDisplayText(RowHandle, colOPERATORID);
+                sStaff.strOPERATORNO = gridView1.GetRowCellDisplayText(RowHandle, colOPERATORNO);
+                sStaff.strOPERATORNAME = gridView1.GetRowCellDisplayText(RowHandle, colOPERATORNAME);
+                sStaff.strFASTCODE = gridView1.GetRowCellDisplayText(RowHandle, colFASTCODE);
+                sStaff.strSEX = gridView1.GetRowCellDisplayText(RowHandle, colSEX);
+                sStaff.strDEPARTID = gridView1.GetRowCellDisplayText(RowHandle, colDEPARTID);
+                sStaff.strBIRTHDAY = gridView1.GetRowCellDisplayText(RowHandle, colBIRTHDAY);
+                sStaff.strTELEPHONE = gridView1.GetRowCellDisplayText(RowHandle, colTELEPHONE);
+                sStaff.strCONTACTADDRESS = gridView1.GetRowCellDisplayText(RowHandle, colCONTACTADDRESS);
+                sStaff.strMOBILETELEPHONE = gridView1.GetRowCellDisplayText(RowHandle, colMOBILETELEPHONE);
+                sStaff.strEMAIL = gridView1.GetRowCellDisplayText(RowHandle, colEMAIL);
 
-                    FrmStaffMtChild frmUpdate = new FrmStaffMtChild(connection, transaction, strEMPLOYEENO, strNAME, strFASTCODE,
-                                                                    strSEX, strBIRTHDAY, strEMAIL, strTXDZ, strTELEPHONE, 
-                                                                    strMOBILETELEPHONE, strSJDWID);
-                    frmUpdate.Text = "修改员工";
+                FrmStaffMtChild frmUpdate = new FrmStaffMtChild(sStaff);
+                frmUpdate.Text = "修改员工";                
+                frmUpdate.ShowDialog();
 
-                    try
-                    {
-                        if (frmUpdate.ShowDialog() == DialogResult.OK)
-                        {
-                            string strUpdate = "update SYS_EMPLOYEES set EMPLOYEENO = :EMPLOYEENO, NAME = :NAME, "
-                                             + "FASTCODE = :FASTCODE, SEX = :SEX, BIRTHDAY = :BIRTHDAY, EMAIL = :EMAIL, TXDZ = :TXDZ, "
-                                             + "TELEPHONE = :TELEPHONE, MOBILETELEPHONE = :MOBILETELEPHONE, SJDWID = :SJDWID "
-                                             + "where EMPLOYEEID = '" + strEMPLOYEEID + "'";
+                selection.ClearSelection();
+                unitOfWork1.DropIdentityMap();
+                xpServerCollectionSource1.Reload();
 
-                            command.CommandText = strUpdate;
-                            command.Parameters.Add(new OracleParameter("NAME", OracleType.VarChar)).Value = frmUpdate.getName();
-                            command.Parameters.Add(new OracleParameter("EMPLOYEENO", OracleType.VarChar)).Value = frmUpdate.getNum();
-                            command.Parameters.Add(new OracleParameter("FASTCODE", OracleType.VarChar)).Value = frmUpdate.getFastCode();
-                            command.Parameters.Add(new OracleParameter("SEX", OracleType.VarChar)).Value = frmUpdate.getGender();
-                            command.Parameters.Add(new OracleParameter("BIRTHDAY", OracleType.DateTime)).Value = frmUpdate.getBirth();
-                            command.Parameters.Add(new OracleParameter("EMAIL", OracleType.VarChar)).Value = frmUpdate.getEmail();
-                            command.Parameters.Add(new OracleParameter("TXDZ", OracleType.VarChar)).Value = frmUpdate.getAddress();
-                            command.Parameters.Add(new OracleParameter("TELEPHONE", OracleType.VarChar)).Value = frmUpdate.getTel();
-                            command.Parameters.Add(new OracleParameter("MOBILETELEPHONE", OracleType.VarChar)).Value = frmUpdate.getMobile();
-                            command.Parameters.Add(new OracleParameter("SJDWID", OracleType.VarChar)).Value = frmUpdate.getSuperUnit();
-
-                            command.ExecuteNonQuery();
-
-
-                            transaction.Commit();
-
-                            selection.ClearSelection();
-
-                            unitOfWork1.DropIdentityMap();
-
-                            xpServerCollectionSource1.Reload();
-
-                            MessageBox.Show("修改成功！");
-
-                            gridView1.FocusedRowHandle = RowHandle;
-                        }
-                    }
-                    catch (Exception exception)
-                    {
-                        transaction.Rollback();
-                        MessageBox.Show(exception.ToString());
-                    }
-                    finally
-                    {
-                        connection.Close();
-                    }
-
-                }
+                gridView1.FocusedRowHandle = RowHandle;
             }
         }
 
@@ -290,14 +181,14 @@ namespace ClientMain
                     int RowIndex = selection.GetSelectedRowIndex(i);
                     int RowHandle = gridView1.GetRowHandle(RowIndex);
 
-                    string strTemp = gridView1.GetRowCellDisplayText(RowHandle, colEMPLOYEEID);
+                    string strTemp = gridView1.GetRowCellDisplayText(RowHandle, colOPERATORID);
                     strEMPLOYEEID += "\'" + strTemp + "\', ";
                 }
 
                 int index = strEMPLOYEEID.LastIndexOf("'");
                 strEMPLOYEEID = strEMPLOYEEID.Substring(0, index + 1).Trim();
 
-                using (OracleConnection connection = new OracleConnection(FrmLogin.strCon))
+                using (OracleConnection connection = new OracleConnection(FrmLogin.strDataCent))
                 {
                     connection.Open();
                     OracleCommand command = connection.CreateCommand();
@@ -314,7 +205,7 @@ namespace ClientMain
                                                      MessageBoxIcon.Question);
                         if (result == DialogResult.Yes)
                         {
-                            string strDel = "delete from SYS_EMPLOYEES where EMPLOYEEID in (" + strEMPLOYEEID + ")";
+                            string strDel = "delete from BASE_OPERATOR where OPERATORID in (" + strEMPLOYEEID + ")";
                             command.CommandText = strDel;
 
                             command.ExecuteNonQuery();

@@ -39,6 +39,8 @@
             this.colDWID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDWMC = new DevExpress.XtraGrid.Columns.GridColumn();
             this.teOldSupplier = new DevExpress.XtraEditors.TextEdit();
+            this.colDWBH = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colZJM = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.sleSupplier.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.jTJDWXXBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
@@ -97,7 +99,9 @@
             // 
             this.searchLookUpEdit1View.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colDWID,
-            this.colDWMC});
+            this.colDWMC,
+            this.colDWBH,
+            this.colZJM});
             this.searchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.searchLookUpEdit1View.Name = "searchLookUpEdit1View";
             this.searchLookUpEdit1View.OptionsBehavior.Editable = false;
@@ -127,6 +131,22 @@
             this.teOldSupplier.Name = "teOldSupplier";
             this.teOldSupplier.Size = new System.Drawing.Size(250, 21);
             this.teOldSupplier.TabIndex = 26;
+            // 
+            // colDWBH
+            // 
+            this.colDWBH.Caption = "供应商编号";
+            this.colDWBH.FieldName = "DWBH";
+            this.colDWBH.Name = "colDWBH";
+            this.colDWBH.Visible = true;
+            this.colDWBH.VisibleIndex = 2;
+            // 
+            // colZJM
+            // 
+            this.colZJM.Caption = "助记码";
+            this.colZJM.FieldName = "ZJM";
+            this.colZJM.Name = "colZJM";
+            this.colZJM.Visible = true;
+            this.colZJM.VisibleIndex = 3;
             // 
             // FrmSupplierCorrection
             // 
@@ -164,6 +184,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn colDWMC;
         private DevExpress.XtraEditors.TextEdit teOldSupplier;
         private System.Windows.Forms.BindingSource jTJDWXXBindingSource;
+        private DevExpress.XtraGrid.Columns.GridColumn colDWBH;
+        private DevExpress.XtraGrid.Columns.GridColumn colZJM;
         
     }
 }

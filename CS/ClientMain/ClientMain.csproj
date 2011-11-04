@@ -736,6 +736,12 @@
     <Compile Include="UnitManagement\FrmDepartmentManagement.Designer.cs">
       <DependentUpon>FrmDepartmentManagement.cs</DependentUpon>
     </Compile>
+    <Compile Include="UnitManagement\FrmDeptChild.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UnitManagement\FrmDeptChild.Designer.cs">
+      <DependentUpon>FrmDeptChild.cs</DependentUpon>
+    </Compile>
     <Compile Include="UnitManagement\FrmDeptTypeMt.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -828,12 +834,6 @@
     </Compile>
     <Compile Include="GridCheckMarksSelection.cs" />
     <Compile Include="PersistentClassesXINHUA.cs" />
-    <Compile Include="UnitManagement\FrmDeptMtChild.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UnitManagement\FrmDeptMtChild.Designer.cs">
-      <DependentUpon>FrmDeptMtChild.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1393,6 +1393,9 @@
     <EmbeddedResource Include="UnitManagement\FrmDepartmentManagement.resx">
       <DependentUpon>FrmDepartmentManagement.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UnitManagement\FrmDeptChild.resx">
+      <DependentUpon>FrmDeptChild.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UnitManagement\FrmDeptTypeMt.resx">
       <DependentUpon>FrmDeptTypeMt.cs</DependentUpon>
     </EmbeddedResource>
@@ -1425,9 +1428,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Adjustment\FrmSupplierAdjust.resx">
       <DependentUpon>FrmSupplierAdjust.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UnitManagement\FrmDeptMtChild.resx">
-      <DependentUpon>FrmDeptMtChild.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
