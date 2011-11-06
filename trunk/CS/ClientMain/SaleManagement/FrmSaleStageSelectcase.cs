@@ -332,9 +332,9 @@ namespace ClientMain
                         command.ExecuteNonQuery();
                         transaction.Commit();
 
-                        unitOfWork1.DropIdentityMap();
+                //        unitOfWork1.DropIdentityMap();
 
-                        xpServerCollectionSource1.Reload();
+                //        xpServerCollectionSource1.Reload();
 
                         MessageBox.Show(command.Parameters["Message"].Value.ToString());
                     }
