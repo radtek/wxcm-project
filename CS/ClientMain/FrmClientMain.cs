@@ -887,6 +887,10 @@ namespace ClientMain
                     MeunMain MenuMt = new MeunMain(fgAdd, fgDel, fgUpdate, fgQuery);
                     MenuMt.ShowDialog();
                     break;
+               case "823"://商品信息管理
+                    FrmGoodsInformation frmGoodsInformation = new FrmGoodsInformation();
+                    frmGoodsInformation.ShowDialog();
+                    break;
                 case "624"://录入功能
                     FrmUnusualStockInput FrmUnusualStockInput = new FrmUnusualStockInput();
                     FrmUnusualStockInput.ShowDialog();

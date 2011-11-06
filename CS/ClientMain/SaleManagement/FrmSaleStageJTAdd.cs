@@ -29,9 +29,9 @@ namespace ClientMain
         private double XSSY = 0;
         private double XSMY = 0;
 
-        private Int64 YJSL = 0;
-        private double YJSY = 0;
-        private double YJMY = 0;
+        private Int64 YSSL = 0;
+        private double YSSY = 0;
+        private double YSMY = 0;
 
         public FrmSaleStageJTAdd(string strXSJSDID)
         {
@@ -75,9 +75,9 @@ namespace ClientMain
             vDrawFootCell(e, colXSSY, XSSY.ToString("F2"));
             vDrawFootCell(e, colXSMY, XSMY.ToString("F2"));
 
-            vDrawFootCell(e, colYJSL, YJSL.ToString());
-            vDrawFootCell(e, colYJSY, YJSY.ToString("F2"));
-            vDrawFootCell(e, colYJMY, YJMY.ToString("F2"));
+            vDrawFootCell(e, colYSSL, YSSL.ToString());
+            vDrawFootCell(e, colYSSY, YSSY.ToString("F2"));
+            vDrawFootCell(e, colYSMY, YSMY.ToString("F2"));
 
 
         }
@@ -95,9 +95,9 @@ namespace ClientMain
                         XSSY = Convert.ToDouble(colXSSY.SummaryText);
                         XSMY = Convert.ToDouble(colXSMY.SummaryText);
 
-                        YJSL = Convert.ToInt64(colYJSL.SummaryText);
-                        YJSY = Convert.ToDouble(colYJSY.SummaryText);
-                        YJMY = Convert.ToDouble(colYJMY.SummaryText);
+                        YSSL = Convert.ToInt64(colYSSL.SummaryText);
+                        YSSY = Convert.ToDouble(colYSSY.SummaryText);
+                        YSMY = Convert.ToDouble(colYSMY.SummaryText);
 
 
                     }
@@ -107,9 +107,9 @@ namespace ClientMain
                         XSSY = 0;
                         XSMY = 0;
 
-                        YJSL = 0;
-                        YJSY = 0;
-                        YJMY = 0;
+                        YSSL = 0;
+                        YSSY = 0;
+                        YSMY = 0;
 
                     }
 
@@ -122,9 +122,9 @@ namespace ClientMain
                         XSSY += Convert.ToDouble(view.GetRowCellValue(hitInfo.RowHandle, colXSSY));
                         XSMY += Convert.ToDouble(view.GetRowCellValue(hitInfo.RowHandle, colXSMY));
 
-                        YJSL += Convert.ToInt64(view.GetRowCellValue(hitInfo.RowHandle, colYJSL));
-                        YJSY += Convert.ToDouble(view.GetRowCellValue(hitInfo.RowHandle, colYJSY));
-                        YJMY += Convert.ToDouble(view.GetRowCellValue(hitInfo.RowHandle, colYJMY));
+                        YSSL += Convert.ToInt64(view.GetRowCellValue(hitInfo.RowHandle, colYSSL));
+                        YSSY += Convert.ToDouble(view.GetRowCellValue(hitInfo.RowHandle, colYSSY));
+                        YSMY += Convert.ToDouble(view.GetRowCellValue(hitInfo.RowHandle, colYSMY));
 
 
                     }
@@ -134,9 +134,9 @@ namespace ClientMain
                         XSSY -= Convert.ToDouble(view.GetRowCellValue(hitInfo.RowHandle, colXSSY));
                         XSMY -= Convert.ToDouble(view.GetRowCellValue(hitInfo.RowHandle, colXSMY));
 
-                        YJSL -= Convert.ToInt64(view.GetRowCellValue(hitInfo.RowHandle, colYJSL));
-                        YJSY -= Convert.ToDouble(view.GetRowCellValue(hitInfo.RowHandle, colYJSY));
-                        YJMY -= Convert.ToDouble(view.GetRowCellValue(hitInfo.RowHandle, colYJMY));
+                       YSSL -= Convert.ToInt64(view.GetRowCellValue(hitInfo.RowHandle, colYSSL));
+                        YSSY -= Convert.ToDouble(view.GetRowCellValue(hitInfo.RowHandle, colYSSY));
+                        YSMY -= Convert.ToDouble(view.GetRowCellValue(hitInfo.RowHandle, colYSMY));
                     }
                 }
             }
@@ -369,9 +369,9 @@ namespace ClientMain
              XSSY = 0;
             XSMY = 0;
 
-            YJSL = 0;
-            YJSY = 0;
-            YJMY = 0;
+            YSSL = 0;
+            YSSY = 0;
+            YSMY = 0;
         }
 
         private void btnDWselect_Click(object sender, EventArgs e)
@@ -411,8 +411,9 @@ namespace ClientMain
                             {
                                 int RowIndex = selection.GetSelectedRowIndex(i);
                                 int RowHandle = gridView1.GetRowHandle(RowIndex);
-                                string strXSJSDMXID = gridView1.GetRowCellValue(RowHandle, colXSJSDMXID).ToString();
-                                cmd.CommandText = "INSERT INTO TEMP_SAVE_ID (TEMPID, ID) Values (temp_save_id_seq.nextval, '" + strXSJSDMXID + "')";
+                                string strXSDID = gridView1.GetRowCellValue(RowHandle,colXSDID).ToString();
+                                string strSJLX = gridView1.GetRowCellDisplayText(RowHandle,colSJLX);
+                                cmd.CommandText = "INSERT INTO TEMP_SAVE_ID (TEMPID, ID,wlbmid) Values (temp_save_id_seq.nextval, '" + strXSDID + "','" + strSJLX + "')";
                                 cmd.ExecuteNonQuery();
                             }
                             selection.ClearSelection();
@@ -463,8 +464,9 @@ namespace ClientMain
                             {
                                 int RowIndex = selection.GetSelectedRowIndex(i);
                                 int RowHandle = gridView1.GetRowHandle(RowIndex);
-                                string strXSJSDMXID = gridView1.GetRowCellValue(RowHandle, colXSJSDMXID).ToString();
-                                cmd.CommandText = "INSERT INTO TEMP_SAVE_ID (TEMPID, ID) Values (temp_save_id_seq.nextval, '" + strXSJSDMXID + "')";
+                                string strXSDID = gridView1.GetRowCellValue(RowHandle, colXSDID).ToString();
+                                string strSJLX = gridView1.GetRowCellDisplayText(RowHandle, colSJLX);
+                                cmd.CommandText = "INSERT INTO TEMP_SAVE_ID (TEMPID, ID,wlbmid) Values (temp_save_id_seq.nextval, '" + strXSDID + "','" + strSJLX + "')";
                                 cmd.ExecuteNonQuery();
                             }
                             selection.ClearSelection();

@@ -34,8 +34,6 @@
     <ProductName>综合维护平台（.NET）版</ProductName>
     <PublisherName>安徽新华传媒股份有限公司信息部</PublisherName>
     <SuiteName>Maintenance</SuiteName>
-    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
-    <WebPage>publish.htm</WebPage>
     <ApplicationRevision>17</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
@@ -213,6 +211,84 @@
     <Compile Include="AccountManagement\FrmZTTZinquire.designer.cs">
       <DependentUpon>FrmZTTZinquire.cs</DependentUpon>
     </Compile>
+    <Compile Include="SaleManagement\FrmSaleStageJTAdd.cs" />
+    <Compile Include="SaleManagement\FrmSaleStageJTAdd.Designer.cs">
+      <DependentUpon>FrmSaleStageJTAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SaleManagement\FrmSaleStageJCAdd.cs" />
+    <Compile Include="SaleManagement\FrmSaleStageJCAdd.Designer.cs">
+      <DependentUpon>FrmSaleStageJCAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SaleManagement\FrmSaleStageSelectcase.cs" />
+    <Compile Include="SaleManagement\FrmSaleStageSelectcase.Designer.cs">
+      <DependentUpon>FrmSaleStageSelectcase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GoodsManagement\FrmZhuangZhen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GoodsManagement\FrmZhuangZhen.Designer.cs">
+      <DependentUpon>FrmZhuangZhen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GoodsManagement\FrmYuZhong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GoodsManagement\FrmYuZhong.Designer.cs">
+      <DependentUpon>FrmYuZhong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GoodsManagement\FrmYinXiangJieZhi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GoodsManagement\FrmYinXiangJieZhi.Designer.cs">
+      <DependentUpon>FrmYinXiangJieZhi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GoodsManagement\FrmShangPinShuXing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GoodsManagement\FrmShangPinShuXing.Designer.cs">
+      <DependentUpon>FrmShangPinShuXing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GoodsManagement\FrmKaiBen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GoodsManagement\FrmKaiBen.Designer.cs">
+      <DependentUpon>FrmKaiBen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GoodsManagement\FrmBanBie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GoodsManagement\FrmBanBie.designer.cs">
+      <DependentUpon>FrmBanBie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GoodsManagement\FrmChuBanFenLei.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GoodsManagement\FrmChuBanFenLei.designer.cs">
+      <DependentUpon>FrmChuBanFenLei.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GoodsManagement\FrmChuBanShe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GoodsManagement\FrmChuBanShe.designer.cs">
+      <DependentUpon>FrmChuBanShe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GoodsManagement\FrmFaXingFenLei.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GoodsManagement\FrmFaXingFenLei.designer.cs">
+      <DependentUpon>FrmFaXingFenLei.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GoodsManagement\FrmGoodsAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GoodsManagement\FrmGoodsAdd.designer.cs">
+      <DependentUpon>FrmGoodsAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GoodsManagement\FrmGoodsInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GoodsManagement\FrmGoodsInformation.designer.cs">
+      <DependentUpon>FrmGoodsInformation.cs</DependentUpon>
+    </Compile>
     <Compile Include="PurchaseReceive\FrmPurchaseStageJC.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -285,29 +361,11 @@
     <Compile Include="SaleManagement\FrmSaleStageJC.Designer.cs">
       <DependentUpon>FrmSaleStageJC.cs</DependentUpon>
     </Compile>
-    <Compile Include="SaleManagement\FrmSaleStageJCAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SaleManagement\FrmSaleStageJCAdd.Designer.cs">
-      <DependentUpon>FrmSaleStageJCAdd.cs</DependentUpon>
-    </Compile>
     <Compile Include="SaleManagement\FrmSaleStageJT.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SaleManagement\FrmSaleStageJT.designer.cs">
       <DependentUpon>FrmSaleStageJT.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SaleManagement\FrmSaleStageJTAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SaleManagement\FrmSaleStageJTAdd.Designer.cs">
-      <DependentUpon>FrmSaleStageJTAdd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SaleManagement\FrmSaleStageSelectcase.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SaleManagement\FrmSaleStageSelectcase.Designer.cs">
-      <DependentUpon>FrmSaleStageSelectcase.cs</DependentUpon>
     </Compile>
     <Compile Include="SaleManagement\FrmTuoShouData.cs">
       <SubType>Form</SubType>
@@ -1115,6 +1173,48 @@
     <EmbeddedResource Include="AccountManagement\FrmZTTZinquire.resx">
       <DependentUpon>FrmZTTZinquire.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SaleManagement\FrmSaleStageJTAdd.resx">
+      <DependentUpon>FrmSaleStageJTAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaleManagement\FrmSaleStageJCAdd.resx">
+      <DependentUpon>FrmSaleStageJCAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaleManagement\FrmSaleStageSelectcase.resx">
+      <DependentUpon>FrmSaleStageSelectcase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GoodsManagement\FrmZhuangZhen.resx">
+      <DependentUpon>FrmZhuangZhen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GoodsManagement\FrmYuZhong.resx">
+      <DependentUpon>FrmYuZhong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GoodsManagement\FrmYinXiangJieZhi.resx">
+      <DependentUpon>FrmYinXiangJieZhi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GoodsManagement\FrmShangPinShuXing.resx">
+      <DependentUpon>FrmShangPinShuXing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GoodsManagement\FrmKaiBen.resx">
+      <DependentUpon>FrmKaiBen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GoodsManagement\FrmBanBie.resx">
+      <DependentUpon>FrmBanBie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GoodsManagement\FrmChuBanFenLei.resx">
+      <DependentUpon>FrmChuBanFenLei.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GoodsManagement\FrmChuBanShe.resx">
+      <DependentUpon>FrmChuBanShe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GoodsManagement\FrmFaXingFenLei.resx">
+      <DependentUpon>FrmFaXingFenLei.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GoodsManagement\FrmGoodsAdd.resx">
+      <DependentUpon>FrmGoodsAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GoodsManagement\FrmGoodsInformation.resx">
+      <DependentUpon>FrmGoodsInformation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="PurchaseReceive\FrmPurchaseStageJC.resx">
       <DependentUpon>FrmPurchaseStageJC.cs</DependentUpon>
@@ -1152,17 +1252,8 @@
     <EmbeddedResource Include="SaleManagement\FrmSaleStageJC.resx">
       <DependentUpon>FrmSaleStageJC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SaleManagement\FrmSaleStageJCAdd.resx">
-      <DependentUpon>FrmSaleStageJCAdd.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="SaleManagement\FrmSaleStageJT.resx">
       <DependentUpon>FrmSaleStageJT.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SaleManagement\FrmSaleStageJTAdd.resx">
-      <DependentUpon>FrmSaleStageJTAdd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SaleManagement\FrmSaleStageSelectcase.resx">
-      <DependentUpon>FrmSaleStageSelectcase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SaleManagement\FrmTuoShouData.resx">
       <DependentUpon>FrmTuoShouData.cs</DependentUpon>
