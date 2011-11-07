@@ -3,6 +3,90 @@ using System;
 using DevExpress.Xpo;
 namespace XINHUA
 {
+    public class VIEW_JC_C_CGSH_JD : XPLiteObject
+    {
+        string fCGSHID;
+        [Key]
+        [Size(16)]
+        public string CGSHID
+        {
+            get { return fCGSHID; }
+            set { SetPropertyValue<string>("CGSHID", ref fCGSHID, value); }
+        }
+        string fSHDH;
+        [Size(22)]
+        public string SHDH
+        {
+            get { return fSHDH; }
+            set { SetPropertyValue<string>("SHDH", ref fSHDH, value); }
+        }
+        string fCGBMID;
+        [Size(16)]
+        public string CGBMID
+        {
+            get { return fCGBMID; }
+            set { SetPropertyValue<string>("CGBMID", ref fCGBMID, value); }
+        }
+        long fSSSL;
+        public long SSSL
+        {
+            get { return fSSSL; }
+            set { SetPropertyValue<long>("SSSL", ref fSSSL, value); }
+        }
+
+        decimal fSSSY;
+        public decimal SSSY
+        {
+            get { return fSSSY; }
+            set { SetPropertyValue<decimal>("SSSY", ref fSSSY, value); }
+        }
+        decimal fSSMY;
+        public decimal SSMY
+        {
+            get { return fSSMY; }
+            set { SetPropertyValue<decimal>("SSMY", ref fSSMY, value); }
+        }
+
+        string fZT;
+        [Size(16)]
+        public string ZT
+        {
+            get { return fZT; }
+            set { SetPropertyValue<string>("ZT", ref fZT, value); }
+        }
+        string fSJLX;
+        [Size(16)]
+        public string SJLX
+        {
+            get { return fSJLX; }
+            set { SetPropertyValue<string>("SJLX", ref fSJLX, value); }
+        }
+
+        string fDWMC;
+        [Size(40)]
+        public string DWMC
+        {
+            get { return fDWMC; }
+            set { SetPropertyValue<string>("DWMC", ref fDWMC, value); }
+        }
+
+        string fCGJSDID;
+        public string CGJSDID
+        {
+            get { return fCGJSDID; }
+            set { SetPropertyValue<string>("CGJSDID", ref fCGJSDID, value); }
+        }
+        string fCGJSDH;
+        public string CGJSDH
+        {
+            get { return fCGJSDH; }
+            set { SetPropertyValue<string>("CGJSDH", ref fCGJSDH, value); }
+        }
+
+        public VIEW_JC_C_CGSH_JD(Session session) : base(session) { }
+        public VIEW_JC_C_CGSH_JD() : base(Session.DefaultSession) { }
+        public override void AfterConstruction() { base.AfterConstruction(); }
+    }
     public class VIEW_JC_C_XSD : XPLiteObject
     {
         string fXSDID;
