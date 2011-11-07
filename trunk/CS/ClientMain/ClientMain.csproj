@@ -211,15 +211,23 @@
     <Compile Include="AccountManagement\FrmZTTZinquire.designer.cs">
       <DependentUpon>FrmZTTZinquire.cs</DependentUpon>
     </Compile>
-    <Compile Include="SaleManagement\FrmSaleStageJTAdd.cs" />
+    <Compile Include="SaleManagement\FrmPurchaseStageJCAdd.cs" />
+    <Compile Include="SaleManagement\FrmPurchaseStageJCAdd.Designer.cs">
+      <DependentUpon>FrmPurchaseStageJCAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SaleManagement\FrmPurchaseStageJT.cs" />
+    <Compile Include="SaleManagement\FrmPurchaseStageJT.Designer.cs">
+      <DependentUpon>FrmPurchaseStageJT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SaleManagement\FrmSaleStageJTAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SaleManagement\FrmSaleStageJTAdd.Designer.cs">
       <DependentUpon>FrmSaleStageJTAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="SaleManagement\FrmSaleStageJCAdd.cs" />
-    <Compile Include="SaleManagement\FrmSaleStageJCAdd.Designer.cs">
-      <DependentUpon>FrmSaleStageJCAdd.cs</DependentUpon>
+    <Compile Include="SaleManagement\FrmSaleStageSelectcase.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SaleManagement\FrmSaleStageSelectcase.cs" />
     <Compile Include="SaleManagement\FrmSaleStageSelectcase.Designer.cs">
       <DependentUpon>FrmSaleStageSelectcase.cs</DependentUpon>
     </Compile>
@@ -360,12 +368,6 @@
     </Compile>
     <Compile Include="SaleManagement\FrmSaleStageJC.Designer.cs">
       <DependentUpon>FrmSaleStageJC.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SaleManagement\FrmSaleStageJT.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SaleManagement\FrmSaleStageJT.designer.cs">
-      <DependentUpon>FrmSaleStageJT.cs</DependentUpon>
     </Compile>
     <Compile Include="SaleManagement\FrmTuoShouData.cs">
       <SubType>Form</SubType>
@@ -1173,11 +1175,14 @@
     <EmbeddedResource Include="AccountManagement\FrmZTTZinquire.resx">
       <DependentUpon>FrmZTTZinquire.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SaleManagement\FrmPurchaseStageJCAdd.resx">
+      <DependentUpon>FrmPurchaseStageJCAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaleManagement\FrmPurchaseStageJT.resx">
+      <DependentUpon>FrmPurchaseStageJT.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SaleManagement\FrmSaleStageJTAdd.resx">
       <DependentUpon>FrmSaleStageJTAdd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SaleManagement\FrmSaleStageJCAdd.resx">
-      <DependentUpon>FrmSaleStageJCAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SaleManagement\FrmSaleStageSelectcase.resx">
       <DependentUpon>FrmSaleStageSelectcase.cs</DependentUpon>
@@ -1251,9 +1256,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SaleManagement\FrmSaleStageJC.resx">
       <DependentUpon>FrmSaleStageJC.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SaleManagement\FrmSaleStageJT.resx">
-      <DependentUpon>FrmSaleStageJT.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SaleManagement\FrmTuoShouData.resx">
       <DependentUpon>FrmTuoShouData.cs</DependentUpon>

@@ -1,6 +1,6 @@
 ﻿namespace ClientMain
 {
-    partial class FrmSaleStageJCAdd
+    partial class FrmPurchaseStageJCAdd
     {
         /// <summary>
         /// Required designer variable.
@@ -28,30 +28,40 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSaleStageJCAdd));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPurchaseStageJCAdd));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.btnSave = new System.Windows.Forms.ToolStripButton();
-            this.btnReload = new System.Windows.Forms.ToolStripButton();
-            this.btnExit = new System.Windows.Forms.ToolStripButton();
-            this.btnAlter = new System.Windows.Forms.ToolStripButton();
-            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
-            this.btnSelectCase = new System.Windows.Forms.ToolStripButton();
-            this.btnDeleteCase = new System.Windows.Forms.ToolStripButton();
-            this.btnPrintTable = new System.Windows.Forms.ToolStripButton();
-            this.btnExportGrid = new System.Windows.Forms.ToolStripButton();
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.xpServerCollectionSource1 = new DevExpress.Xpo.XPServerCollectionSource();
+            this.unitOfWork1 = new DevExpress.Xpo.UnitOfWork();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colSJLX = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSHDH = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCGJSDH = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCGSHMXID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCGJSDID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSPXXMC = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSPBH = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colZDDM = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDJ = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colJZ = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colJJ = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSHSL = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSHSY = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSHMY = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDWMC = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCGJSDMXID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.txtBJS = new System.Windows.Forms.TextBox();
             this.ComboxJSFS = new System.Windows.Forms.ComboBox();
             this.txtWSJE = new System.Windows.Forms.TextBox();
-            this.txtXSMY = new System.Windows.Forms.TextBox();
+            this.txtSHMY = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.txtSE = new System.Windows.Forms.TextBox();
-            this.txtXSSY = new System.Windows.Forms.TextBox();
+            this.txtSHSY = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.txtZT = new System.Windows.Forms.TextBox();
-            this.txtXSSL = new System.Windows.Forms.TextBox();
+            this.txtSHSL = new System.Windows.Forms.TextBox();
             this.txtJSHJ = new System.Windows.Forms.TextBox();
             this.txtPJZK = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
@@ -88,165 +98,246 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.xpServerCollectionSource1 = new DevExpress.Xpo.XPServerCollectionSource();
-            this.unitOfWork1 = new DevExpress.Xpo.UnitOfWork();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colXSDID = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colXSDH = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colXSSL = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colXSSY = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colXSMY = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colYSSL = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colYSSY = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colYSMY = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colZT = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colSJLX = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colXSJSDID = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colXSJSDH = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colXSBMMC = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colKHMC = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.btnSave = new System.Windows.Forms.ToolStripButton();
+            this.btnReload = new System.Windows.Forms.ToolStripButton();
+            this.btnExit = new System.Windows.Forms.ToolStripButton();
+            this.btnAlter = new System.Windows.Forms.ToolStripButton();
+            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            this.btnSelectCase = new System.Windows.Forms.ToolStripButton();
+            this.btnDeleteCase = new System.Windows.Forms.ToolStripButton();
+            this.btnPrintTable = new System.Windows.Forms.ToolStripButton();
+            this.btnExportGrid = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
-            this.toolStrip2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpServerCollectionSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            this.panel2.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.toolStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.toolStrip2);
-            this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Controls.Add(this.gridControl1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 333);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(867, 344);
-            this.panel1.TabIndex = 0;
+            this.panel1.Size = new System.Drawing.Size(867, 370);
+            this.panel1.TabIndex = 1;
             // 
-            // toolStrip2
+            // gridControl1
             // 
-            this.toolStrip2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnSave,
-            this.btnReload,
-            this.btnExit,
-            this.btnAlter,
-            this.toolStripProgressBar1,
-            this.btnSelectCase,
-            this.btnDeleteCase,
-            this.btnPrintTable,
-            this.btnExportGrid});
-            this.toolStrip2.Location = new System.Drawing.Point(0, 317);
-            this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(867, 27);
-            this.toolStrip2.TabIndex = 12;
-            this.toolStrip2.Text = "toolStrip2";
+            this.gridControl1.DataSource = this.xpServerCollectionSource1;
+            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl1.Location = new System.Drawing.Point(0, 0);
+            this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.Size = new System.Drawing.Size(867, 370);
+            this.gridControl1.TabIndex = 0;
+            this.gridControl1.UseEmbeddedNavigator = true;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
             // 
-            // btnSave
+            // xpServerCollectionSource1
             // 
-            this.btnSave.BackColor = System.Drawing.Color.PaleGreen;
-            this.btnSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(69, 24);
-            this.btnSave.Text = "   保存   ";
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.xpServerCollectionSource1.ObjectType = typeof(XINHUA.VIEW_JC_C_CGJSDMX);
+            this.xpServerCollectionSource1.Session = this.unitOfWork1;
             // 
-            // btnReload
+            // gridView1
             // 
-            this.btnReload.BackColor = System.Drawing.Color.Turquoise;
-            this.btnReload.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnReload.Image = ((System.Drawing.Image)(resources.GetObject("btnReload.Image")));
-            this.btnReload.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnReload.Name = "btnReload";
-            this.btnReload.Size = new System.Drawing.Size(69, 24);
-            this.btnReload.Text = "   重置   ";
-            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colSJLX,
+            this.colSHDH,
+            this.colCGJSDH,
+            this.colCGSHMXID,
+            this.colCGJSDID,
+            this.colSPXXMC,
+            this.colSPBH,
+            this.colZDDM,
+            this.colDJ,
+            this.colJZ,
+            this.colJJ,
+            this.colSHSL,
+            this.colSHSY,
+            this.colSHMY,
+            this.colDWMC,
+            this.colCGJSDMXID});
+            this.gridView1.FooterPanelHeight = 50;
+            this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.OptionsPrint.AutoWidth = false;
+            this.gridView1.OptionsPrint.PrintSelectedRowsOnly = true;
+            this.gridView1.OptionsSelection.MultiSelect = true;
+            this.gridView1.OptionsView.ColumnAutoWidth = false;
+            this.gridView1.OptionsView.ShowFooter = true;
             // 
-            // btnExit
+            // colSJLX
             // 
-            this.btnExit.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnExit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
-            this.btnExit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(69, 24);
-            this.btnExit.Text = "   退出   ";
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            this.colSJLX.Caption = "数据类型";
+            this.colSJLX.FieldName = "SJLX";
+            this.colSJLX.Name = "colSJLX";
+            this.colSJLX.SummaryItem.DisplayFormat = "总计";
+            this.colSJLX.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Custom;
+            this.colSJLX.Visible = true;
+            this.colSJLX.VisibleIndex = 0;
             // 
-            // btnAlter
+            // colSHDH
             // 
-            this.btnAlter.BackColor = System.Drawing.Color.Gold;
-            this.btnAlter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnAlter.Image = ((System.Drawing.Image)(resources.GetObject("btnAlter.Image")));
-            this.btnAlter.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnAlter.Name = "btnAlter";
-            this.btnAlter.Size = new System.Drawing.Size(69, 24);
-            this.btnAlter.Text = " 确认修改 ";
-            this.btnAlter.Click += new System.EventHandler(this.btnAlter_Click);
+            this.colSHDH.Caption = "收货单号";
+            this.colSHDH.FieldName = "SHDH";
+            this.colSHDH.Name = "colSHDH";
+            this.colSHDH.Visible = true;
+            this.colSHDH.VisibleIndex = 1;
             // 
-            // toolStripProgressBar1
+            // colCGJSDH
             // 
-            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(200, 24);
+            this.colCGJSDH.Caption = "采购结算单号";
+            this.colCGJSDH.FieldName = "CGJSDH";
+            this.colCGJSDH.Name = "colCGJSDH";
+            this.colCGJSDH.Visible = true;
+            this.colCGJSDH.VisibleIndex = 2;
             // 
-            // btnSelectCase
+            // colCGSHMXID
             // 
-            this.btnSelectCase.BackColor = System.Drawing.Color.LightSalmon;
-            this.btnSelectCase.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnSelectCase.Image = ((System.Drawing.Image)(resources.GetObject("btnSelectCase.Image")));
-            this.btnSelectCase.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnSelectCase.Name = "btnSelectCase";
-            this.btnSelectCase.Size = new System.Drawing.Size(69, 24);
-            this.btnSelectCase.Text = "   选单   ";
-            this.btnSelectCase.Click += new System.EventHandler(this.btnSelectCase_Click);
+            this.colCGSHMXID.Caption = "采购收货单明细ID";
+            this.colCGSHMXID.FieldName = "CGSHMXID";
+            this.colCGSHMXID.Name = "colCGSHMXID";
             // 
-            // btnDeleteCase
+            // colCGJSDID
             // 
-            this.btnDeleteCase.BackColor = System.Drawing.Color.IndianRed;
-            this.btnDeleteCase.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnDeleteCase.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteCase.Image")));
-            this.btnDeleteCase.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnDeleteCase.Name = "btnDeleteCase";
-            this.btnDeleteCase.Size = new System.Drawing.Size(69, 24);
-            this.btnDeleteCase.Text = "   减单   ";
-            this.btnDeleteCase.Click += new System.EventHandler(this.btnDeleteCase_Click);
+            this.colCGJSDID.Caption = "采购结算单ID";
+            this.colCGJSDID.FieldName = "CGJSDID";
+            this.colCGJSDID.Name = "colCGJSDID";
             // 
-            // btnPrintTable
+            // colSPXXMC
             // 
-            this.btnPrintTable.Image = ((System.Drawing.Image)(resources.GetObject("btnPrintTable.Image")));
-            this.btnPrintTable.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnPrintTable.Name = "btnPrintTable";
-            this.btnPrintTable.Size = new System.Drawing.Size(73, 24);
-            this.btnPrintTable.Text = "打印表格";
+            this.colSPXXMC.Caption = "品名";
+            this.colSPXXMC.FieldName = "SPXXMC";
+            this.colSPXXMC.Name = "colSPXXMC";
+            this.colSPXXMC.Visible = true;
+            this.colSPXXMC.VisibleIndex = 3;
             // 
-            // btnExportGrid
+            // colSPBH
             // 
-            this.btnExportGrid.Image = ((System.Drawing.Image)(resources.GetObject("btnExportGrid.Image")));
-            this.btnExportGrid.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnExportGrid.Name = "btnExportGrid";
-            this.btnExportGrid.Size = new System.Drawing.Size(73, 24);
-            this.btnExportGrid.Text = "导出表格";
+            this.colSPBH.Caption = "商品编号";
+            this.colSPBH.FieldName = "SPBH";
+            this.colSPBH.Name = "colSPBH";
+            this.colSPBH.Visible = true;
+            this.colSPBH.VisibleIndex = 4;
+            // 
+            // colZDDM
+            // 
+            this.colZDDM.Caption = "征订代码";
+            this.colZDDM.FieldName = "ZDDM";
+            this.colZDDM.Name = "colZDDM";
+            this.colZDDM.Visible = true;
+            this.colZDDM.VisibleIndex = 5;
+            // 
+            // colDJ
+            // 
+            this.colDJ.Caption = "定价";
+            this.colDJ.FieldName = "DJ";
+            this.colDJ.Name = "colDJ";
+            this.colDJ.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+            this.colDJ.Visible = true;
+            this.colDJ.VisibleIndex = 6;
+            // 
+            // colJZ
+            // 
+            this.colJZ.Caption = "进折";
+            this.colJZ.FieldName = "JZ";
+            this.colJZ.Name = "colJZ";
+            this.colJZ.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+            this.colJZ.Visible = true;
+            this.colJZ.VisibleIndex = 7;
+            // 
+            // colJJ
+            // 
+            this.colJJ.Caption = "进价";
+            this.colJJ.FieldName = "JJ";
+            this.colJJ.Name = "colJJ";
+            this.colJJ.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+            this.colJJ.Visible = true;
+            this.colJJ.VisibleIndex = 8;
+            // 
+            // colSHSL
+            // 
+            this.colSHSL.Caption = "收货数量";
+            this.colSHSL.FieldName = "SHSL";
+            this.colSHSL.Name = "colSHSL";
+            this.colSHSL.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+            this.colSHSL.Visible = true;
+            this.colSHSL.VisibleIndex = 9;
+            // 
+            // colSHSY
+            // 
+            this.colSHSY.Caption = "收货实洋";
+            this.colSHSY.FieldName = "SHSY";
+            this.colSHSY.Name = "colSHSY";
+            this.colSHSY.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+            this.colSHSY.Visible = true;
+            this.colSHSY.VisibleIndex = 10;
+            // 
+            // colSHMY
+            // 
+            this.colSHMY.Caption = "收货码洋";
+            this.colSHMY.FieldName = "SHMY";
+            this.colSHMY.Name = "colSHMY";
+            this.colSHMY.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+            this.colSHMY.Visible = true;
+            this.colSHMY.VisibleIndex = 11;
+            // 
+            // colDWMC
+            // 
+            this.colDWMC.Caption = "单位名称";
+            this.colDWMC.FieldName = "DWMC";
+            this.colDWMC.Name = "colDWMC";
+            this.colDWMC.Visible = true;
+            this.colDWMC.VisibleIndex = 12;
+            // 
+            // colCGJSDMXID
+            // 
+            this.colCGJSDMXID.Caption = "采购结算单明细";
+            this.colCGJSDMXID.FieldName = "CGJSDMXID";
+            this.colCGJSDMXID.Name = "colCGJSDMXID";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.panel4);
+            this.panel2.Controls.Add(this.panel3);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(867, 333);
+            this.panel2.TabIndex = 8;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.groupBox1);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(867, 302);
+            this.panel4.TabIndex = 1;
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.AliceBlue;
-            this.groupBox1.Controls.Add(this.label23);
-            this.groupBox1.Controls.Add(this.txtBJS);
             this.groupBox1.Controls.Add(this.ComboxJSFS);
             this.groupBox1.Controls.Add(this.txtWSJE);
-            this.groupBox1.Controls.Add(this.txtXSMY);
+            this.groupBox1.Controls.Add(this.txtSHMY);
             this.groupBox1.Controls.Add(this.label22);
             this.groupBox1.Controls.Add(this.txtSE);
-            this.groupBox1.Controls.Add(this.txtXSSY);
+            this.groupBox1.Controls.Add(this.txtSHSY);
             this.groupBox1.Controls.Add(this.label21);
             this.groupBox1.Controls.Add(this.txtZT);
-            this.groupBox1.Controls.Add(this.txtXSSL);
+            this.groupBox1.Controls.Add(this.txtSHSL);
             this.groupBox1.Controls.Add(this.txtJSHJ);
             this.groupBox1.Controls.Add(this.txtPJZK);
             this.groupBox1.Controls.Add(this.label20);
@@ -283,33 +374,14 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(867, 317);
-            this.groupBox1.TabIndex = 11;
+            this.groupBox1.Size = new System.Drawing.Size(867, 302);
+            this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "销售结算单";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label23.Location = new System.Drawing.Point(303, 267);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(49, 14);
-            this.label23.TabIndex = 48;
-            this.label23.Text = "包件数";
-            // 
-            // txtBJS
-            // 
-            this.txtBJS.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtBJS.Location = new System.Drawing.Point(372, 260);
-            this.txtBJS.Name = "txtBJS";
-            this.txtBJS.ReadOnly = true;
-            this.txtBJS.Size = new System.Drawing.Size(184, 21);
-            this.txtBJS.TabIndex = 47;
+            this.groupBox1.Text = "采购结算单";
             // 
             // ComboxJSFS
             // 
@@ -329,14 +401,14 @@
             this.txtWSJE.Size = new System.Drawing.Size(194, 21);
             this.txtWSJE.TabIndex = 44;
             // 
-            // txtXSMY
+            // txtSHMY
             // 
-            this.txtXSMY.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtXSMY.Location = new System.Drawing.Point(643, 191);
-            this.txtXSMY.Name = "txtXSMY";
-            this.txtXSMY.ReadOnly = true;
-            this.txtXSMY.Size = new System.Drawing.Size(194, 21);
-            this.txtXSMY.TabIndex = 43;
+            this.txtSHMY.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtSHMY.Location = new System.Drawing.Point(643, 191);
+            this.txtSHMY.Name = "txtSHMY";
+            this.txtSHMY.ReadOnly = true;
+            this.txtSHMY.Size = new System.Drawing.Size(194, 21);
+            this.txtSHMY.TabIndex = 43;
             // 
             // label22
             // 
@@ -357,14 +429,14 @@
             this.txtSE.Size = new System.Drawing.Size(184, 21);
             this.txtSE.TabIndex = 41;
             // 
-            // txtXSSY
+            // txtSHSY
             // 
-            this.txtXSSY.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtXSSY.Location = new System.Drawing.Point(372, 191);
-            this.txtXSSY.Name = "txtXSSY";
-            this.txtXSSY.ReadOnly = true;
-            this.txtXSSY.Size = new System.Drawing.Size(184, 21);
-            this.txtXSSY.TabIndex = 40;
+            this.txtSHSY.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtSHSY.Location = new System.Drawing.Point(372, 191);
+            this.txtSHSY.Name = "txtSHSY";
+            this.txtSHSY.ReadOnly = true;
+            this.txtSHSY.Size = new System.Drawing.Size(184, 21);
+            this.txtSHSY.TabIndex = 40;
             // 
             // label21
             // 
@@ -385,14 +457,14 @@
             this.txtZT.Size = new System.Drawing.Size(203, 21);
             this.txtZT.TabIndex = 38;
             // 
-            // txtXSSL
+            // txtSHSL
             // 
-            this.txtXSSL.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtXSSL.Location = new System.Drawing.Point(93, 191);
-            this.txtXSSL.Name = "txtXSSL";
-            this.txtXSSL.ReadOnly = true;
-            this.txtXSSL.Size = new System.Drawing.Size(203, 21);
-            this.txtXSSL.TabIndex = 37;
+            this.txtSHSL.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtSHSL.Location = new System.Drawing.Point(93, 191);
+            this.txtSHSL.Name = "txtSHSL";
+            this.txtSHSL.ReadOnly = true;
+            this.txtSHSL.Size = new System.Drawing.Size(203, 21);
+            this.txtSHSL.TabIndex = 37;
             // 
             // txtJSHJ
             // 
@@ -420,7 +492,7 @@
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(63, 14);
             this.label20.TabIndex = 34;
-            this.label20.Text = "销售实洋";
+            this.label20.Text = "收货实洋";
             // 
             // label19
             // 
@@ -430,7 +502,7 @@
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(63, 14);
             this.label19.TabIndex = 33;
-            this.label19.Text = "销售码洋";
+            this.label19.Text = "收款码洋";
             // 
             // txtPZS
             // 
@@ -615,7 +687,12 @@
             this.label11.Size = new System.Drawing.Size(63, 14);
             this.label11.TabIndex = 13;
             this.label11.Text = "操作日期";
-            // 
+            //
+            //grieviewx1
+            this.gridView1.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView1_CustomDrawRowIndicator);
+            this.gridView1.CustomDrawFooterCell += new DevExpress.XtraGrid.Views.Grid.FooterCellCustomDrawEventHandler(this.gridView1_CustomDrawFooterCell);
+            this.gridView1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.gridView1_MouseUp);
+            //
             // txtZTID
             // 
             this.txtZTID.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -651,7 +728,7 @@
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(63, 14);
             this.label10.TabIndex = 9;
-            this.label10.Text = "销售数量";
+            this.label10.Text = "收货数量";
             // 
             // label9
             // 
@@ -743,200 +820,147 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "结算单号";
             // 
-            // panel2
+            // panel3
             // 
-            this.panel2.Controls.Add(this.gridControl1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 344);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(867, 359);
-            this.panel2.TabIndex = 1;
+            this.panel3.Controls.Add(this.toolStrip2);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(0, 302);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(867, 31);
+            this.panel3.TabIndex = 0;
             // 
-            // gridControl1
+            // toolStrip2
             // 
-            this.gridControl1.DataSource = this.xpServerCollectionSource1;
-            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(0, 0);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(867, 359);
-            this.gridControl1.TabIndex = 1;
-            this.gridControl1.UseEmbeddedNavigator = true;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.toolStrip2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnSave,
+            this.btnReload,
+            this.btnExit,
+            this.btnAlter,
+            this.toolStripProgressBar1,
+            this.btnSelectCase,
+            this.btnDeleteCase,
+            this.btnPrintTable,
+            this.btnExportGrid});
+            this.toolStrip2.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip2.Name = "toolStrip2";
+            this.toolStrip2.Size = new System.Drawing.Size(867, 31);
+            this.toolStrip2.TabIndex = 5;
+            this.toolStrip2.Text = "toolStrip2";
             // 
-            // xpServerCollectionSource1
+            // btnSave
             // 
-            this.xpServerCollectionSource1.ObjectType = typeof(XINHUA.VIEW_JC_C_XSD);
-            this.xpServerCollectionSource1.Session = this.unitOfWork1;
+            this.btnSave.BackColor = System.Drawing.Color.PaleGreen;
+            this.btnSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
+            this.btnSave.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(69, 28);
+            this.btnSave.Text = "   保存   ";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // gridView1
+            // btnReload
             // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colSJLX,
-            this.colXSJSDH,
-            this.colXSDH,
-            this.colXSBMMC,
-            this.colKHMC,
-            this.colXSSL,
-            this.colXSSY,
-            this.colXSMY,
-            this.colYSSL,
-            this.colYSSY,
-            this.colYSMY,
-            this.colZT,
-            this.colXSDID,
-            this.colXSJSDID});
-            this.gridView1.FooterPanelHeight = 45;
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsBehavior.Editable = false;
-            this.gridView1.OptionsPrint.AutoWidth = false;
-            this.gridView1.OptionsPrint.PrintSelectedRowsOnly = true;
-            this.gridView1.OptionsSelection.MultiSelect = true;
-            this.gridView1.OptionsView.ColumnAutoWidth = false;
-            this.gridView1.OptionsView.ShowFooter = true;
-            this.gridView1.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView1_CustomDrawRowIndicator);
-            this.gridView1.CustomDrawFooterCell += new DevExpress.XtraGrid.Views.Grid.FooterCellCustomDrawEventHandler(this.gridView1_CustomDrawFooterCell);
-            this.gridView1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.gridView1_MouseUp);
+            this.btnReload.BackColor = System.Drawing.Color.Turquoise;
+            this.btnReload.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnReload.Image = ((System.Drawing.Image)(resources.GetObject("btnReload.Image")));
+            this.btnReload.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnReload.Name = "btnReload";
+            this.btnReload.Size = new System.Drawing.Size(69, 28);
+            this.btnReload.Text = "   重置   ";
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
             // 
-            // colXSDID
+            // btnExit
             // 
-            this.colXSDID.Caption = "销售单ID";
-            this.colXSDID.FieldName = "XSDID";
-            this.colXSDID.Name = "colXSDID";
+            this.btnExit.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnExit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
+            this.btnExit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(69, 28);
+            this.btnExit.Text = "   退出   ";
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // colXSDH
+            // btnAlter
             // 
-            this.colXSDH.Caption = "销售单号";
-            this.colXSDH.FieldName = "XSDH";
-            this.colXSDH.Name = "colXSDH";
-            this.colXSDH.Visible = true;
-            this.colXSDH.VisibleIndex = 2;
+            this.btnAlter.BackColor = System.Drawing.Color.Gold;
+            this.btnAlter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnAlter.Image = ((System.Drawing.Image)(resources.GetObject("btnAlter.Image")));
+            this.btnAlter.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAlter.Name = "btnAlter";
+            this.btnAlter.Size = new System.Drawing.Size(69, 28);
+            this.btnAlter.Text = " 确认修改 ";
+            this.btnAlter.Click += new System.EventHandler(this.btnAlter_Click);
             // 
-            // colXSSL
+            // toolStripProgressBar1
             // 
-            this.colXSSL.Caption = "销售数量";
-            this.colXSSL.FieldName = "XSSL";
-            this.colXSSL.Name = "colXSSL";
-            this.colXSSL.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-            this.colXSSL.Visible = true;
-            this.colXSSL.VisibleIndex = 5;
+            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(200, 28);
             // 
-            // colXSSY
+            // btnSelectCase
             // 
-            this.colXSSY.Caption = "销售实洋";
-            this.colXSSY.FieldName = "XSSY";
-            this.colXSSY.Name = "colXSSY";
-            this.colXSSY.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-            this.colXSSY.Visible = true;
-            this.colXSSY.VisibleIndex = 6;
+            this.btnSelectCase.BackColor = System.Drawing.Color.LightSalmon;
+            this.btnSelectCase.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnSelectCase.Image = ((System.Drawing.Image)(resources.GetObject("btnSelectCase.Image")));
+            this.btnSelectCase.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnSelectCase.Name = "btnSelectCase";
+            this.btnSelectCase.Size = new System.Drawing.Size(69, 28);
+            this.btnSelectCase.Text = "   选单   ";
+            this.btnSelectCase.Click += new System.EventHandler(this.btnSelectCase_Click);
             // 
-            // colXSMY
+            // btnDeleteCase
             // 
-            this.colXSMY.Caption = "销售码洋";
-            this.colXSMY.FieldName = "XSMY";
-            this.colXSMY.Name = "colXSMY";
-            this.colXSMY.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-            this.colXSMY.Visible = true;
-            this.colXSMY.VisibleIndex = 7;
+            this.btnDeleteCase.BackColor = System.Drawing.Color.IndianRed;
+            this.btnDeleteCase.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnDeleteCase.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteCase.Image")));
+            this.btnDeleteCase.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnDeleteCase.Name = "btnDeleteCase";
+            this.btnDeleteCase.Size = new System.Drawing.Size(69, 28);
+            this.btnDeleteCase.Text = "   减单   ";
+            this.btnDeleteCase.Click += new System.EventHandler(this.btnDeleteCase_Click);
             // 
-            // colYSSL
+            // btnPrintTable
             // 
-            this.colYSSL.Caption = "已结数量";
-            this.colYSSL.FieldName = "YSSL";
-            this.colYSSL.Name = "colYSSL";
-            this.colYSSL.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-            this.colYSSL.Visible = true;
-            this.colYSSL.VisibleIndex = 8;
+            this.btnPrintTable.Image = ((System.Drawing.Image)(resources.GetObject("btnPrintTable.Image")));
+            this.btnPrintTable.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnPrintTable.Name = "btnPrintTable";
+            this.btnPrintTable.Size = new System.Drawing.Size(73, 28);
+            this.btnPrintTable.Text = "打印表格";
+            this.btnPrintTable.Click += new System.EventHandler(this.btnPrintTable_Click);
             // 
-            // colYSSY
+            // btnExportGrid
             // 
-            this.colYSSY.Caption = "已结实洋";
-            this.colYSSY.FieldName = "YSSY";
-            this.colYSSY.Name = "colYSSY";
-            this.colYSSY.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-            this.colYSSY.Visible = true;
-            this.colYSSY.VisibleIndex = 9;
+            this.btnExportGrid.Image = ((System.Drawing.Image)(resources.GetObject("btnExportGrid.Image")));
+            this.btnExportGrid.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnExportGrid.Name = "btnExportGrid";
+            this.btnExportGrid.Size = new System.Drawing.Size(73, 28);
+            this.btnExportGrid.Text = "导出表格";
+            this.btnExportGrid.Click += new System.EventHandler(this.btnExportGrid_Click);
             // 
-            // colYSMY
-            // 
-            this.colYSMY.Caption = "已结码洋";
-            this.colYSMY.FieldName = "YSMY";
-            this.colYSMY.Name = "colYSMY";
-            this.colYSMY.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-            this.colYSMY.Visible = true;
-            this.colYSMY.VisibleIndex = 10;
-            // 
-            // colZT
-            // 
-            this.colZT.Caption = "状态ID";
-            this.colZT.FieldName = "ZT";
-            this.colZT.Name = "colZT";
-            // 
-            // colSJLX
-            // 
-            this.colSJLX.Caption = "数据类型";
-            this.colSJLX.FieldName = "SJLX";
-            this.colSJLX.Name = "colSJLX";
-            this.colSJLX.SummaryItem.DisplayFormat = "总计：";
-            this.colSJLX.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Custom;
-            this.colSJLX.Visible = true;
-            this.colSJLX.VisibleIndex = 0;
-            // 
-            // colXSJSDID
-            // 
-            this.colXSJSDID.Caption = "销售结算单ID";
-            this.colXSJSDID.FieldName = "XSJSDID";
-            this.colXSJSDID.Name = "colXSJSDID";
-            // 
-            // colXSJSDH
-            // 
-            this.colXSJSDH.Caption = "销售结算单号";
-            this.colXSJSDH.FieldName = "XSJSDH";
-            this.colXSJSDH.Name = "colXSJSDH";
-            this.colXSJSDH.Visible = true;
-            this.colXSJSDH.VisibleIndex = 1;
-            // 
-            // colXSBMMC
-            // 
-            this.colXSBMMC.Caption = "销售部门名称";
-            this.colXSBMMC.FieldName = "XSBMMC";
-            this.colXSBMMC.Name = "colXSBMMC";
-            this.colXSBMMC.Visible = true;
-            this.colXSBMMC.VisibleIndex = 3;
-            // 
-            // colKHMC
-            // 
-            this.colKHMC.Caption = "客户名称";
-            this.colKHMC.FieldName = "KHMC";
-            this.colKHMC.Name = "colKHMC";
-            this.colKHMC.Visible = true;
-            this.colKHMC.VisibleIndex = 4;
-            // 
-            // FrmSaleStageJCAdd
+            // FrmPurchaseStageJCAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(867, 703);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.MaximizeBox = false;
-            this.Name = "FrmSaleStageJCAdd";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmXSJSDSXSJAdd";
-            this.Load += new System.EventHandler(this.FrmSaleStageJCAdd_Load);
+            this.Name = "FrmPurchaseStageJCAdd";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "县市采购结算单编辑";
+            this.Load += new System.EventHandler(this.FrmPurchaseStageJCAdd_Load);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.toolStrip2.ResumeLayout(false);
-            this.toolStrip2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpServerCollectionSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.toolStrip2.ResumeLayout(false);
+            this.toolStrip2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -944,23 +968,46 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private DevExpress.Xpo.XPServerCollectionSource xpServerCollectionSource1;
-        private DevExpress.Xpo.UnitOfWork unitOfWork1;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.Xpo.XPServerCollectionSource xpServerCollectionSource1;
+        private DevExpress.XtraGrid.Columns.GridColumn colSJLX;
+        private DevExpress.XtraGrid.Columns.GridColumn colSHDH;
+        private DevExpress.XtraGrid.Columns.GridColumn colCGSHMXID;
+        private DevExpress.XtraGrid.Columns.GridColumn colCGJSDID;
+        private DevExpress.XtraGrid.Columns.GridColumn colCGJSDH;
+        private DevExpress.XtraGrid.Columns.GridColumn colSPXXMC;
+        private DevExpress.XtraGrid.Columns.GridColumn colSPBH;
+        private DevExpress.XtraGrid.Columns.GridColumn colZDDM;
+        private DevExpress.XtraGrid.Columns.GridColumn colDJ;
+        private DevExpress.XtraGrid.Columns.GridColumn colJZ;
+        private DevExpress.XtraGrid.Columns.GridColumn colJJ;
+        private DevExpress.XtraGrid.Columns.GridColumn colSHSL;
+        private DevExpress.XtraGrid.Columns.GridColumn colSHSY;
+        private DevExpress.XtraGrid.Columns.GridColumn colSHMY;
+        private DevExpress.Xpo.UnitOfWork unitOfWork1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.ToolStrip toolStrip2;
+        private System.Windows.Forms.ToolStripButton btnSave;
+        private System.Windows.Forms.ToolStripButton btnReload;
+        private System.Windows.Forms.ToolStripButton btnExit;
+        private System.Windows.Forms.ToolStripButton btnAlter;
+        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
+        private System.Windows.Forms.ToolStripButton btnSelectCase;
+        private System.Windows.Forms.ToolStripButton btnDeleteCase;
+        private System.Windows.Forms.ToolStripButton btnPrintTable;
+        private System.Windows.Forms.ToolStripButton btnExportGrid;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.TextBox txtBJS;
         private System.Windows.Forms.ComboBox ComboxJSFS;
         private System.Windows.Forms.TextBox txtWSJE;
-        private System.Windows.Forms.TextBox txtXSMY;
+        private System.Windows.Forms.TextBox txtSHMY;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox txtSE;
-        private System.Windows.Forms.TextBox txtXSSY;
+        private System.Windows.Forms.TextBox txtSHSY;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.TextBox txtZT;
-        private System.Windows.Forms.TextBox txtXSSL;
+        private System.Windows.Forms.TextBox txtSHSL;
         private System.Windows.Forms.TextBox txtJSHJ;
         private System.Windows.Forms.TextBox txtPJZK;
         private System.Windows.Forms.Label label20;
@@ -997,29 +1044,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ToolStrip toolStrip2;
-        private System.Windows.Forms.ToolStripButton btnSave;
-        private System.Windows.Forms.ToolStripButton btnReload;
-        private System.Windows.Forms.ToolStripButton btnExit;
-        private System.Windows.Forms.ToolStripButton btnAlter;
-        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
-        private System.Windows.Forms.ToolStripButton btnSelectCase;
-        private System.Windows.Forms.ToolStripButton btnDeleteCase;
-        private System.Windows.Forms.ToolStripButton btnPrintTable;
-        private System.Windows.Forms.ToolStripButton btnExportGrid;
-        private DevExpress.XtraGrid.Columns.GridColumn colXSDID;
-        private DevExpress.XtraGrid.Columns.GridColumn colXSDH;
-        private DevExpress.XtraGrid.Columns.GridColumn colXSSL;
-        private DevExpress.XtraGrid.Columns.GridColumn colXSSY;
-        private DevExpress.XtraGrid.Columns.GridColumn colXSMY;
-        private DevExpress.XtraGrid.Columns.GridColumn colYSSL;
-        private DevExpress.XtraGrid.Columns.GridColumn colYSSY;
-        private DevExpress.XtraGrid.Columns.GridColumn colYSMY;
-        private DevExpress.XtraGrid.Columns.GridColumn colZT;
-        private DevExpress.XtraGrid.Columns.GridColumn colSJLX;
-        private DevExpress.XtraGrid.Columns.GridColumn colXSJSDID;
-        private DevExpress.XtraGrid.Columns.GridColumn colXSJSDH;
-        private DevExpress.XtraGrid.Columns.GridColumn colXSBMMC;
-        private DevExpress.XtraGrid.Columns.GridColumn colKHMC;
+        private System.Windows.Forms.Panel panel4;
+        private DevExpress.XtraGrid.Columns.GridColumn colDWMC;
+        private DevExpress.XtraGrid.Columns.GridColumn colCGJSDMXID;
     }
 }

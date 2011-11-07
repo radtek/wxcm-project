@@ -14,36 +14,38 @@ using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using System.IO;
-
 namespace ClientMain
 {
-    public partial class FrmSaleStageJCAdd : Form
+    public partial class FrmPurchaseStageJCAdd : Form
     {
+
         GridCheckMarksSelection selection;
+        const int MAXROWCOUNT = 50000;
         // private string StrCon = FrmLogin.strCon;
         private string StrCon = FrmLogin.strDataCent;
-        const int MAXROWCOUNT = 50000;
-        private string JSLX = "整单";
-        //明细选计
-        private Int64 XSSL = 0;
-        private double XSSY = 0;
-        private double XSMY = 0;
-
-        private Int64 YSSL = 0;
-        private double YSSY = 0;
-        private double YSMY = 0;
-
-        public FrmSaleStageJCAdd(string strXSJSDID)
+        private string JSLX;
+        //选计
+        double dSHSY = 0;
+        double dSHMY = 0;
+        Int64 iSHSL = 0;
+        public FrmPurchaseStageJCAdd(string strCGJSDID)
         {
             InitializeComponent();
             //  XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
             XpoDefault.ConnectionString = FrmLogin.xpoDataCentStr;
             selection = new GridCheckMarksSelection(gridView1);
             selection.CheckMarkColumn.VisibleIndex = 0;
-            this.txtJSDH.Tag = strXSJSDID;
-            xpServerCollectionSource1.FixedFilterString = "[XSJSDID]=\'" + this.txtJSDH.Tag.ToString() + "\'";
 
+            this.txtJSDH.Tag = strCGJSDID;
+            xpServerCollectionSource1.FixedFilterString = "[CGJSDID] = \'" + this.txtJSDH.Tag.ToString() + "\'";
 
+        }
+        private void gridView1_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
+        {
+            if (e.Info.IsRowIndicator & e.RowHandle >= 0)
+            {
+                e.Info.DisplayText = (e.RowHandle + 1).ToString().Trim();
+            }
         }
         private void vDrawFootCell(FooterCellCustomDrawEventArgs e, DevExpress.XtraGrid.Columns.GridColumn col, string strSum)
         {
@@ -60,23 +62,12 @@ namespace ClientMain
                 e.Info.DisplayText = text;
             }
         }
-        private void gridView1_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
-        {
-            if (e.Info.IsRowIndicator & e.RowHandle >= 0)
-            {
-                e.Info.DisplayText = (e.RowHandle + 1).ToString().Trim();
-            }
-        }
         private void gridView1_CustomDrawFooterCell(object sender, FooterCellCustomDrawEventArgs e)
         {
             vDrawFootCell(e, colSJLX, "选计：");
-            vDrawFootCell(e, colXSSL, XSSL.ToString());
-            vDrawFootCell(e, colXSSY, XSSY.ToString("F2"));
-            vDrawFootCell(e, colXSMY, XSMY.ToString("F2"));
-
-            vDrawFootCell(e, colYSSL, YSSL.ToString());
-            vDrawFootCell(e, colYSSY, YSSY.ToString("F2"));
-            vDrawFootCell(e, colYSMY, YSMY.ToString("F2"));
+            vDrawFootCell(e, colSHSY, dSHSY.ToString("F2"));
+            vDrawFootCell(e, colSHMY, dSHMY.ToString("F2"));
+            vDrawFootCell(e, colSHSL, iSHSL.ToString());
 
 
         }
@@ -90,26 +81,16 @@ namespace ClientMain
                 {
                     if (selection.SelectedCount == view.DataRowCount)
                     {
-                        XSSL = Convert.ToInt64(colXSSL.SummaryText);
-                       XSSY = Convert.ToDouble(colXSSY.SummaryText);
-                        XSMY = Convert.ToDouble(colXSMY.SummaryText);
-
-                        YSSL = Convert.ToInt64(colYSSL.SummaryText);
-                        YSSY = Convert.ToDouble(colYSSY.SummaryText);
-                        YSMY = Convert.ToDouble(colYSMY.SummaryText);
-
+                        dSHSY = Convert.ToDouble(colSHSY.SummaryText);
+                        dSHMY = Convert.ToDouble(colSHMY.SummaryText);
+                        iSHSL = Convert.ToInt64(colSHSL.SummaryText);
 
                     }
                     else
                     {
-                        XSSL = 0;
-                        XSSY = 0;
-                        XSMY = 0;
-
-                        YSSL = 0;
-                        YSSY = 0;
-                        YSMY = 0;
-
+                        dSHSY = 0;
+                        dSHMY = 0;
+                        iSHSL = 0;
                     }
 
                 }
@@ -117,25 +98,16 @@ namespace ClientMain
                 {
                     if (selection.IsRowSelected(hitInfo.RowHandle))
                     {
-                        XSSL += Convert.ToInt64(view.GetRowCellValue(hitInfo.RowHandle, colXSSL));
-                        XSSY += Convert.ToDouble(view.GetRowCellValue(hitInfo.RowHandle, colXSSY));
-                        XSMY += Convert.ToDouble(view.GetRowCellValue(hitInfo.RowHandle, colXSMY));
-
-                        YSSL += Convert.ToInt64(view.GetRowCellValue(hitInfo.RowHandle, colYSSL));
-                        YSSY += Convert.ToDouble(view.GetRowCellValue(hitInfo.RowHandle, colYSSY));
-                        YSMY += Convert.ToDouble(view.GetRowCellValue(hitInfo.RowHandle, colYSMY));
-
-
+                        dSHSY += Convert.ToDouble(view.GetRowCellValue(hitInfo.RowHandle, colSHSY));
+                        dSHMY += Convert.ToDouble(view.GetRowCellValue(hitInfo.RowHandle, colSHMY));
+                        iSHSL += Convert.ToInt64(view.GetRowCellValue(hitInfo.RowHandle, colSHSL));
                     }
                     else
                     {
-                        XSSL -= Convert.ToInt64(view.GetRowCellValue(hitInfo.RowHandle, colXSSL));
-                        XSSY -= Convert.ToDouble(view.GetRowCellValue(hitInfo.RowHandle, colXSSY));
-                        XSMY -= Convert.ToDouble(view.GetRowCellValue(hitInfo.RowHandle, colXSMY));
+                        dSHSY -= Convert.ToDouble(view.GetRowCellValue(hitInfo.RowHandle, colSHSY));
+                        dSHMY -= Convert.ToDouble(view.GetRowCellValue(hitInfo.RowHandle, colSHMY));
+                        iSHSL -= Convert.ToInt64(view.GetRowCellValue(hitInfo.RowHandle, colSHSL));
 
-                        YSSL -= Convert.ToInt64(view.GetRowCellValue(hitInfo.RowHandle, colYSSL));
-                        YSSY -= Convert.ToDouble(view.GetRowCellValue(hitInfo.RowHandle, colYSSY));
-                        YSMY -= Convert.ToDouble(view.GetRowCellValue(hitInfo.RowHandle, colYSMY));
                     }
                 }
             }
@@ -144,13 +116,13 @@ namespace ClientMain
         private string GetXDtag(string tagtext)//传递选单的TAG
         {
             string tagname = "";
-            if (tagtext == "JC_XSJSD_ZDJS_ADD" || tagtext == "JC_XSJSD_ZDJS_ALTER")
+            if (tagtext == "JC_CGJSD_ZDJS_ADD" || tagtext == "JC_C_CGJSD_ZDJS_ALTER")
             {
-                tagname = "JC_XSJSD_ZDJS_XD";
+                tagname = "JC_CGJSD_ZDJS_XD";
             }
-            else if (tagtext == "JC_XSJSD_SXSJ_ADD" || tagtext == "JC_XSJSD_SXSJ_ALTER")
+            else if (tagtext == "JC_CGJSD_SXSJ_ADD" || tagtext == "JC_CGJSD_SXSJ_ALTER")
             {
-                tagname = "JC_XSJSD_SXSJ_XD";
+                tagname = "JC_CGJSD_SXSJ_XD";
             }
 
             return tagname;
@@ -184,6 +156,19 @@ namespace ClientMain
 
             return id;
         }
+        private void LoadGridView_ZD()
+        {
+            this.colSPXXMC.Visible = false;
+            this.colSPBH.Visible = false;
+            this.colZDDM.Visible = false;
+            this.colDJ.Visible = false;
+            this.colJJ.Visible = false;
+            this.colJZ.Visible = false;
+        }
+        private void LoadGridView_SX()
+        {
+            this.colDWMC.Visible = false;
+        }
         private void LoadControl_ADD()
         {
             this.btnSave.Visible = true;
@@ -201,9 +186,9 @@ namespace ClientMain
             this.txtPJZK.Text = "0.0";
             this.txtZKE.Text = "0.0";
             this.txtPZS.Text = "0";
-            this.txtXSSL.Text = "0";
-            this.txtXSMY.Text = "0.0";
-            this.txtXSSY.Text = "0.0";
+            this.txtSHSL.Text = "0";
+            this.txtSHMY.Text = "0.0";
+            this.txtSHSY.Text = "0.0";
             this.txtJSHJ.Text = "0.0";
             this.txtSE.Text = "0.0";
             this.txtWSJE.Text = "0.0";
@@ -218,7 +203,7 @@ namespace ClientMain
             LoadComboxJSFS();
 
 
-            xpServerCollectionSource1.FixedFilterString = "[XSJSDID] = \'" + this.txtJSDH.Tag.ToString() + "\'";
+            xpServerCollectionSource1.FixedFilterString = "[CGJSDID] = \'" + this.txtJSDH.Tag.ToString() + "\'";
         }
         private void LoadControl_ALTER()
         {
@@ -235,7 +220,7 @@ namespace ClientMain
         {
             LoadComboxJSFS();
             LoadInitializeLook();
-            xpServerCollectionSource1.FixedFilterString = "[XSJSDID] = \'" + this.txtJSDH.Tag.ToString() + "\'";
+            xpServerCollectionSource1.FixedFilterString = "[CGJSDID] = \'" + this.txtJSDH.Tag.ToString() + "\'";
 
         }
         private void LoadControl_LOOK()
@@ -257,12 +242,15 @@ namespace ClientMain
         {
             LoadComboxJSFS();
             LoadInitializeLook();
-            xpServerCollectionSource1.FixedFilterString = "[XSJSDID] = \'" + this.txtJSDH.Tag.ToString() + "\'";
+            xpServerCollectionSource1.FixedFilterString = "[CGJSDID] = \'" + this.txtJSDH.Tag.ToString() + "\'";
         }
-        //初始化销售单整单结算增加采购单模块的界面供查看用
+
+
+
+        //初始化采购单整单结算增加采购单模块的界面供查看用
         private void LoadInitializeLook()
         {
-            string strselect = "select XSJSDH,CWBMID,CWBMMC,ZTID,ZTIDMC,CZYID,CZRMC,CZRQ,ZDRQ,JSR,JSFSID,JSFSMC,GHDWID,GHDWMC,SL,BZ,PJDJ,PJZK,ZKE,PZS,XSSL,XSSY,XSMY,JSHJ,SE,WSJE,ZT,ZTMC from VIEW_JC_C_XSJSD  where XSJSDID='" + this.txtJSDH.Tag.ToString() + "'";
+            string strselect = "select CGJSDH,CWBMID,CWBMMC,ZTID,ZTIDMC,CZYID,CZRMC,CZRQ,ZDRQ,JSR,JSFSID,JSFSMC,GYSID,DWMC,SL,BZ,PJDJ,PJZK,ZKE,PZS,SHSL,SHSY,SHMY,JSHJ,SE,WSJE,ZT,ZTMC from VIEW_JC_C_CGJSD  where CGJSDID='" + this.txtJSDH.Tag.ToString() + "'";
             OracleConnection conn = new OracleConnection(StrCon);
             try
             {
@@ -272,7 +260,7 @@ namespace ClientMain
                 reader = comm.ExecuteReader();
                 while (reader.Read())
                 {
-                    this.txtJSDH.Text = reader["XSJSDH"].ToString();//单号
+                    this.txtJSDH.Text = reader["CGJSDH"].ToString();//单号
 
                     this.txtBM.Tag = reader["CWBMID"].ToString();//财务部门ID
                     this.txtBM.Text = reader["CWBMMC"].ToString();//财务部门名称
@@ -285,17 +273,17 @@ namespace ClientMain
                     this.txtJSR.Text = reader["JSR"].ToString();//结算人名称
                     this.ComboxJSFS.Tag = reader["JSFSID"].ToString();//结算方式ID
                     this.ComboxJSFS.Text = reader["JSFSMC"].ToString();//结算方式名称
-                    this.txtGHDW.Tag = reader["GHDWID"].ToString();//购货单位ID
-                    this.txtGHDW.Text = reader["GHDWMC"].ToString();//购货单位名称
+                    this.txtGHDW.Tag = reader["GYSID"].ToString();//购货单位ID
+                    this.txtGHDW.Text = reader["DWMC"].ToString();//购货单位名称
                     this.comboxSL.Text = reader["SL"].ToString();//税率
                     this.txtBZ.Text = reader["BZ"].ToString();//备注
                     this.txtPJDJ.Text = reader["PJDJ"].ToString();//平均单价
                     this.txtPJZK.Text = reader["PJZK"].ToString();//平均折扣
                     this.txtZKE.Text = reader["ZKE"].ToString();//折扣额
                     this.txtPZS.Text = reader["PZS"].ToString();//品种数
-                    this.txtXSSL.Text = reader["XSSL"].ToString();//实收数量
-                    this.txtXSSY.Text = reader["XSSY"].ToString();//实收实洋
-                    this.txtXSMY.Text = reader["XSMY"].ToString();//实收码洋
+                    this.txtSHSL.Text = reader["SHSL"].ToString();//实收数量
+                    this.txtSHSY.Text = reader["SHSY"].ToString();//实收实洋
+                    this.txtSHMY.Text = reader["SHMY"].ToString();//实收码洋
                     this.txtJSHJ.Text = reader["JSHJ"].ToString();//价税合计
                     this.txtSE.Text = reader["SE"].ToString();//税额
                     this.txtWSJE.Text = reader["WSJE"].ToString();//无税金额
@@ -309,11 +297,14 @@ namespace ClientMain
             catch (OracleException ex)
             { MessageBox.Show(ex.Message); }
             finally
-            { conn.Close(); }
-            xpServerCollectionSource1.FixedFilterString = "[XSJSDID] = \'" + this.txtJSDH.Tag.ToString() + "\'";
+            { }
+            xpServerCollectionSource1.FixedFilterString = "[CGJSDID] = \'" + this.txtJSDH.Tag.ToString() + "\'";
             gridView1.BestFitColumns();
+            //      this.txtZT.Text = "";
 
         }
+
+        //取操作员姓名
         private void LoadtxtCZY()
         {
             OracleConnection conn = new OracleConnection(FrmLogin.strCon);
@@ -362,17 +353,55 @@ namespace ClientMain
             }
 
         }
-        private void selectcountclear()
-        {
-            XSSL = 0;
-            XSSY = 0;
-            XSMY = 0;
 
-            YSSL = 0;
-            YSSY = 0;
-            YSMY = 0;
+        private void FrmPurchaseStageJCAdd_Load(object sender, EventArgs e)
+        {
+            if (this.Tag.ToString() == "JC_CGJSD_ZDJS_ADD")
+            {
+                LoadControl_ADD();
+                LoadContent_ADD();
+                LoadGridView_ZD();
+                JSLX = "整单";
+            }
+            else if (this.Tag.ToString() == "JC_CGJSD_XSXJ_ADD")
+            {
+                LoadControl_ADD();
+                LoadContent_ADD();
+                LoadGridView_SX();
+                JSLX = "实销实结";
+            }
+            else if (this.Tag.ToString() == "JC_C_CGJSD_ZDJS_ALTER")
+            {
+                LoadControl_ALTER();
+                LoadContent_ALTER();
+                LoadGridView_ZD();
+                JSLX = "整单";
+
+            }
+            else if (this.Tag.ToString() == "JC_CGJSD_SXSJ_ALTER")
+            {
+                LoadControl_ALTER();
+                LoadContent_ALTER();
+                LoadGridView_ZD();
+                JSLX = "整单";
+
+            }
+            else if (this.Tag.ToString() == "JC_CGJSD_ZDJS_LOOK")
+            {
+                LoadControl_LOOK();
+                LoadContent_LOOK();
+                LoadGridView_ZD();
+                JSLX = "整单";
+            }
+            else if (this.Tag.ToString() == "JC_CGJSD_SXSJ_LOOK")
+            {
+                LoadControl_LOOK();
+                LoadContent_LOOK();
+                LoadGridView_SX();
+                JSLX = "实销实结";
+            }
         }
-    
+
         private void btnDWselect_Click(object sender, EventArgs e)
         {
             FrmSelectDW from = new FrmSelectDW();
@@ -385,51 +414,48 @@ namespace ClientMain
             }
         }
 
-        private void FrmSaleStageJCAdd_Load(object sender, EventArgs e)
+        private void btnPrintTable_Click(object sender, EventArgs e)
         {
+            gridView1.Columns["CheckMarkSelection"].Visible = false;
 
-            if (this.Tag.ToString() == "JC_XSJSD_ZDJS_ADD")
-            {
-                LoadControl_ADD();
-                LoadContent_ADD();
-                JSLX = "整单";
-            }
-            else if (this.Tag.ToString() == "JC_XSJSD_SXSJ_ADD")
-            {
-                LoadControl_ADD();
-                LoadContent_ADD();
-                JSLX = "实销实结";
-            }
-            else if (this.Tag.ToString() == "JC_XSJSD_ZDJS_ALTER")
-            {
-                LoadControl_ALTER();
-                LoadContent_ALTER();
-                JSLX = "整单";
+            gridView1.SelectAll();
+            gridControl1.ShowPrintPreview();
 
-            }
-            else if (this.Tag.ToString() == "JC_XSJSD_SXSJ_ALTER")
-            {
-                LoadControl_ALTER();
-                LoadContent_ALTER();
-                JSLX = "实销实结";
+            gridView1.Columns["CheckMarkSelection"].Visible = true;
+            gridView1.Columns["CheckMarkSelection"].VisibleIndex = 0;
+        }
 
-            }
-            else if (this.Tag.ToString() == "JC_XSJSD_ZDJS_LOOK")
+        private void btnExportGrid_Click(object sender, EventArgs e)
+        {
+            if (gridView1.DataRowCount > MAXROWCOUNT)
             {
-                LoadControl_LOOK();
-                LoadContent_LOOK();
-                JSLX = "整单";
+                MessageBox.Show("记录数超过50000条，请缩小查找范围后再导出！");
             }
-            else if (this.Tag.ToString() == "JC_XSJSD_SXSJ_LOOK")
+            else
             {
-                LoadControl_LOOK();
-                LoadContent_LOOK();
-                JSLX = "实销实结";
+                SaveFileDialog saveDialog = new SaveFileDialog();
+                saveDialog.Filter = "XLS文件|*.xls";
+                saveDialog.Title = "导出Excel文件";
+                saveDialog.DefaultExt = "xls";
+                if (saveDialog.ShowDialog() == DialogResult.OK)
+                {
+                    gridView1.Columns["CheckMarkSelection"].Visible = false;
+
+                    gridView1.SelectAll();
+                    gridView1.ExportToXls(saveDialog.FileName);
+
+                    gridView1.Columns["CheckMarkSelection"].Visible = true;
+                    gridView1.Columns["CheckMarkSelection"].VisibleIndex = 0;
+
+                    MessageBox.Show("导出成功！");
+
+                }
             }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+
             bool check = true;
             if (this.comboxSL.Text == "")
             { check = false; MessageBox.Show("税率没有选择"); }
@@ -447,16 +473,20 @@ namespace ClientMain
                     using (OracleConnection connection = new OracleConnection(StrCon))
                     {
 
+                        connection.Open();
+
+                        OracleCommand cmd = connection.CreateCommand();
+                        OracleTransaction transaction;
+                        transaction = connection.BeginTransaction(IsolationLevel.ReadCommitted);
+                        cmd.Transaction = transaction;
 
                         try
                         {
-                            connection.Open();
-                            OracleCommand cmd = connection.CreateCommand();
                             cmd.CommandType = CommandType.StoredProcedure;
-                            cmd.CommandText = "Jc_C_XSJSD_insert";
+                            cmd.CommandText = "Jc_C_CGJSD_insert";
                             cmd.Parameters.Add("ls_CWBMID", OracleType.VarChar).Value = this.txtBM.Tag.ToString();
                             cmd.Parameters.Add("ls_ZTID", OracleType.VarChar).Value = this.txtZTID.Tag.ToString();
-                            cmd.Parameters.Add("ls_GHDWID", OracleType.VarChar).Value = this.txtGHDW.Tag.ToString();
+                            cmd.Parameters.Add("ls_GYSID", OracleType.VarChar).Value = this.txtGHDW.Tag.ToString();
                             cmd.Parameters.Add("ls_JSLX", OracleType.VarChar).Value = JSLX;
                             cmd.Parameters.Add("ls_JSFSID", OracleType.VarChar).Value = GetJSFSID(this.ComboxJSFS.Text.ToString().Trim());
                             cmd.Parameters.Add("ls_JSR", OracleType.VarChar).Value = this.txtJSR.Text.ToString().Trim();
@@ -466,15 +496,17 @@ namespace ClientMain
                             cmd.Parameters.Add("ls_BZ", OracleType.VarChar).Value = this.txtBZ.Text.ToString().Trim();
 
 
-                            cmd.Parameters.Add("LS_XSJSDid", OracleType.VarChar, 255).Direction = ParameterDirection.Output;
-                            cmd.Parameters.Add("LS_XSJSDH", OracleType.VarChar, 255).Direction = ParameterDirection.Output;
+                            cmd.Parameters.Add("LS_CGJSDid", OracleType.VarChar, 255).Direction = ParameterDirection.Output;
+                            cmd.Parameters.Add("LS_CGJSDH", OracleType.VarChar, 255).Direction = ParameterDirection.Output;
                             cmd.Parameters.Add("DescErr", OracleType.VarChar, 255).Direction = ParameterDirection.Output;
                             cmd.Parameters.Add("Message", OracleType.VarChar, 255).Direction = ParameterDirection.Output;
 
-                            cmd.ExecuteNonQuery();
 
-                            this.txtJSDH.Tag = cmd.Parameters["LS_XSJSDid"].Value.ToString();
-                            this.txtJSDH.Text = cmd.Parameters["LS_XSJSDH"].Value.ToString();
+                            cmd.ExecuteNonQuery();
+                            transaction.Commit();
+
+                            this.txtJSDH.Tag = cmd.Parameters["LS_CGJSDid"].Value.ToString();
+                            this.txtJSDH.Text = cmd.Parameters["LS_CGJSDH"].Value.ToString();
 
                             unitOfWork1.DropIdentityMap();
                             xpServerCollectionSource1.Reload();
@@ -484,6 +516,7 @@ namespace ClientMain
                         }
                         catch (OracleException ex)
                         {
+                            transaction.Rollback();
                             MessageBox.Show(ex.Message);
                         }
                         finally
@@ -505,14 +538,19 @@ namespace ClientMain
                     using (OracleConnection connection = new OracleConnection(StrCon))
                     {
 
+                        connection.Open();
+
+                        OracleCommand cmd = connection.CreateCommand();
+                        OracleTransaction transaction;
+                        transaction = connection.BeginTransaction(IsolationLevel.ReadCommitted);
+                        cmd.Transaction = transaction;
+
                         try
                         {
-                            connection.Open();
-                            OracleCommand cmd = connection.CreateCommand();
                             cmd.CommandType = CommandType.StoredProcedure;
-                            cmd.CommandText = "Jc_C_XSJSD_update";
-                            cmd.Parameters.Add("LS_XSJSDid", OracleType.VarChar).Value = this.txtJSDH.Tag.ToString();
-                            cmd.Parameters.Add("ls_GHDWID", OracleType.VarChar).Value = this.txtGHDW.Tag.ToString();
+                            cmd.CommandText = "jc_C_CGJSD_update";
+                            cmd.Parameters.Add("LS_CGJSDid", OracleType.VarChar).Value = this.txtJSDH.Tag.ToString();
+                            cmd.Parameters.Add("ls_GYSID", OracleType.VarChar).Value = this.txtGHDW.Tag.ToString();
                             cmd.Parameters.Add("ls_JSR", OracleType.VarChar).Value = this.txtJSR.Text.ToString().Trim();
                             cmd.Parameters.Add("ls_JSFSID", OracleType.VarChar).Value = GetJSFSID(this.ComboxJSFS.Text.ToString().Trim());
                             cmd.Parameters.Add("ls_SL", OracleType.VarChar).Value = this.comboxSL.Text.ToString().Trim();
@@ -520,8 +558,12 @@ namespace ClientMain
                             cmd.Parameters.Add("ls_BZ", OracleType.VarChar).Value = this.txtBZ.Text.ToString().Trim();
                             cmd.Parameters.Add("DescErr", OracleType.VarChar, 255).Direction = ParameterDirection.Output;
                             cmd.Parameters.Add("Message", OracleType.VarChar, 255).Direction = ParameterDirection.Output;
+
+
                             cmd.ExecuteNonQuery();
-                            xpServerCollectionSource1.FixedFilterString = "[XSJSDID] = \'" + this.txtJSDH.Tag.ToString() + "\'";
+                            transaction.Commit();
+
+                            xpServerCollectionSource1.FixedFilterString = "[CGJSDID] = \'" + this.txtJSDH.Tag.ToString() + "\'";
                             unitOfWork1.DropIdentityMap();
                             xpServerCollectionSource1.Reload();
                             gridView1.BestFitColumns();
@@ -530,6 +572,7 @@ namespace ClientMain
                         }
                         catch (OracleException ex)
                         {
+                            transaction.Rollback();
                             MessageBox.Show(ex.Message);
                         }
                         finally
@@ -554,7 +597,7 @@ namespace ClientMain
         {
             string num = "0";
             OracleConnection conn = new OracleConnection(StrCon);
-            string selectunm = "select count(0) from JC_C_XSJSDMX where XSJSDID='" + jsdid + "'";
+            string selectunm = "select count(0) from JC_C_CGJSDMX where CGJSDID='" + jsdid + "'";
             OracleCommand mycomm = new OracleCommand(selectunm, conn);
             OracleDataReader myreader;
             try
@@ -627,15 +670,18 @@ namespace ClientMain
                 using (OracleConnection connection = new OracleConnection(StrCon))
                 {
 
+                    connection.Open();
 
+                    OracleCommand cmd = connection.CreateCommand();
+                    OracleTransaction transaction;
+                    transaction = connection.BeginTransaction(IsolationLevel.ReadCommitted);
+                    cmd.Transaction = transaction;
                     try
                     {
-                        connection.Open();
-                        OracleCommand cmd = connection.CreateCommand();
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.CommandText = "Jc_C_XSJSD_update";
-                        cmd.Parameters.Add("LS_XSJSDid", OracleType.VarChar).Value = this.txtJSDH.Tag.ToString();
-                        cmd.Parameters.Add("ls_GHDWID", OracleType.VarChar).Value = this.txtGHDW.Tag.ToString();
+                        cmd.CommandText = "jc_C_CGJSD_update";
+                        cmd.Parameters.Add("LS_CGJSDid", OracleType.VarChar).Value = this.txtJSDH.Tag.ToString();
+                        cmd.Parameters.Add("ls_GYSID", OracleType.VarChar).Value = this.txtGHDW.Tag.ToString();
                         cmd.Parameters.Add("ls_JSR", OracleType.VarChar).Value = this.txtJSR.Text.ToString().Trim();
                         cmd.Parameters.Add("ls_JSFSID", OracleType.VarChar).Value = GetJSFSID(this.ComboxJSFS.Text.ToString().Trim());
                         cmd.Parameters.Add("ls_SL", OracleType.VarChar).Value = this.comboxSL.Text.ToString().Trim();
@@ -643,10 +689,9 @@ namespace ClientMain
                         cmd.Parameters.Add("ls_BZ", OracleType.VarChar).Value = this.txtBZ.Text.ToString().Trim();
                         cmd.Parameters.Add("DescErr", OracleType.VarChar, 255).Direction = ParameterDirection.Output;
                         cmd.Parameters.Add("Message", OracleType.VarChar, 255).Direction = ParameterDirection.Output;
-
-
                         cmd.ExecuteNonQuery();
-                        xpServerCollectionSource1.FixedFilterString = "[XSJSDID] = \'" + this.txtJSDH.Tag.ToString() + "\'";
+                        transaction.Commit();
+                        xpServerCollectionSource1.FixedFilterString = "[CGJSDID] = \'" + this.txtJSDH.Tag.ToString() + "\'";
                         unitOfWork1.DropIdentityMap();
                         xpServerCollectionSource1.Reload();
                         gridView1.BestFitColumns();
@@ -655,6 +700,7 @@ namespace ClientMain
                     }
                     catch (OracleException ex)
                     {
+                        transaction.Rollback();
                         MessageBox.Show(ex.Message);
                     }
                     finally
@@ -670,36 +716,6 @@ namespace ClientMain
                     }
                 }
 
-
-
-            }
-        }
-
-        private void btnSelectCase_Click(object sender, EventArgs e)
-        {
-            if (this.txtJSDH.Text != "")
-            {
-
-                FrmSaleStageSelectcase from = new FrmSaleStageSelectcase(this.txtJSDH.Tag.ToString(), this.comboxSL.Text.ToString(), this.txtGHDW.Tag.ToString(), this.txtZTID.Tag.ToString());
-
-                //县市单选单
-                from.Tag = GetXDtag(this.Tag.ToString());
-                from.Text = "县市——销售结算单——选单";
-                if (from.ShowDialog() == DialogResult.OK)
-                {
-                    this.btnDWselect.Enabled = false;
-                    this.comboxSL.Enabled = false;
-                    this.ComboxJSFS.Enabled = true;
-                    this.txtBZ.ReadOnly = false;
-                 //   unitOfWork1.DropIdentityMap();
-                    LoadInitializeLook();
-                    xpServerCollectionSource1.Reload();
-                    gridView1.BestFitColumns();
-                }
-            }
-            else
-            {
-                MessageBox.Show("您必须先新增销售单", "警告");
             }
         }
 
@@ -711,7 +727,7 @@ namespace ClientMain
             }
             else
             {
-                if (this.Tag.ToString() == "JC_XSJSD_ZDJS_ADD" || this.Tag.ToString() == "JC_XSJSD_ZDJS_ALTRE")
+                if (this.Tag.ToString() == "JC_CGJSD_ZDJS_ADD" || this.Tag.ToString() == "JC_CGJSD_ZDJS_ALTER")
                 {
                     using (OracleConnection connection = new OracleConnection(StrCon))
                     {
@@ -726,16 +742,15 @@ namespace ClientMain
                             {
                                 int RowIndex = selection.GetSelectedRowIndex(i);
                                 int RowHandle = gridView1.GetRowHandle(RowIndex);
-                                string strXSDID = gridView1.GetRowCellValue(RowHandle, colXSDID).ToString();
-                                string strSJLX = gridView1.GetRowCellDisplayText(RowHandle, colSJLX);
-                                cmd.CommandText = "INSERT INTO TEMP_SAVE_ID (TEMPID, ID,wlbmid) Values (temp_save_id_seq.nextval, '" + strXSDID + "','" + strSJLX + "')";
+                                string strCGJSDMXID = gridView1.GetRowCellValue(RowHandle, colCGJSDMXID).ToString();
+                                cmd.CommandText = "INSERT INTO TEMP_SAVE_ID (TEMPID, ID) Values (temp_save_id_seq.nextval, '" + strCGJSDMXID + "')";
                                 cmd.ExecuteNonQuery();
                             }
                             selection.ClearSelection();
-                            selectcountclear();
+
                             cmd.CommandType = CommandType.StoredProcedure;
-                            cmd.CommandText = "Jc_C_XSJS_ZDJD";
-                            cmd.Parameters.Add("LS_XSJSDid", OracleType.VarChar).Value = this.txtJSDH.Tag.ToString();
+                            cmd.CommandText = "jc_C_CGJS_ZDJD";
+                            cmd.Parameters.Add("LS_CGJSDid", OracleType.VarChar).Value = this.txtJSDH.Tag.ToString();
 
                             cmd.Parameters.Add("DescErr", OracleType.VarChar, 255).Direction = ParameterDirection.Output;
                             cmd.Parameters.Add("Message", OracleType.VarChar, 255).Direction = ParameterDirection.Output;
@@ -757,14 +772,12 @@ namespace ClientMain
                         }
                         finally
                         {
-
-                            LoadInitializeLook();
                             connection.Close();
                         }
 
                     }
                 }
-                else if (this.Tag.ToString() == "JT_XSJSD_SXSJ_ADD" || this.Tag.ToString() == "JT_XSJSD_SXSJ_ALTER")
+                else if (this.Tag.ToString() == "JC_CGJSD_XSXJ_ADD" || this.Tag.ToString() == "JC_CGJSD_SXSJ_ALTER")
                 {
                     using (OracleConnection connection = new OracleConnection(StrCon))
                     {
@@ -779,15 +792,15 @@ namespace ClientMain
                             {
                                 int RowIndex = selection.GetSelectedRowIndex(i);
                                 int RowHandle = gridView1.GetRowHandle(RowIndex);
-                          //      string strXSJSDMXID = gridView1.GetRowCellValue(RowHandle, colXSJSDMXID).ToString();
-                         //       cmd.CommandText = "INSERT INTO TEMP_SAVE_ID (TEMPID, ID) Values (temp_save_id_seq.nextval, '" + strXSJSDMXID + "')";
+                                string strCGJSDMXID = gridView1.GetRowCellValue(RowHandle, colCGJSDMXID).ToString();
+                                cmd.CommandText = "INSERT INTO TEMP_SAVE_ID (TEMPID, ID) Values (temp_save_id_seq.nextval, '" + strCGJSDMXID + "')";
                                 cmd.ExecuteNonQuery();
                             }
                             selection.ClearSelection();
-                            selectcountclear();
+
                             cmd.CommandType = CommandType.StoredProcedure;
-                            cmd.CommandText = "Jc_C_XSJS_SXJD";
-                            cmd.Parameters.Add("LS_XSJSDid", OracleType.VarChar).Value = this.txtJSDH.Tag.ToString();
+                            cmd.CommandText = "JC_C_CGJS_SXJD";
+                            cmd.Parameters.Add("LS_CGJSDid", OracleType.VarChar).Value = this.txtJSDH.Tag.ToString();
 
                             cmd.Parameters.Add("DescErr", OracleType.VarChar, 255).Direction = ParameterDirection.Output;
                             cmd.Parameters.Add("Message", OracleType.VarChar, 255).Direction = ParameterDirection.Output;
@@ -796,6 +809,7 @@ namespace ClientMain
                             transaction.Commit();
 
                             unitOfWork1.DropIdentityMap();
+
                             xpServerCollectionSource1.Reload();
 
                             MessageBox.Show(cmd.Parameters["Message"].Value.ToString());
@@ -809,17 +823,44 @@ namespace ClientMain
                         }
                         finally
                         {
-
-                            LoadInitializeLook();
                             connection.Close();
                         }
 
                     }
                 }
-
 
             }
         }
+
+        private void btnSelectCase_Click(object sender, EventArgs e)
+        {
+            if (this.txtJSDH.Text != "")
+            {
+
+                FrmPurchaseStageSelectCase from = new FrmPurchaseStageSelectCase(this.txtJSDH.Tag.ToString(), this.comboxSL.Text.ToString(), this.txtGHDW.Tag.ToString(), this.txtZTID.Tag.ToString());
+
+                //集团采购结算单选单
+                from.Tag = GetXDtag(this.Tag.ToString());
+                from.Text = "县市——采购结算单——选单";
+                if (from.ShowDialog() == DialogResult.OK)
+                {
+                    this.btnDWselect.Enabled = false;
+                    this.comboxSL.Enabled = false;
+                    this.ComboxJSFS.Enabled = true;
+                    this.txtBZ.ReadOnly = false;
+                    unitOfWork1.DropIdentityMap();
+              //      this.xpServerCollectionSource1.FixedFilterString = "[CGJSDID] = \'" + this.txtJSDH.Tag.ToString() + "\'";
+                    LoadInitializeLook();
+                    xpServerCollectionSource1.Reload();
+                    gridView1.BestFitColumns();
+                }
+            }
+            else
+            {
+                MessageBox.Show("您必须先新增采购单", "警告");
+            }
+        }
+
 
 
     }
