@@ -320,6 +320,7 @@ namespace ClientMain
             this.btnCGJSDunfreeze.Visible = false;
             this.btnHexiao.Visible = false;
             this.btnPreview.Visible = false;
+            this.btnView.Visible = false;
             this.btnToFP.Visible = false;
             this.btnFKPZ.Visible = false;
             this.btnPrintReport.Visible = false;
@@ -1254,10 +1255,10 @@ namespace ClientMain
             }
             else
             {
-                fgCheck =true;
- 
+                fgCheck = true;
+
             }
-            if(fgCheck==true)
+            if (fgCheck == true)
             {
                 int RowIndex = selection1.GetSelectedRowIndex(0);
                 int RowHandle = gridView1.GetRowHandle(RowIndex);
@@ -1268,11 +1269,12 @@ namespace ClientMain
 
 
             }
+ 
 
         }
         private void MakeStrArry(string id)
         {
-            string StrCon = FrmLogin.strCon;
+            string StrCon = FrmLogin.strDataCent;
             OracleConnection connection = new OracleConnection(StrCon);
             string str = "select ztidmc,dwmc,cgjsdh,jsfsmc,jsr,czrmc,zhjsrq from view_jt_c_cgjsd where cgjsdid='"+id+"'";
             OracleCommand comm = new OracleCommand(str,connection);
@@ -1309,7 +1311,7 @@ namespace ClientMain
         {
             DataSet ds = new DataSet();
 
-            OracleConnection connection = new OracleConnection(StrCon);
+            OracleConnection connection = new OracleConnection(FrmLogin.strDataCent);
             try
             {
                 connection.Open();
@@ -1353,11 +1355,18 @@ namespace ClientMain
                             System.Threading.Thread.Sleep(1000);
                             report.Dispose();
                         }
- 
+
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         throw ex;
+                    }
+                    finally
+                    {
+                        selection1.ClearSelection();
+                        unitOfWork1.DropIdentityMap();
+                        SlelectCountClear();
+                        xpServerCollectionSource1.Reload();
                     }
 
 
@@ -1468,5 +1477,34 @@ namespace ClientMain
             }
 
         }
+
+        private void btnColCustomize_Click(object sender, EventArgs e)
+        {
+            gridView1.ShowCustomization();
+        }
+
+        private void btnSaveLayout_Click(object sender, EventArgs e)
+        {
+            string strLayout = FrmLogin.getUser + "_FrmPurchaseStageJTLayout.xml";
+            FileStream stream = new FileStream(strLayout, FileMode.Create);
+            gridView1.SaveLayoutToStream(stream);
+            stream.Close();
+        }
+
+        private void btnLoadLayout_Click(object sender, EventArgs e)
+        {
+            string strLayout = FrmLogin.getUser + "_FrmPurchaseStageJTLayout.xml";
+            if (File.Exists(strLayout))
+            {
+                gridView1.RestoreLayoutFromXml(strLayout);
+                MessageBox.Show("载入视图成功！");
+            }
+            else
+            {
+                MessageBox.Show("未发现视图保存文件，请确认是否曾经保存！");
+            }
+        }
+
+
     }
 }
