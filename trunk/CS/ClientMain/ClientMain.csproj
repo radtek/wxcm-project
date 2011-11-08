@@ -34,6 +34,8 @@
     <ProductName>综合维护平台（.NET）版</ProductName>
     <PublisherName>安徽新华传媒股份有限公司信息部</PublisherName>
     <SuiteName>Maintenance</SuiteName>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>publish.htm</WebPage>
     <ApplicationRevision>17</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
