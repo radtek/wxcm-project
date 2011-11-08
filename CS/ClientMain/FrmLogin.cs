@@ -26,13 +26,15 @@ namespace ClientMain
 
         private string m_PassWord = null;
 
-        public const string strCon = "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.8.109)(PORT=1521))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=DATACENTER)));User Id=jt_user;Password=jt_user;";
-
-        public const string strDataCent = "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.8.109)(PORT=1521))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=DATACENTER)));User Id=jt_user;Password=jt_user;";
-
+        public const string strCon = "Data Source=DATACENT;User Id=jt_user;Password=jt_user;";
+        public const string strDataCent = "Data Source=DATACENT;User Id=jt_user;Password=jt_user;";
         public static string xpoConStr = OracleConnectionProvider.GetConnectionString("DATACENT", "jt_user", "jt_user");
-
         public static string xpoDataCentStr = OracleConnectionProvider.GetConnectionString("DATACENT", "jt_user", "jt_user");
+
+        //public const string strCon = "Data Source=QUERYSERVER;User Id=jt_user;Password=jt_user;";
+        //public const string strDataCent = "Data Source=QUERYSERVER;User Id=jt_user;Password=jt_user;";
+        //public static string xpoConStr = OracleConnectionProvider.GetConnectionString("QUERYSERVER ", "jt_user", "jt_user");
+        //public static string xpoDataCentStr = OracleConnectionProvider.GetConnectionString("QUERYSERVER ", "jt_user", "jt_user");
         
         public const int MAXROWCOUNT = 50000;
 
