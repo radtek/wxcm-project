@@ -37,7 +37,7 @@ namespace ClientMain
             selection.CheckMarkColumn.VisibleIndex = 0;
 
             this.txtJSDH.Tag = strCGJSDID;
-            xpServerCollectionSource1.FixedFilterString = "[CGJSDID] = \'" + this.txtJSDH.Tag.ToString() + "\'";
+            xpServerCollectionSource1.FixedFilterString = "[CGJSDID] = \'" + this.txtJSDH.Tag.ToString() + "\' AND [ZTID]=\'" + FrmLogin.getZTID + "\'";
         }
 
         private string GetXDtag(string tagtext)//传递选单的TAG
@@ -83,19 +83,19 @@ namespace ClientMain
 
             return id;
         }
-        private void LoadGridView_ZD()
-        {
-            this.colSPXXMC.Visible = false;
-            this.colSPBH.Visible = false;
-            this.colZDDM.Visible = false;
-            this.colDJ.Visible = false;
-            this.colJJ.Visible = false;
-            this.colJZ.Visible = false;
-        }
-        private void LoadGridView_SX()
-        {
-            this.colDWMC.Visible = false;
-        }
+       // private void LoadGridView_ZD()
+      //  {
+      //      this.colSPXXMC.Visible = false;
+      //      this.colSPBH.Visible = false;
+      //      this.colZDDM.Visible = false;
+      //      this.colDJ.Visible = false;
+      //      this.colJJ.Visible = false;
+      //      this.colJZ.Visible = false;
+      //  }
+     //   private void LoadGridView_SX()
+     //   {
+    //        this.colDWMC.Visible = false;
+    //    }
         private void LoadControl_ADD()
         {
             this.btnSave.Visible = true;
@@ -128,9 +128,7 @@ namespace ClientMain
             this.txtCZY.Tag = FrmLogin.getUserID.ToString();
             LoadtxtCZY();
             LoadComboxJSFS();
-
-       
-           xpServerCollectionSource1.FixedFilterString = "[CGJSDID] = \'" + this.txtJSDH.Tag.ToString() + "\'";
+            xpServerCollectionSource1.FixedFilterString = "[CGJSDID] = \'" + this.txtJSDH.Tag.ToString() + "\' AND [ZTID]=\'" + FrmLogin.getZTID + "\'";
         }
         private void LoadControl_ALTER()
         {
@@ -147,7 +145,7 @@ namespace ClientMain
         {
             LoadComboxJSFS();
             LoadInitializeLook();
-            xpServerCollectionSource1.FixedFilterString = "[CGJSDID] = \'" + this.txtJSDH.Tag.ToString() + "\'";
+            xpServerCollectionSource1.FixedFilterString = "[CGJSDID] = \'" + this.txtJSDH.Tag.ToString() + "\' AND [ZTID]=\'" + FrmLogin.getZTID + "\'";
 
         }
         private void LoadControl_LOOK()
@@ -169,7 +167,7 @@ namespace ClientMain
         {
             LoadComboxJSFS();
             LoadInitializeLook();
-            xpServerCollectionSource1.FixedFilterString = "[CGJSDID] = \'" + this.txtJSDH.Tag.ToString() + "\'";
+            xpServerCollectionSource1.FixedFilterString = "[CGJSDID] = \'" + this.txtJSDH.Tag.ToString() + "\' AND [ZTID]=\'" + FrmLogin.getZTID + "\'";
         }
         private void selectcountclear()
         {
@@ -230,7 +228,7 @@ namespace ClientMain
             { MessageBox.Show(ex.Message); }
             finally
             { conn.Close(); }
-            xpServerCollectionSource1.FixedFilterString = "[CGJSDID] = \'" + this.txtJSDH.Tag.ToString() + "\'";
+            xpServerCollectionSource1.FixedFilterString = "[CGJSDID] = \'" + this.txtJSDH.Tag.ToString() + "\' AND [ZTID]=\'" + FrmLogin.getZTID + "\'";
             gridView1.BestFitColumns();
 
         }
@@ -309,9 +307,9 @@ namespace ClientMain
         private void gridView1_CustomDrawFooterCell(object sender, FooterCellCustomDrawEventArgs e)
         {
             vDrawFootCell(e, colSJLX, "选计：");
-            vDrawFootCell(e, colSHSY, dSHSY.ToString("F2"));
-            vDrawFootCell(e, colSHMY, dSHMY.ToString("F2"));
-            vDrawFootCell(e, colSHSL, iSHSL.ToString());
+            vDrawFootCell(e, colSSSY, dSHSY.ToString("F2"));
+            vDrawFootCell(e, colSSMY, dSHMY.ToString("F2"));
+            vDrawFootCell(e, colSSSL, iSHSL.ToString());
 
 
         }
@@ -325,9 +323,9 @@ namespace ClientMain
                 {
                     if (selection.SelectedCount == view.DataRowCount)
                     {
-                        dSHSY = Convert.ToDouble(colSHSY.SummaryText);
-                        dSHMY = Convert.ToDouble(colSHMY.SummaryText);
-                        iSHSL = Convert.ToInt64(colSHSL.SummaryText);
+                        dSHSY = Convert.ToDouble(colSSSY.SummaryText);
+                        dSHMY = Convert.ToDouble(colSSMY.SummaryText);
+                        iSHSL = Convert.ToInt64(colSSSL.SummaryText);
 
                     }
                     else
@@ -342,15 +340,15 @@ namespace ClientMain
                 {
                     if (selection.IsRowSelected(hitInfo.RowHandle))
                     {
-                        dSHSY += Convert.ToDouble(view.GetRowCellValue(hitInfo.RowHandle, colSHSY));
-                        dSHMY += Convert.ToDouble(view.GetRowCellValue(hitInfo.RowHandle, colSHMY));
-                        iSHSL += Convert.ToInt64(view.GetRowCellValue(hitInfo.RowHandle, colSHSL));
+                    dSHSY += Convert.ToDouble(view.GetRowCellValue(hitInfo.RowHandle, colSSSY));
+                    dSHMY += Convert.ToDouble(view.GetRowCellValue(hitInfo.RowHandle, colSSMY));
+                    iSHSL += Convert.ToInt64(view.GetRowCellValue(hitInfo.RowHandle, colSSSL));
                     }
                     else
                     {
-                        dSHSY -= Convert.ToDouble(view.GetRowCellValue(hitInfo.RowHandle, colSHSY));
-                        dSHMY -= Convert.ToDouble(view.GetRowCellValue(hitInfo.RowHandle, colSHMY));
-                        iSHSL -= Convert.ToInt64(view.GetRowCellValue(hitInfo.RowHandle, colSHSL));
+                       dSHSY -= Convert.ToDouble(view.GetRowCellValue(hitInfo.RowHandle, colSSSY));
+                        dSHMY -= Convert.ToDouble(view.GetRowCellValue(hitInfo.RowHandle, colSSMY));
+                        iSHSL -= Convert.ToInt64(view.GetRowCellValue(hitInfo.RowHandle, colSSSL));
 
                     }
                 }
@@ -664,8 +662,9 @@ namespace ClientMain
                             {
                                 int RowIndex = selection.GetSelectedRowIndex(i);
                                 int RowHandle = gridView1.GetRowHandle(RowIndex);
-                                string strCGJSDMXID = gridView1.GetRowCellValue(RowHandle, colCGJSDMXID).ToString();
-                                cmd.CommandText = "INSERT INTO TEMP_SAVE_ID (TEMPID, ID) Values (temp_save_id_seq.nextval, '" + strCGJSDMXID + "')";
+                                string strCGSHID = gridView1.GetRowCellValue(RowHandle, colCGSHID).ToString();
+                                string strSJLX = gridView1.GetRowCellValue(RowHandle, colSJLX).ToString();
+                               cmd.CommandText = "INSERT INTO TEMP_SAVE_ID (TEMPID,ID,WLBMID) Values (temp_save_id_seq.nextval, '" + strCGSHID + "','" + strSJLX + "')";
                                 cmd.ExecuteNonQuery();
                             }
                             selection.ClearSelection();
@@ -716,8 +715,8 @@ namespace ClientMain
                             {
                                 int RowIndex = selection.GetSelectedRowIndex(i);
                                 int RowHandle = gridView1.GetRowHandle(RowIndex);
-                                string strCGJSDMXID = gridView1.GetRowCellValue(RowHandle, colCGJSDMXID).ToString();
-                                cmd.CommandText = "INSERT INTO TEMP_SAVE_ID (TEMPID, ID) Values (temp_save_id_seq.nextval, '" + strCGJSDMXID + "')";
+                            //    string strCGJSDMXID = gridView1.GetRowCellValue(RowHandle, colCGJSDMXID).ToString();
+                             //   cmd.CommandText = "INSERT INTO TEMP_SAVE_ID (TEMPID, ID) Values (temp_save_id_seq.nextval, '" + strCGJSDMXID + "')";
                                 cmd.ExecuteNonQuery();
                             }
                                 selection.ClearSelection();
@@ -767,21 +766,21 @@ namespace ClientMain
             {
                 LoadControl_ADD();
                 LoadContent_ADD();
-                LoadGridView_ZD();
+           //     LoadGridView_ZD();
                 JSLX = "整单";
             }
             else if (this.Tag.ToString() == "JT_CGJSD_SXSJ_ADD")
             {
                 LoadControl_ADD();
                 LoadContent_ADD();
-                LoadGridView_SX();
+          //      LoadGridView_SX();
                 JSLX = "实销实结";
             }
             else if (this.Tag.ToString() == "JT_CGJSD_ZDJS_ALTER")
             {
                 LoadControl_ALTER();
                 LoadContent_ALTER();
-                LoadGridView_ZD();
+            //    LoadGridView_ZD();
                 JSLX = "整单";
 
             }
@@ -789,7 +788,7 @@ namespace ClientMain
             {
                 LoadControl_ALTER();
                 LoadContent_ALTER();
-                LoadGridView_ZD();
+            //    LoadGridView_ZD();
                 JSLX = "实销实结";
 
             }
@@ -797,14 +796,14 @@ namespace ClientMain
             {
                 LoadControl_LOOK();
                 LoadContent_LOOK();
-                LoadGridView_ZD();
+             //   LoadGridView_ZD();
                 JSLX = "整单";
             }
             else if (this.Tag.ToString() == "JT_CGJSD_SXSJ_LOOK")
             {
                 LoadControl_LOOK();
                 LoadContent_LOOK();
-                LoadGridView_SX();
+             //   LoadGridView_SX();
                 JSLX = "实销实结";
             }
         }
