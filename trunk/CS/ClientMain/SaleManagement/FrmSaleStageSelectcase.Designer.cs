@@ -65,6 +65,10 @@
             this.colZTID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colJSDWID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colJSFSID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.btnView = new System.Windows.Forms.ToolStripDropDownButton();
+            this.btnColCustomize = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnSaveLayout = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnLoadLayout = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -89,7 +93,8 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnConfirm,
             this.btnCancel,
-            this.btniuquire});
+            this.btniuquire,
+            this.btnView});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(842, 26);
@@ -98,20 +103,22 @@
             // 
             // btnConfirm
             // 
+            this.btnConfirm.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnConfirm.Image = ((System.Drawing.Image)(resources.GetObject("btnConfirm.Image")));
             this.btnConfirm.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.Size = new System.Drawing.Size(49, 23);
-            this.btnConfirm.Text = "确定";
+            this.btnConfirm.Size = new System.Drawing.Size(69, 23);
+            this.btnConfirm.Text = "   确定   ";
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // btnCancel
             // 
+            this.btnCancel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnCancel.Image")));
             this.btnCancel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(49, 23);
-            this.btnCancel.Text = "取消";
+            this.btnCancel.Size = new System.Drawing.Size(57, 23);
+            this.btnCancel.Text = "  取消  ";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btniuquire
@@ -394,6 +401,40 @@
             this.colJSFSID.FieldName = "JSFSID";
             this.colJSFSID.Name = "colJSFSID";
             // 
+            // btnView
+            // 
+            this.btnView.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnColCustomize,
+            this.btnSaveLayout,
+            this.btnLoadLayout});
+            this.btnView.Image = ((System.Drawing.Image)(resources.GetObject("btnView.Image")));
+            this.btnView.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnView.Name = "btnView";
+            this.btnView.Size = new System.Drawing.Size(42, 23);
+            this.btnView.Text = "视图";
+            // 
+            // btnColCustomize
+            // 
+            this.btnColCustomize.Name = "btnColCustomize";
+            this.btnColCustomize.Size = new System.Drawing.Size(152, 22);
+            this.btnColCustomize.Text = "列定制";
+            this.btnColCustomize.Click += new System.EventHandler(this.btnColCustomize_Click);
+            // 
+            // btnSaveLayout
+            // 
+            this.btnSaveLayout.Name = "btnSaveLayout";
+            this.btnSaveLayout.Size = new System.Drawing.Size(152, 22);
+            this.btnSaveLayout.Text = "保存视图";
+            this.btnSaveLayout.Click += new System.EventHandler(this.btnSaveLayout_Click);
+            // 
+            // btnLoadLayout
+            // 
+            this.btnLoadLayout.Name = "btnLoadLayout";
+            this.btnLoadLayout.Size = new System.Drawing.Size(152, 22);
+            this.btnLoadLayout.Text = "载入视图";
+            this.btnLoadLayout.Click += new System.EventHandler(this.btnLoadLayout_Click);
+            // 
             // FrmSaleStageSelectcase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -456,5 +497,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn colJSFSID;
         private DevExpress.XtraGrid.Columns.GridColumn colPZS;
         private DevExpress.Xpo.UnitOfWork unitOfWork1;
+        private System.Windows.Forms.ToolStripDropDownButton btnView;
+        private System.Windows.Forms.ToolStripMenuItem btnColCustomize;
+        private System.Windows.Forms.ToolStripMenuItem btnSaveLayout;
+        private System.Windows.Forms.ToolStripMenuItem btnLoadLayout;
     }
 }

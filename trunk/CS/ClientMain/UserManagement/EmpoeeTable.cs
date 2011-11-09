@@ -27,7 +27,7 @@ namespace ClientMain
         {
             InitializeComponent();
             //  XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
-            XpoDefault.ConnectionString = FrmLogin.xpoConStr;
+            XpoDefault.ConnectionString = FrmLogin.xpoDataCentStr;
             selection = new GridCheckMarksSelection(gridView1);
             selection.CheckMarkColumn.VisibleIndex = 0;
 
@@ -58,10 +58,7 @@ namespace ClientMain
             }
         }
 
-        private void EmpoeeTable1_Load(object sender, EventArgs e)
-        {
 
-        }
 
         private void btnQuery_Click(object sender, EventArgs e)
         {
@@ -95,8 +92,8 @@ namespace ClientMain
             {
                 int RowIndex = selection.GetSelectedRowIndex(0);
                 int RowHandle = gridView1.GetRowHandle(RowIndex);
-                employid = this.gridView1.GetRowCellDisplayText(RowHandle, "EMPLOYEEID");
-                employname = this.gridView1.GetRowCellDisplayText(RowHandle, "NAME");
+                employid = this.gridView1.GetRowCellDisplayText(RowHandle, "OPERATORID");
+                employname = this.gridView1.GetRowCellDisplayText(RowHandle, "OPERATORNAME");
                 this.DialogResult = DialogResult.OK;
                 this.Close();
 

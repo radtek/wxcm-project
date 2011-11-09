@@ -93,8 +93,11 @@
             this.xpServerCollectionSource1 = new DevExpress.Xpo.XPServerCollectionSource();
             this.unitOfWork1 = new DevExpress.Xpo.UnitOfWork();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colXSDID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSJLX = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colXSJSDH = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colXSDH = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colXSBMMC = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colKHMC = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colXSSL = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colXSSY = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colXSMY = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -102,11 +105,12 @@
             this.colYSSY = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colYSMY = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colZT = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colSJLX = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colXSDID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colXSJSDID = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colXSJSDH = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colXSBMMC = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colKHMC = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.btnView = new System.Windows.Forms.ToolStripDropDownButton();
+            this.btnColCustomize = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnSaveLayout = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnLoadLayout = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -139,7 +143,8 @@
             this.btnSelectCase,
             this.btnDeleteCase,
             this.btnPrintTable,
-            this.btnExportGrid});
+            this.btnExportGrid,
+            this.btnView});
             this.toolStrip2.Location = new System.Drawing.Point(0, 317);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(867, 27);
@@ -148,7 +153,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.BackColor = System.Drawing.Color.PaleGreen;
+            this.btnSave.BackColor = System.Drawing.SystemColors.Control;
             this.btnSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
             this.btnSave.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -159,7 +164,7 @@
             // 
             // btnReload
             // 
-            this.btnReload.BackColor = System.Drawing.Color.Turquoise;
+            this.btnReload.BackColor = System.Drawing.SystemColors.Control;
             this.btnReload.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnReload.Image = ((System.Drawing.Image)(resources.GetObject("btnReload.Image")));
             this.btnReload.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -170,7 +175,7 @@
             // 
             // btnExit
             // 
-            this.btnExit.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnExit.BackColor = System.Drawing.SystemColors.Control;
             this.btnExit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
             this.btnExit.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -181,7 +186,7 @@
             // 
             // btnAlter
             // 
-            this.btnAlter.BackColor = System.Drawing.Color.Gold;
+            this.btnAlter.BackColor = System.Drawing.SystemColors.Control;
             this.btnAlter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnAlter.Image = ((System.Drawing.Image)(resources.GetObject("btnAlter.Image")));
             this.btnAlter.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -197,7 +202,7 @@
             // 
             // btnSelectCase
             // 
-            this.btnSelectCase.BackColor = System.Drawing.Color.LightSalmon;
+            this.btnSelectCase.BackColor = System.Drawing.SystemColors.Control;
             this.btnSelectCase.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnSelectCase.Image = ((System.Drawing.Image)(resources.GetObject("btnSelectCase.Image")));
             this.btnSelectCase.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -208,7 +213,7 @@
             // 
             // btnDeleteCase
             // 
-            this.btnDeleteCase.BackColor = System.Drawing.Color.IndianRed;
+            this.btnDeleteCase.BackColor = System.Drawing.SystemColors.Control;
             this.btnDeleteCase.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnDeleteCase.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteCase.Image")));
             this.btnDeleteCase.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -219,18 +224,20 @@
             // 
             // btnPrintTable
             // 
+            this.btnPrintTable.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnPrintTable.Image = ((System.Drawing.Image)(resources.GetObject("btnPrintTable.Image")));
             this.btnPrintTable.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnPrintTable.Name = "btnPrintTable";
-            this.btnPrintTable.Size = new System.Drawing.Size(73, 24);
+            this.btnPrintTable.Size = new System.Drawing.Size(57, 24);
             this.btnPrintTable.Text = "打印表格";
             // 
             // btnExportGrid
             // 
+            this.btnExportGrid.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnExportGrid.Image = ((System.Drawing.Image)(resources.GetObject("btnExportGrid.Image")));
             this.btnExportGrid.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnExportGrid.Name = "btnExportGrid";
-            this.btnExportGrid.Size = new System.Drawing.Size(73, 24);
+            this.btnExportGrid.Size = new System.Drawing.Size(57, 24);
             this.btnExportGrid.Text = "导出表格";
             // 
             // groupBox1
@@ -800,11 +807,23 @@
             this.gridView1.CustomDrawFooterCell += new DevExpress.XtraGrid.Views.Grid.FooterCellCustomDrawEventHandler(this.gridView1_CustomDrawFooterCell);
             this.gridView1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.gridView1_MouseUp);
             // 
-            // colXSDID
+            // colSJLX
             // 
-            this.colXSDID.Caption = "销售单ID";
-            this.colXSDID.FieldName = "XSDID";
-            this.colXSDID.Name = "colXSDID";
+            this.colSJLX.Caption = "数据类型";
+            this.colSJLX.FieldName = "SJLX";
+            this.colSJLX.Name = "colSJLX";
+            this.colSJLX.SummaryItem.DisplayFormat = "总计：";
+            this.colSJLX.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Custom;
+            this.colSJLX.Visible = true;
+            this.colSJLX.VisibleIndex = 0;
+            // 
+            // colXSJSDH
+            // 
+            this.colXSJSDH.Caption = "销售结算单号";
+            this.colXSJSDH.FieldName = "XSJSDH";
+            this.colXSJSDH.Name = "colXSJSDH";
+            this.colXSJSDH.Visible = true;
+            this.colXSJSDH.VisibleIndex = 1;
             // 
             // colXSDH
             // 
@@ -813,6 +832,22 @@
             this.colXSDH.Name = "colXSDH";
             this.colXSDH.Visible = true;
             this.colXSDH.VisibleIndex = 2;
+            // 
+            // colXSBMMC
+            // 
+            this.colXSBMMC.Caption = "销售部门名称";
+            this.colXSBMMC.FieldName = "XSBMMC";
+            this.colXSBMMC.Name = "colXSBMMC";
+            this.colXSBMMC.Visible = true;
+            this.colXSBMMC.VisibleIndex = 3;
+            // 
+            // colKHMC
+            // 
+            this.colKHMC.Caption = "客户名称";
+            this.colKHMC.FieldName = "KHMC";
+            this.colKHMC.Name = "colKHMC";
+            this.colKHMC.Visible = true;
+            this.colKHMC.VisibleIndex = 4;
             // 
             // colXSSL
             // 
@@ -874,15 +909,11 @@
             this.colZT.FieldName = "ZT";
             this.colZT.Name = "colZT";
             // 
-            // colSJLX
+            // colXSDID
             // 
-            this.colSJLX.Caption = "数据类型";
-            this.colSJLX.FieldName = "SJLX";
-            this.colSJLX.Name = "colSJLX";
-            this.colSJLX.SummaryItem.DisplayFormat = "总计：";
-            this.colSJLX.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Custom;
-            this.colSJLX.Visible = true;
-            this.colSJLX.VisibleIndex = 0;
+            this.colXSDID.Caption = "销售单ID";
+            this.colXSDID.FieldName = "XSDID";
+            this.colXSDID.Name = "colXSDID";
             // 
             // colXSJSDID
             // 
@@ -890,29 +921,39 @@
             this.colXSJSDID.FieldName = "XSJSDID";
             this.colXSJSDID.Name = "colXSJSDID";
             // 
-            // colXSJSDH
+            // btnView
             // 
-            this.colXSJSDH.Caption = "销售结算单号";
-            this.colXSJSDH.FieldName = "XSJSDH";
-            this.colXSJSDH.Name = "colXSJSDH";
-            this.colXSJSDH.Visible = true;
-            this.colXSJSDH.VisibleIndex = 1;
+            this.btnView.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnColCustomize,
+            this.btnSaveLayout,
+            this.btnLoadLayout});
+            this.btnView.Image = ((System.Drawing.Image)(resources.GetObject("btnView.Image")));
+            this.btnView.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnView.Name = "btnView";
+            this.btnView.Size = new System.Drawing.Size(42, 24);
+            this.btnView.Text = "视图";
             // 
-            // colXSBMMC
+            // btnColCustomize
             // 
-            this.colXSBMMC.Caption = "销售部门名称";
-            this.colXSBMMC.FieldName = "XSBMMC";
-            this.colXSBMMC.Name = "colXSBMMC";
-            this.colXSBMMC.Visible = true;
-            this.colXSBMMC.VisibleIndex = 3;
+            this.btnColCustomize.Name = "btnColCustomize";
+            this.btnColCustomize.Size = new System.Drawing.Size(152, 22);
+            this.btnColCustomize.Text = "列定制";
+            this.btnColCustomize.Click += new System.EventHandler(this.btnColCustomize_Click);
             // 
-            // colKHMC
+            // btnSaveLayout
             // 
-            this.colKHMC.Caption = "客户名称";
-            this.colKHMC.FieldName = "KHMC";
-            this.colKHMC.Name = "colKHMC";
-            this.colKHMC.Visible = true;
-            this.colKHMC.VisibleIndex = 4;
+            this.btnSaveLayout.Name = "btnSaveLayout";
+            this.btnSaveLayout.Size = new System.Drawing.Size(152, 22);
+            this.btnSaveLayout.Text = "保存视图";
+            this.btnSaveLayout.Click += new System.EventHandler(this.btnSaveLayout_Click);
+            // 
+            // btnLoadLayout
+            // 
+            this.btnLoadLayout.Name = "btnLoadLayout";
+            this.btnLoadLayout.Size = new System.Drawing.Size(152, 22);
+            this.btnLoadLayout.Text = "载入视图";
+            this.btnLoadLayout.Click += new System.EventHandler(this.btnLoadLayout_Click);
             // 
             // FrmSaleStageJCAdd
             // 
@@ -1021,5 +1062,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn colXSJSDH;
         private DevExpress.XtraGrid.Columns.GridColumn colXSBMMC;
         private DevExpress.XtraGrid.Columns.GridColumn colKHMC;
+        private System.Windows.Forms.ToolStripDropDownButton btnView;
+        private System.Windows.Forms.ToolStripMenuItem btnColCustomize;
+        private System.Windows.Forms.ToolStripMenuItem btnSaveLayout;
+        private System.Windows.Forms.ToolStripMenuItem btnLoadLayout;
     }
 }

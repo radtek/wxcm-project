@@ -757,12 +757,12 @@ namespace ClientMain
                                 MessageBox.Show("单号为" + strXSJSDH + "没有选定核销时间");
                                 break;
                             }
-                            else if (DateTime.Compare(dt1, dt2) > 0)
-                            {
-                                fgcheck = false;
-                                MessageBox.Show("单号为" + strXSJSDH + "核销时间小于制单时间");
-                                break;
-                            }
+                        //    else if (DateTime.Compare(dt1, dt2)<= 0)
+                        //    {
+                        //        fgcheck = false;
+                       //         MessageBox.Show("单号为" + strXSJSDH + "核销时间小于制单时间");
+                       //         break;
+                       //     }
                             else if (string.IsNullOrEmpty(strXSFPID))
                             {
                                 fgcheck = false;
@@ -1867,6 +1867,79 @@ namespace ClientMain
                     }
 
 
+                }
+            }
+        }
+
+        private void btnColCustomize_Click(object sender, EventArgs e)
+        {
+            if (this.Tag.ToString() == "JT_C_XSJSD_ZDJS" || this.Tag.ToString() == "JT_C_XSJSD_SXSJ")
+            {
+                gridView1.ShowCustomization();
+            }
+            else if (this.Tag.ToString() == "JT_C_XSJSDMX")
+            {
+                gridView2.ShowCustomization();
+            }
+            
+        }
+
+        private void btnSaveLayout_Click(object sender, EventArgs e)
+        {
+            if (this.Tag.ToString() == "JT_C_XSJSD_ZDJS" || this.Tag.ToString() == "JT_C_XSJSD_SXSJ")
+            {
+                string strLayout = FrmLogin.getUser + "_FrmSaleStageJTLayout.xml";
+                if (File.Exists(strLayout))
+                {
+                    gridView1.RestoreLayoutFromXml(strLayout);
+                    MessageBox.Show("载入视图成功！");
+                }
+                else
+                {
+                    MessageBox.Show("未发现视图保存文件，请确认是否曾经保存！");
+                }
+            }
+            else if (this.Tag.ToString() == "JT_C_XSJSDMX")
+            {
+                string strLayout = FrmLogin.getUser + "_FrmSaleStageJTMXLayout.xml";
+                if (File.Exists(strLayout))
+                {
+                    gridView2.RestoreLayoutFromXml(strLayout);
+                    MessageBox.Show("载入视图成功！");
+                }
+                else
+                {
+                    MessageBox.Show("未发现视图保存文件，请确认是否曾经保存！");
+                }
+            }
+        }
+
+        private void btnLoadLayout_Click(object sender, EventArgs e)
+        {
+            if (this.Tag.ToString() == "JT_C_XSJSD_ZDJS" || this.Tag.ToString() == "JT_C_XSJSD_SXSJ")
+            {
+                string strLayout = FrmLogin.getUser + "_FrmSaleStageJTLayout.xml";
+                if (File.Exists(strLayout))
+                {
+                    gridView1.RestoreLayoutFromXml(strLayout);
+                    MessageBox.Show("载入视图成功！");
+                }
+                else
+                {
+                    MessageBox.Show("未发现视图保存文件，请确认是否曾经保存！");
+                }
+            }
+            else if (this.Tag.ToString() == "JT_C_XSJSDMX")
+            {
+                string strLayout = FrmLogin.getUser + "_FrmSaleStageJTMXLayout.xml";
+                if (File.Exists(strLayout))
+                {
+                    gridView2.RestoreLayoutFromXml(strLayout);
+                    MessageBox.Show("载入视图成功！");
+                }
+                else
+                {
+                    MessageBox.Show("未发现视图保存文件，请确认是否曾经保存！");
                 }
             }
         }

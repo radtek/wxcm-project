@@ -24,7 +24,7 @@ namespace ClientMain
     {
         private GridCheckMarksSelection selection;
         // private string StrCon = FrmLogin.strCon;
-        private string StrCon = FrmLogin.strCon;
+        private string StrCon = FrmLogin.strDataCent;
         bool m_fgAdd;
         bool m_fgDel;
         bool m_fgUpdate;
@@ -33,7 +33,7 @@ namespace ClientMain
         {
             InitializeComponent();
             //  XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
-            XpoDefault.ConnectionString = FrmLogin.xpoConStr;
+            XpoDefault.ConnectionString = FrmLogin.xpoDataCentStr;
             selection = new GridCheckMarksSelection(gridView1);
             selection.CheckMarkColumn.VisibleIndex = 0;
             m_fgAdd = fgAdd;

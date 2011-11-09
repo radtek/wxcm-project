@@ -111,6 +111,8 @@ namespace ClientMain
                     }
                 }
             }
+            this.toolStripProgressBar1.Maximum = this.gridView1.RowCount;
+            this.toolStripProgressBar1.Value = selection.SelectedCount;
 
         }
         private string GetXDtag(string tagtext)//传递选单的TAG
@@ -851,7 +853,7 @@ namespace ClientMain
                     this.comboxSL.Enabled = false;
                     this.ComboxJSFS.Enabled = true;
                     this.txtBZ.ReadOnly = false;
-                    unitOfWork1.DropIdentityMap();
+                 //   unitOfWork1.DropIdentityMap();
                     xpServerCollectionSource1.FixedFilterString = "[CGJSDID] = \'" + this.txtJSDH.Tag.ToString() + "\'";
                     xpServerCollectionSource1.Reload();
                     gridView1.BestFitColumns();

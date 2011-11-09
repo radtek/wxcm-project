@@ -665,6 +665,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "市县客户托收单选单";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+          //  this.Load += new System.EventHandler(this.FrmClientTuoShouJCSelectCase_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);

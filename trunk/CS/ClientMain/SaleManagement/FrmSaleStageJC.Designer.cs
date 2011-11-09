@@ -51,6 +51,10 @@
             this.bbtndownPrint = new System.Windows.Forms.ToolStripDropDownButton();
             this.btnPrintTable = new System.Windows.Forms.ToolStripMenuItem();
             this.btnPrintReport = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnView = new System.Windows.Forms.ToolStripDropDownButton();
+            this.btnColCustomize = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnSaveLayout = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnLoadLayout = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
             this.xpServerCollectionSource2 = new DevExpress.Xpo.XPServerCollectionSource();
@@ -58,50 +62,50 @@
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colSJLX1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colXSDH1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colXSJSDH1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colJSHJ1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colXSBMMC1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colLYBMMC1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colKHMC1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colXSSL1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colXSSY1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colXSMY1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colYJSL1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colYJSY1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colYJMY1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDJ1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colXZ1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colXJ1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSL1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSE1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colFDE1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colWSJE1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colZKE1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colZDDM1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colFDXJ1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colFDXZ1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTSRQ1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTSCS1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colBZ1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colXSJSDMXID1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colXSJSDID1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colXSDID1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colKHID1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colSE1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colXSDMXID1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colZDDM1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSPXXID1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colDJ1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colXZ1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colXJ1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colFDXZ1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colFDXJ1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colSL1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colYJSL1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colFDE1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDSSL1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDSSY1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDSMY1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colYJSY1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colYJMY1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colZT1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colYZT1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colBZ1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colXSFSID1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colBMSPKFMXID1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colKHSPMXID1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTSRQ1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTSCS1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colZKE1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colWSJE1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colXSBMID1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLYDJMXID1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLYDJBID1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLYDJID1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLYBMID1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colXSBMMC1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colKHMC1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colLYBMMC1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colXSJSDH1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colZTID1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.xpServerCollectionSource1 = new DevExpress.Xpo.XPServerCollectionSource();
@@ -131,7 +135,6 @@
             this.colPJZK = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPJDJ = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colZTID = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colDSMY = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCWBMID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colGHDWID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colFDE = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -151,6 +154,7 @@
             this.colCZRMC = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colJSFSID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCZYID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDSMY = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPZS = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colWSJE = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colXSHZRQ = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -210,7 +214,8 @@
             this.btnPreview,
             this.btnReload,
             this.btnExportGrid,
-            this.bbtndownPrint});
+            this.bbtndownPrint,
+            this.btnView});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(995, 27);
@@ -363,52 +368,89 @@
             this.btnPreview.Image = ((System.Drawing.Image)(resources.GetObject("btnPreview.Image")));
             this.btnPreview.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnPreview.Name = "btnPreview";
-            this.btnPreview.Size = new System.Drawing.Size(33, 24);
-            this.btnPreview.Text = "预览";
+            this.btnPreview.Size = new System.Drawing.Size(45, 24);
+            this.btnPreview.Text = "  预览";
             this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
             // 
             // btnReload
             // 
+            this.btnReload.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnReload.Image = ((System.Drawing.Image)(resources.GetObject("btnReload.Image")));
             this.btnReload.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnReload.Name = "btnReload";
-            this.btnReload.Size = new System.Drawing.Size(49, 24);
-            this.btnReload.Text = "刷新";
+            this.btnReload.Size = new System.Drawing.Size(57, 24);
+            this.btnReload.Text = "  刷新  ";
             this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
             // 
             // btnExportGrid
             // 
+            this.btnExportGrid.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnExportGrid.Image = ((System.Drawing.Image)(resources.GetObject("btnExportGrid.Image")));
             this.btnExportGrid.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnExportGrid.Name = "btnExportGrid";
-            this.btnExportGrid.Size = new System.Drawing.Size(73, 24);
+            this.btnExportGrid.Size = new System.Drawing.Size(57, 24);
             this.btnExportGrid.Text = "导出表格";
             this.btnExportGrid.Click += new System.EventHandler(this.btnExportGrid_Click);
             // 
             // bbtndownPrint
             // 
+            this.bbtndownPrint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.bbtndownPrint.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnPrintTable,
             this.btnPrintReport});
             this.bbtndownPrint.Image = ((System.Drawing.Image)(resources.GetObject("bbtndownPrint.Image")));
             this.bbtndownPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bbtndownPrint.Name = "bbtndownPrint";
-            this.bbtndownPrint.Size = new System.Drawing.Size(58, 24);
+            this.bbtndownPrint.Size = new System.Drawing.Size(42, 24);
             this.bbtndownPrint.Text = "打印";
             // 
             // btnPrintTable
             // 
             this.btnPrintTable.Name = "btnPrintTable";
-            this.btnPrintTable.Size = new System.Drawing.Size(152, 22);
+            this.btnPrintTable.Size = new System.Drawing.Size(130, 22);
             this.btnPrintTable.Text = "打印整表";
             this.btnPrintTable.Click += new System.EventHandler(this.btnPrintTable_Click);
             // 
             // btnPrintReport
             // 
             this.btnPrintReport.Name = "btnPrintReport";
-            this.btnPrintReport.Size = new System.Drawing.Size(152, 22);
+            this.btnPrintReport.Size = new System.Drawing.Size(130, 22);
             this.btnPrintReport.Text = "打印结算单";
             this.btnPrintReport.Click += new System.EventHandler(this.btnPrintReport_Click);
+            // 
+            // btnView
+            // 
+            this.btnView.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnColCustomize,
+            this.btnSaveLayout,
+            this.btnLoadLayout});
+            this.btnView.Image = ((System.Drawing.Image)(resources.GetObject("btnView.Image")));
+            this.btnView.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnView.Name = "btnView";
+            this.btnView.Size = new System.Drawing.Size(42, 24);
+            this.btnView.Text = "视图";
+            // 
+            // btnColCustomize
+            // 
+            this.btnColCustomize.Name = "btnColCustomize";
+            this.btnColCustomize.Size = new System.Drawing.Size(118, 22);
+            this.btnColCustomize.Text = "列定制";
+            this.btnColCustomize.Click += new System.EventHandler(this.btnColCustomize_Click);
+            // 
+            // btnSaveLayout
+            // 
+            this.btnSaveLayout.Name = "btnSaveLayout";
+            this.btnSaveLayout.Size = new System.Drawing.Size(118, 22);
+            this.btnSaveLayout.Text = "保存视图";
+            this.btnSaveLayout.Click += new System.EventHandler(this.btnSaveLayout_Click);
+            // 
+            // btnLoadLayout
+            // 
+            this.btnLoadLayout.Name = "btnLoadLayout";
+            this.btnLoadLayout.Size = new System.Drawing.Size(118, 22);
+            this.btnLoadLayout.Text = "载入视图";
+            this.btnLoadLayout.Click += new System.EventHandler(this.btnLoadLayout_Click);
             // 
             // panel2
             // 
@@ -517,6 +559,14 @@
             this.colXSDH1.Visible = true;
             this.colXSDH1.VisibleIndex = 1;
             // 
+            // colXSJSDH1
+            // 
+            this.colXSJSDH1.Caption = "销售结算单号";
+            this.colXSJSDH1.FieldName = "XSJSDH";
+            this.colXSJSDH1.Name = "colXSJSDH1";
+            this.colXSJSDH1.Visible = true;
+            this.colXSJSDH1.VisibleIndex = 2;
+            // 
             // colJSHJ1
             // 
             this.colJSHJ1.Caption = "价税合计";
@@ -525,13 +575,37 @@
             this.colJSHJ1.Visible = true;
             this.colJSHJ1.VisibleIndex = 3;
             // 
+            // colXSBMMC1
+            // 
+            this.colXSBMMC1.Caption = "销售部门";
+            this.colXSBMMC1.FieldName = "XSBMMC";
+            this.colXSBMMC1.Name = "colXSBMMC1";
+            this.colXSBMMC1.Visible = true;
+            this.colXSBMMC1.VisibleIndex = 4;
+            // 
+            // colLYBMMC1
+            // 
+            this.colLYBMMC1.Caption = "来源部门";
+            this.colLYBMMC1.FieldName = "LYBMMC";
+            this.colLYBMMC1.Name = "colLYBMMC1";
+            this.colLYBMMC1.Visible = true;
+            this.colLYBMMC1.VisibleIndex = 6;
+            // 
+            // colKHMC1
+            // 
+            this.colKHMC1.Caption = "客户";
+            this.colKHMC1.FieldName = "KHMC";
+            this.colKHMC1.Name = "colKHMC1";
+            this.colKHMC1.Visible = true;
+            this.colKHMC1.VisibleIndex = 7;
+            // 
             // colXSSL1
             // 
             this.colXSSL1.Caption = "销售数量";
             this.colXSSL1.FieldName = "XSSL";
             this.colXSSL1.Name = "colXSSL1";
             this.colXSSL1.Visible = true;
-            this.colXSSL1.VisibleIndex = 7;
+            this.colXSSL1.VisibleIndex = 8;
             // 
             // colXSSY1
             // 
@@ -539,7 +613,7 @@
             this.colXSSY1.FieldName = "XSSY";
             this.colXSSY1.Name = "colXSSY1";
             this.colXSSY1.Visible = true;
-            this.colXSSY1.VisibleIndex = 8;
+            this.colXSSY1.VisibleIndex = 9;
             // 
             // colXSMY1
             // 
@@ -547,7 +621,143 @@
             this.colXSMY1.FieldName = "XSMY";
             this.colXSMY1.Name = "colXSMY1";
             this.colXSMY1.Visible = true;
-            this.colXSMY1.VisibleIndex = 9;
+            this.colXSMY1.VisibleIndex = 11;
+            // 
+            // colYJSL1
+            // 
+            this.colYJSL1.Caption = "已结数量";
+            this.colYJSL1.FieldName = "YJSL";
+            this.colYJSL1.Name = "colYJSL1";
+            this.colYJSL1.Visible = true;
+            this.colYJSL1.VisibleIndex = 12;
+            // 
+            // colYJSY1
+            // 
+            this.colYJSY1.Caption = "已结实洋";
+            this.colYJSY1.FieldName = "YJSY";
+            this.colYJSY1.Name = "colYJSY1";
+            this.colYJSY1.Visible = true;
+            this.colYJSY1.VisibleIndex = 13;
+            // 
+            // colYJMY1
+            // 
+            this.colYJMY1.Caption = "已结码洋";
+            this.colYJMY1.FieldName = "YJMY";
+            this.colYJMY1.Name = "colYJMY1";
+            this.colYJMY1.Visible = true;
+            this.colYJMY1.VisibleIndex = 14;
+            // 
+            // colDJ1
+            // 
+            this.colDJ1.Caption = "定价";
+            this.colDJ1.FieldName = "DJ";
+            this.colDJ1.Name = "colDJ1";
+            this.colDJ1.Visible = true;
+            this.colDJ1.VisibleIndex = 15;
+            // 
+            // colXZ1
+            // 
+            this.colXZ1.Caption = "销折";
+            this.colXZ1.FieldName = "XZ";
+            this.colXZ1.Name = "colXZ1";
+            this.colXZ1.Visible = true;
+            this.colXZ1.VisibleIndex = 17;
+            // 
+            // colXJ1
+            // 
+            this.colXJ1.Caption = "销价";
+            this.colXJ1.FieldName = "XJ";
+            this.colXJ1.Name = "colXJ1";
+            this.colXJ1.Visible = true;
+            this.colXJ1.VisibleIndex = 18;
+            // 
+            // colSL1
+            // 
+            this.colSL1.Caption = "税率";
+            this.colSL1.FieldName = "SL";
+            this.colSL1.Name = "colSL1";
+            this.colSL1.Visible = true;
+            this.colSL1.VisibleIndex = 19;
+            // 
+            // colSE1
+            // 
+            this.colSE1.Caption = "税额";
+            this.colSE1.FieldName = "SE";
+            this.colSE1.Name = "colSE1";
+            this.colSE1.Visible = true;
+            this.colSE1.VisibleIndex = 5;
+            // 
+            // colFDE1
+            // 
+            this.colFDE1.Caption = "浮动额";
+            this.colFDE1.FieldName = "FDE";
+            this.colFDE1.Name = "colFDE1";
+            this.colFDE1.Visible = true;
+            this.colFDE1.VisibleIndex = 20;
+            // 
+            // colWSJE1
+            // 
+            this.colWSJE1.Caption = "无税金额";
+            this.colWSJE1.FieldName = "WSJE";
+            this.colWSJE1.Name = "colWSJE1";
+            this.colWSJE1.Visible = true;
+            this.colWSJE1.VisibleIndex = 21;
+            // 
+            // colZKE1
+            // 
+            this.colZKE1.Caption = "折扣额";
+            this.colZKE1.FieldName = "ZKE";
+            this.colZKE1.Name = "colZKE1";
+            this.colZKE1.Visible = true;
+            this.colZKE1.VisibleIndex = 22;
+            // 
+            // colZDDM1
+            // 
+            this.colZDDM1.Caption = "征订代码";
+            this.colZDDM1.FieldName = "ZDDM";
+            this.colZDDM1.Name = "colZDDM1";
+            this.colZDDM1.Visible = true;
+            this.colZDDM1.VisibleIndex = 10;
+            // 
+            // colFDXJ1
+            // 
+            this.colFDXJ1.Caption = "浮动销价";
+            this.colFDXJ1.FieldName = "FDXJ";
+            this.colFDXJ1.Name = "colFDXJ1";
+            this.colFDXJ1.Visible = true;
+            this.colFDXJ1.VisibleIndex = 23;
+            // 
+            // colFDXZ1
+            // 
+            this.colFDXZ1.Caption = "浮动销折";
+            this.colFDXZ1.FieldName = "FDXZ";
+            this.colFDXZ1.Name = "colFDXZ1";
+            this.colFDXZ1.Visible = true;
+            this.colFDXZ1.VisibleIndex = 16;
+            // 
+            // colTSRQ1
+            // 
+            this.colTSRQ1.Caption = "托收日期";
+            this.colTSRQ1.FieldName = "TSRQ";
+            this.colTSRQ1.Name = "colTSRQ1";
+            this.colTSRQ1.Visible = true;
+            this.colTSRQ1.VisibleIndex = 24;
+            // 
+            // colTSCS1
+            // 
+            this.colTSCS1.Caption = "托收次数";
+            this.colTSCS1.FieldName = "TSCS";
+            this.colTSCS1.Name = "colTSCS1";
+            this.colTSCS1.Visible = true;
+            this.colTSCS1.VisibleIndex = 25;
+            // 
+            // colBZ1
+            // 
+            this.colBZ1.Caption = "备注";
+            this.colBZ1.FieldName = "BZ";
+            this.colBZ1.Name = "colBZ1";
+            this.colBZ1.Visible = true;
+            this.colBZ1.VisibleIndex = 26;
             // 
             // colXSJSDMXID1
             // 
@@ -577,14 +787,6 @@
             this.colKHID1.Name = "colKHID1";
             this.colKHID1.OptionsFilter.AllowFilter = false;
             // 
-            // colSE1
-            // 
-            this.colSE1.Caption = "税额";
-            this.colSE1.FieldName = "SE";
-            this.colSE1.Name = "colSE1";
-            this.colSE1.Visible = true;
-            this.colSE1.VisibleIndex = 4;
-            // 
             // colXSDMXID1
             // 
             this.colXSDMXID1.Caption = "销售单明细ID";
@@ -592,84 +794,12 @@
             this.colXSDMXID1.Name = "colXSDMXID1";
             this.colXSDMXID1.OptionsFilter.AllowFilter = false;
             // 
-            // colZDDM1
-            // 
-            this.colZDDM1.Caption = "征订代码";
-            this.colZDDM1.FieldName = "ZDDM";
-            this.colZDDM1.Name = "colZDDM1";
-            this.colZDDM1.Visible = true;
-            this.colZDDM1.VisibleIndex = 8;
-            // 
             // colSPXXID1
             // 
             this.colSPXXID1.Caption = "商品信息ID";
             this.colSPXXID1.FieldName = "SPXXID";
             this.colSPXXID1.Name = "colSPXXID1";
             this.colSPXXID1.OptionsFilter.AllowFilter = false;
-            // 
-            // colDJ1
-            // 
-            this.colDJ1.Caption = "定价";
-            this.colDJ1.FieldName = "DJ";
-            this.colDJ1.Name = "colDJ1";
-            this.colDJ1.Visible = true;
-            this.colDJ1.VisibleIndex = 13;
-            // 
-            // colXZ1
-            // 
-            this.colXZ1.Caption = "销折";
-            this.colXZ1.FieldName = "XZ";
-            this.colXZ1.Name = "colXZ1";
-            this.colXZ1.Visible = true;
-            this.colXZ1.VisibleIndex = 14;
-            // 
-            // colXJ1
-            // 
-            this.colXJ1.Caption = "销价";
-            this.colXJ1.FieldName = "XJ";
-            this.colXJ1.Name = "colXJ1";
-            this.colXJ1.Visible = true;
-            this.colXJ1.VisibleIndex = 15;
-            // 
-            // colFDXZ1
-            // 
-            this.colFDXZ1.Caption = "浮动销折";
-            this.colFDXZ1.FieldName = "FDXZ";
-            this.colFDXZ1.Name = "colFDXZ1";
-            this.colFDXZ1.Visible = true;
-            this.colFDXZ1.VisibleIndex = 13;
-            // 
-            // colFDXJ1
-            // 
-            this.colFDXJ1.Caption = "浮动销价";
-            this.colFDXJ1.FieldName = "FDXJ";
-            this.colFDXJ1.Name = "colFDXJ1";
-            this.colFDXJ1.Visible = true;
-            this.colFDXJ1.VisibleIndex = 22;
-            // 
-            // colSL1
-            // 
-            this.colSL1.Caption = "税率";
-            this.colSL1.FieldName = "SL";
-            this.colSL1.Name = "colSL1";
-            this.colSL1.Visible = true;
-            this.colSL1.VisibleIndex = 16;
-            // 
-            // colYJSL1
-            // 
-            this.colYJSL1.Caption = "已结数量";
-            this.colYJSL1.FieldName = "YJSL";
-            this.colYJSL1.Name = "colYJSL1";
-            this.colYJSL1.Visible = true;
-            this.colYJSL1.VisibleIndex = 10;
-            // 
-            // colFDE1
-            // 
-            this.colFDE1.Caption = "浮动额";
-            this.colFDE1.FieldName = "FDE";
-            this.colFDE1.Name = "colFDE1";
-            this.colFDE1.Visible = true;
-            this.colFDE1.VisibleIndex = 18;
             // 
             // colDSSL1
             // 
@@ -692,22 +822,6 @@
             this.colDSMY1.Name = "colDSMY1";
             this.colDSMY1.OptionsFilter.AllowFilter = false;
             // 
-            // colYJSY1
-            // 
-            this.colYJSY1.Caption = "已结实洋";
-            this.colYJSY1.FieldName = "YJSY";
-            this.colYJSY1.Name = "colYJSY1";
-            this.colYJSY1.Visible = true;
-            this.colYJSY1.VisibleIndex = 11;
-            // 
-            // colYJMY1
-            // 
-            this.colYJMY1.Caption = "已结码洋";
-            this.colYJMY1.FieldName = "YJMY";
-            this.colYJMY1.Name = "colYJMY1";
-            this.colYJMY1.Visible = true;
-            this.colYJMY1.VisibleIndex = 12;
-            // 
             // colZT1
             // 
             this.colZT1.Caption = "状态ID";
@@ -721,14 +835,6 @@
             this.colYZT1.FieldName = "YZT";
             this.colYZT1.Name = "colYZT1";
             this.colYZT1.OptionsFilter.AllowFilter = false;
-            // 
-            // colBZ1
-            // 
-            this.colBZ1.Caption = "备注";
-            this.colBZ1.FieldName = "BZ";
-            this.colBZ1.Name = "colBZ1";
-            this.colBZ1.Visible = true;
-            this.colBZ1.VisibleIndex = 29;
             // 
             // colXSFSID1
             // 
@@ -750,38 +856,6 @@
             this.colKHSPMXID1.FieldName = "KHSPMXID";
             this.colKHSPMXID1.Name = "colKHSPMXID1";
             this.colKHSPMXID1.OptionsFilter.AllowFilter = false;
-            // 
-            // colTSRQ1
-            // 
-            this.colTSRQ1.Caption = "托收日期";
-            this.colTSRQ1.FieldName = "TSRQ";
-            this.colTSRQ1.Name = "colTSRQ1";
-            this.colTSRQ1.Visible = true;
-            this.colTSRQ1.VisibleIndex = 24;
-            // 
-            // colTSCS1
-            // 
-            this.colTSCS1.Caption = "托收次数";
-            this.colTSCS1.FieldName = "TSCS";
-            this.colTSCS1.Name = "colTSCS1";
-            this.colTSCS1.Visible = true;
-            this.colTSCS1.VisibleIndex = 25;
-            // 
-            // colZKE1
-            // 
-            this.colZKE1.Caption = "折扣额";
-            this.colZKE1.FieldName = "ZKE";
-            this.colZKE1.Name = "colZKE1";
-            this.colZKE1.Visible = true;
-            this.colZKE1.VisibleIndex = 20;
-            // 
-            // colWSJE1
-            // 
-            this.colWSJE1.Caption = "无税金额";
-            this.colWSJE1.FieldName = "WSJE";
-            this.colWSJE1.Name = "colWSJE1";
-            this.colWSJE1.Visible = true;
-            this.colWSJE1.VisibleIndex = 19;
             // 
             // colXSBMID1
             // 
@@ -817,38 +891,6 @@
             this.colLYBMID1.FieldName = "LYBMID";
             this.colLYBMID1.Name = "colLYBMID1";
             this.colLYBMID1.OptionsFilter.AllowFilter = false;
-            // 
-            // colXSBMMC1
-            // 
-            this.colXSBMMC1.Caption = "销售部门";
-            this.colXSBMMC1.FieldName = "XSBMMC";
-            this.colXSBMMC1.Name = "colXSBMMC1";
-            this.colXSBMMC1.Visible = true;
-            this.colXSBMMC1.VisibleIndex = 4;
-            // 
-            // colKHMC1
-            // 
-            this.colKHMC1.Caption = "客户";
-            this.colKHMC1.FieldName = "KHMC";
-            this.colKHMC1.Name = "colKHMC1";
-            this.colKHMC1.Visible = true;
-            this.colKHMC1.VisibleIndex = 6;
-            // 
-            // colLYBMMC1
-            // 
-            this.colLYBMMC1.Caption = "来源部门";
-            this.colLYBMMC1.FieldName = "LYBMMC";
-            this.colLYBMMC1.Name = "colLYBMMC1";
-            this.colLYBMMC1.Visible = true;
-            this.colLYBMMC1.VisibleIndex = 5;
-            // 
-            // colXSJSDH1
-            // 
-            this.colXSJSDH1.Caption = "销售结算单号";
-            this.colXSJSDH1.FieldName = "XSJSDH";
-            this.colXSJSDH1.Name = "colXSJSDH1";
-            this.colXSJSDH1.Visible = true;
-            this.colXSJSDH1.VisibleIndex = 2;
             // 
             // colZTID1
             // 
@@ -1020,7 +1062,7 @@
             this.colSL.FieldName = "SL";
             this.colSL.Name = "colSL";
             this.colSL.Visible = true;
-            this.colSL.VisibleIndex = 8;
+            this.colSL.VisibleIndex = 9;
             // 
             // colJSHJ
             // 
@@ -1029,7 +1071,7 @@
             this.colJSHJ.Name = "colJSHJ";
             this.colJSHJ.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
             this.colJSHJ.Visible = true;
-            this.colJSHJ.VisibleIndex = 9;
+            this.colJSHJ.VisibleIndex = 10;
             // 
             // colZKE
             // 
@@ -1038,7 +1080,7 @@
             this.colZKE.Name = "colZKE";
             this.colZKE.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
             this.colZKE.Visible = true;
-            this.colZKE.VisibleIndex = 10;
+            this.colZKE.VisibleIndex = 11;
             // 
             // colXSSL
             // 
@@ -1047,7 +1089,7 @@
             this.colXSSL.Name = "colXSSL";
             this.colXSSL.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
             this.colXSSL.Visible = true;
-            this.colXSSL.VisibleIndex = 11;
+            this.colXSSL.VisibleIndex = 12;
             // 
             // colXSSY
             // 
@@ -1057,7 +1099,7 @@
             this.colXSSY.OptionsFilter.AllowFilter = false;
             this.colXSSY.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
             this.colXSSY.Visible = true;
-            this.colXSSY.VisibleIndex = 12;
+            this.colXSSY.VisibleIndex = 14;
             // 
             // colXSMY
             // 
@@ -1067,7 +1109,7 @@
             this.colXSMY.OptionsFilter.AllowFilter = false;
             this.colXSMY.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
             this.colXSMY.Visible = true;
-            this.colXSMY.VisibleIndex = 13;
+            this.colXSMY.VisibleIndex = 16;
             // 
             // colYSSL
             // 
@@ -1076,7 +1118,7 @@
             this.colYSSL.Name = "colYSSL";
             this.colYSSL.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
             this.colYSSL.Visible = true;
-            this.colYSSL.VisibleIndex = 14;
+            this.colYSSL.VisibleIndex = 17;
             // 
             // colYSJE
             // 
@@ -1086,7 +1128,7 @@
             this.colYSJE.OptionsFilter.AllowFilter = false;
             this.colYSJE.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
             this.colYSJE.Visible = true;
-            this.colYSJE.VisibleIndex = 15;
+            this.colYSJE.VisibleIndex = 18;
             // 
             // colYSMY
             // 
@@ -1096,7 +1138,7 @@
             this.colYSMY.OptionsFilter.AllowFilter = false;
             this.colYSMY.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
             this.colYSMY.Visible = true;
-            this.colYSMY.VisibleIndex = 16;
+            this.colYSMY.VisibleIndex = 19;
             // 
             // colTSZSY
             // 
@@ -1106,7 +1148,7 @@
             this.colTSZSY.OptionsFilter.AllowFilter = false;
             this.colTSZSY.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
             this.colTSZSY.Visible = true;
-            this.colTSZSY.VisibleIndex = 17;
+            this.colTSZSY.VisibleIndex = 20;
             // 
             // colTSZSL
             // 
@@ -1115,7 +1157,7 @@
             this.colTSZSL.Name = "colTSZSL";
             this.colTSZSL.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
             this.colTSZSL.Visible = true;
-            this.colTSZSL.VisibleIndex = 18;
+            this.colTSZSL.VisibleIndex = 21;
             // 
             // colTSZMY
             // 
@@ -1125,7 +1167,7 @@
             this.colTSZMY.OptionsFilter.AllowFilter = false;
             this.colTSZMY.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
             this.colTSZMY.Visible = true;
-            this.colTSZMY.VisibleIndex = 19;
+            this.colTSZMY.VisibleIndex = 22;
             // 
             // colSE
             // 
@@ -1134,7 +1176,7 @@
             this.colSE.Name = "colSE";
             this.colSE.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
             this.colSE.Visible = true;
-            this.colSE.VisibleIndex = 20;
+            this.colSE.VisibleIndex = 23;
             // 
             // colPJZK
             // 
@@ -1143,7 +1185,7 @@
             this.colPJZK.Name = "colPJZK";
             this.colPJZK.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
             this.colPJZK.Visible = true;
-            this.colPJZK.VisibleIndex = 21;
+            this.colPJZK.VisibleIndex = 24;
             // 
             // colPJDJ
             // 
@@ -1152,7 +1194,7 @@
             this.colPJDJ.Name = "colPJDJ";
             this.colPJDJ.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
             this.colPJDJ.Visible = true;
-            this.colPJDJ.VisibleIndex = 22;
+            this.colPJDJ.VisibleIndex = 25;
             // 
             // colZTID
             // 
@@ -1160,13 +1202,6 @@
             this.colZTID.FieldName = "ZTID";
             this.colZTID.Name = "colZTID";
             this.colZTID.OptionsFilter.AllowFilter = false;
-            // 
-            // colDSMY
-            // 
-            this.colDSMY.Caption = "待结码洋";
-            this.colDSMY.FieldName = "DSMY";
-            this.colDSMY.Name = "colDSMY";
-            this.colDSMY.OptionsFilter.AllowFilter = false;
             // 
             // colCWBMID
             // 
@@ -1188,7 +1223,7 @@
             this.colFDE.FieldName = "FDE";
             this.colFDE.Name = "colFDE";
             this.colFDE.Visible = true;
-            this.colFDE.VisibleIndex = 7;
+            this.colFDE.VisibleIndex = 8;
             // 
             // colJSR
             // 
@@ -1196,7 +1231,7 @@
             this.colJSR.FieldName = "JSR";
             this.colJSR.Name = "colJSR";
             this.colJSR.Visible = true;
-            this.colJSR.VisibleIndex = 11;
+            this.colJSR.VisibleIndex = 13;
             // 
             // colYSPZH
             // 
@@ -1204,7 +1239,7 @@
             this.colYSPZH.FieldName = "YSPZH";
             this.colYSPZH.Name = "colYSPZH";
             this.colYSPZH.Visible = true;
-            this.colYSPZH.VisibleIndex = 25;
+            this.colYSPZH.VisibleIndex = 26;
             // 
             // colXSFPH
             // 
@@ -1212,7 +1247,7 @@
             this.colXSFPH.FieldName = "XSFPH";
             this.colXSFPH.Name = "colXSFPH";
             this.colXSFPH.Visible = true;
-            this.colXSFPH.VisibleIndex = 26;
+            this.colXSFPH.VisibleIndex = 28;
             // 
             // colJZCBPZH
             // 
@@ -1220,7 +1255,7 @@
             this.colJZCBPZH.FieldName = "JZCBPZH";
             this.colJZCBPZH.Name = "colJZCBPZH";
             this.colJZCBPZH.Visible = true;
-            this.colJZCBPZH.VisibleIndex = 27;
+            this.colJZCBPZH.VisibleIndex = 30;
             // 
             // colXSHZDH
             // 
@@ -1228,7 +1263,7 @@
             this.colXSHZDH.FieldName = "XSHZDH";
             this.colXSHZDH.Name = "colXSHZDH";
             this.colXSHZDH.Visible = true;
-            this.colXSHZDH.VisibleIndex = 28;
+            this.colXSHZDH.VisibleIndex = 31;
             // 
             // colSKPZH
             // 
@@ -1236,7 +1271,7 @@
             this.colSKPZH.FieldName = "SKPZH";
             this.colSKPZH.Name = "colSKPZH";
             this.colSKPZH.Visible = true;
-            this.colSKPZH.VisibleIndex = 29;
+            this.colSKPZH.VisibleIndex = 32;
             // 
             // colZDRQ
             // 
@@ -1244,7 +1279,7 @@
             this.colZDRQ.FieldName = "ZDRQ";
             this.colZDRQ.Name = "colZDRQ";
             this.colZDRQ.Visible = true;
-            this.colZDRQ.VisibleIndex = 12;
+            this.colZDRQ.VisibleIndex = 15;
             // 
             // colTSDMXDH
             // 
@@ -1252,7 +1287,7 @@
             this.colTSDMXDH.FieldName = "TSDMXDH";
             this.colTSDMXDH.Name = "colTSDMXDH";
             this.colTSDMXDH.Visible = true;
-            this.colTSDMXDH.VisibleIndex = 31;
+            this.colTSDMXDH.VisibleIndex = 33;
             // 
             // colCZRQ
             // 
@@ -1260,7 +1295,7 @@
             this.colCZRQ.FieldName = "CZRQ";
             this.colCZRQ.Name = "colCZRQ";
             this.colCZRQ.Visible = true;
-            this.colCZRQ.VisibleIndex = 32;
+            this.colCZRQ.VisibleIndex = 35;
             // 
             // colHKRQ
             // 
@@ -1268,7 +1303,7 @@
             this.colHKRQ.FieldName = "HKRQ";
             this.colHKRQ.Name = "colHKRQ";
             this.colHKRQ.Visible = true;
-            this.colHKRQ.VisibleIndex = 33;
+            this.colHKRQ.VisibleIndex = 36;
             // 
             // colQSJSRQ
             // 
@@ -1276,7 +1311,7 @@
             this.colQSJSRQ.FieldName = "QSJSRQ";
             this.colQSJSRQ.Name = "colQSJSRQ";
             this.colQSJSRQ.Visible = true;
-            this.colQSJSRQ.VisibleIndex = 25;
+            this.colQSJSRQ.VisibleIndex = 27;
             // 
             // colJZPZRQ
             // 
@@ -1284,7 +1319,7 @@
             this.colJZPZRQ.FieldName = "JZPZRQ";
             this.colJZPZRQ.Name = "colJZPZRQ";
             this.colJZPZRQ.Visible = true;
-            this.colJZPZRQ.VisibleIndex = 35;
+            this.colJZPZRQ.VisibleIndex = 37;
             // 
             // colZHJSRQ
             // 
@@ -1292,7 +1327,7 @@
             this.colZHJSRQ.FieldName = "ZHJSRQ";
             this.colZHJSRQ.Name = "colZHJSRQ";
             this.colZHJSRQ.Visible = true;
-            this.colZHJSRQ.VisibleIndex = 26;
+            this.colZHJSRQ.VisibleIndex = 29;
             // 
             // colCZRMC
             // 
@@ -1300,7 +1335,7 @@
             this.colCZRMC.FieldName = "CZRMC";
             this.colCZRMC.Name = "colCZRMC";
             this.colCZRMC.Visible = true;
-            this.colCZRMC.VisibleIndex = 31;
+            this.colCZRMC.VisibleIndex = 34;
             // 
             // colJSFSID
             // 
@@ -1315,6 +1350,13 @@
             this.colCZYID.FieldName = "CZYID";
             this.colCZYID.Name = "colCZYID";
             this.colCZYID.OptionsFilter.AllowFilter = false;
+            // 
+            // colDSMY
+            // 
+            this.colDSMY.Caption = "待结码洋";
+            this.colDSMY.FieldName = "DSMY";
+            this.colDSMY.Name = "colDSMY";
+            this.colDSMY.OptionsFilter.AllowFilter = false;
             // 
             // colPZS
             // 
@@ -1596,5 +1638,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn colJZCBPZH;
         private DevExpress.XtraGrid.Columns.GridColumn colYSPZH;
         private DevExpress.XtraGrid.Columns.GridColumn colTSDMXDH;
+        private System.Windows.Forms.ToolStripDropDownButton btnView;
+        private System.Windows.Forms.ToolStripMenuItem btnColCustomize;
+        private System.Windows.Forms.ToolStripMenuItem btnSaveLayout;
+        private System.Windows.Forms.ToolStripMenuItem btnLoadLayout;
     }
 }

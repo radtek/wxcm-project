@@ -795,7 +795,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.BackColor = System.Drawing.Color.PaleGreen;
+            this.btnSave.BackColor = System.Drawing.SystemColors.Control;
             this.btnSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
             this.btnSave.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -806,7 +806,7 @@
             // 
             // btnReload
             // 
-            this.btnReload.BackColor = System.Drawing.Color.Turquoise;
+            this.btnReload.BackColor = System.Drawing.SystemColors.Control;
             this.btnReload.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnReload.Image = ((System.Drawing.Image)(resources.GetObject("btnReload.Image")));
             this.btnReload.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -817,7 +817,7 @@
             // 
             // btnExit
             // 
-            this.btnExit.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnExit.BackColor = System.Drawing.SystemColors.Control;
             this.btnExit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
             this.btnExit.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -828,7 +828,7 @@
             // 
             // btnAlter
             // 
-            this.btnAlter.BackColor = System.Drawing.Color.Gold;
+            this.btnAlter.BackColor = System.Drawing.SystemColors.Control;
             this.btnAlter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnAlter.Image = ((System.Drawing.Image)(resources.GetObject("btnAlter.Image")));
             this.btnAlter.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -844,7 +844,7 @@
             // 
             // btnSelectCase
             // 
-            this.btnSelectCase.BackColor = System.Drawing.Color.LightSalmon;
+            this.btnSelectCase.BackColor = System.Drawing.SystemColors.Control;
             this.btnSelectCase.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnSelectCase.Image = ((System.Drawing.Image)(resources.GetObject("btnSelectCase.Image")));
             this.btnSelectCase.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -855,7 +855,7 @@
             // 
             // btnDeleteCase
             // 
-            this.btnDeleteCase.BackColor = System.Drawing.Color.IndianRed;
+            this.btnDeleteCase.BackColor = System.Drawing.SystemColors.Control;
             this.btnDeleteCase.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnDeleteCase.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteCase.Image")));
             this.btnDeleteCase.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -900,21 +900,21 @@
             // btnColCustomize
             // 
             this.btnColCustomize.Name = "btnColCustomize";
-            this.btnColCustomize.Size = new System.Drawing.Size(152, 22);
+            this.btnColCustomize.Size = new System.Drawing.Size(118, 22);
             this.btnColCustomize.Text = "定制列";
             this.btnColCustomize.Click += new System.EventHandler(this.btnColCustomize_Click);
             // 
             // btnSaveLayout
             // 
             this.btnSaveLayout.Name = "btnSaveLayout";
-            this.btnSaveLayout.Size = new System.Drawing.Size(152, 22);
+            this.btnSaveLayout.Size = new System.Drawing.Size(118, 22);
             this.btnSaveLayout.Text = "保存视图";
             this.btnSaveLayout.Click += new System.EventHandler(this.btnSaveLayout_Click);
             // 
             // btnLoadLayout
             // 
             this.btnLoadLayout.Name = "btnLoadLayout";
-            this.btnLoadLayout.Size = new System.Drawing.Size(152, 22);
+            this.btnLoadLayout.Size = new System.Drawing.Size(118, 22);
             this.btnLoadLayout.Text = "载入视图";
             this.btnLoadLayout.Click += new System.EventHandler(this.btnLoadLayout_Click);
             // 

@@ -1349,6 +1349,69 @@ namespace ClientMain
             }
         }
 
+        private void btnColCustomize_Click(object sender, EventArgs e)
+        {
+            if (this.Tag.ToString() == "JT_C_KHTSD")
+            {
+                gridView1.ShowCustomization();
+
+            }
+            else if (this.Tag.ToString() == "JT_C_KHTSDMC")
+            {
+                gridView2.ShowCustomization();
+            }
+        }
+
+        private void btnSaveLayout_Click(object sender, EventArgs e)
+        {
+            if (this.Tag.ToString() == "JT_C_KHTSD")
+            {
+                string strLayout = FrmLogin.getUser + "_FrmClientTuoShouJTLayout.xml";
+                FileStream stream = new FileStream(strLayout, FileMode.Create);
+                gridView1.SaveLayoutToStream(stream);
+                stream.Close();
+
+            }
+            else if (this.Tag.ToString() == "JT_C_KHTSDMC")
+            {
+                string strLayout = FrmLogin.getUser + "_FrmClientTuoShouJTMXLayout.xml";
+                FileStream stream = new FileStream(strLayout, FileMode.Create);
+                gridView2.SaveLayoutToStream(stream);
+                stream.Close();
+            }
+        }
+
+        private void btnLoadLayout_Click(object sender, EventArgs e)
+        {
+            if (this.Tag.ToString() == "JT_C_KHTSD")
+            {
+                string strLayout = FrmLogin.getUser + "_FrmClientTuoShouJTLayout.xml";
+                if (File.Exists(strLayout))
+                {
+                    gridView1.RestoreLayoutFromXml(strLayout);
+                    MessageBox.Show("载入视图成功！");
+                }
+                else
+                {
+                    MessageBox.Show("未发现视图保存文件，请确认是否曾经保存！");
+                }
+
+            }
+            else if (this.Tag.ToString() == "JT_C_KHTSDMC")
+            {
+                string strLayout = FrmLogin.getUser + "_FrmClientTuoShouJTMXLayout.xml";
+                if (File.Exists(strLayout))
+                {
+                    gridView2.RestoreLayoutFromXml(strLayout);
+                    MessageBox.Show("载入视图成功！");
+                }
+                else
+                {
+                    MessageBox.Show("未发现视图保存文件，请确认是否曾经保存！");
+                }
+            }
+        }
+
 
     }
 }
