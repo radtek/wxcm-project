@@ -103,6 +103,10 @@
             this.colJSHJ = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSHL = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colBZ = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.btnView = new System.Windows.Forms.ToolStripDropDownButton();
+            this.btnColCustomize = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnSaveLayout = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnLoadLayout = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -135,7 +139,8 @@
             this.btnSelectCase,
             this.btnDeleteCase,
             this.btnPrintTable,
-            this.btnExportGrid});
+            this.btnExportGrid,
+            this.btnView});
             this.toolStrip1.Location = new System.Drawing.Point(0, 279);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(867, 27);
@@ -144,7 +149,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.BackColor = System.Drawing.Color.PaleGreen;
+            this.btnSave.BackColor = System.Drawing.SystemColors.Control;
             this.btnSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
             this.btnSave.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -155,7 +160,7 @@
             // 
             // btnReload
             // 
-            this.btnReload.BackColor = System.Drawing.Color.Turquoise;
+            this.btnReload.BackColor = System.Drawing.SystemColors.Control;
             this.btnReload.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnReload.Image = ((System.Drawing.Image)(resources.GetObject("btnReload.Image")));
             this.btnReload.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -166,7 +171,7 @@
             // 
             // btnExit
             // 
-            this.btnExit.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnExit.BackColor = System.Drawing.SystemColors.Control;
             this.btnExit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
             this.btnExit.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -177,7 +182,7 @@
             // 
             // btnAlter
             // 
-            this.btnAlter.BackColor = System.Drawing.Color.Gold;
+            this.btnAlter.BackColor = System.Drawing.SystemColors.Control;
             this.btnAlter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnAlter.Image = ((System.Drawing.Image)(resources.GetObject("btnAlter.Image")));
             this.btnAlter.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -193,7 +198,7 @@
             // 
             // btnSelectCase
             // 
-            this.btnSelectCase.BackColor = System.Drawing.Color.LightSalmon;
+            this.btnSelectCase.BackColor = System.Drawing.SystemColors.Control;
             this.btnSelectCase.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnSelectCase.Image = ((System.Drawing.Image)(resources.GetObject("btnSelectCase.Image")));
             this.btnSelectCase.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -204,7 +209,7 @@
             // 
             // btnDeleteCase
             // 
-            this.btnDeleteCase.BackColor = System.Drawing.Color.IndianRed;
+            this.btnDeleteCase.BackColor = System.Drawing.SystemColors.Control;
             this.btnDeleteCase.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnDeleteCase.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteCase.Image")));
             this.btnDeleteCase.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -215,25 +220,27 @@
             // 
             // btnPrintTable
             // 
+            this.btnPrintTable.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnPrintTable.Image = ((System.Drawing.Image)(resources.GetObject("btnPrintTable.Image")));
             this.btnPrintTable.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnPrintTable.Name = "btnPrintTable";
-            this.btnPrintTable.Size = new System.Drawing.Size(73, 24);
+            this.btnPrintTable.Size = new System.Drawing.Size(57, 24);
             this.btnPrintTable.Text = "打印表格";
             this.btnPrintTable.Click += new System.EventHandler(this.btnPrintTable_Click);
             // 
             // btnExportGrid
             // 
+            this.btnExportGrid.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.btnExportGrid.Image = ((System.Drawing.Image)(resources.GetObject("btnExportGrid.Image")));
             this.btnExportGrid.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnExportGrid.Name = "btnExportGrid";
-            this.btnExportGrid.Size = new System.Drawing.Size(73, 24);
+            this.btnExportGrid.Size = new System.Drawing.Size(57, 24);
             this.btnExportGrid.Text = "导出表格";
             this.btnExportGrid.Click += new System.EventHandler(this.btnExportGrid_Click);
             // 
             // groupBox1
             // 
-            this.groupBox1.BackColor = System.Drawing.Color.LightBlue;
+            this.groupBox1.BackColor = System.Drawing.Color.AliceBlue;
             this.groupBox1.Controls.Add(this.btnSPFY);
             this.groupBox1.Controls.Add(this.btnSelectTSPZ);
             this.groupBox1.Controls.Add(this.btnSelectKXNR);
@@ -867,6 +874,39 @@
             this.colBZ.Visible = true;
             this.colBZ.VisibleIndex = 7;
             // 
+            // btnView
+            // 
+            this.btnView.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnColCustomize,
+            this.btnSaveLayout,
+            this.btnLoadLayout});
+            this.btnView.Image = ((System.Drawing.Image)(resources.GetObject("btnView.Image")));
+            this.btnView.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnView.Name = "btnView";
+            this.btnView.Size = new System.Drawing.Size(42, 24);
+            this.btnView.Text = "视图";
+            // 
+            // btnColCustomize
+            // 
+            this.btnColCustomize.Name = "btnColCustomize";
+            this.btnColCustomize.Size = new System.Drawing.Size(152, 22);
+            this.btnColCustomize.Text = "列定制";
+            this.btnColCustomize.Click += new System.EventHandler(this.btnColCustomize_Click);
+            // 
+            // btnSaveLayout
+            // 
+            this.btnSaveLayout.Name = "btnSaveLayout";
+            this.btnSaveLayout.Size = new System.Drawing.Size(152, 22);
+            this.btnSaveLayout.Text = "保存视图";
+            this.btnSaveLayout.Click += new System.EventHandler(this.btnSaveLayout_Click);
+            // 
+            // btnLoadLayout
+            // 
+            this.btnLoadLayout.Name = "btnLoadLayout";
+            this.btnLoadLayout.Size = new System.Drawing.Size(152, 22);
+            this.btnLoadLayout.Text = "载入视图";
+            // 
             // FrmClientTuoShouJTAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -970,5 +1010,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn colJSHJ;
         private DevExpress.XtraGrid.Columns.GridColumn colSHL;
         private DevExpress.XtraGrid.Columns.GridColumn colBZ;
+        private System.Windows.Forms.ToolStripDropDownButton btnView;
+        private System.Windows.Forms.ToolStripMenuItem btnColCustomize;
+        private System.Windows.Forms.ToolStripMenuItem btnSaveLayout;
+        private System.Windows.Forms.ToolStripMenuItem btnLoadLayout;
     }
 }

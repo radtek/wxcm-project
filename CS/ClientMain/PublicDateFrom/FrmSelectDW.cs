@@ -182,7 +182,7 @@ namespace ClientMain
         {
             if (this.txtDeparmentNo.Text.Trim() != "")
             {
-                string strselect = "select DWID,DWBH,DWMC,ZJM from JT_J_DWXX where DWBH LIKE'" + this.txtDeparmentNo.Text.Trim().ToString() + "%'";
+                string strselect = "select DWID,DWBH,DWMC,ZJM from JT_J_DWXX where DWBH LIKE'%" + this.txtDeparmentNo.Text.Trim().ToString() + "%'";
                 GetSelectData(strselect);
                 this.dataGridView1.ClearSelection();//使dataGridView失去焦点
                 this.dataGridView1.TabStop = false;
@@ -192,7 +192,7 @@ namespace ClientMain
             }
             else if (this.txtDeparmentName.Text.Trim() != "")
             {
-                string strselect = "select  DWID,DWBH,DWMC,ZJM from JT_J_DWXX where DWMC LIKE'" + this.txtDeparmentName.Text.Trim().ToString() + "%'";
+                string strselect = "select  DWID,DWBH,DWMC,ZJM from JT_J_DWXX where DWMC LIKE'%" + this.txtDeparmentName.Text.Trim().ToString() + "%'";
                 GetSelectData(strselect);
                 this.dataGridView1.ClearSelection();//使dataGridView失去焦点
                 this.dataGridView1.TabStop = false;
@@ -201,7 +201,7 @@ namespace ClientMain
             }
             else if (this.txtFastcode.Text.Trim() != "")
             {
-                string strselect = "select  DWID,DWBH,DWMC,ZJM from JT_J_DWXX where ZJM LIKE'" + this.txtFastcode.Text.Trim().ToString() + "%'";
+                string strselect = "select  DWID,DWBH,DWMC,ZJM from JT_J_DWXX where ZJM LIKE'%" + this.txtFastcode.Text.Trim().ToString() + "%'";
                 GetSelectData(strselect);
                 this.dataGridView1.ClearSelection();//使dataGridView失去焦点
                 this.dataGridView1.TabStop = false;

@@ -24,12 +24,12 @@ namespace ClientMain
     {
         private GridCheckMarksSelection selection;
         // private string StrCon = FrmLogin.strCon;
-        private string StrCon = FrmLogin.strCon;
+        private string StrCon = FrmLogin.strDataCent;
         public UserAdd()
         {
             InitializeComponent();
             //  XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
-            XpoDefault.ConnectionString = FrmLogin.xpoConStr;
+            XpoDefault.ConnectionString = FrmLogin.xpoDataCentStr;
             selection = new GridCheckMarksSelection(gridView1);
             selection.CheckMarkColumn.VisibleIndex = 0;
             xpServerCollectionSource1.FixedFilterString = "[DEPARTMENTID] Is Null";

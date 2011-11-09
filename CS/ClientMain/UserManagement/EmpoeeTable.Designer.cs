@@ -41,20 +41,18 @@
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.xpServerCollectionSource1 = new DevExpress.Xpo.XPServerCollectionSource();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colEMPLOYEEID = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colEMPLOYEENO = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colNAME = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colOPERATORID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colOPERATORNO = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colOPERATORNAME = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colFASTCODE = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSEX = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colBIRTHDAY = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colEMAIL = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTXDZ = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCONTACTADDRESS = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTELEPHONE = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMOBILETELEPHONE = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colSJDWID = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colJCJCNO = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colKHDNO = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colDEPARTMENTNAME = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDEPARTID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colBMMC = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -169,25 +167,23 @@
             // 
             // xpServerCollectionSource1
             // 
-            this.xpServerCollectionSource1.ObjectType = typeof(XINHUA.VIEW_SYS_EMPLOYEES_SELECT);
+            this.xpServerCollectionSource1.ObjectType = typeof(XINHUA.VIEW_BASE_OPERATOR);
             // 
             // gridView1
             // 
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colEMPLOYEEID,
-            this.colEMPLOYEENO,
-            this.colNAME,
+            this.colOPERATORID,
+            this.colOPERATORNO,
+            this.colOPERATORNAME,
             this.colFASTCODE,
             this.colSEX,
             this.colBIRTHDAY,
             this.colEMAIL,
-            this.colTXDZ,
+            this.colCONTACTADDRESS,
             this.colTELEPHONE,
             this.colMOBILETELEPHONE,
-            this.colSJDWID,
-            this.colJCJCNO,
-            this.colKHDNO,
-            this.colDEPARTMENTNAME});
+            this.colDEPARTID,
+            this.colBMMC});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
@@ -195,29 +191,29 @@
             this.gridView1.OptionsPrint.PrintSelectedRowsOnly = true;
             this.gridView1.OptionsView.ColumnAutoWidth = false;
             // 
-            // colEMPLOYEEID
+            // colOPERATORID
             // 
-            this.colEMPLOYEEID.Caption = "员工ID";
-            this.colEMPLOYEEID.FieldName = "EMPLOYEEID";
-            this.colEMPLOYEEID.Name = "colEMPLOYEEID";
-            this.colEMPLOYEEID.Visible = true;
-            this.colEMPLOYEEID.VisibleIndex = 0;
+            this.colOPERATORID.Caption = "员工ID";
+            this.colOPERATORID.FieldName = "OPERATORID";
+            this.colOPERATORID.Name = "colOPERATORID";
+            this.colOPERATORID.Visible = true;
+            this.colOPERATORID.VisibleIndex = 0;
             // 
-            // colEMPLOYEENO
+            // colOPERATORNO
             // 
-            this.colEMPLOYEENO.Caption = "员工编号";
-            this.colEMPLOYEENO.FieldName = "EMPLOYEENO";
-            this.colEMPLOYEENO.Name = "colEMPLOYEENO";
-            this.colEMPLOYEENO.Visible = true;
-            this.colEMPLOYEENO.VisibleIndex = 1;
+            this.colOPERATORNO.Caption = "员工编号";
+            this.colOPERATORNO.FieldName = "OPERATORNO";
+            this.colOPERATORNO.Name = "colOPERATORNO";
+            this.colOPERATORNO.Visible = true;
+            this.colOPERATORNO.VisibleIndex = 1;
             // 
-            // colNAME
+            // colOPERATORNAME
             // 
-            this.colNAME.Caption = "员工姓名";
-            this.colNAME.FieldName = "NAME";
-            this.colNAME.Name = "colNAME";
-            this.colNAME.Visible = true;
-            this.colNAME.VisibleIndex = 2;
+            this.colOPERATORNAME.Caption = "员工名称";
+            this.colOPERATORNAME.FieldName = "OPERATORNAME";
+            this.colOPERATORNAME.Name = "colOPERATORNAME";
+            this.colOPERATORNAME.Visible = true;
+            this.colOPERATORNAME.VisibleIndex = 2;
             // 
             // colFASTCODE
             // 
@@ -229,7 +225,7 @@
             // 
             // colSEX
             // 
-            this.colSEX.Caption = "性别";
+            this.colSEX.Caption = "性别 ";
             this.colSEX.FieldName = "SEX";
             this.colSEX.Name = "colSEX";
             this.colSEX.Visible = true;
@@ -237,7 +233,7 @@
             // 
             // colBIRTHDAY
             // 
-            this.colBIRTHDAY.Caption = "出身年月";
+            this.colBIRTHDAY.Caption = "生日 ";
             this.colBIRTHDAY.FieldName = "BIRTHDAY";
             this.colBIRTHDAY.Name = "colBIRTHDAY";
             this.colBIRTHDAY.Visible = true;
@@ -245,23 +241,23 @@
             // 
             // colEMAIL
             // 
-            this.colEMAIL.Caption = "EMAIL";
+            this.colEMAIL.Caption = "邮件";
             this.colEMAIL.FieldName = "EMAIL";
             this.colEMAIL.Name = "colEMAIL";
             this.colEMAIL.Visible = true;
             this.colEMAIL.VisibleIndex = 6;
             // 
-            // colTXDZ
+            // colCONTACTADDRESS
             // 
-            this.colTXDZ.Caption = "通讯地址";
-            this.colTXDZ.FieldName = "TXDZ";
-            this.colTXDZ.Name = "colTXDZ";
-            this.colTXDZ.Visible = true;
-            this.colTXDZ.VisibleIndex = 7;
+            this.colCONTACTADDRESS.Caption = "联系地址 ";
+            this.colCONTACTADDRESS.FieldName = "CONTACTADDRESS";
+            this.colCONTACTADDRESS.Name = "colCONTACTADDRESS";
+            this.colCONTACTADDRESS.Visible = true;
+            this.colCONTACTADDRESS.VisibleIndex = 7;
             // 
             // colTELEPHONE
             // 
-            this.colTELEPHONE.Caption = "电话";
+            this.colTELEPHONE.Caption = "家庭电话";
             this.colTELEPHONE.FieldName = "TELEPHONE";
             this.colTELEPHONE.Name = "colTELEPHONE";
             this.colTELEPHONE.Visible = true;
@@ -269,42 +265,26 @@
             // 
             // colMOBILETELEPHONE
             // 
-            this.colMOBILETELEPHONE.Caption = "移动电话";
+            this.colMOBILETELEPHONE.Caption = "移动号码";
             this.colMOBILETELEPHONE.FieldName = "MOBILETELEPHONE";
             this.colMOBILETELEPHONE.Name = "colMOBILETELEPHONE";
             this.colMOBILETELEPHONE.Visible = true;
             this.colMOBILETELEPHONE.VisibleIndex = 9;
             // 
-            // colSJDWID
+            // colDEPARTID
             // 
-            this.colSJDWID.Caption = "上级单位ID";
-            this.colSJDWID.FieldName = "SJDWID";
-            this.colSJDWID.Name = "colSJDWID";
-            this.colSJDWID.OptionsFilter.AllowFilter = false;
+            this.colDEPARTID.Caption = "所在 部门ID";
+            this.colDEPARTID.FieldName = "DEPARTID";
+            this.colDEPARTID.Name = "colDEPARTID";
+            this.colDEPARTID.OptionsFilter.AllowFilter = false;
             // 
-            // colJCJCNO
+            // colBMMC
             // 
-            this.colJCJCNO.Caption = "基层编号";
-            this.colJCJCNO.FieldName = "JCJCNO";
-            this.colJCJCNO.Name = "colJCJCNO";
-            this.colJCJCNO.Visible = true;
-            this.colJCJCNO.VisibleIndex = 10;
-            // 
-            // colKHDNO
-            // 
-            this.colKHDNO.Caption = "客户编号";
-            this.colKHDNO.FieldName = "KHDNO";
-            this.colKHDNO.Name = "colKHDNO";
-            this.colKHDNO.Visible = true;
-            this.colKHDNO.VisibleIndex = 11;
-            // 
-            // colDEPARTMENTNAME
-            // 
-            this.colDEPARTMENTNAME.Caption = "上级单位名称";
-            this.colDEPARTMENTNAME.FieldName = "DEPARTMENTNAME";
-            this.colDEPARTMENTNAME.Name = "colDEPARTMENTNAME";
-            this.colDEPARTMENTNAME.Visible = true;
-            this.colDEPARTMENTNAME.VisibleIndex = 12;
+            this.colBMMC.Caption = "部门名称";
+            this.colBMMC.FieldName = "BMMC";
+            this.colBMMC.Name = "colBMMC";
+            this.colBMMC.Visible = true;
+            this.colBMMC.VisibleIndex = 10;
             // 
             // EmpoeeTable
             // 
@@ -317,7 +297,7 @@
             this.Name = "EmpoeeTable";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "员工表";
-            this.Load += new System.EventHandler(this.EmpoeeTable1_Load);
+          
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
@@ -346,19 +326,17 @@
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.Xpo.XPServerCollectionSource xpServerCollectionSource1;
-        private DevExpress.XtraGrid.Columns.GridColumn colEMPLOYEEID;
-        private DevExpress.XtraGrid.Columns.GridColumn colEMPLOYEENO;
-        private DevExpress.XtraGrid.Columns.GridColumn colNAME;
+        private DevExpress.XtraGrid.Columns.GridColumn colOPERATORID;
+        private DevExpress.XtraGrid.Columns.GridColumn colOPERATORNO;
+        private DevExpress.XtraGrid.Columns.GridColumn colOPERATORNAME;
         private DevExpress.XtraGrid.Columns.GridColumn colFASTCODE;
         private DevExpress.XtraGrid.Columns.GridColumn colSEX;
         private DevExpress.XtraGrid.Columns.GridColumn colBIRTHDAY;
         private DevExpress.XtraGrid.Columns.GridColumn colEMAIL;
-        private DevExpress.XtraGrid.Columns.GridColumn colTXDZ;
+        private DevExpress.XtraGrid.Columns.GridColumn colCONTACTADDRESS;
         private DevExpress.XtraGrid.Columns.GridColumn colTELEPHONE;
         private DevExpress.XtraGrid.Columns.GridColumn colMOBILETELEPHONE;
-        private DevExpress.XtraGrid.Columns.GridColumn colSJDWID;
-        private DevExpress.XtraGrid.Columns.GridColumn colJCJCNO;
-        private DevExpress.XtraGrid.Columns.GridColumn colKHDNO;
-        private DevExpress.XtraGrid.Columns.GridColumn colDEPARTMENTNAME;
+        private DevExpress.XtraGrid.Columns.GridColumn colDEPARTID;
+        private DevExpress.XtraGrid.Columns.GridColumn colBMMC;
     }
 }

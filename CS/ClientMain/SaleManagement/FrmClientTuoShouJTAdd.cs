@@ -730,6 +730,19 @@ namespace ClientMain
             }
         }
 
+        private void btnColCustomize_Click(object sender, EventArgs e)
+        {
+            gridView1.ShowCustomization();
+        }
+
+        private void btnSaveLayout_Click(object sender, EventArgs e)
+        {
+            string strLayout = FrmLogin.getUser + "_FrmClientTuoShouJTAddLayout.xml";
+            FileStream stream = new FileStream(strLayout, FileMode.Create);
+            gridView1.SaveLayoutToStream(stream);
+            stream.Close();
+        }
+
 
 
     }

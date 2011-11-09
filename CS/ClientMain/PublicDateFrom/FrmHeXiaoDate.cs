@@ -38,7 +38,8 @@ namespace ClientMain
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            Selecttime = this.dateTimePicker1.Value.ToShortDateString().ToString();
+    
+            Selecttime = this.dateTimePicker1.Value.ToShortDateString();
             this.DialogResult = DialogResult.OK;
             this.Close();
 
@@ -47,7 +48,7 @@ namespace ClientMain
 
         private void FrmHeXiaoDate_Load(object sender, EventArgs e)
         {
-
+            
         }
 
 

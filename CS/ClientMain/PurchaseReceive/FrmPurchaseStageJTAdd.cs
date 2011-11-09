@@ -353,6 +353,9 @@ namespace ClientMain
                     }
                 }
             }
+            this.toolStripProgressBar1.Maximum = this.gridView1.RowCount;
+            this.toolStripProgressBar1.Value = selection.SelectedCount;
+            
 
         }
         private void btnDWselect_Click(object sender, EventArgs e)
@@ -715,8 +718,9 @@ namespace ClientMain
                             {
                                 int RowIndex = selection.GetSelectedRowIndex(i);
                                 int RowHandle = gridView1.GetRowHandle(RowIndex);
-                            //    string strCGJSDMXID = gridView1.GetRowCellValue(RowHandle, colCGJSDMXID).ToString();
-                             //   cmd.CommandText = "INSERT INTO TEMP_SAVE_ID (TEMPID, ID) Values (temp_save_id_seq.nextval, '" + strCGJSDMXID + "')";
+                                string strCGSHID = gridView1.GetRowCellValue(RowHandle, colCGSHID).ToString();
+                                string strSJLX = gridView1.GetRowCellValue(RowHandle, colSJLX).ToString();
+                               cmd.CommandText = "INSERT INTO TEMP_SAVE_ID (TEMPID,ID,WLBMID) Values (temp_save_id_seq.nextval, '" + strCGSHID + "','" + strSJLX + "')";
                                 cmd.ExecuteNonQuery();
                             }
                                 selection.ClearSelection();
@@ -844,6 +848,33 @@ namespace ClientMain
                     MessageBox.Show("导出成功！");
 
                 }
+            }
+        }
+
+        private void btnColCustomize_Click(object sender, EventArgs e)
+        {
+            gridView1.ShowCustomization();
+        }
+
+        private void btnSaveLayout_Click(object sender, EventArgs e)
+        {
+            string strLayout = FrmLogin.getUser + "_FrmPurchaseStageJTAddLayout.xml";
+            FileStream stream = new FileStream(strLayout, FileMode.Create);
+            gridView1.SaveLayoutToStream(stream);
+            stream.Close();
+        }
+
+        private void btnLoadLayout_Click(object sender, EventArgs e)
+        {
+            string strLayout = FrmLogin.getUser + "_FrmPurchaseStageJTAddLayout.xml";
+            if (File.Exists(strLayout))
+            {
+                gridView1.RestoreLayoutFromXml(strLayout);
+                MessageBox.Show("载入视图成功！");
+            }
+            else
+            {
+                MessageBox.Show("未发现视图保存文件，请确认是否曾经保存！");
             }
         }
 

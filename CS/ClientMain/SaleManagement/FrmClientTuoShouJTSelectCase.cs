@@ -29,7 +29,7 @@ namespace ClientMain
             InitializeComponent();
             //  XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
             XpoDefault.ConnectionString = FrmLogin.xpoDataCentStr;
-            xpServerCollectionSource1.FixedFilterString = "[ZTID] = \'" + FrmLogin.getZTID.ToString() + "\' AND [ZT] > \'" + "15" + "\' AND [JSFSID]=\'" + "01" + "\'AND [GHDWID]=\'" + khid + "\'";
+            xpServerCollectionSource1.FixedFilterString = "[ZTID] = \'" + FrmLogin.getZTID.ToString() + "\' AND [ZT] > \'" + "14" + "\' AND [JSFSID]=\'" + "1" + "\'AND [GHDWID]=\'" + khid + "\'";
             selection = new GridCheckMarksSelection(gridView1);
             selection.CheckMarkColumn.VisibleIndex = 0;
             gridView1.BestFitColumns();
@@ -119,8 +119,35 @@ namespace ClientMain
 
             if (!String.IsNullOrEmpty(gridView1.ActiveFilterString))
             {
-                xpServerCollectionSource1.FixedFilterString = gridView1.ActiveFilterString + " And [ZTID] = \'" + FrmLogin.getZTID.ToString() + "\' AND [ZT] > \'" + "15" + "\' AND [JSFSID]=\'" + "01" + "\'AND [GHDWID]=\'" + this.btnConfirm.Tag.ToString() + "\'";
+                xpServerCollectionSource1.FixedFilterString = gridView1.ActiveFilterString + " And [ZTID] = \'" + FrmLogin.getZTID.ToString() + "\' AND [ZT] > \'" + "14" + "\' AND [JSFSID]=\'" + "1" + "\'AND [GHDWID]=\'" + this.btnConfirm.Tag.ToString() + "\'";
                 gridView1.BestFitColumns();
+            }
+        }
+
+        private void btnColCustomize_Click(object sender, EventArgs e)
+        {
+            gridView1.ShowCustomization();
+        }
+
+        private void btnSaveLayout_Click(object sender, EventArgs e)
+        {
+            string strLayout = FrmLogin.getUser + "_FrmClientTuoShouJTSelectCaseLayout.xml";
+            FileStream stream = new FileStream(strLayout, FileMode.Create);
+            gridView1.SaveLayoutToStream(stream);
+            stream.Close();
+        }
+
+        private void btnLoadLayout_Click(object sender, EventArgs e)
+        {
+            string strLayout = FrmLogin.getUser + "_FrmClientTuoShouJTSelectCaseLayout.xml";
+            if (File.Exists(strLayout))
+            {
+                gridView1.RestoreLayoutFromXml(strLayout);
+                MessageBox.Show("载入视图成功！");
+            }
+            else
+            {
+                MessageBox.Show("未发现视图保存文件，请确认是否曾经保存！");
             }
         }
     }

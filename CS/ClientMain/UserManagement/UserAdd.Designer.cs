@@ -218,7 +218,7 @@
             // 
             // xpServerCollectionSource1
             // 
-            this.xpServerCollectionSource1.ObjectType = typeof(XINHUA.VIEW_SYS_DEPARTMENT);
+            this.xpServerCollectionSource1.ObjectType = typeof(XINHUA.VIEW_SYS_EMPLOYEES);
             // 
             // gridView1
             // 
@@ -581,7 +581,7 @@
             this.txtName.Size = new System.Drawing.Size(284, 21);
             this.txtName.TabIndex = 10;
             // 
-            // UserAdd1
+            // UserAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -589,7 +589,7 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Name = "UserAdd1";
+            this.Name = "UserAdd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "用户管理--新增用户";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

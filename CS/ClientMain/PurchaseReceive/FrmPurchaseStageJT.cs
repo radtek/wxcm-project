@@ -1480,29 +1480,66 @@ namespace ClientMain
 
         private void btnColCustomize_Click(object sender, EventArgs e)
         {
-            gridView1.ShowCustomization();
+            if (this.Tag.ToString() == "JT_C_CGJSD_ZDJS" || this.Tag.ToString() == "JT_C_CGJSD_SXSJ")
+            {
+                gridView1.ShowCustomization();
+            }
+            else if (this.Tag.ToString() == "JT_C_CGJSDMX")
+            {
+                gridView2.ShowCustomization();
+            }
+          
         }
 
         private void btnSaveLayout_Click(object sender, EventArgs e)
         {
-            string strLayout = FrmLogin.getUser + "_FrmPurchaseStageJTLayout.xml";
-            FileStream stream = new FileStream(strLayout, FileMode.Create);
-            gridView1.SaveLayoutToStream(stream);
-            stream.Close();
+            if (this.Tag.ToString() == "JT_C_CGJSD_ZDJS" || this.Tag.ToString() == "JT_C_CGJSD_SXSJ")
+            {
+                string strLayout = FrmLogin.getUser + "_FrmPurchaseStageJTLayout.xml";
+                FileStream stream = new FileStream(strLayout, FileMode.Create);
+                gridView1.SaveLayoutToStream(stream);
+                stream.Close();
+            }
+            else if (this.Tag.ToString() == "JT_C_CGJSDMX")
+            {
+                string strLayout = FrmLogin.getUser + "_FrmPurchaseStageJTMXLayout.xml";
+                FileStream stream = new FileStream(strLayout, FileMode.Create);
+                gridView2.SaveLayoutToStream(stream);
+                stream.Close();
+            }
+            
         }
 
         private void btnLoadLayout_Click(object sender, EventArgs e)
         {
-            string strLayout = FrmLogin.getUser + "_FrmPurchaseStageJTLayout.xml";
-            if (File.Exists(strLayout))
+            if (this.Tag.ToString() == "JT_C_CGJSD_ZDJS" || this.Tag.ToString() == "JT_C_CGJSD_SXSJ")
             {
-                gridView1.RestoreLayoutFromXml(strLayout);
-                MessageBox.Show("载入视图成功！");
+                string strLayout = FrmLogin.getUser + "_FrmPurchaseStageJTLayout.xml";
+                if (File.Exists(strLayout))
+                {
+                    gridView1.RestoreLayoutFromXml(strLayout);
+                    MessageBox.Show("载入视图成功！");
+                }
+                else
+                {
+                    MessageBox.Show("未发现视图保存文件，请确认是否曾经保存！");
+                }
             }
-            else
+            else if (this.Tag.ToString() == "JT_C_CGJSDMX")
             {
-                MessageBox.Show("未发现视图保存文件，请确认是否曾经保存！");
+                string strLayout = FrmLogin.getUser + "_FrmPurchaseStageJTMXLayout.xml";
+                if (File.Exists(strLayout))
+                {
+                    gridView2.RestoreLayoutFromXml(strLayout);
+                    MessageBox.Show("载入视图成功！");
+                }
+                else
+                {
+                    MessageBox.Show("未发现视图保存文件，请确认是否曾经保存！");
+                }
             }
+
+           
         }
 
 

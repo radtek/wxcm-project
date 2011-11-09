@@ -28,7 +28,7 @@ namespace ClientMain
             InitializeComponent();
             //  XpoDefault.ConnectionString = OracleConnectionProvider.GetConnectionString("XINHUA", "xxb", "pass");
             XpoDefault.ConnectionString = FrmLogin.xpoDataCentStr;
-            xpServerCollectionSource1.FixedFilterString = "[ZTID] = \'" + FrmLogin.getZTID.ToString() + "\' AND [ZT] > \'" + "15" + "\' AND [JSFSID]=\'" + "01" + "\'AND [GHDWID]=\'" + khid + "\'";
+            xpServerCollectionSource1.FixedFilterString = "[ZTID] = \'" + FrmLogin.getZTID.ToString() + "\' AND [ZT] > \'" + "14" + "\' AND [JSFSID]=\'" + "1" + "\'AND [GHDWID]=\'" + khid + "\'";
             selection = new GridCheckMarksSelection(gridView1);
             selection.CheckMarkColumn.VisibleIndex = 0;
             gridView1.BestFitColumns();
@@ -112,7 +112,7 @@ namespace ClientMain
 
             if (!String.IsNullOrEmpty(gridView1.ActiveFilterString))
             {
-                xpServerCollectionSource1.FixedFilterString = gridView1.ActiveFilterString + " And [ZTID] = \'" + FrmLogin.getZTID.ToString() + "\' AND [ZT] > \'" + "15" + "\' AND [JSFSID]=\'" + "01" + "\'AND [GHDWID]=\'" + this.btnConfirm.Tag.ToString() + "\'";
+                xpServerCollectionSource1.FixedFilterString = "[ZTID] = \'" + FrmLogin.getZTID.ToString() + "\' AND [ZT] > \'" + "14" + "\' AND [JSFSID]=\'" + "1" + "\'AND [GHDWID]=\'" + this.btnConfirm.Tag.ToString() + "\'";
                 gridView1.BestFitColumns();
             }
         }
