@@ -180,6 +180,7 @@
             this.txtSPBH.Name = "txtSPBH";
             this.txtSPBH.Size = new System.Drawing.Size(313, 26);
             this.txtSPBH.TabIndex = 1;
+            
             // 
             // txtTXM
             // 
@@ -188,6 +189,8 @@
             this.txtTXM.Name = "txtTXM";
             this.txtTXM.Size = new System.Drawing.Size(293, 26);
             this.txtTXM.TabIndex = 0;
+            this.txtTXM.TextChanged+=new System.EventHandler(txtTXM_TextChanged);
+            this.txtTXM.KeyDown+=new System.Windows.Forms.KeyEventHandler(txtTXM_KeyDown);
             // 
             // panel2
             // 

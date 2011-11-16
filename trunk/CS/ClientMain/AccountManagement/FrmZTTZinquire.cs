@@ -2027,7 +2027,7 @@ namespace ClientMain
             this.Text = "您当前在帐套台账界面";
             this.gridControl1.Visible = true;
             gridControl1.Dock = DockStyle.Fill;
-            xpServerCollectionSource1.FixedFilterString = " [ZTID] = \'" + FrmLogin.getZTID + "\'"; 
+            xpServerCollectionSource1.FixedFilterString = "[ZTID] = \'" + FrmLogin.getZTID + "\'"; 
             gridView1.BestFitColumns();
             xpServerCollectionSource2.Dispose();
             gridControl2.Visible = false;
