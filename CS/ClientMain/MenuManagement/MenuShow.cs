@@ -22,7 +22,7 @@ namespace ClientMain
         //定义数据库连接
         private void Open()
         {
-            string StrCon = FrmLogin.strCon;
+            string StrCon = FrmLogin.strDataCent;
             MyConn = new OracleConnection(StrCon);
             if (MyConn.State.ToString() != "Open")
                 MyConn.Open();

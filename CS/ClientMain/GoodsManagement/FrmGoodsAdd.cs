@@ -11,6 +11,10 @@ namespace ClientMain
 {
     public partial class FrmGoodsAdd : Form
     {
+        private string[] strnum_13 = new string[13];//13位书号
+        private string[] strnum_10 = new string[10];//10位书号
+        private bool fgCheckTXM = false;//判断输入条形码是否正确
+        private string CBSBMid = "";//根据条形码判断出来的出版社编码ID
         private string StrCon = FrmLogin.strDataCent;
         public FrmGoodsAdd()
         {
@@ -410,6 +414,281 @@ namespace ClientMain
                     MessageBox.Show("条形码，品名，商品编号，定价，发行类型，出版社，出版年月，状态，版别不能为空", "提示");
                 }
 
+            }
+        }
+        private void txtTXM_TextChanged(object sender, EventArgs e)
+
+        {
+            txtSPBH.Text = txtTXM.Text;
+        }
+        private void txtTXM_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                CheckTXM(txtTXM.Text.Trim());//判断是否合法
+                if (fgCheckTXM == true)//根据合法值将出版社编号ID赋予TXTCBS的TAG上
+                {
+                    if(txtTXM.Text.Trim().Length==10)
+                    {
+                        string lastTXM = "978" + txtTXM.Text.Trim();
+                        if (Convert.ToInt32(lastTXM.Substring(3, 1)) >= 0 && Convert.ToInt32(lastTXM.Substring(3, 2)) <= 7)
+                        {
+                            GetCBSid(lastTXM, 4);
+                        }
+                        else if (Convert.ToInt32(lastTXM.Substring(3, 2)) >= 80 && Convert.ToInt32(lastTXM.Substring(3, 2)) <= 94)
+                        {
+                            GetCBSid(lastTXM, 5);
+                        }
+                        else if (Convert.ToInt32(lastTXM.Substring(3, 3)) >= 950 && Convert.ToInt32(lastTXM.Substring(3, 2)) <= 995)
+                        {
+                            GetCBSid(lastTXM, 6);
+                        }
+                        else if (Convert.ToInt32(lastTXM.Substring(3, 4)) >= 9960 && Convert.ToInt32(lastTXM.Substring(3, 4)) <= 9989)
+                        {
+                            GetCBSid(lastTXM, 7);
+                        }
+                        else if (Convert.ToInt32(lastTXM.Substring(3, 5)) >= 99900 && Convert.ToInt32(lastTXM.Substring(3, 4)) <= 99999)
+                        {
+                            GetCBSid(lastTXM, 8);
+                        }
+
+                    }
+                    else if (txtTXM.Text.Trim().Length == 13)
+                    {
+                        string lastTXM = txtTXM.Text.Trim();
+                        if (Convert.ToInt32(lastTXM.Substring(3, 1)) >= 0 && Convert.ToInt32(lastTXM.Substring(3, 2)) <= 7)
+                        {
+                            GetCBSid(lastTXM,4);
+                        }
+                        else if (Convert.ToInt32(lastTXM.Substring(3, 2)) >= 80 && Convert.ToInt32(lastTXM.Substring(3, 2)) <= 94)
+                        {
+                            GetCBSid(lastTXM,5);
+                        }
+                        else if (Convert.ToInt32(lastTXM.Substring(3, 3)) >= 950 && Convert.ToInt32(lastTXM.Substring(3, 2)) <= 995)
+                        {
+                            GetCBSid(lastTXM,6);
+                        }
+                        else if (Convert.ToInt32(lastTXM.Substring(3, 4)) >= 9960 && Convert.ToInt32(lastTXM.Substring(3, 4)) <= 9989)
+                        {
+                            GetCBSid(lastTXM,7);
+                        }
+                        else if (Convert.ToInt32(lastTXM.Substring(3, 5)) >= 99900 && Convert.ToInt32(lastTXM.Substring(3, 4)) <= 99999)
+                        {
+                            GetCBSid(lastTXM,8);
+                        }
+                    }
+                    //开始从数据库提取相关
+                    GetCBSXX(CBSBMid);
+                }
+                else
+                {
+                    MessageBox.Show("您输入的条形码非法1111","警告");
+                }
+            }
+        }
+        private void CheckTXM(string str)
+        {
+            
+            if (GetIsExitChar(str.Trim()) == true)
+            {
+                if (str.Length == 10)
+                {
+                    int sum = 0;
+                    for (int i = 0; i < str.Length; i++)
+                    {
+                        strnum_10[i] = str.Substring(i, 1);
+                        if ((i % 2) == 0)
+                        {
+                            sum = Convert.ToInt32(strnum_10[i]) * 3+sum;
+                        }
+                        else
+                        {
+                            sum = Convert.ToInt32(strnum_10[i]) * 1+sum;
+                        }
+                    }
+                    if (10 - (sum % 10) == Convert.ToInt32(strnum_10[9]))
+                    {
+                        fgCheckTXM = true;
+                    }
+                    else
+                    {
+                        fgCheckTXM = false;
+                    }
+                }
+                else if (str.Length == 13)
+                {
+                    int sum = 0;
+                    for(int i=0;i<str.Length;i++)
+                    {
+                        strnum_13[i] = str.Substring(i,1);
+                        if ((i % 2) == 0)
+                        {
+                            sum = Convert.ToInt32(strnum_13[i])*1+sum;
+                        }
+                        else
+                        {
+                            sum = Convert.ToInt32(strnum_13[i]) * 3+sum;
+                        }
+                    }
+                    if (10 - (sum % 10) == Convert.ToInt32(strnum_13[12]) || (10 - (sum % 10))==10)
+                    {
+                        fgCheckTXM = true;
+                    }
+                    else
+                    {
+                        fgCheckTXM = false;
+                    }
+           
+                }
+                else
+                {
+                    MessageBox.Show("条形码必须是十三位或者十位", "警告");
+                    txtTXM.Text = "";
+                    txtSPBH.Text = "";
+                    txtTXM.Focus();
+                }
+            }
+            else
+            {
+                MessageBox.Show("您输入的编号不是纯数字","警告 ");
+                txtTXM.Text = "";
+                txtSPBH.Text = "";
+                txtTXM.Focus();
+            }
+        }//判断条形码是否合法算法
+        private bool GetIsExitChar(string strchar)
+        {
+            try { Convert.ToInt64(strchar); return true; }
+            catch(Exception ex)
+            {
+                if (!string.IsNullOrEmpty(ex.Message.ToString()))
+                { return false; }
+                else
+                { return true; }
+            }
+        }//判断是否输入的条形码全是数字字符
+        private void GetCBSid(string strtxm,int i)
+        {
+            if(Convert.ToInt32(strtxm.Substring(i,2)) >= 0 && Convert.ToInt32(strtxm.Substring(i,2)) <= 9)
+            {
+                CBSBMid = strtxm.Substring(i, 2);
+            }
+            else if (Convert.ToInt32(strtxm.Substring(i, 3)) >= 100 && Convert.ToInt32(strtxm.Substring(i, 3)) <= 499)
+            {
+                CBSBMid = strtxm.Substring(i, 3);
+            }
+            else if (Convert.ToInt32(strtxm.Substring(i, 4)) >= 5000 && Convert.ToInt32(strtxm.Substring(i, 4)) <= 7999)
+            {
+                CBSBMid = strtxm.Substring(i, 4);
+            }
+            else if (Convert.ToInt32(strtxm.Substring(i, 5)) >= 80000 && Convert.ToInt32(strtxm.Substring(i, 5)) <= 89999)
+            {
+                CBSBMid = strtxm.Substring(i, 5);
+            }
+            else if (Convert.ToInt32(strtxm.Substring(i, 6)) >= 900000 && Convert.ToInt32(strtxm.Substring(i, 6)) <= 989999)
+            {
+                CBSBMid = strtxm.Substring(i, 6);
+            }
+            else if (Convert.ToInt32(strtxm.Substring(i, 7)) >= 9900000 && Convert.ToInt32(strtxm.Substring(i, 7)) <= 9999999)
+            {
+                CBSBMid = strtxm.Substring(i, 7);
+            }
+        }
+        private void GetCBSXX(string id)
+        {
+            OracleConnection Mycon = new OracleConnection(StrCon);
+            string StrSpxxSelect = "select DJ,CBSID,CBSMC,BBID,BBMC,PM,ZT,KBID,KBMC,ZZID,ZZMC,YZS,YZID,YZMC,CBNY,YSSJ,BC,YC,CBFLID,CBFLMC,FXFLID,FXFLMC,ZZ,BZ,YZ,SPSXID,SPSXMC,YXJZID,YXJZMC,SL,GG,HD,ZL,XH,YXBZ,BEIZ from VIEW_JT_J_SPXX where TXM='" + txtTXM.Text.Trim() + "'";
+            try
+            {
+                Mycon.Open();
+                OracleCommand Comm = new OracleCommand(StrSpxxSelect, Mycon);
+                OracleDataReader reader = Comm.ExecuteReader();
+                while (reader.Read())
+                {
+               //     txtTXM.Text = reader["TXM"].ToString();
+                //    txtSPBH.Text = reader["SPBH"].ToString();
+                    txtDJ.Text = reader["DJ"].ToString();
+                    txtCBS.Tag = reader["CBSID"].ToString();
+                    txtCBS.Text = reader["CBSMC"].ToString();
+                    txtBB.Tag = reader["BBID"].ToString();
+                    txtBB.Text = reader["BBMC"].ToString();
+                    txtPM.Text = reader["PM"].ToString();
+                    comZT.Text = reader["ZT"].ToString();
+                    txtKB.Tag = reader["KBID"].ToString();
+                    txtKB.Text = reader["KBMC"].ToString();
+                    txtZZID.Text = reader["ZZMC"].ToString();
+                    txtZZID.Tag = reader["ZZID"].ToString();
+                    txtYZS.Text = reader["YZS"].ToString();
+                    txtYZID.Text = reader["YZMC"].ToString();
+                    txtYZID.Tag = reader["YZID"].ToString();
+                    txtCBNY.Text = reader["CBNY"].ToString();
+                    txtYSSJ.Text = reader["YSSJ"].ToString();
+                    txtBC.Text = reader["BC"].ToString();
+                    txtYC.Text = reader["YC"].ToString();
+                    txtCBFLID.Tag = reader["CBFLID"].ToString();
+                    txtCBFLID.Text = reader["CBFLMC"].ToString();
+                    txtFXFLID.Text = reader["FXFLMC"].ToString();
+                    txtFXFLID.Tag = reader["FXFLID"].ToString();
+                    txtZZ.Text = reader["ZZ"].ToString();
+                    txtBZ.Text = reader["BZ"].ToString();
+                    txtYZ.Text = reader["YZ"].ToString();
+                    txtSPSXID.Tag = reader["SPSXID"].ToString();
+                    txtSPSXID.Text = reader["SPSXMC"].ToString();
+                    txtYXJZID.Tag = reader["YXJZID"].ToString();
+                    txtYXJZID.Text = reader["YXJZMC"].ToString();
+                    comSL.Text = reader["SL"].ToString();
+                    txtGG.Text = reader["GG"].ToString();
+                    txtHD.Text = reader["HD"].ToString();
+                    txtZL.Text = reader["ZL"].ToString();
+                    txtXH.Text = reader["XH"].ToString();
+                    comYXBZ.Text = GetYXBZMC(reader["YXBZ"].ToString());
+                    txtBEIZ.Text = reader["BEIZ"].ToString();
+
+                }
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                Mycon.Close();
+            }
+            if(string.IsNullOrEmpty(txtPM.Text.Trim()))//如果品名为空，则只带出出版社与版别
+            {
+                string StrCBSXXselect = "select a.DWMC,a.DWID from JT_J_DWXX a  where a.DWBH='"+id+"'";
+                string StrCBBBXXselect = "select a.BB,a.BBBMID from JT_J_BBBM a where a.BBBH='" + id + "'";
+                try
+                {
+                  Mycon.Open();
+                 OracleCommand Comm = new OracleCommand(StrCBSXXselect, Mycon);
+                OracleDataReader reader = Comm.ExecuteReader();
+                while (reader.Read())
+                {
+                    txtCBS.Text = reader["DWMC"].ToString();
+                    txtCBS.Tag = reader["DWID"].ToString();
+                }
+                reader.Close();
+                OracleCommand Comm1 = new OracleCommand(StrCBBBXXselect, Mycon);
+                OracleDataReader reader1 = Comm1.ExecuteReader();
+                while (reader1.Read())
+                {
+                    txtBB.Text = reader["BB"].ToString();
+                    txtBB.Tag = reader["BBBMID"].ToString();
+                }
+                reader1.Close();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    Mycon.Close();
+                }
             }
         }
 
