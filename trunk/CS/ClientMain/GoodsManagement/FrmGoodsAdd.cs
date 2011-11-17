@@ -456,7 +456,7 @@ namespace ClientMain
                     else if (txtTXM.Text.Trim().Length == 13)
                     {
                         string lastTXM = txtTXM.Text.Trim();
-                        if (Convert.ToInt32(lastTXM.Substring(3, 1)) >= 0 && Convert.ToInt32(lastTXM.Substring(3, 2)) <= 7)
+                        if (Convert.ToInt32(lastTXM.Substring(3, 1)) >= 0 && Convert.ToInt32(lastTXM.Substring(3, 1)) <= 7)
                         {
                             GetCBSid(lastTXM,4);
                         }
@@ -658,27 +658,27 @@ namespace ClientMain
             }
             if(string.IsNullOrEmpty(txtPM.Text.Trim()))//如果品名为空，则只带出出版社与版别
             {
-                string StrCBSXXselect = "select a.DWMC,a.DWID from JT_J_DWXX a  where a.DWBH='"+id+"'";
-                string StrCBBBXXselect = "select a.BB,a.BBBMID from JT_J_BBBM a where a.BBBH='" + id + "'";
+                string StrCBSXXselect = "select DWMC,DWID from JT_J_DWXX   where DWBH='"+id+"'";
+                string StrCBBBXXselect = "select BB,BBBMID from JT_J_BBBM  where BBBH='" + id + "'";
                 try
                 {
                   Mycon.Open();
                  OracleCommand Comm = new OracleCommand(StrCBSXXselect, Mycon);
-                OracleDataReader reader = Comm.ExecuteReader();
-                while (reader.Read())
-                {
-                    txtCBS.Text = reader["DWMC"].ToString();
-                    txtCBS.Tag = reader["DWID"].ToString();
-                }
-                reader.Close();
-                OracleCommand Comm1 = new OracleCommand(StrCBBBXXselect, Mycon);
-                OracleDataReader reader1 = Comm1.ExecuteReader();
+                OracleDataReader reader1 = Comm.ExecuteReader();
                 while (reader1.Read())
                 {
-                    txtBB.Text = reader["BB"].ToString();
-                    txtBB.Tag = reader["BBBMID"].ToString();
+                    txtCBS.Text = reader1["DWMC"].ToString();
+                    txtCBS.Tag = reader1["DWID"].ToString();
                 }
                 reader1.Close();
+                OracleCommand Comm1 = new OracleCommand(StrCBBBXXselect, Mycon);
+                OracleDataReader reader2 = Comm1.ExecuteReader();
+                while (reader1.Read())
+                {
+                    txtBB.Text = reader2["BB"].ToString();
+                    txtBB.Tag = reader2["BBBMID"].ToString();
+                }
+                reader2.Close();
 
                 }
                 catch (Exception ex)
