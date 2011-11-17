@@ -126,6 +126,12 @@
             this.teDWJB = new DevExpress.XtraEditors.TextEdit();
             this.labelControl29 = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
+            this.sleJSDW = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colJSDWID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colJSDWBH = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colJSDWMC = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colJSDWZJM = new DevExpress.XtraGrid.Columns.GridColumn();
             this.teXSJSZQ = new DevExpress.XtraEditors.TextEdit();
             this.labelControl54 = new DevExpress.XtraEditors.LabelControl();
             this.teCGJSZQ = new DevExpress.XtraEditors.TextEdit();
@@ -206,12 +212,6 @@
             this.btnSaveEnd = new DevExpress.XtraEditors.SimpleButton();
             this.btnClear = new DevExpress.XtraEditors.SimpleButton();
             this.btnExit = new DevExpress.XtraEditors.SimpleButton();
-            this.sleJSDW = new DevExpress.XtraEditors.SearchLookUpEdit();
-            this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colJSDWID = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colJSDWBH = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colJSDWMC = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colJSDWZJM = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -246,6 +246,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.teDWFR.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teDWJB.Properties)).BeginInit();
             this.xtraTabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sleJSDW.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teXSJSZQ.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teCGJSZQ.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teZZQTFYBZ.Properties)).BeginInit();
@@ -282,8 +284,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.teXSJSYXJ.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teCGJSYXJ.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teTJBH.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sleJSDW.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
             this.SuspendLayout();
             // 
             // xtraTabControl1
@@ -1195,6 +1195,65 @@
             this.xtraTabPage3.Size = new System.Drawing.Size(654, 272);
             this.xtraTabPage3.Text = "结算信息";
             // 
+            // sleJSDW
+            // 
+            this.sleJSDW.EditValue = "";
+            this.sleJSDW.Location = new System.Drawing.Point(430, 110);
+            this.sleJSDW.Name = "sleJSDW";
+            this.sleJSDW.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.sleJSDW.Properties.DataSource = this.bsDWXX;
+            this.sleJSDW.Properties.DisplayMember = "DWMC";
+            this.sleJSDW.Properties.NullText = "";
+            this.sleJSDW.Properties.ValueMember = "DWID";
+            this.sleJSDW.Properties.View = this.gridView4;
+            this.sleJSDW.Size = new System.Drawing.Size(200, 21);
+            this.sleJSDW.TabIndex = 52;
+            // 
+            // gridView4
+            // 
+            this.gridView4.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colJSDWID,
+            this.colJSDWBH,
+            this.colJSDWMC,
+            this.colJSDWZJM});
+            this.gridView4.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView4.Name = "gridView4";
+            this.gridView4.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView4.OptionsView.ShowGroupPanel = false;
+            // 
+            // colJSDWID
+            // 
+            this.colJSDWID.Caption = "单位ID";
+            this.colJSDWID.FieldName = "DWID";
+            this.colJSDWID.Name = "colJSDWID";
+            this.colJSDWID.Visible = true;
+            this.colJSDWID.VisibleIndex = 0;
+            // 
+            // colJSDWBH
+            // 
+            this.colJSDWBH.Caption = "单位编号";
+            this.colJSDWBH.FieldName = "DWBH";
+            this.colJSDWBH.Name = "colJSDWBH";
+            this.colJSDWBH.Visible = true;
+            this.colJSDWBH.VisibleIndex = 1;
+            // 
+            // colJSDWMC
+            // 
+            this.colJSDWMC.Caption = "单位名称";
+            this.colJSDWMC.FieldName = "DWMC";
+            this.colJSDWMC.Name = "colJSDWMC";
+            this.colJSDWMC.Visible = true;
+            this.colJSDWMC.VisibleIndex = 2;
+            // 
+            // colJSDWZJM
+            // 
+            this.colJSDWZJM.Caption = "助记码";
+            this.colJSDWZJM.FieldName = "ZJM";
+            this.colJSDWZJM.Name = "colJSDWZJM";
+            this.colJSDWZJM.Visible = true;
+            this.colJSDWZJM.VisibleIndex = 3;
+            // 
             // teXSJSZQ
             // 
             this.teXSJSZQ.Location = new System.Drawing.Point(100, 230);
@@ -1925,65 +1984,6 @@
             this.btnExit.Text = "退出";
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // sleJSDW
-            // 
-            this.sleJSDW.EditValue = "";
-            this.sleJSDW.Location = new System.Drawing.Point(430, 110);
-            this.sleJSDW.Name = "sleJSDW";
-            this.sleJSDW.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.sleJSDW.Properties.DataSource = this.bsDWXX;
-            this.sleJSDW.Properties.DisplayMember = "DWMC";
-            this.sleJSDW.Properties.NullText = "";
-            this.sleJSDW.Properties.ValueMember = "DWID";
-            this.sleJSDW.Properties.View = this.gridView4;
-            this.sleJSDW.Size = new System.Drawing.Size(200, 21);
-            this.sleJSDW.TabIndex = 52;
-            // 
-            // gridView4
-            // 
-            this.gridView4.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colJSDWID,
-            this.colJSDWBH,
-            this.colJSDWMC,
-            this.colJSDWZJM});
-            this.gridView4.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.gridView4.Name = "gridView4";
-            this.gridView4.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.gridView4.OptionsView.ShowGroupPanel = false;
-            // 
-            // colJSDWID
-            // 
-            this.colJSDWID.Caption = "单位ID";
-            this.colJSDWID.FieldName = "DWID";
-            this.colJSDWID.Name = "colJSDWID";
-            this.colJSDWID.Visible = true;
-            this.colJSDWID.VisibleIndex = 0;
-            // 
-            // colJSDWBH
-            // 
-            this.colJSDWBH.Caption = "单位编号";
-            this.colJSDWBH.FieldName = "DWBH";
-            this.colJSDWBH.Name = "colJSDWBH";
-            this.colJSDWBH.Visible = true;
-            this.colJSDWBH.VisibleIndex = 1;
-            // 
-            // colJSDWMC
-            // 
-            this.colJSDWMC.Caption = "单位名称";
-            this.colJSDWMC.FieldName = "DWMC";
-            this.colJSDWMC.Name = "colJSDWMC";
-            this.colJSDWMC.Visible = true;
-            this.colJSDWMC.VisibleIndex = 2;
-            // 
-            // colJSDWZJM
-            // 
-            this.colJSDWZJM.Caption = "助记码";
-            this.colJSDWZJM.FieldName = "ZJM";
-            this.colJSDWZJM.Name = "colJSDWZJM";
-            this.colJSDWZJM.Visible = true;
-            this.colJSDWZJM.VisibleIndex = 3;
-            // 
             // FrmDeptChild
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -2034,6 +2034,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.teDWJB.Properties)).EndInit();
             this.xtraTabPage3.ResumeLayout(false);
             this.xtraTabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sleJSDW.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teXSJSZQ.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teCGJSZQ.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teZZQTFYBZ.Properties)).EndInit();
@@ -2072,8 +2074,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.teXSJSYXJ.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teCGJSYXJ.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teTJBH.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sleJSDW.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -36,7 +36,7 @@
     <SuiteName>Maintenance</SuiteName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>18</ApplicationRevision>
+    <ApplicationRevision>28</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -66,7 +66,7 @@
     <StartupObject>ClientMain.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>BE357AF0E290D5BA8B4C169D90807FA9DBF48537</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>5EF58B67FEA48F5E7C17B492DA65AF685183DF7A</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>ClientMain_TemporaryKey.pfx</ManifestKeyFile>
@@ -213,23 +213,34 @@
     <Compile Include="AccountManagement\FrmZTTZinquire.designer.cs">
       <DependentUpon>FrmZTTZinquire.cs</DependentUpon>
     </Compile>
-    <Compile Include="PurchaseReceive\FrmPurchaseStageJC.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PurchaseReceive\FrmPurchaseStageJC.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="PurchaseReceive\FrmPurchaseStageJC.designer.cs">
       <DependentUpon>FrmPurchaseStageJC.cs</DependentUpon>
     </Compile>
-    <Compile Include="PurchaseReceive\FrmPurchaseStageJCAdd.cs" />
+    <Compile Include="PurchaseReceive\FrmPurchaseStageJCAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="PurchaseReceive\FrmPurchaseStageJCAdd.designer.cs">
       <DependentUpon>FrmPurchaseStageJCAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="PurchaseReceive\FrmPurchaseStageJT.cs" />
+    <Compile Include="PurchaseReceive\FrmPurchaseStageJT.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="PurchaseReceive\FrmPurchaseStageJT.designer.cs">
       <DependentUpon>FrmPurchaseStageJT.cs</DependentUpon>
     </Compile>
-    <Compile Include="PurchaseReceive\FrmPurchaseStageJTAdd.cs" />
+    <Compile Include="PurchaseReceive\FrmPurchaseStageJTAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="PurchaseReceive\FrmPurchaseStageJTAdd.designer.cs">
       <DependentUpon>FrmPurchaseStageJTAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="PurchaseReceive\FrmPurchaseStageSelectCase.cs" />
+    <Compile Include="PurchaseReceive\FrmPurchaseStageSelectCase.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="PurchaseReceive\FrmPurchaseStageSelectCase.Designer.cs">
       <DependentUpon>FrmPurchaseStageSelectCase.cs</DependentUpon>
     </Compile>
@@ -903,7 +914,6 @@
       <DependentUpon>FrmStaffMtChild.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitManagement\FrmPressTypeMt.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1654,6 +1664,7 @@
     <EmbeddedResource Include="Reports\XtraReportXSTSDjt.resx">
       <DependentUpon>XtraReportXSTSDjt.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClientMain_TemporaryKey.pfx" />
     <None Include="Resources\ICON\copyright.jpg.psd">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -2161,6 +2172,16 @@
       <PublishState>Include</PublishState>
       <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="zh-CN\ClientMain.resources">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Satellite</FileType>
     </PublishFile>
   </ItemGroup>
   <ItemGroup>

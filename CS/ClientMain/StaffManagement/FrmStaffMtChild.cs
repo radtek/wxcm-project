@@ -72,12 +72,15 @@ namespace ClientMain
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (tbName.Text == "" || tbStaffNum.Text == "")
+            if (tbName.Text == "")
             {
-                if (MessageBox.Show("员工姓名和编号不能为空！", "警告", MessageBoxButtons.OK, MessageBoxIcon.Stop) == DialogResult.OK)
-                {
-                    tbStaffNum.Focus();
-                }
+                MessageBox.Show("请输入员工姓名");
+                tbName.Focus();
+            }
+            else if (tbStaffNum.Text == "")
+            {
+                MessageBox.Show("请输入员工编号");
+                tbStaffNum.Focus();
             }
             else
             {
@@ -122,12 +125,15 @@ namespace ClientMain
 
         private void btnSaveContinue_Click(object sender, EventArgs e)
         {
-            if (tbName.Text == "" || tbStaffNum.Text == "")
+            if (tbName.Text == "")
             {
-                if (MessageBox.Show("员工姓名和编号不能为空！", "警告", MessageBoxButtons.OK, MessageBoxIcon.Stop) == DialogResult.OK)
-                {
-                    tbStaffNum.Focus();
-                }
+                MessageBox.Show("请输入员工姓名");
+                tbName.Focus();
+            }
+            else if (tbStaffNum.Text == "")
+            {
+                MessageBox.Show("请输入员工编号");
+                tbStaffNum.Focus();
             }
             else
             {
