@@ -103,38 +103,24 @@ namespace ClientMain
             XpoDefault.ConnectionString = FrmLogin.xpoDataCentStr;
             selection1 = new GridCheckMarksSelection(gridView1);
             selection1.CheckMarkColumn.VisibleIndex = 0;
-            this.gridView1.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView1_CustomDrawRowIndicator);
-            this.gridView1.CustomDrawFooterCell += new DevExpress.XtraGrid.Views.Grid.FooterCellCustomDrawEventHandler(this.gridView1_CustomDrawFooterCell);
-            this.gridView1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.gridView1_MouseUp);
-            this.gridView1.DoubleClick += new System.EventHandler(this.gridView1_DoubleClick);
+
 
             selection2 = new GridCheckMarksSelection(gridView2);
             selection2.CheckMarkColumn.VisibleIndex = 0;
-            this.gridView2.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView2_CustomDrawRowIndicator);
-            this.gridView2.CustomDrawFooterCell += new DevExpress.XtraGrid.Views.Grid.FooterCellCustomDrawEventHandler(this.gridView2_CustomDrawFooterCell);
-            this.gridView2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.gridView2_MouseUp);
-            this.gridView2.DoubleClick += new System.EventHandler(this.gridView2_DoubleClick);
+            xpServerCollectionSource2.FixedFilterString = "[ZTBMTZID] is null";
 
 
             selection3 = new GridCheckMarksSelection(gridView3);
             selection3.CheckMarkColumn.VisibleIndex = 0;
-            this.gridView3.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView3_CustomDrawRowIndicator);
-            this.gridView3.CustomDrawFooterCell += new DevExpress.XtraGrid.Views.Grid.FooterCellCustomDrawEventHandler(this.gridView3_CustomDrawFooterCell);
-            this.gridView3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.gridView3_MouseUp);
-            this.gridView3.DoubleClick += new System.EventHandler(this.gridView3_DoubleClick);
+            xpServerCollectionSource3.FixedFilterString = "[ZTBMSPTZID] is null";
 
             selection4 = new GridCheckMarksSelection(gridView4);
             selection4.CheckMarkColumn.VisibleIndex = 0;
-            this.gridView4.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView4_CustomDrawRowIndicator);
-            this.gridView4.CustomDrawFooterCell += new DevExpress.XtraGrid.Views.Grid.FooterCellCustomDrawEventHandler(this.gridView4_CustomDrawFooterCell);
-            this.gridView4.MouseUp += new System.Windows.Forms.MouseEventHandler(this.gridView4_MouseUp);
-            this.gridView4.DoubleClick += new System.EventHandler(this.gridView4_DoubleClick);
+            xpServerCollectionSource4.FixedFilterString = "[ZTBMSPKFTZID] is null";
 
             selection5 = new GridCheckMarksSelection(gridView5);
             selection5.CheckMarkColumn.VisibleIndex = 0;
-            this.gridView4.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView4_CustomDrawRowIndicator);
-            this.gridView4.CustomDrawFooterCell += new DevExpress.XtraGrid.Views.Grid.FooterCellCustomDrawEventHandler(this.gridView4_CustomDrawFooterCell);
-            this.gridView4.MouseUp += new System.Windows.Forms.MouseEventHandler(this.gridView4_MouseUp);
+            xpServerCollectionSource5.FixedFilterString = "[ZTBMSPKFMXID] is null";
 
         }
         private bool SPorKF = true;//控制按商品显示还是按照库房显示
@@ -151,8 +137,6 @@ namespace ClientMain
         //定义数据库关闭
         private void sClose()
         {
-            //   if (ds != null)
-            //    { ds.Dispose(); }
             if (MyConn != null & MyConn.State.ToString() != "Closed")
             { MyConn.Close(); }
         }
@@ -2464,6 +2448,8 @@ namespace ClientMain
             else
             { }
         }
+
+       
 
 
 
