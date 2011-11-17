@@ -614,6 +614,9 @@
             this.gridView5.OptionsSelection.MultiSelect = true;
             this.gridView5.OptionsView.ColumnAutoWidth = false;
             this.gridView5.OptionsView.ShowFooter = true;
+            this.gridView5.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView5_CustomDrawRowIndicator);
+            this.gridView5.CustomDrawFooterCell += new DevExpress.XtraGrid.Views.Grid.FooterCellCustomDrawEventHandler(this.gridView5_CustomDrawFooterCell);
+            this.gridView5.MouseUp += new System.Windows.Forms.MouseEventHandler(this.gridView5_MouseUp);
             // 
             // colZTBMSPKFMXID4
             // 
@@ -1365,6 +1368,10 @@
             this.gridView4.OptionsSelection.MultiSelect = true;
             this.gridView4.OptionsView.ColumnAutoWidth = false;
             this.gridView4.OptionsView.ShowFooter = true;
+            this.gridView4.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView4_CustomDrawRowIndicator);
+            this.gridView4.CustomDrawFooterCell += new DevExpress.XtraGrid.Views.Grid.FooterCellCustomDrawEventHandler(this.gridView4_CustomDrawFooterCell);
+            this.gridView4.MouseUp += new System.Windows.Forms.MouseEventHandler(this.gridView4_MouseUp);
+            this.gridView4.DoubleClick += new System.EventHandler(this.gridView4_DoubleClick);
             // 
             // colWLBMMC3
             // 
@@ -2041,6 +2048,10 @@
             this.gridView3.OptionsSelection.MultiSelect = true;
             this.gridView3.OptionsView.ColumnAutoWidth = false;
             this.gridView3.OptionsView.ShowFooter = true;
+            this.gridView3.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView3_CustomDrawRowIndicator);
+            this.gridView3.CustomDrawFooterCell += new DevExpress.XtraGrid.Views.Grid.FooterCellCustomDrawEventHandler(this.gridView3_CustomDrawFooterCell);
+            this.gridView3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.gridView3_MouseUp);
+            this.gridView3.DoubleClick += new System.EventHandler(this.gridView3_DoubleClick);
             // 
             // colZTBMSPTZID2
             // 
@@ -2629,6 +2640,10 @@
             this.gridView2.OptionsSelection.MultiSelect = true;
             this.gridView2.OptionsView.ColumnAutoWidth = false;
             this.gridView2.OptionsView.ShowFooter = true;
+            this.gridView2.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView2_CustomDrawRowIndicator);
+            this.gridView2.CustomDrawFooterCell += new DevExpress.XtraGrid.Views.Grid.FooterCellCustomDrawEventHandler(this.gridView2_CustomDrawFooterCell);
+            this.gridView2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.gridView2_MouseUp);
+            this.gridView2.DoubleClick += new System.EventHandler(this.gridView2_DoubleClick);
             // 
             // colZTBMTZID1
             // 
@@ -3193,6 +3208,10 @@
             this.gridView1.OptionsSelection.MultiSelect = true;
             this.gridView1.OptionsView.ColumnAutoWidth = false;
             this.gridView1.OptionsView.ShowFooter = true;
+            this.gridView1.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView1_CustomDrawRowIndicator);
+            this.gridView1.CustomDrawFooterCell += new DevExpress.XtraGrid.Views.Grid.FooterCellCustomDrawEventHandler(this.gridView1_CustomDrawFooterCell);
+            this.gridView1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.gridView1_MouseUp);
+            this.gridView1.DoubleClick += new System.EventHandler(this.gridView1_DoubleClick);
             // 
             // colZTTZID
             // 
