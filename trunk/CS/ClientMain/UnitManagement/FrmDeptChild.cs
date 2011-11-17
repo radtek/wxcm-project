@@ -120,30 +120,6 @@ namespace ClientMain
             bsDQ.DataSource = ds;
             bsDQ.DataMember = "JT_J_DQ";
 
-            if (sleDQ.Handle != IntPtr.Zero)
-            {
-                sleDQ.EditValue = m_sDWXX.strDQID;
-            }
-            if (sleDWXX.Handle != IntPtr.Zero)
-            {
-                sleDWXX.EditValue = m_sDWXX.strSJDWID; 
-            }
-            if (sleZTBM.Handle != IntPtr.Zero)
-            {
-                sleZTBM.EditValue = m_sDWXX.strBMZTID; 
-            }
-            if (sleSFBM.Handle != IntPtr.Zero)
-            {
-                sleSFBM.EditValue = m_sDWXX.strSFID; 
-            }
-            if (sleJSDW.Handle != IntPtr.Zero)
-            {
-                sleJSDW.EditValue = m_sDWXX.strJSDWID;
-            }
-
-            cbeDJSDBZ.SelectedItem = m_sDWXX.strDJSDBZ;
-            cbeTSJSDBZ.SelectedItem = m_sDWXX.strTSJSDBZ;
-
             if (this.Text == "修改单位")
             {
                 btnSaveContinue.Visible = false;
@@ -163,18 +139,42 @@ namespace ClientMain
             }
             else if (this.Text == "增加单位")
             {
-                cbBMLX.SelectedIndex = 0;
-                cbCBSLX.SelectedIndex = 0;
-                cbDWSX.SelectedIndex = 0;
                 cbeZT.SelectedIndex = 0;
-                cbGYSLX.SelectedIndex = 0;
-                cbKFLX.SelectedIndex = 0;
-                cbKHLX.SelectedIndex = 0;
-                cbSFZT.SelectedIndex = 0;
-                cbYSCLX.SelectedIndex = 0;
-                cbYSDWLX.SelectedIndex = 0;
-                cbYSFS.SelectedIndex = 0;
+                //cbBMLX.SelectedIndex = 0;
+                //cbCBSLX.SelectedIndex = 0;
+                //cbDWSX.SelectedIndex = 0;                
+                //cbGYSLX.SelectedIndex = 0;
+                //cbKFLX.SelectedIndex = 0;
+                //cbKHLX.SelectedIndex = 0;
+                //cbSFZT.SelectedIndex = 0;
+                //cbYSCLX.SelectedIndex = 0;
+                //cbYSDWLX.SelectedIndex = 0;
+                //cbYSFS.SelectedIndex = 0;
             }
+
+            if (sleDQ.Handle != IntPtr.Zero)
+            {
+                sleDQ.EditValue = m_sDWXX.strDQID;
+            }
+            if (sleDWXX.Handle != IntPtr.Zero)
+            {
+                sleDWXX.EditValue = m_sDWXX.strSJDWID;
+            }
+            if (sleZTBM.Handle != IntPtr.Zero)
+            {
+                sleZTBM.EditValue = m_sDWXX.strBMZTID;
+            }
+            if (sleSFBM.Handle != IntPtr.Zero)
+            {
+                sleSFBM.EditValue = m_sDWXX.strSFID;
+            }
+            if (sleJSDW.Handle != IntPtr.Zero)
+            {
+                sleJSDW.EditValue = m_sDWXX.strJSDWID;
+            }
+
+            cbeDJSDBZ.SelectedItem = m_sDWXX.strDJSDBZ;
+            cbeTSJSDBZ.SelectedItem = m_sDWXX.strTSJSDBZ;
 
             teBZ.Text = m_sDWXX.strBZ;
             teCGJSYXJ.Text = m_sDWXX.strCGJSYXJB;
@@ -394,15 +394,73 @@ namespace ClientMain
             transaction.Commit();
             MessageBox.Show(command.Parameters["Message"].Value.ToString());
         }
-        
+
         private void btnSaveContinue_Click(object sender, EventArgs e)
         {
-            if (teDWBH.Text == "" || teDWMC.Text == "" || teWEBMM.Text == "" || teWEBYH.Text == "")
+            if (teDWBH.Text == "")
             {
-                if (MessageBox.Show("单位名称、编号和WEB用户、密码不能为空！", "警告", MessageBoxButtons.OK, MessageBoxIcon.Stop) == DialogResult.OK)
-                {
-                    teDWBH.Focus();
-                }
+                MessageBox.Show("请输入单位编号");
+                teDWBH.Focus();
+            }
+            else if (teDWMC.Text == "")
+            {
+                MessageBox.Show("请输入单位名称");
+                teDWMC.Focus();
+            }
+            else if (teWEBMM.Text == "")
+            {
+                MessageBox.Show("请输入WEB密码");
+                teWEBMM.Focus();
+            }
+            else if (teWEBYH.Text == "")
+            {
+                MessageBox.Show("请输入WEB用户");
+                teWEBYH.Focus();
+            }
+            else if (cbYSFS.Text == "")
+            {
+                MessageBox.Show("请输入运输方式");
+                cbYSFS.Focus();
+            }
+            else if (cbDWSX.Text == "")
+            {
+                MessageBox.Show("请输入单位属性");
+                cbDWSX.Focus();
+            }
+            else if (cbBMLX.Text == "")
+            {
+                MessageBox.Show("请输入部门类型");
+                cbBMLX.Focus();
+            }
+            else if (cbGYSLX.Text == "")
+            {
+                MessageBox.Show("请输入供应商类型");
+                cbGYSLX.Focus();
+            }
+            else if (cbKHLX.Text == "")
+            {
+                MessageBox.Show("请输入客户类型");
+                cbKHLX.Focus();
+            }
+            else if (cbKFLX.Text == "")
+            {
+                MessageBox.Show("请输入库房类型");
+                cbKFLX.Focus();
+            }
+            else if (cbYSCLX.Text == "")
+            {
+                MessageBox.Show("请输入印刷厂类型");
+                cbYSCLX.Focus();
+            }
+            else if (cbCBSLX.Text == "")
+            {
+                MessageBox.Show("请输入出版社类型");
+                cbCBSLX.Focus();
+            }
+            else if (cbYSDWLX.Text == "")
+            {
+                MessageBox.Show("请输入运输单位类型");
+                cbYSDWLX.Focus();
             }
             else
             {
@@ -441,12 +499,70 @@ namespace ClientMain
 
         private void btnSaveEnd_Click(object sender, EventArgs e)
         {
-            if (teDWBH.Text == "" || teDWMC.Text == "" || teWEBMM.Text == "" || teWEBYH.Text == "")
+            if (teDWBH.Text == "")
             {
-                if (MessageBox.Show("单位名称、编号和WEB用户、密码不能为空！", "警告", MessageBoxButtons.OK, MessageBoxIcon.Stop) == DialogResult.OK)
-                {
-                    teDWBH.Focus();
-                }
+                MessageBox.Show("请输入单位编号");
+                teDWBH.Focus();
+            }
+            else if (teDWMC.Text == "")
+            {
+                MessageBox.Show("请输入单位名称");
+                teDWMC.Focus();
+            }
+            else if (teWEBMM.Text == "")
+            {
+                MessageBox.Show("请输入WEB密码");
+                teWEBMM.Focus();
+            }
+            else if (teWEBYH.Text == "")
+            {
+                MessageBox.Show("请输入WEB用户");
+                teWEBYH.Focus();
+            }
+            else if (cbYSFS.Text == "")
+            {
+                MessageBox.Show("请输入运输方式");
+                cbYSFS.Focus();
+            }
+            else if (cbDWSX.Text == "")
+            {
+                MessageBox.Show("请输入单位属性");
+                cbDWSX.Focus();
+            }
+            else if (cbBMLX.Text == "")
+            {
+                MessageBox.Show("请输入部门类型");
+                cbBMLX.Focus();
+            }
+            else if (cbGYSLX.Text == "")
+            {
+                MessageBox.Show("请输入供应商类型");
+                cbGYSLX.Focus();
+            }
+            else if (cbKHLX.Text == "")
+            {
+                MessageBox.Show("请输入客户类型");
+                cbKHLX.Focus();
+            }
+            else if (cbKFLX.Text == "")
+            {
+                MessageBox.Show("请输入库房类型");
+                cbKFLX.Focus();
+            }
+            else if (cbYSCLX.Text == "")
+            {
+                MessageBox.Show("请输入印刷厂类型");
+                cbYSCLX.Focus();
+            }
+            else if (cbCBSLX.Text == "")
+            {
+                MessageBox.Show("请输入出版社类型");
+                cbCBSLX.Focus();
+            }
+            else if (cbYSDWLX.Text == "")
+            {
+                MessageBox.Show("请输入运输单位类型");
+                cbYSDWLX.Focus();
             }
             else
             {

@@ -25,14 +25,13 @@ namespace ClientMain
         private static string strZTMC = "";
 
         private string m_PassWord = null;
-
-        public const string strCon = "Data Source=DATACENT;User Id=jt_user;Password=jt_user;";
-        public const string strDataCent = "Data Source=DATACENT;User Id=jt_user;Password=jt_user;";
+        public const string strCon = "Data Source=DATACENT;Persist Security Info=True;User ID=jt_user;Password=jt_user;Unicode=True";
+        public const string strDataCent = "Data Source=DATACENT;Persist Security Info=True;User ID=jt_user;Password=jt_user;Unicode=True";
         public static string xpoConStr = OracleConnectionProvider.GetConnectionString("DATACENT", "jt_user", "jt_user");
         public static string xpoDataCentStr = OracleConnectionProvider.GetConnectionString("DATACENT", "jt_user", "jt_user");
 
-        //public const string strCon = "Data Source=QUERYSERVER;User Id=jt_user;Password=jt_user;";
-        //public const string strDataCent = "Data Source=QUERYSERVER;User Id=jt_user;Password=jt_user;";
+        //public const string strCon = "Data Source=QUERYSERVER;Persist Security Info=True;User ID=jt_user;Password=jt_user;Unicode=True";
+        //public const string strDataCent = "Data Source=QUERYSERVER;Persist Security Info=True;User ID=jt_user;Password=jt_user;Unicode=True";
         //public static string xpoConStr = OracleConnectionProvider.GetConnectionString("QUERYSERVER ", "jt_user", "jt_user");
         //public static string xpoDataCentStr = OracleConnectionProvider.GetConnectionString("QUERYSERVER ", "jt_user", "jt_user");
         
