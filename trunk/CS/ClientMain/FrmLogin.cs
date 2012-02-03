@@ -9,7 +9,7 @@ using System.Data.OracleClient;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.Xpo.DB;
 
-
+//for test
 namespace ClientMain
 {
 
